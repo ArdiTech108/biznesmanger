@@ -1,0 +1,1660 @@
+<!doctype html>
+<html lang="sq">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light only" />
+    <title>Kontabiliteti - Biznes Manager</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="auth.js"></script>
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <a href="index.html" class="logo">
+            <div class="logo-icon">
+              <i class="fas fa-briefcase"></i>
+            </div>
+            <div class="logo-text">
+              <span>Biznes Manager</span>
+              <span>Sistemi i Plotë i Menaxhimit</span>
+            </div>
+          </a>
+        </div>
+
+        <nav class="sidebar-nav">
+          <div class="nav-section">
+            <div class="nav-section-title">MENU KRYESORE</div>
+            <a href="index.html" class="nav-item">
+              <i class="nav-icon fas fa-home"></i>
+              <span class="nav-text">Dashboard</span>
+            </a>
+            <a href="klientet.html" class="nav-item">
+              <i class="nav-icon fas fa-users"></i>
+              <span class="nav-text">Klientët</span>
+            </a>
+          </div>
+
+          <div class="nav-section">
+            <div class="nav-section-title">BIZNESI</div>
+            <a href="planet-biznesore.html" class="nav-item">
+              <i class="nav-icon fas fa-chart-line"></i>
+              <span class="nav-text">Planet Biznesore</span>
+            </a>
+            <a href="regjistrimi-biznesit.html" class="nav-item">
+              <i class="nav-icon fas fa-file-signature"></i>
+              <span class="nav-text">Regjistrimi i Bizneseve</span>
+            </a>
+            <a href="mbyllja-biznesit.html" class="nav-item">
+              <i class="nav-icon fas fa-door-closed"></i>
+              <span class="nav-text">Mbyllja e Bizneseve</span>
+            </a>
+          </div>
+
+          <div class="nav-section">
+            <div class="nav-section-title">TENDERA & DOKUMENTA</div>
+            <a href="tenderat.html" class="nav-item">
+              <i class="nav-icon fas fa-file-contract"></i>
+              <span class="nav-text">Tenderat</span>
+            </a>
+            <a href="konsultimet.html" class="nav-item">
+              <i class="nav-icon fas fa-comments"></i>
+              <span class="nav-text">Konsultimet</span>
+            </a>
+            <a href="kontabiliteti.html" class="nav-item active">
+              <i class="nav-icon fas fa-file-invoice-dollar"></i>
+              <span class="nav-text">Kontabiliteti</span>
+              <span class="nav-badge urgent">5</span>
+            </a>
+            <a href="dokumentet.html" class="nav-item">
+              <i class="nav-icon fas fa-archive"></i>
+              <span class="nav-text">Arkivi i Dokumenteve</span>
+            </a>
+          </div>
+        </nav>
+
+        <div
+          class="sidebar-footer"
+          style="
+            padding: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+          "
+        >
+          <div class="user-info" style="color: var(--gray-400)">
+            <div style="font-size: 0.75rem; margin-bottom: 0.25rem">
+              Sistemi Kontabël
+            </div>
+            <div
+              style="
+                font-size: 0.875rem;
+                font-weight: 500;
+                color: var(--light-color);
+              "
+            >
+              <i class="fas fa-calculator" style="margin-right: 0.5rem"></i>
+              5 Fatura të Papesuara
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Header -->
+        <header class="header">
+          <div class="header-left">
+            <button class="menu-toggle" id="menuToggle">
+              <i class="fas fa-bars"></i>
+            </button>
+            <div class="header-title">
+              <h1>Kontabiliteti</h1>
+              <div class="header-subtitle">
+                Menaxhimi i Faturave, Pagesave dhe Regjistrimeve Financiare
+              </div>
+            </div>
+          </div>
+
+          <div class="header-right">
+            <div class="header-stats">
+              <div class="stat-mini">
+                <div class="stat-mini-value" style="color: var(--danger-color)">
+                  5
+                </div>
+                <div class="stat-mini-label">Të Papesuara</div>
+              </div>
+              <div class="stat-mini">
+                <div
+                  class="stat-mini-value"
+                  style="color: var(--success-color)"
+                >
+                  €45.2K
+                </div>
+                <div class="stat-mini-label">Të Ardhura</div>
+              </div>
+              <div class="stat-mini">
+                <div
+                  class="stat-mini-value"
+                  style="color: var(--warning-color)"
+                >
+                  €18.5K
+                </div>
+                <div class="stat-mini-label">Shpenzime</div>
+              </div>
+            </div>
+
+            <div class="search-container">
+              <i class="fas fa-search search-icon"></i>
+              <input
+                type="text"
+                class="search-input"
+                placeholder="Kërko faturë..."
+              />
+            </div>
+
+            <div class="user-menu">
+              <div class="user-avatar">BM</div>
+              <div class="user-info">
+                <div class="user-name">Administrator</div>
+                <div class="user-role">Kontabilist Kryesor</div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="page-content">
+          <!-- Breadcrumb -->
+          <div class="breadcrumb">
+            <div class="breadcrumb-item">
+              <a href="index.html"><i class="fas fa-home"></i> Dashboard</a>
+            </div>
+            <div class="breadcrumb-separator">/</div>
+            <div class="breadcrumb-item active">
+              <i class="fas fa-file-invoice-dollar"></i> Kontabiliteti
+            </div>
+          </div>
+
+          <!-- Page Header -->
+          <div class="page-header">
+            <div class="page-title-section">
+              <div class="page-title">
+                <i
+                  class="fas fa-file-invoice-dollar"
+                  style="color: var(--success-color)"
+                ></i>
+                Sistemi Kontabël i Plotë
+              </div>
+              <div class="page-subtitle">
+                Menaxhoni të gjitha aspektet financiare të biznesit tuaj në një
+                platformë të unifikuar.
+              </div>
+            </div>
+            <div class="page-actions">
+              <button class="btn btn-outline">
+                <i class="fas fa-filter"></i> Filtro
+              </button>
+              <button class="btn btn-primary" id="newInvoiceBtn">
+                <i class="fas fa-plus"></i> Faturë e Re
+              </button>
+              <button class="btn btn-success">
+                <i class="fas fa-file-export"></i> Eksporto Raport
+              </button>
+            </div>
+          </div>
+
+          <!-- Financial Overview -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon clients">
+                <i class="fas fa-money-bill-wave"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">€45.2K</div>
+                <div class="stat-label">Të Ardhura (Këtë Muaj)</div>
+                <div class="stat-change positive">
+                  <i class="fas fa-arrow-up"></i> 12% rritje
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon projects">
+                <i class="fas fa-credit-card"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">€18.5K</div>
+                <div class="stat-label">Shpenzime (Këtë Muaj)</div>
+                <div class="stat-change negative">
+                  <i class="fas fa-arrow-down"></i> 8% ulje
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon pending">
+                <i class="fas fa-exclamation-circle"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">5</div>
+                <div class="stat-label">Fatura të Papesuara</div>
+                <div class="stat-change negative">
+                  <i class="fas fa-clock"></i> €12,450 në vlerë
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon revenue">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">€26.7K</div>
+                <div class="stat-label">Fitimi Neto</div>
+                <div class="stat-change positive">
+                  <i class="fas fa-arrow-up"></i> 15% rritje
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Accounting Sections -->
+          <div class="charts-container">
+            <!-- Invoices Table -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <i
+                    class="fas fa-file-invoice"
+                    style="color: var(--secondary-color)"
+                  ></i>
+                  Faturat dhe Pagesat
+                </div>
+                <div class="card-actions">
+                  <div class="btn-group">
+                    <button class="btn btn-sm btn-outline active">
+                      Të Gjitha
+                    </button>
+                    <button class="btn btn-sm btn-outline">Të Papesuara</button>
+                    <button class="btn btn-sm btn-outline">Të vonuara</button>
+                    <button class="btn btn-sm btn-outline">Të paguara</button>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="table-container">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Nr. Fature</th>
+                        <th>Klienti</th>
+                        <th>Data e Lëshimit</th>
+                        <th>Afati i Pagesës</th>
+                        <th>Vlera</th>
+                        <th>Statusi i Pagesës</th>
+                        <th>Veprime</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>INV-2024-087</td>
+                        <td>
+                          <strong>Agro-Shpresa ShPK</strong>
+                          <div
+                            style="font-size: 0.75rem; color: var(--gray-600)"
+                          >
+                            Artan Shehu • Shërbime Konsulence
+                          </div>
+                        </td>
+                        <td>15 Maj 2024</td>
+                        <td>
+                          30 Maj 2024
+                          <div
+                            style="
+                              font-size: 0.75rem;
+                              color: var(--danger-color);
+                            "
+                          >
+                            <i class="fas fa-exclamation-triangle"></i> 5 ditë
+                            të mbetura
+                          </div>
+                        </td>
+                        <td>€2,850</td>
+                        <td>
+                          <span class="status-badge pending">E papesuar</span>
+                          <div class="priority-badge high">Urgjente</div>
+                        </td>
+                        <td>
+                          <div class="action-buttons">
+                            <button
+                              class="action-btn view"
+                              title="Shiko faturën"
+                            >
+                              <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="action-btn edit" title="Edito">
+                              <i class="fas fa-edit"></i>
+                            </button>
+                            <button
+                              class="action-btn download"
+                              title="Shkarko PDF"
+                            >
+                              <i class="fas fa-download"></i>
+                            </button>
+                            <button
+                              class="action-btn success"
+                              title="Shëno si të paguar"
+                            >
+                              <i class="fas fa-check"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>INV-2024-086</td>
+                        <td>
+                          <strong>TeKno AL ShPK</strong>
+                          <div
+                            style="font-size: 0.75rem; color: var(--gray-600)"
+                          >
+                            Teuta Kola • Shërbime IT
+                          </div>
+                        </td>
+                        <td>10 Maj 2024</td>
+                        <td>
+                          25 Maj 2024
+                          <div
+                            style="
+                              font-size: 0.75rem;
+                              color: var(--warning-color);
+                            "
+                          >
+                            <i class="fas fa-clock"></i> 10 ditë të mbetura
+                          </div>
+                        </td>
+                        <td>€4,200</td>
+                        <td>
+                          <span class="status-badge pending">E papesuar</span>
+                          <div class="priority-badge medium">Në kohë</div>
+                        </td>
+                        <td>
+                          <div class="action-buttons">
+                            <button
+                              class="action-btn view"
+                              title="Shiko faturën"
+                            >
+                              <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="action-btn edit" title="Edito">
+                              <i class="fas fa-edit"></i>
+                            </button>
+                            <button
+                              class="action-btn download"
+                              title="Shkarko PDF"
+                            >
+                              <i class="fas fa-download"></i>
+                            </button>
+                            <button
+                              class="action-btn success"
+                              title="Shëno si të paguar"
+                            >
+                              <i class="fas fa-check"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>INV-2024-085</td>
+                        <td>
+                          <strong>Ndërtim Plus ShPK</strong>
+                          <div
+                            style="font-size: 0.75rem; color: var(--gray-600)"
+                          >
+                            Ndue Doda • Konsultim të Ndërtimit
+                          </div>
+                        </td>
+                        <td>5 Maj 2024</td>
+                        <td>
+                          <span
+                            style="color: var(--danger-color); font-weight: 600"
+                          >
+                            1 Maj 2024
+                          </span>
+                          <div
+                            style="
+                              font-size: 0.75rem;
+                              color: var(--danger-color);
+                            "
+                          >
+                            <i class="fas fa-exclamation-circle"></i> 4 ditë të
+                            vonuar
+                          </div>
+                        </td>
+                        <td>€1,850</td>
+                        <td>
+                          <span class="status-badge rejected">E vonuar</span>
+                          <div class="priority-badge high">Urgjente</div>
+                        </td>
+                        <td>
+                          <div class="action-buttons">
+                            <button
+                              class="action-btn view"
+                              title="Shiko faturën"
+                            >
+                              <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="action-btn edit" title="Edito">
+                              <i class="fas fa-edit"></i>
+                            </button>
+                            <button
+                              class="action-btn download"
+                              title="Shkarko PDF"
+                            >
+                              <i class="fas fa-download"></i>
+                            </button>
+                            <button
+                              class="action-btn danger"
+                              title="Dërgo kujtesë"
+                            >
+                              <i class="fas fa-envelope"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>INV-2024-084</td>
+                        <td>
+                          <strong>Emal Travel ShPK</strong>
+                          <div
+                            style="font-size: 0.75rem; color: var(--gray-600)"
+                          >
+                            Ema Leka • Shërbime Marketing
+                          </div>
+                        </td>
+                        <td>1 Maj 2024</td>
+                        <td>
+                          15 Maj 2024
+                          <div
+                            style="
+                              font-size: 0.75rem;
+                              color: var(--success-color);
+                            "
+                          >
+                            <i class="fas fa-check-circle"></i> Paguar më 10 Maj
+                          </div>
+                        </td>
+                        <td>€3,500</td>
+                        <td>
+                          <span class="status-badge completed">E paguar</span>
+                          <div class="priority-badge low">Përfunduar</div>
+                        </td>
+                        <td>
+                          <div class="action-buttons">
+                            <button
+                              class="action-btn view"
+                              title="Shiko faturën"
+                            >
+                              <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="action-btn edit" title="Edito">
+                              <i class="fas fa-edit"></i>
+                            </button>
+                            <button
+                              class="action-btn download"
+                              title="Shkarko PDF"
+                            >
+                              <i class="fas fa-download"></i>
+                            </button>
+                            <button
+                              class="action-btn receipt"
+                              title="Shiko faturën"
+                            >
+                              <i class="fas fa-receipt"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>INV-2024-083</td>
+                        <td>
+                          <strong>Farma Health ShPK</strong>
+                          <div
+                            style="font-size: 0.75rem; color: var(--gray-600)"
+                          >
+                            Flamur Hoxha • Shërbime Konsulence Mjekësore
+                          </div>
+                        </td>
+                        <td>28 Prill 2024</td>
+                        <td>
+                          12 Maj 2024
+                          <div
+                            style="
+                              font-size: 0.75rem;
+                              color: var(--success-color);
+                            "
+                          >
+                            <i class="fas fa-check-circle"></i> Paguar më 8 Maj
+                          </div>
+                        </td>
+                        <td>€2,100</td>
+                        <td>
+                          <span class="status-badge completed">E paguar</span>
+                          <div class="priority-badge low">Përfunduar</div>
+                        </td>
+                        <td>
+                          <div class="action-buttons">
+                            <button
+                              class="action-btn view"
+                              title="Shiko faturën"
+                            >
+                              <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="action-btn edit" title="Edito">
+                              <i class="fas fa-edit"></i>
+                            </button>
+                            <button
+                              class="action-btn download"
+                              title="Shkarko PDF"
+                            >
+                              <i class="fas fa-download"></i>
+                            </button>
+                            <button
+                              class="action-btn receipt"
+                              title="Shiko faturën"
+                            >
+                              <i class="fas fa-receipt"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="card-footer">
+                <div style="font-size: 0.875rem; color: var(--gray-600)">
+                  5 faturat e fundit - Totali i papesuar: €12,450
+                </div>
+                <button class="btn btn-outline btn-sm">
+                  <i class="fas fa-list"></i> Shiko të Gjitha Faturat
+                </button>
+              </div>
+            </div>
+
+            <!-- Financial Summary & Charts -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <i
+                    class="fas fa-chart-pie"
+                    style="color: var(--info-color)"
+                  ></i>
+                  Përmbledhje Financiare & Analiza
+                </div>
+                <div class="card-actions">
+                  <div class="btn-group">
+                    <button class="btn btn-sm btn-outline active">Muaji</button>
+                    <button class="btn btn-sm btn-outline">Kvartali</button>
+                    <button class="btn btn-sm btn-outline">Viti</button>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="financial-summary">
+                  <!-- Income vs Expenses -->
+                  <div class="income-expenses-chart">
+                    <h4 style="margin-bottom: 1rem; color: var(--gray-800)">
+                      <i class="fas fa-balance-scale"></i>
+                      Të Ardhura vs Shpenzime (Maj 2024)
+                    </h4>
+                    <div class="chart-bars">
+                      <div class="chart-bar income">
+                        <div class="bar-label">Të Ardhura</div>
+                        <div class="bar-container">
+                          <div class="bar-fill" style="width: 85%">
+                            <span class="bar-value">€45,200</span>
+                          </div>
+                        </div>
+                        <div class="bar-percentage">85%</div>
+                      </div>
+                      <div class="chart-bar expense">
+                        <div class="bar-label">Shpenzime</div>
+                        <div class="bar-container">
+                          <div class="bar-fill" style="width: 35%">
+                            <span class="bar-value">€18,500</span>
+                          </div>
+                        </div>
+                        <div class="bar-percentage">35%</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Expense Breakdown -->
+                  <div
+                    class="expense-breakdown"
+                    style="
+                      margin-top: 2rem;
+                      padding-top: 1.5rem;
+                      border-top: 1px solid var(--gray-200);
+                    "
+                  >
+                    <h4 style="margin-bottom: 1rem; color: var(--gray-800)">
+                      <i class="fas fa-chart-bar"></i>
+                      Shpërndarja e Shpenzimeve
+                    </h4>
+                    <div class="breakdown-grid">
+                      <div class="breakdown-item">
+                        <div class="breakdown-label">
+                          <span
+                            class="dot"
+                            style="background: var(--primary-color)"
+                          ></span>
+                          <span>Pagat & Kontribute</span>
+                        </div>
+                        <div class="breakdown-value">€8,200</div>
+                        <div class="breakdown-percentage">44%</div>
+                        <div class="breakdown-bar">
+                          <div
+                            class="bar-fill"
+                            style="width: 44%; background: var(--primary-color)"
+                          ></div>
+                        </div>
+                      </div>
+                      <div class="breakdown-item">
+                        <div class="breakdown-label">
+                          <span
+                            class="dot"
+                            style="background: var(--success-color)"
+                          ></span>
+                          <span>Operacionet & Zyra</span>
+                        </div>
+                        <div class="breakdown-value">€4,500</div>
+                        <div class="breakdown-percentage">24%</div>
+                        <div class="breakdown-bar">
+                          <div
+                            class="bar-fill"
+                            style="width: 24%; background: var(--success-color)"
+                          ></div>
+                        </div>
+                      </div>
+                      <div class="breakdown-item">
+                        <div class="breakdown-label">
+                          <span
+                            class="dot"
+                            style="background: var(--warning-color)"
+                          ></span>
+                          <span>Marketing & Reklamim</span>
+                        </div>
+                        <div class="breakdown-value">€3,200</div>
+                        <div class="breakdown-percentage">17%</div>
+                        <div class="breakdown-bar">
+                          <div
+                            class="bar-fill"
+                            style="width: 17%; background: var(--warning-color)"
+                          ></div>
+                        </div>
+                      </div>
+                      <div class="breakdown-item">
+                        <div class="breakdown-label">
+                          <span
+                            class="dot"
+                            style="background: var(--danger-color)"
+                          ></span>
+                          <span>Tatimet & Tarifat</span>
+                        </div>
+                        <div class="breakdown-value">€1,800</div>
+                        <div class="breakdown-percentage">10%</div>
+                        <div class="breakdown-bar">
+                          <div
+                            class="bar-fill"
+                            style="width: 10%; background: var(--danger-color)"
+                          ></div>
+                        </div>
+                      </div>
+                      <div class="breakdown-item">
+                        <div class="breakdown-label">
+                          <span
+                            class="dot"
+                            style="background: var(--info-color)"
+                          ></span>
+                          <span>Të Tjera</span>
+                        </div>
+                        <div class="breakdown-value">€800</div>
+                        <div class="breakdown-percentage">5%</div>
+                        <div class="breakdown-bar">
+                          <div
+                            class="bar-fill"
+                            style="width: 5%; background: var(--info-color)"
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Financial Metrics -->
+                  <div
+                    class="financial-metrics"
+                    style="
+                      margin-top: 2rem;
+                      padding-top: 1.5rem;
+                      border-top: 1px solid var(--gray-200);
+                    "
+                  >
+                    <h4 style="margin-bottom: 1rem; color: var(--gray-800)">
+                      <i class="fas fa-tachometer-alt"></i>
+                      Treguesit Financiarë Kryesorë
+                    </h4>
+                    <div class="metrics-grid">
+                      <div class="metric-card">
+                        <div class="metric-value">1.8</div>
+                        <div class="metric-label">Raporti Likuiditeti</div>
+                        <div class="metric-change positive">
+                          <i class="fas fa-arrow-up"></i> Në rangun optimal
+                        </div>
+                      </div>
+                      <div class="metric-card">
+                        <div class="metric-value">59%</div>
+                        <div class="metric-label">Marzhi i Fitimit</div>
+                        <div class="metric-change positive">
+                          <i class="fas fa-arrow-up"></i> +5% ndaj vitit të
+                          kaluar
+                        </div>
+                      </div>
+                      <div class="metric-card">
+                        <div class="metric-value">24 ditë</div>
+                        <div class="metric-label">Ditët e Arkëtimit</div>
+                        <div class="metric-change negative">
+                          <i class="fas fa-arrow-up"></i> +2 ditë
+                        </div>
+                      </div>
+                      <div class="metric-card">
+                        <div class="metric-value">€125K</div>
+                        <div class="metric-label">Kapitali i Qarkullimit</div>
+                        <div class="metric-change positive">
+                          <i class="fas fa-arrow-up"></i> +15%
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-outline btn-sm">
+                  <i class="fas fa-download"></i> Shkarko Raportin
+                </button>
+                <button class="btn btn-primary btn-sm">
+                  <i class="fas fa-chart-line"></i> Analizë e Detajuar
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tax & Accounting Tasks -->
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 1.5rem;
+              margin-top: 2rem;
+            "
+          >
+            <!-- Tax Management -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <i
+                    class="fas fa-balance-scale"
+                    style="color: var(--warning-color)"
+                  ></i>
+                  Menaxhimi i Tatimeve
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="tax-management">
+                  <!-- VAT Overview -->
+                  <div class="tax-section">
+                    <h4 style="margin-bottom: 1rem; color: var(--gray-800)">
+                      <i class="fas fa-percentage"></i>
+                      TVI (Tatimi mbi Vlerën e Shtuar)
+                    </h4>
+                    <div class="vat-summary">
+                      <div class="vat-item">
+                        <span>TVI i Perceptuar</span>
+                        <span class="amount positive">€8,450</span>
+                      </div>
+                      <div class="vat-item">
+                        <span>TVI i Zbritshëm</span>
+                        <span class="amount negative">€3,200</span>
+                      </div>
+                      <div class="vat-item total">
+                        <span>TVI për t'u Paguar</span>
+                        <span class="amount">€5,250</span>
+                      </div>
+                    </div>
+                    <div class="vat-deadline">
+                      <div class="deadline-info">
+                        <i
+                          class="fas fa-calendar-check"
+                          style="color: var(--warning-color)"
+                        ></i>
+                        <div>
+                          <div class="deadline-title">Afati i Dorëzimit</div>
+                          <div class="deadline-date">15 Qershor 2024</div>
+                        </div>
+                      </div>
+                      <button class="btn btn-warning btn-sm">
+                        <i class="fas fa-file-export"></i> Gjenero Deklaratën
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Income Tax -->
+                  <div
+                    class="tax-section"
+                    style="
+                      margin-top: 2rem;
+                      padding-top: 1.5rem;
+                      border-top: 1px solid var(--gray-200);
+                    "
+                  >
+                    <h4 style="margin-bottom: 1rem; color: var(--gray-800)">
+                      <i class="fas fa-chart-line"></i>
+                      Tatimi mbi Të Ardhurat
+                    </h4>
+                    <div class="income-tax-summary">
+                      <div class="tax-item">
+                        <span>Të Ardhurat e Tatueshme</span>
+                        <span class="amount">€125,400</span>
+                      </div>
+                      <div class="tax-item">
+                        <span>Norma Tatimore</span>
+                        <span class="rate">15%</span>
+                      </div>
+                      <div class="tax-item total">
+                        <span>Tatimi për t'u Paguar</span>
+                        <span class="amount">€18,810</span>
+                      </div>
+                    </div>
+                    <div class="tax-installments" style="margin-top: 1rem">
+                      <h5
+                        style="
+                          margin-bottom: 0.75rem;
+                          color: var(--gray-700);
+                          font-size: 0.875rem;
+                        "
+                      >
+                        Paratë e Tatimit
+                      </h5>
+                      <div class="installment-list">
+                        <div class="installment-item completed">
+                          <span>Paraja 1 (Janar-Mars)</span>
+                          <span class="status">Paguar</span>
+                        </div>
+                        <div class="installment-item completed">
+                          <span>Paraja 2 (Prill-Qershor)</span>
+                          <span class="status">Paguar</span>
+                        </div>
+                        <div class="installment-item current">
+                          <span>Paraja 3 (Korrik-Shtator)</span>
+                          <span class="status">Në Pritje</span>
+                        </div>
+                        <div class="installment-item">
+                          <span>Paraja 4 (Tetor-Dhjetor)</span>
+                          <span class="status">E Ardhshme</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Social Contributions -->
+                  <div
+                    class="tax-section"
+                    style="
+                      margin-top: 2rem;
+                      padding-top: 1.5rem;
+                      border-top: 1px solid var(--gray-200);
+                    "
+                  >
+                    <h4 style="margin-bottom: 1rem; color: var(--gray-800)">
+                      <i class="fas fa-handshake"></i>
+                      Kontributet Sociale
+                    </h4>
+                    <div class="social-contributions">
+                      <div class="contribution-item">
+                        <span>Punëdhënësi</span>
+                        <span class="amount">€2,850</span>
+                        <span class="percentage">15%</span>
+                      </div>
+                      <div class="contribution-item">
+                        <span>Punëmarrësi</span>
+                        <span class="amount">€1,900</span>
+                        <span class="percentage">10%</span>
+                      </div>
+                      <div class="contribution-item total">
+                        <span>Totali</span>
+                        <span class="amount">€4,750</span>
+                        <span class="percentage">25%</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-outline btn-sm">
+                  <i class="fas fa-calculator"></i> Llogarit Tatimet
+                </button>
+                <button class="btn btn-success btn-sm">
+                  <i class="fas fa-money-check-alt"></i> Kryej Pagesën
+                </button>
+              </div>
+            </div>
+
+            <!-- Accounting Tasks & Reminders -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <i class="fas fa-tasks" style="color: var(--info-color)"></i>
+                  Detyrat dhe Kujtesat Kontabël
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="accounting-tasks">
+                  <!-- Upcoming Deadlines -->
+                  <div class="deadlines-section">
+                    <h4 style="margin-bottom: 1rem; color: var(--gray-800)">
+                      <i
+                        class="fas fa-calendar-times"
+                        style="color: var(--danger-color)"
+                      ></i>
+                      Afatet e Ardhshme
+                    </h4>
+                    <div class="deadline-list">
+                      <div class="deadline-item urgent">
+                        <div class="deadline-content">
+                          <div class="deadline-title">
+                            TVI për Tremujorin II
+                          </div>
+                          <div class="deadline-date">15 Qershor 2024</div>
+                          <div class="deadline-description">
+                            Deklarata e TVI-së për periudhën Prill-Qershor
+                          </div>
+                        </div>
+                        <div class="deadline-actions">
+                          <span class="time-remaining">14 ditë</span>
+                        </div>
+                      </div>
+                      <div class="deadline-item">
+                        <div class="deadline-content">
+                          <div class="deadline-title">
+                            Paraja e Tatimit mbi Të Ardhurat
+                          </div>
+                          <div class="deadline-date">30 Qershor 2024</div>
+                          <div class="deadline-description">
+                            Pagesa e parës së tretë të tatimit mbi të ardhurat
+                          </div>
+                        </div>
+                        <div class="deadline-actions">
+                          <span class="time-remaining">29 ditë</span>
+                        </div>
+                      </div>
+                      <div class="deadline-item">
+                        <div class="deadline-content">
+                          <div class="deadline-title">
+                            Kontributet Sociale - Qershor
+                          </div>
+                          <div class="deadline-date">10 Qershor 2024</div>
+                          <div class="deadline-description">
+                            Pagesa e kontributeve sociale për muajin Qershor
+                          </div>
+                        </div>
+                        <div class="deadline-actions">
+                          <span class="time-remaining">9 ditë</span>
+                        </div>
+                      </div>
+                      <div class="deadline-item">
+                        <div class="deadline-content">
+                          <div class="deadline-title">Raporti i Punonjësve</div>
+                          <div class="deadline-date">5 Qershor 2024</div>
+                          <div class="deadline-description">
+                            Raporti mujor i punonjësve për muajin Maj
+                          </div>
+                        </div>
+                        <div class="deadline-actions">
+                          <span class="time-remaining">4 ditë</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Monthly Tasks -->
+                  <div
+                    class="tasks-section"
+                    style="
+                      margin-top: 2rem;
+                      padding-top: 1.5rem;
+                      border-top: 1px solid var(--gray-200);
+                    "
+                  >
+                    <h4 style="margin-bottom: 1rem; color: var(--gray-800)">
+                      <i
+                        class="fas fa-check-circle"
+                        style="color: var(--success-color)"
+                      ></i>
+                      Detyrat Mujore
+                    </h4>
+                    <div class="task-checklist">
+                      <div class="task-item completed">
+                        <div class="task-checkbox">
+                          <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="task-content">
+                          <div class="task-title">
+                            Rishikimi i Faturave të Papesuara
+                          </div>
+                          <div class="task-description">
+                            Verifikimi dhe ndjekja e faturave të papesuara
+                          </div>
+                        </div>
+                        <div class="task-date">Përfunduar: 25 Maj</div>
+                      </div>
+                      <div class="task-item completed">
+                        <div class="task-checkbox">
+                          <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="task-content">
+                          <div class="task-title">
+                            Përgatitja e Faturës së Pagave
+                          </div>
+                          <div class="task-description">
+                            Llogaritja dhe përgatitja e faturës së pagave për
+                            muajin
+                          </div>
+                        </div>
+                        <div class="task-date">Përfunduar: 28 Maj</div>
+                      </div>
+                      <div class="task-item current">
+                        <div class="task-checkbox">
+                          <div class="checkbox"></div>
+                        </div>
+                        <div class="task-content">
+                          <div class="task-title">
+                            Deklarata e TVI-së për Maj
+                          </div>
+                          <div class="task-description">
+                            Përgatitja e deklaratës së TVI-së për muajin Maj
+                          </div>
+                        </div>
+                        <button class="btn btn-sm btn-primary">Filloni</button>
+                      </div>
+                      <div class="task-item">
+                        <div class="task-checkbox">
+                          <div class="checkbox"></div>
+                        </div>
+                        <div class="task-content">
+                          <div class="task-title">Rishikimi i Bilançit</div>
+                          <div class="task-description">
+                            Rishikimi dhe verifikimi i bilançit financiar
+                          </div>
+                        </div>
+                        <button class="btn btn-sm btn-outline">
+                          Planifiko
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Quick Actions -->
+                  <div
+                    class="quick-actions"
+                    style="
+                      margin-top: 2rem;
+                      padding-top: 1.5rem;
+                      border-top: 1px solid var(--gray-200);
+                    "
+                  >
+                    <h4 style="margin-bottom: 1rem; color: var(--gray-800)">
+                      <i
+                        class="fas fa-bolt"
+                        style="color: var(--secondary-color)"
+                      ></i>
+                      Veprime të Shpejta
+                    </h4>
+                    <div class="actions-grid">
+                      <button class="action-btn quick">
+                        <i class="fas fa-file-invoice"></i>
+                        <span>Gjenero Faturë</span>
+                      </button>
+                      <button class="action-btn quick">
+                        <i class="fas fa-receipt"></i>
+                        <span>Regjistro Pagesë</span>
+                      </button>
+                      <button class="action-btn quick">
+                        <i class="fas fa-file-export"></i>
+                        <span>Eksporto të Dhëna</span>
+                      </button>
+                      <button class="action-btn quick">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>Rishiko Bilançin</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Modal for New Invoice -->
+    <div class="modal-overlay" id="newInvoiceModal" style="display: none">
+      <div class="modal" style="max-width: 900px">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fas fa-file-invoice"></i> Krijo Faturë të Re
+            </div>
+            <button class="action-btn delete" id="closeInvoiceModal">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="card-body">
+            <div class="form-grid">
+              <!-- Client Information -->
+              <div class="form-group">
+                <label class="form-label required">Klienti</label>
+                <div class="select-with-icon">
+                  <i class="fas fa-user select-icon"></i>
+                  <select class="form-control" id="invoiceClient">
+                    <option value="">Zgjidhni klientin</option>
+                    <option value="agro">Agro-Shpresa ShPK</option>
+                    <option value="tekno">TeKno AL ShPK</option>
+                    <option value="ndertim">Ndërtim Plus ShPK</option>
+                    <option value="travel">Emal Travel ShPK</option>
+                    <option value="farma">Farma Health ShPK</option>
+                    <option value="it">IT Solutions Albania</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label required">Data e Faturës</label>
+                <input type="date" class="form-control" id="invoiceDate" />
+              </div>
+              <div class="form-group">
+                <label class="form-label required">Afati i Pagesës</label>
+                <div class="select-with-icon">
+                  <i class="fas fa-calendar-day select-icon"></i>
+                  <select class="form-control" id="paymentTerms">
+                    <option value="7">7 ditë</option>
+                    <option value="15" selected>15 ditë</option>
+                    <option value="30">30 ditë</option>
+                    <option value="45">45 ditë</option>
+                    <option value="60">60 ditë</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label required">Valuta</label>
+                <div class="select-with-icon">
+                  <i class="fas fa-euro-sign select-icon"></i>
+                  <select class="form-control" id="currency">
+                    <option value="EUR" selected>EUR (€)</option>
+                    <option value="ALL">ALL (Lek)</option>
+                    <option value="USD">USD ($)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Invoice Items -->
+              <div class="form-group" style="grid-column: 1 / -1">
+                <label class="form-label required">Artikujt e Faturës</label>
+                <div class="invoice-items">
+                  <div class="items-header">
+                    <div class="header-item description">Përshkrimi</div>
+                    <div class="header-item quantity">Sasia</div>
+                    <div class="header-item price">Çmimi për Njësi</div>
+                    <div class="header-item total">Totali</div>
+                    <div class="header-item actions"></div>
+                  </div>
+                  <div class="items-body">
+                    <div class="invoice-item">
+                      <div class="item-description">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Përshkrimi i shërbimit/produktit"
+                          value="Shërbime Konsulence Biznesi"
+                        />
+                      </div>
+                      <div class="item-quantity">
+                        <input
+                          type="number"
+                          class="form-control"
+                          value="1"
+                          min="1"
+                        />
+                      </div>
+                      <div class="item-price">
+                        <input
+                          type="number"
+                          class="form-control"
+                          value="850"
+                          step="0.01"
+                        />
+                      </div>
+                      <div class="item-total">
+                        <span class="total-amount">€850.00</span>
+                      </div>
+                      <div class="item-actions">
+                        <button
+                          type="button"
+                          class="action-btn delete remove-item"
+                        >
+                          <i class="fas fa-times"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="items-footer">
+                    <button
+                      type="button"
+                      class="btn btn-outline btn-sm"
+                      id="addItemBtn"
+                    >
+                      <i class="fas fa-plus"></i> Shto Artikull
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tax & Discount -->
+              <div class="form-group">
+                <label class="form-label">TVI (%)</label>
+                <div class="select-with-icon">
+                  <i class="fas fa-percentage select-icon"></i>
+                  <select class="form-control" id="vatRate">
+                    <option value="0">0%</option>
+                    <option value="20" selected>20%</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Zbritje (%)</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="discount"
+                  value="0"
+                  min="0"
+                  max="100"
+                  step="0.01"
+                />
+              </div>
+
+              <!-- Totals -->
+              <div class="form-group" style="grid-column: 1 / -1">
+                <div class="invoice-totals">
+                  <div class="total-row">
+                    <span>Nëntotali:</span>
+                    <span class="amount" id="subtotal">€850.00</span>
+                  </div>
+                  <div class="total-row">
+                    <span>Zbritja:</span>
+                    <span class="amount" id="discountAmount">€0.00</span>
+                  </div>
+                  <div class="total-row">
+                    <span>TVI (20%):</span>
+                    <span class="amount" id="vatAmount">€170.00</span>
+                  </div>
+                  <div class="total-row grand-total">
+                    <span>Totali:</span>
+                    <span class="amount" id="grandTotal">€1,020.00</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Notes -->
+              <div class="form-group" style="grid-column: 1 / -1">
+                <label class="form-label">Shënime (Opsionale)</label>
+                <textarea
+                  class="form-control"
+                  rows="3"
+                  placeholder="Shënime shtesë për faturën..."
+                ></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-outline" id="cancelInvoiceBtn">Anulo</button>
+            <button class="btn btn-primary" id="saveDraftBtn">
+              Ruaj Skicën
+            </button>
+            <button class="btn btn-success" id="sendInvoiceBtn">
+              Dërgo Faturën
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+      // Specific scripts for kontabiliteti.html
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.getElementById("menuToggle");
+        const sidebar = document.querySelector(".sidebar");
+        const newInvoiceBtn = document.getElementById("newInvoiceBtn");
+        const newInvoiceModal = document.getElementById("newInvoiceModal");
+        const closeInvoiceModal = document.getElementById("closeInvoiceModal");
+        const cancelInvoiceBtn = document.getElementById("cancelInvoiceBtn");
+
+        // Invoice modal elements
+        const addItemBtn = document.getElementById("addItemBtn");
+        const vatRate = document.getElementById("vatRate");
+        const discount = document.getElementById("discount");
+        const subtotalEl = document.getElementById("subtotal");
+        const discountAmountEl = document.getElementById("discountAmount");
+        const vatAmountEl = document.getElementById("vatAmount");
+        const grandTotalEl = document.getElementById("grandTotal");
+
+        // Toggle sidebar on mobile
+        menuToggle.addEventListener("click", () => {
+          sidebar.classList.toggle("active");
+        });
+
+        // Show new invoice modal
+        newInvoiceBtn.addEventListener("click", () => {
+          newInvoiceModal.style.display = "flex";
+          calculateTotals();
+        });
+
+        // Close modal
+        function closeModalFunc() {
+          newInvoiceModal.style.display = "none";
+        }
+
+        closeInvoiceModal.addEventListener("click", closeModalFunc);
+        cancelInvoiceBtn.addEventListener("click", closeModalFunc);
+
+        // Close modal when clicking outside
+        newInvoiceModal.addEventListener("click", (e) => {
+          if (e.target === newInvoiceModal) {
+            closeModalFunc();
+          }
+        });
+
+        // Search functionality
+        const searchInput = document.querySelector(".search-input");
+        searchInput.addEventListener("input", function (e) {
+          const searchTerm = e.target.value.toLowerCase();
+          console.log("Kërkim për faturë:", searchTerm);
+          // Implement search logic here
+        });
+
+        // Invoice calculations
+        function calculateItemTotal(item) {
+          const quantity =
+            parseFloat(item.querySelector(".item-quantity input").value) || 0;
+          const price =
+            parseFloat(item.querySelector(".item-price input").value) || 0;
+          return quantity * price;
+        }
+
+        function updateItemTotal(item) {
+          const total = calculateItemTotal(item);
+          item.querySelector(".total-amount").textContent =
+            `€${total.toFixed(2)}`;
+          calculateTotals();
+        }
+
+        function calculateTotals() {
+          let subtotal = 0;
+          document.querySelectorAll(".invoice-item").forEach((item) => {
+            subtotal += calculateItemTotal(item);
+          });
+
+          const vatRateValue = parseFloat(vatRate.value) || 0;
+          const discountValue = parseFloat(discount.value) || 0;
+
+          const discountAmount = subtotal * (discountValue / 100);
+          const amountAfterDiscount = subtotal - discountAmount;
+          const vatAmount = amountAfterDiscount * (vatRateValue / 100);
+          const grandTotal = amountAfterDiscount + vatAmount;
+
+          subtotalEl.textContent = `€${subtotal.toFixed(2)}`;
+          discountAmountEl.textContent = `€${discountAmount.toFixed(2)}`;
+          vatAmountEl.textContent = `€${vatAmount.toFixed(2)}`;
+          grandTotalEl.textContent = `€${grandTotal.toFixed(2)}`;
+        }
+
+        // Add new invoice item
+        addItemBtn.addEventListener("click", function () {
+          const itemsBody = document.querySelector(".items-body");
+          const newItem = document.createElement("div");
+          newItem.className = "invoice-item";
+          newItem.innerHTML = `
+                    <div class="item-description">
+                        <input type="text" class="form-control" placeholder="Përshkrimi i shërbimit/produktit">
+                    </div>
+                    <div class="item-quantity">
+                        <input type="number" class="form-control" value="1" min="1">
+                    </div>
+                    <div class="item-price">
+                        <input type="number" class="form-control" value="0" step="0.01">
+                    </div>
+                    <div class="item-total">
+                        <span class="total-amount">€0.00</span>
+                    </div>
+                    <div class="item-actions">
+                        <button type="button" class="action-btn delete remove-item">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                `;
+          itemsBody.appendChild(newItem);
+
+          // Add event listeners to new inputs
+          const inputs = newItem.querySelectorAll("input");
+          inputs.forEach((input) => {
+            input.addEventListener("input", () => {
+              updateItemTotal(newItem);
+            });
+          });
+
+          // Add remove functionality
+          newItem
+            .querySelector(".remove-item")
+            .addEventListener("click", function () {
+              newItem.remove();
+              calculateTotals();
+            });
+
+          updateItemTotal(newItem);
+        });
+
+        // Add event listeners to existing inputs
+        document.querySelectorAll(".invoice-item input").forEach((input) => {
+          input.addEventListener("input", function () {
+            const item = this.closest(".invoice-item");
+            updateItemTotal(item);
+          });
+        });
+
+        // Remove item functionality
+        document.querySelectorAll(".remove-item").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const item = this.closest(".invoice-item");
+            item.remove();
+            calculateTotals();
+          });
+        });
+
+        // Tax and discount changes
+        vatRate.addEventListener("change", calculateTotals);
+        discount.addEventListener("input", calculateTotals);
+
+        // Invoice actions
+        document
+          .querySelectorAll(".action-buttons .action-btn")
+          .forEach((btn) => {
+            btn.addEventListener("click", function () {
+              const row = this.closest("tr");
+              const invoiceNumber =
+                row.querySelector("td:first-child").textContent;
+              const clientName = row.querySelector("strong").textContent;
+              const amount = row.querySelector("td:nth-child(5)").textContent;
+
+              if (this.classList.contains("view")) {
+                console.log(
+                  `Duke shikuar faturën ${invoiceNumber} për ${clientName}`,
+                );
+                alert(`Duke hapur faturën ${invoiceNumber} për ${clientName}`);
+              } else if (this.classList.contains("edit")) {
+                console.log(`Duke edituar faturën ${invoiceNumber}`);
+                alert(`Hapja e editimit për faturën ${invoiceNumber}`);
+              } else if (this.classList.contains("download")) {
+                console.log(`Duke shkarkuar faturën ${invoiceNumber}`);
+                alert(`Shkarkimi i faturës ${invoiceNumber} në format PDF`);
+              } else if (this.classList.contains("success")) {
+                console.log(
+                  `Duke shënuar faturën ${invoiceNumber} si të paguar`,
+                );
+                const statusBadge = row.querySelector(".status-badge");
+                statusBadge.textContent = "E paguar";
+                statusBadge.className = "status-badge completed";
+                this.innerHTML = '<i class="fas fa-receipt"></i>';
+                this.title = "Shiko faturën";
+                alert(`Fatura ${invoiceNumber} u shënua si e paguar!`);
+              } else if (this.classList.contains("danger")) {
+                console.log(
+                  `Duke dërguar kujtesë për faturën ${invoiceNumber}`,
+                );
+                alert(
+                  `Kujtesa për faturën ${invoiceNumber} u dërgua me sukses!`,
+                );
+              } else if (this.classList.contains("receipt")) {
+                console.log(`Duke shikuar faturën për ${clientName}`);
+                alert(`Duke shfaqur faturën për ${clientName}`);
+              }
+            });
+          });
+
+        // Tax installment clicks
+        document.querySelectorAll(".installment-item").forEach((item) => {
+          item.addEventListener("click", function () {
+            const installment =
+              this.querySelector("span:first-child").textContent;
+            const status = this.querySelector(".status").textContent;
+
+            if (status === "Në Pritje") {
+              console.log(`Duke kryer pagesën për ${installment}`);
+              alert(`Hapja e faqes së pagesës për ${installment}`);
+            }
+          });
+        });
+
+        // Quick actions
+        document.querySelectorAll(".action-btn.quick").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const action = this.querySelector("span").textContent;
+            console.log(`Veprimi i shpejtë: ${action}`);
+
+            if (action === "Gjenero Faturë") {
+              newInvoiceModal.style.display = "flex";
+            } else if (action === "Regjistro Pagesë") {
+              alert("Hapja e faqes për regjistrimin e pagesave");
+            } else if (action === "Eksporto të Dhëna") {
+              alert("Duke eksportuar të dhënat financiare në Excel");
+            } else if (action === "Rishiko Bilançin") {
+              alert("Hapja e raportit të bilançit financiar");
+            }
+          });
+        });
+
+        // Filter buttons
+        document.querySelectorAll(".btn-group .btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            document.querySelectorAll(".btn-group .btn").forEach((b) => {
+              b.classList.remove("active");
+            });
+            this.classList.add("active");
+
+            const filter = this.textContent;
+            console.log("Filtro sipas statusit:", filter);
+            // Implement filter logic here
+          });
+        });
+
+        // Task actions
+        document.querySelectorAll(".task-item .btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const taskItem = this.closest(".task-item");
+            const taskTitle = taskItem.querySelector(".task-title").textContent;
+
+            if (this.textContent.includes("Filloni")) {
+              console.log(`Duke filluar detyrën: ${taskTitle}`);
+              this.textContent = "Në Progres";
+              this.classList.remove("btn-primary");
+              this.classList.add("btn-warning");
+            }
+          });
+        });
+
+        // Deadline item clicks
+        document.querySelectorAll(".deadline-item").forEach((item) => {
+          item.addEventListener("click", function () {
+            const title = this.querySelector(".deadline-title").textContent;
+            const date = this.querySelector(".deadline-date").textContent;
+            const description = this.querySelector(
+              ".deadline-description",
+            ).textContent;
+
+            console.log(`Afati: ${title} - ${date}`);
+            alert(`${title}\nData: ${date}\n\n${description}`);
+          });
+        });
+
+        // Invoice form buttons
+        document
+          .getElementById("saveDraftBtn")
+          .addEventListener("click", function () {
+            console.log("Fatura u ruajt si skicë");
+            alert("Fatura u ruajt me sukses si skicë!");
+            closeModalFunc();
+          });
+
+        document
+          .getElementById("sendInvoiceBtn")
+          .addEventListener("click", function () {
+            const client = document.getElementById("invoiceClient").value;
+            const total = grandTotalEl.textContent;
+
+            if (client) {
+              console.log(`Fatura u dërgua për ${client} me vlerë ${total}`);
+              alert(`Fatura u dërgua me sukses për ${client}!`);
+              closeModalFunc();
+            } else {
+              alert("Ju lutem zgjidhni një klient për të dërguar faturën.");
+            }
+          });
+
+        // Set today's date as default for invoice date
+        const today = new Date().toISOString().split("T")[0];
+        if (document.getElementById("invoiceDate")) {
+          document.getElementById("invoiceDate").value = today;
+        }
+      });
+    </script>
+    <script src="database.js"></script>
+    <script src="dashboard.js"></script>
+  </body>
+</html>

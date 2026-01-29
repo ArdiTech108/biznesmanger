@@ -1,0 +1,1466 @@
+<!doctype html>
+<html lang="sq">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light only" />
+    <title>Klientët - Biznes Manager</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="auth.js"></script>
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <a href="index.html" class="logo">
+            <div class="logo-icon">
+              <i class="fas fa-briefcase"></i>
+            </div>
+            <div class="logo-text">
+              <span>Biznes Manager</span>
+              <span>Sistemi i Plotë i Menaxhimit</span>
+            </div>
+          </a>
+        </div>
+
+        <nav class="sidebar-nav">
+          <div class="nav-section">
+            <div class="nav-section-title">MENU KRYESORE</div>
+            <a href="index.html" class="nav-item">
+              <i class="nav-icon fas fa-home"></i>
+              <span class="nav-text">Dashboard</span>
+            </a>
+            <a href="klientet.html" class="nav-item active">
+              <i class="nav-icon fas fa-users"></i>
+              <span class="nav-text">Klientët</span>
+              <span class="nav-badge success">42</span>
+            </a>
+          </div>
+
+          <div class="nav-section">
+            <div class="nav-section-title">BIZNESI</div>
+            <a href="planet-biznesore.html" class="nav-item">
+              <i class="nav-icon fas fa-chart-line"></i>
+              <span class="nav-text">Planet Biznesore</span>
+            </a>
+            <a href="regjistrimi-biznesit.html" class="nav-item">
+              <i class="nav-icon fas fa-file-signature"></i>
+              <span class="nav-text">Regjistrimi i Bizneseve</span>
+            </a>
+            <a href="mbyllja-biznesit.html" class="nav-item">
+              <i class="nav-icon fas fa-door-closed"></i>
+              <span class="nav-text">Mbyllja e Bizneseve</span>
+            </a>
+          </div>
+
+          <div class="nav-section">
+            <div class="nav-section-title">TENDERA & DOKUMENTA</div>
+            <a href="tenderat.html" class="nav-item">
+              <i class="nav-icon fas fa-file-contract"></i>
+              <span class="nav-text">Tenderat</span>
+            </a>
+            <a href="konsultimet.html" class="nav-item">
+              <i class="nav-icon fas fa-comments"></i>
+              <span class="nav-text">Konsultimet</span>
+            </a>
+            <a href="kontabiliteti.html" class="nav-item">
+              <i class="nav-icon fas fa-file-invoice-dollar"></i>
+              <span class="nav-text">Faturat & Pagesat</span>
+            </a>
+            <a href="dokumentet.html" class="nav-item">
+              <i class="nav-icon fas fa-archive"></i>
+              <span class="nav-text">Arkivi i Dokumenteve</span>
+            </a>
+          </div>
+        </nav>
+
+        <div
+          class="sidebar-footer"
+          style="
+            padding: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+          "
+        >
+          <div class="user-info" style="color: var(--gray-400)">
+            <div style="font-size: 0.75rem; margin-bottom: 0.25rem">
+              Menaxhimi i Klientëve
+            </div>
+            <div
+              style="
+                font-size: 0.875rem;
+                font-weight: 500;
+                color: var(--light-color);
+              "
+            >
+              <i class="fas fa-user-friends" style="margin-right: 0.5rem"></i>
+              42 Klientë Aktivë
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Header -->
+        <header class="header">
+          <div class="header-left">
+            <button class="menu-toggle" id="menuToggle">
+              <i class="fas fa-bars"></i>
+            </button>
+            <div class="header-title">
+              <h1>Klientët</h1>
+              <div class="header-subtitle">
+                Menaxhimi i Bazës së Klientëve dhe Marrëdhëniet
+              </div>
+            </div>
+          </div>
+
+          <div class="header-right">
+            <div class="header-stats">
+              <div class="stat-mini">
+                <div class="stat-mini-value">42</div>
+                <div class="stat-mini-label">Klientë Aktivë</div>
+              </div>
+              <div class="stat-mini">
+                <div
+                  class="stat-mini-value"
+                  style="color: var(--success-color)"
+                >
+                  8
+                </div>
+                <div class="stat-mini-label">Të Rinj Këtë Muaj</div>
+              </div>
+              <div class="stat-mini">
+                <div
+                  class="stat-mini-value"
+                  style="color: var(--warning-color)"
+                >
+                  3
+                </div>
+                <div class="stat-mini-label">Kërkojnë Vëmendje</div>
+              </div>
+            </div>
+
+            <div class="search-container">
+              <i class="fas fa-search search-icon"></i>
+              <input
+                type="text"
+                class="search-input"
+                placeholder="Kërko klient..."
+              />
+            </div>
+
+            <div class="user-menu">
+              <div class="user-avatar">BM</div>
+              <div class="user-info">
+                <div class="user-name">Administrator</div>
+                <div class="user-role">Menaxher i Klientëve</div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="page-content">
+          <!-- Breadcrumb -->
+          <div class="breadcrumb">
+            <div class="breadcrumb-item">
+              <a href="index.html"><i class="fas fa-home"></i> Dashboard</a>
+            </div>
+            <div class="breadcrumb-separator">/</div>
+            <div class="breadcrumb-item active">
+              <i class="fas fa-users"></i> Klientët
+            </div>
+          </div>
+
+          <!-- Page Header -->
+          <div class="page-header">
+            <div class="page-title-section">
+              <div class="page-title">
+                <i
+                  class="fas fa-users"
+                  style="color: var(--secondary-color)"
+                ></i>
+                Menaxhimi i Klientëve
+              </div>
+              <div class="page-subtitle">
+                Menaxhoni të gjithë klientët, kontaktet dhe marrëdhëniet e
+                biznesit në një vend të vetëm.
+              </div>
+            </div>
+            <div class="page-actions">
+              <button class="btn btn-outline">
+                <i class="fas fa-filter"></i> Filtro
+              </button>
+              <button class="btn btn-primary" id="newClientBtn">
+                <i class="fas fa-user-plus"></i> Klient i Ri
+              </button>
+              <button class="btn btn-success">
+                <i class="fas fa-file-export"></i> Eksporto
+              </button>
+            </div>
+          </div>
+
+          <!-- Stats Overview -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon clients">
+                <i class="fas fa-user-tie"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">42</div>
+                <div class="stat-label">Klientë Aktivë</div>
+                <div class="stat-change positive">
+                  <i class="fas fa-arrow-up"></i> 8 të rinj këtë muaj
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon projects">
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">15</div>
+                <div class="stat-label">Klientë Premium</div>
+                <div class="stat-change positive">
+                  <i class="fas fa-arrow-up"></i> 25% e të gjithë klientëve
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon pending">
+                <i class="fas fa-handshake"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">€285K</div>
+                <div class="stat-label">Vlerë totale kontratash</div>
+                <div class="stat-change positive">
+                  <i class="fas fa-arrow-up"></i> 18% rritje
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon revenue">
+                <i class="fas fa-comments"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">94%</div>
+                <div class="stat-label">Kënaqësia e Klientëve</div>
+                <div class="stat-change positive">
+                  <i class="fas fa-arrow-up"></i> 4.5/5 rating
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Content Sections -->
+          <div class="charts-container">
+            <!-- Clients Table Card -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <i
+                    class="fas fa-list"
+                    style="color: var(--secondary-color)"
+                  ></i>
+                  Lista e Klientëve
+                </div>
+                <div class="card-actions">
+                  <div class="btn-group">
+                    <button class="btn btn-sm btn-outline active">
+                      Të Gjithë
+                    </button>
+                    <button class="btn btn-sm btn-outline">Aktivë</button>
+                    <button class="btn btn-sm btn-outline">Premium</button>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="table-container">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Klienti</th>
+                        <th>Kontakt</th>
+                        <th>Tipi i Biznesit</th>
+                        <th>Vlera Kontratë</th>
+                        <th>Statusi</th>
+                        <th>Veprime</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>CL-001</td>
+                        <td>
+                          <div
+                            style="
+                              display: flex;
+                              align-items: center;
+                              gap: 0.75rem;
+                            "
+                          >
+                            <div
+                              class="user-avatar"
+                              style="
+                                width: 36px;
+                                height: 36px;
+                                font-size: 0.875rem;
+                              "
+                            >
+                              AS
+                            </div>
+                            <div>
+                              <strong>Agro-Shpresa ShPK</strong>
+                              <div
+                                style="
+                                  font-size: 0.75rem;
+                                  color: var(--gray-600);
+                                "
+                              >
+                                NIB: J614000123L
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div>Artan Shehu</div>
+                          <div
+                            style="font-size: 0.75rem; color: var(--gray-600)"
+                          >
+                            <i class="fas fa-phone"></i> +355 69 123 4567
+                          </div>
+                        </td>
+                        <td>Agrobiznes</td>
+                        <td>€85,000</td>
+                        <td>
+                          <span class="status-badge active">Aktiv</span>
+                          <div class="priority-badge high">Premium</div>
+                        </td>
+                        <td>
+                          <div class="action-buttons">
+                            <button
+                              class="action-btn view"
+                              title="Shiko profilin"
+                            >
+                              <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="action-btn edit" title="Edito">
+                              <i class="fas fa-edit"></i>
+                            </button>
+                            <button
+                              class="action-btn download"
+                              title="Shkarko dokumentet"
+                            >
+                              <i class="fas fa-download"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>CL-002</td>
+                        <td>
+                          <div
+                            style="
+                              display: flex;
+                              align-items: center;
+                              gap: 0.75rem;
+                            "
+                          >
+                            <div
+                              class="user-avatar"
+                              style="
+                                width: 36px;
+                                height: 36px;
+                                font-size: 0.875rem;
+                                background: var(--gradient-success);
+                              "
+                            >
+                              TK
+                            </div>
+                            <div>
+                              <strong>TeKno AL ShPK</strong>
+                              <div
+                                style="
+                                  font-size: 0.75rem;
+                                  color: var(--gray-600);
+                                "
+                              >
+                                NIB: J614000456L
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div>Teuta Kola</div>
+                          <div
+                            style="font-size: 0.75rem; color: var(--gray-600)"
+                          >
+                            <i class="fas fa-phone"></i> +355 68 234 5678
+                          </div>
+                        </td>
+                        <td>Teknologji</td>
+                        <td>€120,000</td>
+                        <td>
+                          <span class="status-badge active">Aktiv</span>
+                          <div class="priority-badge high">Premium</div>
+                        </td>
+                        <td>
+                          <div class="action-buttons">
+                            <button
+                              class="action-btn view"
+                              title="Shiko profilin"
+                            >
+                              <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="action-btn edit" title="Edito">
+                              <i class="fas fa-edit"></i>
+                            </button>
+                            <button
+                              class="action-btn download"
+                              title="Shkarko dokumentet"
+                            >
+                              <i class="fas fa-download"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>CL-003</td>
+                        <td>
+                          <div
+                            style="
+                              display: flex;
+                              align-items: center;
+                              gap: 0.75rem;
+                            "
+                          >
+                            <div
+                              class="user-avatar"
+                              style="
+                                width: 36px;
+                                height: 36px;
+                                font-size: 0.875rem;
+                                background: var(--gradient-warning);
+                              "
+                            >
+                              ND
+                            </div>
+                            <div>
+                              <strong>Ndërtim Plus ShPK</strong>
+                              <div
+                                style="
+                                  font-size: 0.75rem;
+                                  color: var(--gray-600);
+                                "
+                              >
+                                NIB: J614000789L
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div>Ndue Doda</div>
+                          <div
+                            style="font-size: 0.75rem; color: var(--gray-600)"
+                          >
+                            <i class="fas fa-phone"></i> +355 67 345 6789
+                          </div>
+                        </td>
+                        <td>Ndërtim</td>
+                        <td>€45,000</td>
+                        <td>
+                          <span class="status-badge pending"
+                            >Kontratë në proces</span
+                          >
+                        </td>
+                        <td>
+                          <div class="action-buttons">
+                            <button
+                              class="action-btn view"
+                              title="Shiko profilin"
+                            >
+                              <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="action-btn edit" title="Edito">
+                              <i class="fas fa-edit"></i>
+                            </button>
+                            <button
+                              class="action-btn download"
+                              title="Shkarko dokumentet"
+                            >
+                              <i class="fas fa-download"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>CL-004</td>
+                        <td>
+                          <div
+                            style="
+                              display: flex;
+                              align-items: center;
+                              gap: 0.75rem;
+                            "
+                          >
+                            <div
+                              class="user-avatar"
+                              style="
+                                width: 36px;
+                                height: 36px;
+                                font-size: 0.875rem;
+                                background: var(--gradient-danger);
+                              "
+                            >
+                              EM
+                            </div>
+                            <div>
+                              <strong>Emal Travel ShPK</strong>
+                              <div
+                                style="
+                                  font-size: 0.75rem;
+                                  color: var(--gray-600);
+                                "
+                              >
+                                NIB: J614001234L
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div>Ema Leka</div>
+                          <div
+                            style="font-size: 0.75rem; color: var(--gray-600)"
+                          >
+                            <i class="fas fa-phone"></i> +355 69 456 7890
+                          </div>
+                        </td>
+                        <td>Turizëm</td>
+                        <td>€32,000</td>
+                        <td>
+                          <span class="status-badge active">Aktiv</span>
+                        </td>
+                        <td>
+                          <div class="action-buttons">
+                            <button
+                              class="action-btn view"
+                              title="Shiko profilin"
+                            >
+                              <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="action-btn edit" title="Edito">
+                              <i class="fas fa-edit"></i>
+                            </button>
+                            <button
+                              class="action-btn download"
+                              title="Shkarko dokumentet"
+                            >
+                              <i class="fas fa-download"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>CL-005</td>
+                        <td>
+                          <div
+                            style="
+                              display: flex;
+                              align-items: center;
+                              gap: 0.75rem;
+                            "
+                          >
+                            <div
+                              class="user-avatar"
+                              style="
+                                width: 36px;
+                                height: 36px;
+                                font-size: 0.875rem;
+                                background: var(--gradient-primary);
+                              "
+                            >
+                              FH
+                            </div>
+                            <div>
+                              <strong>Farma Health ShPK</strong>
+                              <div
+                                style="
+                                  font-size: 0.75rem;
+                                  color: var(--gray-600);
+                                "
+                              >
+                                NIB: J614001567L
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div>Flamur Hoxha</div>
+                          <div
+                            style="font-size: 0.75rem; color: var(--gray-600)"
+                          >
+                            <i class="fas fa-phone"></i> +355 68 567 8901
+                          </div>
+                        </td>
+                        <td>Farmaci</td>
+                        <td>€68,000</td>
+                        <td>
+                          <span class="status-badge completed"
+                            >Kontratë e përfunduar</span
+                          >
+                        </td>
+                        <td>
+                          <div class="action-buttons">
+                            <button
+                              class="action-btn view"
+                              title="Shiko profilin"
+                            >
+                              <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="action-btn edit" title="Edito">
+                              <i class="fas fa-edit"></i>
+                            </button>
+                            <button
+                              class="action-btn download"
+                              title="Shkarko dokumentet"
+                            >
+                              <i class="fas fa-download"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="card-footer">
+                <div style="font-size: 0.875rem; color: var(--gray-600)">
+                  Shfaqen 5 nga 42 klientë
+                </div>
+                <div style="display: flex; gap: 0.5rem">
+                  <button class="btn btn-outline btn-sm">
+                    <i class="fas fa-chevron-left"></i>
+                  </button>
+                  <button class="btn btn-outline btn-sm active">1</button>
+                  <button class="btn btn-outline btn-sm">2</button>
+                  <button class="btn btn-outline btn-sm">3</button>
+                  <button class="btn btn-outline btn-sm">
+                    <i class="fas fa-chevron-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Client Details & Activity Card -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <i
+                    class="fas fa-chart-line"
+                    style="color: var(--success-color)"
+                  ></i>
+                  Aktiviteti i Klientëve & Statistika
+                </div>
+                <div class="card-actions">
+                  <div class="btn-group">
+                    <button class="btn btn-sm btn-outline">7 Ditë</button>
+                    <button class="btn btn-sm btn-outline active">
+                      30 Ditë
+                    </button>
+                    <button class="btn btn-sm btn-outline">3 Muaj</button>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div
+                  style="
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 2rem;
+                  "
+                >
+                  <!-- Client Distribution -->
+                  <div>
+                    <h4 style="margin-bottom: 1rem; color: var(--gray-800)">
+                      <i
+                        class="fas fa-chart-pie"
+                        style="color: var(--secondary-color)"
+                      ></i>
+                      Shpërndarja e Klientëve
+                    </h4>
+                    <div class="client-distribution">
+                      <div class="distribution-item">
+                        <div
+                          style="
+                            display: flex;
+                            justify-content: space-between;
+                            margin-bottom: 0.5rem;
+                          "
+                        >
+                          <span style="font-size: 0.875rem">Agrobiznes</span>
+                          <span style="font-weight: 600">12 (29%)</span>
+                        </div>
+                        <div class="progress-bar">
+                          <div
+                            class="progress-fill primary"
+                            style="width: 29%"
+                          ></div>
+                        </div>
+                      </div>
+                      <div class="distribution-item">
+                        <div
+                          style="
+                            display: flex;
+                            justify-content: space-between;
+                            margin-bottom: 0.5rem;
+                          "
+                        >
+                          <span style="font-size: 0.875rem">Ndërtim</span>
+                          <span style="font-weight: 600">8 (19%)</span>
+                        </div>
+                        <div class="progress-bar">
+                          <div
+                            class="progress-fill success"
+                            style="width: 19%"
+                          ></div>
+                        </div>
+                      </div>
+                      <div class="distribution-item">
+                        <div
+                          style="
+                            display: flex;
+                            justify-content: space-between;
+                            margin-bottom: 0.5rem;
+                          "
+                        >
+                          <span style="font-size: 0.875rem">Teknologji</span>
+                          <span style="font-weight: 600">7 (17%)</span>
+                        </div>
+                        <div class="progress-bar">
+                          <div
+                            class="progress-fill warning"
+                            style="width: 17%"
+                          ></div>
+                        </div>
+                      </div>
+                      <div class="distribution-item">
+                        <div
+                          style="
+                            display: flex;
+                            justify-content: space-between;
+                            margin-bottom: 0.5rem;
+                          "
+                        >
+                          <span style="font-size: 0.875rem">Turizëm</span>
+                          <span style="font-weight: 600">6 (14%)</span>
+                        </div>
+                        <div class="progress-bar">
+                          <div
+                            class="progress-fill danger"
+                            style="width: 14%"
+                          ></div>
+                        </div>
+                      </div>
+                      <div class="distribution-item">
+                        <div
+                          style="
+                            display: flex;
+                            justify-content: space-between;
+                            margin-bottom: 0.5rem;
+                          "
+                        >
+                          <span style="font-size: 0.875rem">Të Tjera</span>
+                          <span style="font-weight: 600">9 (21%)</span>
+                        </div>
+                        <div class="progress-bar">
+                          <div
+                            class="progress-fill"
+                            style="width: 21%; background: var(--gray-500)"
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Recent Activity -->
+                  <div>
+                    <h4 style="margin-bottom: 1rem; color: var(--gray-800)">
+                      <i
+                        class="fas fa-history"
+                        style="color: var(--info-color)"
+                      ></i>
+                      Aktiviteti i Fundit
+                    </h4>
+                    <div class="timeline">
+                      <div class="timeline-item completed">
+                        <div class="timeline-date">Sot - 10:30</div>
+                        <div class="timeline-content completed">
+                          <strong>Agro-Shpresa</strong>
+                          <p>Dorëzoi dokumentet për tenderin e ri</p>
+                        </div>
+                      </div>
+                      <div class="timeline-item completed">
+                        <div class="timeline-date">Dje - 14:15</div>
+                        <div class="timeline-content completed">
+                          <strong>TeKno AL</strong>
+                          <p>Pagesa e faturës u konfirmua</p>
+                        </div>
+                      </div>
+                      <div class="timeline-item pending">
+                        <div class="timeline-date">2 Ditë Më Parë - 09:00</div>
+                        <div class="timeline-content pending">
+                          <strong>Ndërtim Plus</strong>
+                          <p>Kërkesë për konsultim të ri</p>
+                        </div>
+                      </div>
+                      <div class="timeline-item">
+                        <div class="timeline-date">3 Ditë Më Parë - 16:45</div>
+                        <div class="timeline-content">
+                          <strong>Emal Travel</strong>
+                          <p>Përditësimi i kontratës së shërbimit</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Client Communication -->
+                <div
+                  style="
+                    margin-top: 2rem;
+                    padding-top: 1.5rem;
+                    border-top: 1px solid var(--gray-200);
+                  "
+                >
+                  <h4 style="margin-bottom: 1rem; color: var(--gray-800)">
+                    <i
+                      class="fas fa-comments"
+                      style="color: var(--secondary-color)"
+                    ></i>
+                    Komunikimi me Klientët
+                  </h4>
+                  <div class="communication-stats">
+                    <div
+                      style="
+                        display: grid;
+                        grid-template-columns: repeat(4, 1fr);
+                        gap: 1rem;
+                      "
+                    >
+                      <div
+                        style="
+                          text-align: center;
+                          padding: 1rem;
+                          background: var(--gray-100);
+                          border-radius: var(--border-radius);
+                        "
+                      >
+                        <div
+                          style="
+                            font-size: 1.5rem;
+                            font-weight: 700;
+                            color: var(--primary-color);
+                          "
+                        >
+                          24
+                        </div>
+                        <div style="font-size: 0.75rem; color: var(--gray-600)">
+                          Email
+                        </div>
+                      </div>
+                      <div
+                        style="
+                          text-align: center;
+                          padding: 1rem;
+                          background: var(--gray-100);
+                          border-radius: var(--border-radius);
+                        "
+                      >
+                        <div
+                          style="
+                            font-size: 1.5rem;
+                            font-weight: 700;
+                            color: var(--success-color);
+                          "
+                        >
+                          15
+                        </div>
+                        <div style="font-size: 0.75rem; color: var(--gray-600)">
+                          Telefonata
+                        </div>
+                      </div>
+                      <div
+                        style="
+                          text-align: center;
+                          padding: 1rem;
+                          background: var(--gray-100);
+                          border-radius: var(--border-radius);
+                        "
+                      >
+                        <div
+                          style="
+                            font-size: 1.5rem;
+                            font-weight: 700;
+                            color: var(--warning-color);
+                          "
+                        >
+                          8
+                        </div>
+                        <div style="font-size: 0.75rem; color: var(--gray-600)">
+                          Takime
+                        </div>
+                      </div>
+                      <div
+                        style="
+                          text-align: center;
+                          padding: 1rem;
+                          background: var(--gray-100);
+                          border-radius: var(--border-radius);
+                        "
+                      >
+                        <div
+                          style="
+                            font-size: 1.5rem;
+                            font-weight: 700;
+                            color: var(--danger-color);
+                          "
+                        >
+                          3
+                        </div>
+                        <div style="font-size: 0.75rem; color: var(--gray-600)">
+                          Kërkesa
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Client Profiles -->
+          <div class="card" style="margin-top: 2rem">
+            <div class="card-header">
+              <div class="card-title">
+                <i class="fas fa-id-card" style="color: var(--info-color)"></i>
+                Profile të Zgjedhur të Klientëve
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="client-profiles">
+                <div
+                  style="
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                    gap: 1.5rem;
+                  "
+                >
+                  <!-- Client Profile 1 -->
+                  <div class="client-profile-card">
+                    <div
+                      style="
+                        display: flex;
+                        align-items: center;
+                        gap: 1rem;
+                        margin-bottom: 1rem;
+                      "
+                    >
+                      <div
+                        class="user-avatar"
+                        style="width: 60px; height: 60px; font-size: 1.25rem"
+                      >
+                        AS
+                      </div>
+                      <div>
+                        <h4
+                          style="color: var(--gray-900); margin-bottom: 0.25rem"
+                        >
+                          Agro-Shpresa ShPK
+                        </h4>
+                        <div
+                          style="font-size: 0.875rem; color: var(--gray-600)"
+                        >
+                          <i class="fas fa-user-tie"></i> Artan Shehu
+                        </div>
+                      </div>
+                    </div>
+                    <div style="margin-bottom: 1rem">
+                      <div
+                        style="
+                          display: flex;
+                          justify-content: space-between;
+                          margin-bottom: 0.5rem;
+                        "
+                      >
+                        <span
+                          style="font-size: 0.875rem; color: var(--gray-600)"
+                          >Viti i Regjistrimit:</span
+                        >
+                        <span style="font-weight: 600">2020</span>
+                      </div>
+                      <div
+                        style="
+                          display: flex;
+                          justify-content: space-between;
+                          margin-bottom: 0.5rem;
+                        "
+                      >
+                        <span
+                          style="font-size: 0.875rem; color: var(--gray-600)"
+                          >Vlera Totale Kontratash:</span
+                        >
+                        <span
+                          style="font-weight: 600; color: var(--success-color)"
+                          >€285,000</span
+                        >
+                      </div>
+                      <div
+                        style="
+                          display: flex;
+                          justify-content: space-between;
+                          margin-bottom: 0.5rem;
+                        "
+                      >
+                        <span
+                          style="font-size: 0.875rem; color: var(--gray-600)"
+                          >Projekte Aktivë:</span
+                        >
+                        <span style="font-weight: 600">3</span>
+                      </div>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem">
+                      <button class="btn btn-sm btn-outline" style="flex: 1">
+                        <i class="fas fa-eye"></i> Profili
+                      </button>
+                      <button class="btn btn-sm btn-primary" style="flex: 1">
+                        <i class="fas fa-envelope"></i> Kontakto
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Client Profile 2 -->
+                  <div class="client-profile-card">
+                    <div
+                      style="
+                        display: flex;
+                        align-items: center;
+                        gap: 1rem;
+                        margin-bottom: 1rem;
+                      "
+                    >
+                      <div
+                        class="user-avatar"
+                        style="
+                          width: 60px;
+                          height: 60px;
+                          font-size: 1.25rem;
+                          background: var(--gradient-success);
+                        "
+                      >
+                        TK
+                      </div>
+                      <div>
+                        <h4
+                          style="color: var(--gray-900); margin-bottom: 0.25rem"
+                        >
+                          TeKno AL ShPK
+                        </h4>
+                        <div
+                          style="font-size: 0.875rem; color: var(--gray-600)"
+                        >
+                          <i class="fas fa-user-tie"></i> Teuta Kola
+                        </div>
+                      </div>
+                    </div>
+                    <div style="margin-bottom: 1rem">
+                      <div
+                        style="
+                          display: flex;
+                          justify-content: space-between;
+                          margin-bottom: 0.5rem;
+                        "
+                      >
+                        <span
+                          style="font-size: 0.875rem; color: var(--gray-600)"
+                          >Viti i Regjistrimit:</span
+                        >
+                        <span style="font-weight: 600">2021</span>
+                      </div>
+                      <div
+                        style="
+                          display: flex;
+                          justify-content: space-between;
+                          margin-bottom: 0.5rem;
+                        "
+                      >
+                        <span
+                          style="font-size: 0.875rem; color: var(--gray-600)"
+                          >Vlera Totale Kontratash:</span
+                        >
+                        <span
+                          style="font-weight: 600; color: var(--success-color)"
+                          >€120,000</span
+                        >
+                      </div>
+                      <div
+                        style="
+                          display: flex;
+                          justify-content: space-between;
+                          margin-bottom: 0.5rem;
+                        "
+                      >
+                        <span
+                          style="font-size: 0.875rem; color: var(--gray-600)"
+                          >Projekte Aktivë:</span
+                        >
+                        <span style="font-weight: 600">2</span>
+                      </div>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem">
+                      <button class="btn btn-sm btn-outline" style="flex: 1">
+                        <i class="fas fa-eye"></i> Profili
+                      </button>
+                      <button class="btn btn-sm btn-primary" style="flex: 1">
+                        <i class="fas fa-envelope"></i> Kontakto
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Client Profile 3 -->
+                  <div class="client-profile-card">
+                    <div
+                      style="
+                        display: flex;
+                        align-items: center;
+                        gap: 1rem;
+                        margin-bottom: 1rem;
+                      "
+                    >
+                      <div
+                        class="user-avatar"
+                        style="
+                          width: 60px;
+                          height: 60px;
+                          font-size: 1.25rem;
+                          background: var(--gradient-warning);
+                        "
+                      >
+                        ND
+                      </div>
+                      <div>
+                        <h4
+                          style="color: var(--gray-900); margin-bottom: 0.25rem"
+                        >
+                          Ndërtim Plus ShPK
+                        </h4>
+                        <div
+                          style="font-size: 0.875rem; color: var(--gray-600)"
+                        >
+                          <i class="fas fa-user-tie"></i> Ndue Doda
+                        </div>
+                      </div>
+                    </div>
+                    <div style="margin-bottom: 1rem">
+                      <div
+                        style="
+                          display: flex;
+                          justify-content: space-between;
+                          margin-bottom: 0.5rem;
+                        "
+                      >
+                        <span
+                          style="font-size: 0.875rem; color: var(--gray-600)"
+                          >Viti i Regjistrimit:</span
+                        >
+                        <span style="font-weight: 600">2023</span>
+                      </div>
+                      <div
+                        style="
+                          display: flex;
+                          justify-content: space-between;
+                          margin-bottom: 0.5rem;
+                        "
+                      >
+                        <span
+                          style="font-size: 0.875rem; color: var(--gray-600)"
+                          >Vlera Totale Kontratash:</span
+                        >
+                        <span
+                          style="font-weight: 600; color: var(--success-color)"
+                          >€45,000</span
+                        >
+                      </div>
+                      <div
+                        style="
+                          display: flex;
+                          justify-content: space-between;
+                          margin-bottom: 0.5rem;
+                        "
+                      >
+                        <span
+                          style="font-size: 0.875rem; color: var(--gray-600)"
+                          >Projekte Aktivë:</span
+                        >
+                        <span style="font-weight: 600">1</span>
+                      </div>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem">
+                      <button class="btn btn-sm btn-outline" style="flex: 1">
+                        <i class="fas fa-eye"></i> Profili
+                      </button>
+                      <button class="btn btn-sm btn-primary" style="flex: 1">
+                        <i class="fas fa-envelope"></i> Kontakto
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Modal for New Client -->
+    <div class="modal-overlay" id="newClientModal" style="display: none">
+      <div class="modal">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fas fa-user-plus"></i> Shto Klient të Ri
+            </div>
+            <button class="action-btn delete" id="closeClientModal">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="card-body">
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label required">Emri i Biznesit</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Shkruani emrin e biznesit"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label required"
+                  >Numri Identifikues i Biznesit (NIB)</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="J614000000L"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label required">Personi Kontakt</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Emri dhe mbiemri"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label required">Numri i Telefonit</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  placeholder="+355 XX XXX XXXX"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label required">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="info@biznes.al"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Adresa</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Adresa e plotë"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Tipi i Biznesit</label>
+                <div class="select-with-icon">
+                  <i class="fas fa-building select-icon"></i>
+                  <select class="form-control">
+                    <option value="">Zgjidhni llojin e biznesit</option>
+                    <option value="agrobiznes">Agrobiznes</option>
+                    <option value="ndertim">Ndërtim</option>
+                    <option value="teknologji">Teknologji</option>
+                    <option value="turizem">Turizëm</option>
+                    <option value="farmaci">Farmaci</option>
+                    <option value="tregti">Tregti</option>
+                    <option value="sherbime">Shërbime</option>
+                    <option value="tjera">Të Tjera</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Viti i Themelimit</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  placeholder="YYYY"
+                  min="1900"
+                  max="2024"
+                />
+              </div>
+              <div class="form-group" style="grid-column: 1 / -1">
+                <label class="form-label">Shënime shtesë</label>
+                <textarea
+                  class="form-control"
+                  rows="3"
+                  placeholder="Shënime ose informacione shtesë për klientin..."
+                ></textarea>
+              </div>
+              <div class="form-group" style="grid-column: 1 / -1">
+                <label class="form-label">Dokumentet e Kërkuara</label>
+                <div class="file-upload">
+                  <label class="file-upload-label">
+                    <i class="fas fa-cloud-upload-alt file-upload-icon"></i>
+                    <span class="file-upload-text"
+                      >Klikoni për të ngarkuar dokumentet</span
+                    >
+                    <span class="file-upload-hint"
+                      >PDF, JPG, PNG deri në 10MB</span
+                    >
+                    <input type="file" multiple />
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-outline" id="cancelClientBtn">Anulo</button>
+            <button class="btn btn-primary">Ruaj Klientin</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+      // Specific scripts for klientet.html
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.getElementById("menuToggle");
+        const sidebar = document.querySelector(".sidebar");
+        const newClientBtn = document.getElementById("newClientBtn");
+        const newClientModal = document.getElementById("newClientModal");
+        const closeClientModal = document.getElementById("closeClientModal");
+        const cancelClientBtn = document.getElementById("cancelClientBtn");
+
+        // Toggle sidebar on mobile
+        menuToggle.addEventListener("click", () => {
+          sidebar.classList.toggle("active");
+        });
+
+        // Show new client modal
+        newClientBtn.addEventListener("click", () => {
+          newClientModal.style.display = "flex";
+        });
+
+        // Close modal
+        function closeModalFunc() {
+          newClientModal.style.display = "none";
+        }
+
+        closeClientModal.addEventListener("click", closeModalFunc);
+        cancelClientBtn.addEventListener("click", closeModalFunc);
+
+        // Close modal when clicking outside
+        newClientModal.addEventListener("click", (e) => {
+          if (e.target === newClientModal) {
+            closeModalFunc();
+          }
+        });
+
+        // Search functionality
+        const searchInput = document.querySelector(".search-input");
+        searchInput.addEventListener("input", function (e) {
+          const searchTerm = e.target.value.toLowerCase();
+          console.log("Kërkim për klient:", searchTerm);
+          // Implement search logic here
+        });
+
+        // Filter buttons
+        document.querySelectorAll(".btn-group .btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            document.querySelectorAll(".btn-group .btn").forEach((b) => {
+              b.classList.remove("active");
+            });
+            this.classList.add("active");
+
+            const filter = this.textContent;
+            console.log("Filtro sipas:", filter);
+            // Implement filter logic here
+          });
+        });
+
+        // Action buttons for clients
+        document.querySelectorAll(".action-btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const row = this.closest("tr");
+            const clientName = row.querySelector("strong").textContent;
+            const clientId = row.querySelector("td:first-child").textContent;
+
+            const action = this.classList.contains("view")
+              ? "Shiko"
+              : this.classList.contains("edit")
+                ? "Edito"
+                : this.classList.contains("download")
+                  ? "Shkarko"
+                  : "Vepro";
+
+            console.log(`${action} klientin ${clientName} (${clientId})`);
+            // Add your action logic here
+
+            if (this.classList.contains("view")) {
+              // Show client profile modal
+              alert(`Duke shfaqur profilin e ${clientName}`);
+            }
+          });
+        });
+
+        // Client profile buttons
+        document
+          .querySelectorAll(".client-profile-card .btn")
+          .forEach((btn) => {
+            btn.addEventListener("click", function () {
+              const card = this.closest(".client-profile-card");
+              const clientName = card.querySelector("h4").textContent;
+
+              if (this.textContent.includes("Profili")) {
+                console.log(`Duke shfaqur profilin e ${clientName}`);
+                alert(`Profili i ${clientName}`);
+              } else if (this.textContent.includes("Kontakto")) {
+                console.log(`Kontaktimi i ${clientName}`);
+                alert(`Duke kontaktuar ${clientName}`);
+              }
+            });
+          });
+      });
+    </script>
+    <script src="database.js"></script>
+    <script src="dashboard.js"></script>
+  </body>
+</html>

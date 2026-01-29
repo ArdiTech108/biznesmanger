@@ -1,0 +1,2204 @@
+<!doctype html>
+<html lang="sq">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light only" />
+    <title>Kalendari i Takimeve - Biznes Manager</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.4.0/main.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.4.0/main.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@4.4.0/main.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fullcalendar/list@4.4.0/main.min.css"
+    />
+    <style>
+      /* ===== VARIABLES ===== */
+      :root {
+        --primary-color: #4a90e2;
+        --secondary-color: #50e3c2;
+        --danger-color: #d0021b;
+        --warning-color: #f5a623;
+        --success-color: #7ed321;
+        --dark-color: #2c3e50;
+        --light-color: #f8f9fa;
+        --text-dark: #333333;
+        --text-light: #666666;
+        --border-color: #e0e0e0;
+        --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+        --sidebar-width: 280px;
+        --header-height: 80px;
+      }
+
+      /* ===== RESET & BASE ===== */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: var(--text-dark);
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      button {
+        cursor: pointer;
+        border: none;
+        font-family: inherit;
+      }
+
+      /* ===== CONTAINER ===== */
+      .container {
+        display: flex;
+        min-height: 100vh;
+        background: var(--light-color);
+        border-radius: 20px;
+        overflow: hidden;
+        margin: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      /* ===== SIDEBAR ===== */
+      .sidebar {
+        width: var(--sidebar-width);
+        background: linear-gradient(180deg, var(--dark-color) 0%, #1a2530 100%);
+        color: white;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        z-index: 100;
+      }
+
+      .logo {
+        padding: 30px 20px;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .logo i {
+        font-size: 2.5rem;
+        color: var(--secondary-color);
+        margin-bottom: 10px;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .logo h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        background: linear-gradient(45deg, #fff, var(--secondary-color));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      /* ===== MENU ===== */
+      .menu {
+        flex: 1;
+        padding: 20px 0;
+        overflow-y: auto;
+      }
+
+      .menu-group {
+        margin-bottom: 25px;
+      }
+
+      .menu-group-title {
+        padding: 0 20px 10px;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: rgba(255, 255, 255, 0.5);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        margin-bottom: 10px;
+      }
+
+      .menu a {
+        display: flex;
+        align-items: center;
+        padding: 12px 20px;
+        margin: 5px 10px;
+        border-radius: 10px;
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .menu a:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 4px;
+        background: var(--secondary-color);
+        transform: translateX(-100%);
+        transition: var(--transition);
+      }
+
+      .menu a:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateX(5px);
+      }
+
+      .menu a:hover:before {
+        transform: translateX(0);
+      }
+
+      .menu a.active {
+        background: rgba(74, 144, 226, 0.2);
+        color: white;
+        font-weight: 600;
+      }
+
+      .menu a.active:before {
+        transform: translateX(0);
+      }
+
+      .menu a i {
+        width: 24px;
+        text-align: center;
+        margin-right: 12px;
+        font-size: 1.1rem;
+        color: var(--secondary-color);
+      }
+
+      .menu a.active i {
+        color: white;
+      }
+
+      /* ===== USER PROFILE ===== */
+      .user-profile {
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .user-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: linear-gradient(
+          45deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-right: 15px;
+        border: 3px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .user-info {
+        flex: 1;
+      }
+
+      .user-info h4 {
+        font-size: 1rem;
+        margin-bottom: 5px;
+      }
+
+      .user-info p {
+        font-size: 0.85rem;
+        opacity: 0.7;
+      }
+
+      .logout-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+      }
+
+      .logout-btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: rotate(90deg);
+      }
+
+      /* ===== MAIN CONTENT ===== */
+      .main-content {
+        flex: 1;
+        padding: 20px;
+        overflow-y: auto;
+        background: var(--light-color);
+      }
+
+      /* ===== HEADER ===== */
+      .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid var(--border-color);
+      }
+
+      .header-left h1 {
+        font-size: 2rem;
+        color: var(--dark-color);
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .header-left h1 i {
+        color: var(--primary-color);
+      }
+
+      .header-left p {
+        color: var(--text-light);
+        font-size: 1.1rem;
+      }
+
+      .header-right {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+      }
+
+      /* ===== BUTTONS ===== */
+      .btn {
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: var(--transition);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .btn-primary {
+        background: linear-gradient(45deg, var(--primary-color), #667eea);
+        color: white;
+        border: none;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(74, 144, 226, 0.4);
+      }
+
+      .btn-secondary {
+        background: white;
+        color: var(--primary-color);
+        border: 2px solid var(--primary-color);
+      }
+
+      .btn-secondary:hover {
+        background: var(--primary-color);
+        color: white;
+      }
+
+      .btn-outline {
+        background: transparent;
+        color: var(--text-dark);
+        border: 2px solid var(--border-color);
+      }
+
+      .btn-outline:hover {
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+      }
+
+      .btn-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--light-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+      }
+
+      .btn-icon:hover {
+        background: var(--primary-color);
+        color: white;
+        transform: rotate(15deg);
+      }
+
+      /* ===== CALENDAR CONTAINER ===== */
+      .calendar-container {
+        display: grid;
+        grid-template-columns: 1fr 350px;
+        gap: 25px;
+        margin-bottom: 30px;
+      }
+
+      .calendar-controls {
+        grid-column: 1 / -1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        margin-bottom: 20px;
+        box-shadow: var(--shadow);
+      }
+
+      .calendar-controls h2 {
+        margin: 0;
+        color: var(--dark-color);
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+
+      .calendar-views {
+        grid-column: 1;
+        background: white;
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: var(--shadow);
+        min-height: 600px;
+      }
+
+      /* ===== FULLCALENDAR ===== */
+      #calendar {
+        height: 550px;
+      }
+
+      .fc {
+        height: 100% !important;
+      }
+
+      .fc-header-toolbar {
+        margin-bottom: 1.5em !important;
+      }
+
+      .fc-toolbar-title {
+        font-size: 1.5rem !important;
+        color: var(--dark-color) !important;
+      }
+
+      .fc-button {
+        background: var(--primary-color) !important;
+        border: none !important;
+        padding: 8px 16px !important;
+        border-radius: 8px !important;
+      }
+
+      .fc-button:hover {
+        background: var(--dark-color) !important;
+      }
+
+      .fc-button-active {
+        background: var(--dark-color) !important;
+      }
+
+      .fc-day-today {
+        background-color: rgba(74, 144, 226, 0.1) !important;
+      }
+
+      .fc-event {
+        border-radius: 6px !important;
+        border: none !important;
+        padding: 5px 8px !important;
+        margin: 2px !important;
+      }
+
+      .fc-event-title {
+        font-weight: 600 !important;
+      }
+
+      /* ===== EVENT LIST ===== */
+      .event-list-container {
+        grid-column: 2;
+        background: white;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: var(--shadow);
+      }
+
+      .list-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+      }
+
+      .list-header h3 {
+        color: var(--dark-color);
+        font-size: 1.3rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .list-header h3 i {
+        color: var(--primary-color);
+      }
+
+      .event-list {
+        max-height: 500px;
+        overflow-y: auto;
+        padding-right: 10px;
+      }
+
+      .event-list::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      .event-list::-webkit-scrollbar-track {
+        background: var(--light-color);
+        border-radius: 3px;
+      }
+
+      .event-list::-webkit-scrollbar-thumb {
+        background: var(--primary-color);
+        border-radius: 3px;
+      }
+
+      .event-item {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        border-radius: 12px;
+        background: var(--light-color);
+        margin-bottom: 12px;
+        transition: var(--transition);
+        border-left: 4px solid transparent;
+      }
+
+      .event-item:hover {
+        transform: translateX(5px);
+        box-shadow: var(--shadow);
+        border-left-color: var(--primary-color);
+      }
+
+      .event-color {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        margin-right: 15px;
+        flex-shrink: 0;
+      }
+
+      .event-info {
+        flex: 1;
+      }
+
+      .event-info h4 {
+        margin: 0 0 8px 0;
+        color: var(--dark-color);
+        font-size: 1rem;
+      }
+
+      .event-details {
+        margin: 0 0 8px 0;
+        color: var(--text-light);
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .event-details i {
+        color: var(--primary-color);
+      }
+
+      .event-type {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .event-type.meeting {
+        background: rgba(74, 144, 226, 0.1);
+        color: var(--primary-color);
+      }
+
+      .event-type.consultation {
+        background: rgba(80, 227, 194, 0.1);
+        color: var(--secondary-color);
+      }
+
+      .event-type.deadline {
+        background: rgba(245, 166, 35, 0.1);
+        color: var(--warning-color);
+      }
+
+      .event-type.tender {
+        background: rgba(144, 19, 254, 0.1);
+        color: #9013fe;
+      }
+
+      .event-actions {
+        display: flex;
+        gap: 8px;
+        opacity: 0;
+        transition: var(--transition);
+      }
+
+      .event-item:hover .event-actions {
+        opacity: 1;
+      }
+
+      /* ===== STATISTICS ===== */
+      .calendar-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      .stat-card {
+        background: white;
+        border-radius: 15px;
+        padding: 25px;
+        display: flex;
+        align-items: center;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+      }
+
+      .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .stat-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 20px;
+        font-size: 1.5rem;
+      }
+
+      .stat-info h3 {
+        font-size: 2rem;
+        color: var(--dark-color);
+        margin-bottom: 5px;
+      }
+
+      .stat-info p {
+        color: var(--text-light);
+        font-size: 0.95rem;
+      }
+
+      /* ===== UPCOMING EVENTS ===== */
+      .upcoming-events {
+        background: white;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: var(--shadow);
+      }
+
+      .upcoming-events h3 {
+        margin: 0 0 25px 0;
+        color: var(--dark-color);
+        font-size: 1.3rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .events-today,
+      .events-tomorrow {
+        margin-bottom: 25px;
+      }
+
+      .events-today h4,
+      .events-tomorrow h4 {
+        margin: 0 0 15px 0;
+        color: var(--dark-color);
+        font-size: 1.1rem;
+        padding-bottom: 10px;
+        border-bottom: 2px solid var(--border-color);
+      }
+
+      .upcoming-event {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        border-radius: 10px;
+        background: var(--light-color);
+        margin-bottom: 12px;
+        transition: var(--transition);
+      }
+
+      .upcoming-event:hover {
+        background: #e3f2fd;
+        transform: translateX(5px);
+      }
+
+      .event-time {
+        font-weight: 700;
+        color: var(--primary-color);
+        min-width: 70px;
+        font-size: 1.1rem;
+      }
+
+      .event-details h5 {
+        margin: 0 0 5px 0;
+        color: var(--dark-color);
+        font-size: 0.95rem;
+      }
+
+      .event-details p {
+        margin: 0;
+        color: var(--text-light);
+        font-size: 0.85rem;
+      }
+
+      .no-events {
+        color: var(--text-light);
+        font-style: italic;
+        text-align: center;
+        padding: 20px;
+        background: var(--light-color);
+        border-radius: 10px;
+      }
+
+      /* ===== MODAL ===== */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal.active {
+        display: flex;
+      }
+
+      .modal-content {
+        background: white;
+        border-radius: 20px;
+        width: 90%;
+        max-width: 600px;
+        max-height: 90vh;
+        overflow-y: auto;
+        animation: modalSlideIn 0.3s ease;
+      }
+
+      @keyframes modalSlideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .modal-header {
+        padding: 25px;
+        border-bottom: 2px solid var(--border-color);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .modal-header h3 {
+        color: var(--dark-color);
+        font-size: 1.5rem;
+      }
+
+      .close-modal {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--light-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        transition: var(--transition);
+      }
+
+      .close-modal:hover {
+        background: var(--danger-color);
+        color: white;
+        transform: rotate(90deg);
+      }
+
+      .modal-body {
+        padding: 25px;
+      }
+
+      /* ===== FORM ===== */
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--dark-color);
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid var(--border-color);
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: var(--transition);
+        background: white;
+      }
+
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .color-picker {
+        display: flex;
+        gap: 15px;
+        margin-top: 10px;
+      }
+
+      .color-picker input[type="radio"] {
+        display: none;
+      }
+
+      .color-picker label {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 3px solid transparent;
+        transition: var(--transition);
+      }
+
+      .color-picker input[type="radio"]:checked + label {
+        border-color: var(--dark-color);
+        transform: scale(1.2);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .modal-footer {
+        padding-top: 25px;
+        border-top: 2px solid var(--border-color);
+        display: flex;
+        justify-content: flex-end;
+        gap: 15px;
+      }
+
+      /* ===== NOTIFICATION ===== */
+      .notification {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 15px 25px;
+        border-radius: 10px;
+        background: white;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        z-index: 2000;
+        transform: translateX(150%);
+        transition: transform 0.3s ease;
+      }
+
+      .notification.show {
+        transform: translateX(0);
+      }
+
+      .notification i {
+        font-size: 1.2rem;
+      }
+
+      .notification.success {
+        border-left: 4px solid var(--success-color);
+      }
+
+      .notification.success i {
+        color: var(--success-color);
+      }
+
+      .notification.error {
+        border-left: 4px solid var(--danger-color);
+      }
+
+      .notification.error i {
+        color: var(--danger-color);
+      }
+
+      .notification.info {
+        border-left: 4px solid var(--primary-color);
+      }
+
+      .notification.info i {
+        color: var(--primary-color);
+      }
+
+      /* ===== RESPONSIVE DESIGN ===== */
+      @media (max-width: 1200px) {
+        .calendar-container {
+          grid-template-columns: 1fr;
+        }
+
+        .event-list-container {
+          margin-top: 25px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column;
+          margin: 10px;
+          border-radius: 15px;
+        }
+
+        .sidebar {
+          width: 100%;
+          height: auto;
+        }
+
+        .menu {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 10px;
+          padding: 15px;
+        }
+
+        .menu a {
+          flex: 1;
+          min-width: 150px;
+          justify-content: center;
+          padding: 10px;
+        }
+
+        .menu a span {
+          display: none;
+        }
+
+        .menu a i {
+          margin-right: 0;
+          font-size: 1.3rem;
+        }
+
+        .menu-group {
+          display: none;
+        }
+
+        .calendar-controls {
+          flex-wrap: wrap;
+          gap: 10px;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+
+        .calendar-stats {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .calendar-stats {
+          grid-template-columns: 1fr;
+        }
+
+        .btn {
+          padding: 10px 15px;
+          font-size: 0.9rem;
+        }
+
+        .header-left h1 {
+          font-size: 1.5rem;
+        }
+
+        .stat-card {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .stat-icon {
+          margin-right: 0;
+          margin-bottom: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="logo">
+          <i class="fas fa-calendar-alt"></i>
+          <h2>Biznes Manager</h2>
+        </div>
+
+        <nav class="menu">
+          <div class="menu-group">
+            <div class="menu-group-title">MENU KRYESORE</div>
+            <a href="index.html">
+              <i class="fas fa-home"></i>
+              <span>Dashboard</span>
+            </a>
+            <a href="klientet.html">
+              <i class="fas fa-users"></i>
+              <span>Klientët</span>
+            </a>
+            <a href="planet-biznesore.html">
+              <i class="fas fa-chart-line"></i>
+              <span>Planet Biznesore</span>
+            </a>
+          </div>
+
+          <div class="menu-group">
+            <div class="menu-group-title">BIZNESET</div>
+            <a href="regjistrimi-biznesit.html">
+              <i class="fas fa-building"></i>
+              <span>Regjistrimi</span>
+            </a>
+            <a href="mbyllja-biznesit.html">
+              <i class="fas fa-door-closed"></i>
+              <span>Mbyllja</span>
+            </a>
+          </div>
+
+          <div class="menu-group">
+            <div class="menu-group-title">MENAXHIMI</div>
+            <a href="tenderat.html">
+              <i class="fas fa-file-contract"></i>
+              <span>Tenderat</span>
+            </a>
+            <a href="konsultimet.html">
+              <i class="fas fa-comments"></i>
+              <span>Konsultimet</span>
+            </a>
+          </div>
+
+          <div class="menu-group">
+            <div class="menu-group-title">FINANCA</div>
+            <a href="kontabiliteti.html">
+              <i class="fas fa-calculator"></i>
+              <span>Kontabiliteti</span>
+            </a>
+            <a href="dokumentet.html">
+              <i class="fas fa-folder"></i>
+              <span>Dokumentet</span>
+            </a>
+          </div>
+
+          <div class="menu-group">
+            <div class="menu-group-title">ORGANIZIMI</div>
+            <a href="kalendari.html" class="active">
+              <i class="fas fa-calendar-alt"></i>
+              <span>Kalendari</span>
+            </a>
+          </div>
+        </nav>
+
+        <div class="user-profile">
+          <div class="user-avatar">
+            <i class="fas fa-user-tie"></i>
+          </div>
+          <div class="user-info">
+            <h4>Administrator</h4>
+            <p>admin@biznesmanager.al</p>
+          </div>
+          <a href="#" class="logout-btn" title="Dil">
+            <i class="fas fa-sign-out-alt"></i>
+          </a>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Header -->
+        <header class="page-header">
+          <div class="header-left">
+            <h1><i class="fas fa-calendar-alt"></i> Kalendari i Takimeve</h1>
+            <p>Menaxhoni takimet, afatet dhe aktivitetet tuaja</p>
+          </div>
+          <div class="header-right">
+            <button class="btn btn-primary" id="addEventBtn">
+              <i class="fas fa-plus"></i> Shto Takim
+            </button>
+            <select class="btn btn-outline" id="viewSelector">
+              <option value="dayGridMonth">Muaj</option>
+              <option value="timeGridWeek">Javë</option>
+              <option value="timeGridDay">Ditë</option>
+              <option value="listMonth">Listë</option>
+            </select>
+          </div>
+        </header>
+
+        <!-- Calendar Content -->
+        <div class="calendar-container">
+          <!-- Calendar Controls -->
+          <div class="calendar-controls">
+            <button id="prevBtn" class="btn btn-secondary">
+              <i class="fas fa-chevron-left"></i> Paraardhës
+            </button>
+            <h2 id="currentPeriod">Janar 2024</h2>
+            <button id="nextBtn" class="btn btn-secondary">
+              Pasardhës <i class="fas fa-chevron-right"></i>
+            </button>
+            <button id="todayBtn" class="btn btn-outline">
+              <i class="fas fa-calendar-day"></i> Sot
+            </button>
+          </div>
+
+          <!-- Calendar View -->
+          <div class="calendar-views">
+            <div id="calendar"></div>
+          </div>
+
+          <!-- Event List -->
+          <div class="event-list-container">
+            <div class="list-header">
+              <h3><i class="fas fa-list"></i> Takimet e Ardhshme</h3>
+              <select id="eventFilter" class="btn btn-outline">
+                <option value="all">Të gjitha</option>
+                <option value="meeting">Takime</option>
+                <option value="deadline">Afate</option>
+                <option value="consultation">Konsultime</option>
+                <option value="tender">Tender</option>
+              </select>
+            </div>
+            <div class="event-list" id="eventList">
+              <!-- Events will be loaded here -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Statistics -->
+        <div class="calendar-stats">
+          <div class="stat-card">
+            <div
+              class="stat-icon"
+              style="
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+              "
+            >
+              <i class="fas fa-calendar-check" style="color: white"></i>
+            </div>
+            <div class="stat-info">
+              <h3 id="totalEvents">0</h3>
+              <p>Takime totale</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div
+              class="stat-icon"
+              style="
+                background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+              "
+            >
+              <i class="fas fa-users" style="color: white"></i>
+            </div>
+            <div class="stat-info">
+              <h3 id="meetingsThisWeek">0</h3>
+              <p>Takime këtë javë</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div
+              class="stat-icon"
+              style="
+                background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+              "
+            >
+              <i class="fas fa-hourglass-end" style="color: white"></i>
+            </div>
+            <div class="stat-info">
+              <h3 id="upcomingDeadlines">0</h3>
+              <p>Afate të ardhshme</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div
+              class="stat-icon"
+              style="
+                background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+              "
+            >
+              <i class="fas fa-exclamation-triangle" style="color: white"></i>
+            </div>
+            <div class="stat-info">
+              <h3 id="urgentEvents">0</h3>
+              <p>Urgjente</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Upcoming Events -->
+        <div class="upcoming-events">
+          <h3><i class="fas fa-clock"></i> Takimet e Ardhshme</h3>
+          <div class="events-today">
+            <h4>Sot</h4>
+            <div class="today-events" id="todayEvents">
+              <!-- Today's events will be loaded here -->
+            </div>
+          </div>
+          <div class="events-tomorrow">
+            <h4>Nesër</h4>
+            <div class="tomorrow-events" id="tomorrowEvents">
+              <!-- Tomorrow's events will be loaded here -->
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Modal for Adding/Editing Events -->
+    <div class="modal" id="eventModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="modalTitle">Shto Takim të Ri</h3>
+          <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form id="eventForm">
+            <div class="form-group">
+              <label for="eventTitle"
+                ><i class="fas fa-heading"></i> Titulli</label
+              >
+              <input
+                type="text"
+                id="eventTitle"
+                placeholder="Shkruani titullin e takimit"
+                required
+              />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="eventDate"
+                  ><i class="far fa-calendar"></i> Data</label
+                >
+                <input
+                  type="text"
+                  id="eventDate"
+                  class="datepicker"
+                  placeholder="Zgjidhni datën"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="eventTime"><i class="far fa-clock"></i> Ora</label>
+                <input type="time" id="eventTime" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="eventDuration"
+                ><i class="fas fa-hourglass-half"></i> Kohëzgjatja</label
+              >
+              <select id="eventDuration">
+                <option value="30">30 minuta</option>
+                <option value="60" selected>1 orë</option>
+                <option value="90">1 orë 30 min</option>
+                <option value="120">2 orë</option>
+                <option value="180">3 orë</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="eventType"><i class="fas fa-tag"></i> Lloji</label>
+              <select id="eventType">
+                <option value="meeting">Takim</option>
+                <option value="consultation">Konsultim</option>
+                <option value="deadline">Afat</option>
+                <option value="tender">Tender</option>
+                <option value="reminder">Kujtesë</option>
+                <option value="other">Tjetër</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="eventClient"
+                ><i class="fas fa-user"></i> Klienti (opsional)</label
+              >
+              <select id="eventClient">
+                <option value="">Zgjidhni klientin</option>
+                <!-- Clients will be loaded dynamically -->
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="eventLocation"
+                ><i class="fas fa-map-marker-alt"></i> Vendndodhja</label
+              >
+              <input
+                type="text"
+                id="eventLocation"
+                placeholder="Zyrë, Online, ose adresë"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="eventDescription"
+                ><i class="fas fa-align-left"></i> Përshkrimi</label
+              >
+              <textarea
+                id="eventDescription"
+                rows="3"
+                placeholder="Përshkrimi i takimit..."
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="eventColor"
+                ><i class="fas fa-palette"></i> Ngjyra</label
+              >
+              <div class="color-picker">
+                <input
+                  type="radio"
+                  name="eventColor"
+                  value="#4A90E2"
+                  id="color1"
+                  checked
+                />
+                <label for="color1" style="background: #4a90e2"></label>
+                <input
+                  type="radio"
+                  name="eventColor"
+                  value="#50E3C2"
+                  id="color2"
+                />
+                <label for="color2" style="background: #50e3c2"></label>
+                <input
+                  type="radio"
+                  name="eventColor"
+                  value="#F5A623"
+                  id="color3"
+                />
+                <label for="color3" style="background: #f5a623"></label>
+                <input
+                  type="radio"
+                  name="eventColor"
+                  value="#9013FE"
+                  id="color4"
+                />
+                <label for="color4" style="background: #9013fe"></label>
+                <input
+                  type="radio"
+                  name="eventColor"
+                  value="#D0021B"
+                  id="color5"
+                />
+                <label for="color5" style="background: #d0021b"></label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="eventReminder"
+                ><i class="fas fa-bell"></i> Kujtesë</label
+              >
+              <select id="eventReminder">
+                <option value="0">Pa kujtesë</option>
+                <option value="5">5 minuta përpara</option>
+                <option value="15" selected>15 minuta përpara</option>
+                <option value="30">30 minuta përpara</option>
+                <option value="60">1 orë përpara</option>
+                <option value="1440">1 ditë përpara</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="eventAllDay" />
+                <span>Gjithë ditën</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="eventRepeat" />
+                <span>Përsërit</span>
+              </label>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary close-modal">
+                Anulo
+              </button>
+              <button type="submit" class="btn btn-primary">
+                Ruaj Takimin
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.4.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.4.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@4.4.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/list@4.4.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/interaction@4.4.0/main.min.js"></script>
+
+    <script>
+      // Calendar Management System
+      class CalendarManager {
+        constructor() {
+          this.calendar = null;
+          this.currentEvent = null;
+          this.events = this.loadEventsFromStorage();
+          this.initCalendar();
+          this.setupEventListeners();
+          this.loadClients();
+          this.updateStatistics();
+          this.loadUpcomingEvents();
+          this.updateEventList();
+        }
+
+        initCalendar() {
+          const calendarEl = document.getElementById("calendar");
+
+          this.calendar = new FullCalendar.Calendar(calendarEl, {
+            plugins: ["dayGrid", "timeGrid", "list", "interaction"],
+            header: false,
+            initialView: "dayGridMonth",
+            locale: "sq",
+            firstDay: 1,
+            timeZone: "Europe/Tirane",
+            editable: true,
+            selectable: true,
+            selectMirror: true,
+            dayMaxEvents: true,
+            weekends: true,
+            height: "auto",
+            contentHeight: "auto",
+            events: this.events.map((event) => ({
+              id: event.id,
+              title: event.title,
+              start: event.start,
+              end:
+                event.end || this.calculateEndTime(event.start, event.duration),
+              allDay: event.allDay || false,
+              color: event.color,
+              textColor: "#FFFFFF",
+              extendedProps: {
+                type: event.type,
+                description: event.description,
+                clientId: event.clientId,
+                location: event.location,
+                reminder: event.reminder,
+                repeat: event.repeat,
+              },
+            })),
+
+            eventClick: (info) => {
+              this.editEvent(info.event);
+            },
+
+            select: (info) => {
+              this.createNewEvent(info.start, info.end);
+            },
+
+            eventDrop: (info) => {
+              this.updateEventDate(info.event);
+            },
+
+            eventResize: (info) => {
+              this.updateEventDuration(info.event);
+            },
+
+            datesSet: (info) => {
+              this.updateCurrentPeriod(info);
+            },
+          });
+
+          this.calendar.render();
+        }
+
+        loadEventsFromStorage() {
+          const events = localStorage.getItem("biznesManagerEvents");
+          if (events) {
+            return JSON.parse(events);
+          }
+
+          // Default events if none exist
+          const defaultEvents = [
+            {
+              id: 1,
+              title: "Takim me Agro Sh.P.K",
+              start: new Date().toISOString().split("T")[0] + "T10:00:00",
+              type: "meeting",
+              description: "Diskutim për zgjerimin e biznesit",
+              clientId: 1,
+              location: "Zyrë",
+              duration: 60,
+              reminder: 30,
+              repeat: false,
+              allDay: false,
+              color: "#4A90E2",
+            },
+            {
+              id: 2,
+              title: "Afati për tenderin e Ministrisë",
+              start:
+                new Date(Date.now() + 3 * 24 * 60 * 60 * 1000)
+                  .toISOString()
+                  .split("T")[0] + "T23:59:00",
+              type: "deadline",
+              description: "Dorëzimi i dokumenteve për tender",
+              clientId: null,
+              location: "Online",
+              duration: 0,
+              reminder: 1440,
+              repeat: false,
+              allDay: true,
+              color: "#F5A623",
+            },
+            {
+              id: 3,
+              title: "Konsultim me Tech Solutions",
+              start:
+                new Date(Date.now() + 5 * 24 * 60 * 60 * 1000)
+                  .toISOString()
+                  .split("T")[0] + "T14:30:00",
+              type: "consultation",
+              description: "Planifikim strategjik për vitin 2024",
+              clientId: 2,
+              location: "Zyrë e klientit",
+              duration: 90,
+              reminder: 60,
+              repeat: false,
+              allDay: false,
+              color: "#50E3C2",
+            },
+          ];
+
+          this.saveEventsToStorage(defaultEvents);
+          return defaultEvents;
+        }
+
+        saveEventsToStorage(events) {
+          localStorage.setItem("biznesManagerEvents", JSON.stringify(events));
+        }
+
+        calculateEndTime(startTime, duration) {
+          const start = new Date(startTime);
+          const end = new Date(start.getTime() + (duration || 60) * 60000);
+          return end.toISOString();
+        }
+
+        createNewEvent(start, end) {
+          this.currentEvent = null;
+          this.openEventModal(start, end);
+        }
+
+        editEvent(event) {
+          this.currentEvent = event;
+          this.openEventModal();
+        }
+
+        openEventModal(start, end) {
+          const modal = document.getElementById("eventModal");
+          const modalTitle = document.getElementById("modalTitle");
+
+          if (this.currentEvent) {
+            modalTitle.textContent = "Modifiko Takimin";
+            this.populateForm(this.currentEvent);
+          } else {
+            modalTitle.textContent = "Shto Takim të Ri";
+            this.resetForm();
+
+            if (start) {
+              const date = new Date(start);
+              document.getElementById("eventDate").value = date
+                .toISOString()
+                .split("T")[0];
+              document.getElementById("eventTime").value =
+                date.getHours().toString().padStart(2, "0") +
+                ":" +
+                date.getMinutes().toString().padStart(2, "0");
+            }
+          }
+
+          modal.classList.add("active");
+          this.initDatePicker();
+        }
+
+        populateForm(event) {
+          const startDate = new Date(event.start);
+
+          document.getElementById("eventTitle").value = event.title || "";
+          document.getElementById("eventDate").value = startDate
+            .toISOString()
+            .split("T")[0];
+          document.getElementById("eventTime").value =
+            startDate.getHours().toString().padStart(2, "0") +
+            ":" +
+            startDate.getMinutes().toString().padStart(2, "0");
+
+          if (event.end) {
+            const endDate = new Date(event.end);
+            const duration = Math.round((endDate - startDate) / 60000);
+            document.getElementById("eventDuration").value = duration;
+          }
+
+          const props = event.extendedProps || {};
+          document.getElementById("eventType").value = props.type || "meeting";
+          document.getElementById("eventClient").value = props.clientId || "";
+          document.getElementById("eventLocation").value = props.location || "";
+          document.getElementById("eventDescription").value =
+            props.description || "";
+          document.getElementById("eventReminder").value =
+            props.reminder || "0";
+          document.getElementById("eventAllDay").checked =
+            event.allDay || false;
+          document.getElementById("eventRepeat").checked =
+            props.repeat || false;
+
+          // Set color
+          const color = event.color || "#4A90E2";
+          document.querySelector(
+            `input[name="eventColor"][value="${color}"]`,
+          ).checked = true;
+        }
+
+        resetForm() {
+          document.getElementById("eventForm").reset();
+          const now = new Date();
+          document.getElementById("eventDate").value = now
+            .toISOString()
+            .split("T")[0];
+          document.getElementById("eventTime").value =
+            now.getHours().toString().padStart(2, "0") +
+            ":" +
+            now.getMinutes().toString().padStart(2, "0");
+        }
+
+        initDatePicker() {
+          flatpickr("#eventDate", {
+            dateFormat: "Y-m-d",
+            locale: {
+              firstDayOfWeek: 1,
+            },
+            defaultDate: document.getElementById("eventDate").value,
+          });
+        }
+
+        handleFormSubmit(e) {
+          e.preventDefault();
+
+          const formData = {
+            id: this.currentEvent ? this.currentEvent.id : Date.now(),
+            title: document.getElementById("eventTitle").value,
+            start: this.getEventStartTime(),
+            type: document.getElementById("eventType").value,
+            description: document.getElementById("eventDescription").value,
+            clientId: document.getElementById("eventClient").value || null,
+            location: document.getElementById("eventLocation").value || "",
+            duration: parseInt(document.getElementById("eventDuration").value),
+            reminder: parseInt(document.getElementById("eventReminder").value),
+            repeat: document.getElementById("eventRepeat").checked,
+            allDay: document.getElementById("eventAllDay").checked,
+            color: document.querySelector('input[name="eventColor"]:checked')
+              .value,
+          };
+
+          this.saveEvent(formData);
+        }
+
+        getEventStartTime() {
+          const dateStr = document.getElementById("eventDate").value;
+          const timeStr = document.getElementById("eventTime").value;
+
+          if (document.getElementById("eventAllDay").checked) {
+            return dateStr + "T00:00:00";
+          }
+
+          return dateStr + "T" + timeStr + ":00";
+        }
+
+        saveEvent(eventData) {
+          if (this.currentEvent) {
+            // Update existing event
+            const index = this.events.findIndex(
+              (e) => e.id == this.currentEvent.id,
+            );
+            if (index !== -1) {
+              this.events[index] = {
+                ...this.events[index],
+                ...eventData,
+                end: eventData.allDay
+                  ? null
+                  : this.calculateEndTime(eventData.start, eventData.duration),
+              };
+            }
+          } else {
+            // Add new event
+            eventData.end = eventData.allDay
+              ? null
+              : this.calculateEndTime(eventData.start, eventData.duration);
+            this.events.push(eventData);
+          }
+
+          this.saveEventsToStorage(this.events);
+          this.calendar.refetchEvents();
+          this.updateStatistics();
+          this.loadUpcomingEvents();
+          this.updateEventList();
+
+          this.showNotification(
+            this.currentEvent ? "Takimi u përditësua!" : "Takimi u shtua!",
+            "success",
+          );
+
+          this.closeModal();
+        }
+
+        deleteEvent(eventId) {
+          if (confirm("Jeni i sigurt që doni të fshini këtë takim?")) {
+            this.events = this.events.filter((event) => event.id !== eventId);
+            this.saveEventsToStorage(this.events);
+            this.calendar.refetchEvents();
+            this.updateStatistics();
+            this.loadUpcomingEvents();
+            this.updateEventList();
+            this.showNotification("Takimi u fshi!", "success");
+          }
+        }
+
+        updateEventDate(event) {
+          const index = this.events.findIndex((e) => e.id == event.id);
+          if (index !== -1) {
+            this.events[index].start = event.start.toISOString();
+            if (event.end) {
+              this.events[index].end = event.end.toISOString();
+            }
+            this.saveEventsToStorage(this.events);
+          }
+        }
+
+        updateEventDuration(event) {
+          const index = this.events.findIndex((e) => e.id == event.id);
+          if (index !== -1) {
+            this.events[index].start = event.start.toISOString();
+            this.events[index].end = event.end.toISOString();
+            this.saveEventsToStorage(this.events);
+          }
+        }
+
+        updateCurrentPeriod(info) {
+          const periodElement = document.getElementById("currentPeriod");
+          if (periodElement) {
+            const view = this.calendar.view;
+            if (view.type === "dayGridMonth") {
+              const date = new Date(view.currentStart);
+              periodElement.textContent = date.toLocaleDateString("sq-AL", {
+                month: "long",
+                year: "numeric",
+              });
+            } else if (view.type === "timeGridWeek") {
+              const start = new Date(view.currentStart);
+              const end = new Date(view.currentEnd);
+              end.setDate(end.getDate() - 1);
+
+              periodElement.textContent =
+                start.toLocaleDateString("sq-AL", {
+                  day: "numeric",
+                  month: "short",
+                }) +
+                " - " +
+                end.toLocaleDateString("sq-AL", {
+                  day: "numeric",
+                  month: "short",
+                  year: "numeric",
+                });
+            } else if (view.type === "timeGridDay") {
+              const date = new Date(view.currentStart);
+              periodElement.textContent = date.toLocaleDateString("sq-AL", {
+                weekday: "long",
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              });
+            }
+          }
+        }
+
+        loadClients() {
+          // Mock clients data - in real app, load from database
+          const clients = [
+            { id: 1, name: "Agro Sh.P.K" },
+            { id: 2, name: "Tech Solutions N.D" },
+            { id: 3, name: "Dritan Hoxha" },
+            { id: 4, name: "Global Corp Degë" },
+          ];
+
+          const select = document.getElementById("eventClient");
+          if (select) {
+            select.innerHTML =
+              '<option value="">Zgjidhni klientin</option>' +
+              clients
+                .map(
+                  (client) =>
+                    `<option value="${client.id}">${client.name}</option>`,
+                )
+                .join("");
+          }
+        }
+
+        updateStatistics() {
+          const now = new Date();
+          const oneWeekFromNow = new Date(
+            now.getTime() + 7 * 24 * 60 * 60 * 1000,
+          );
+          const oneDayFromNow = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+
+          // Total events
+          document.getElementById("totalEvents").textContent =
+            this.events.length;
+
+          // Meetings this week
+          const meetingsThisWeek = this.events.filter((event) => {
+            const eventDate = new Date(event.start);
+            return (
+              eventDate >= now &&
+              eventDate <= oneWeekFromNow &&
+              (event.type === "meeting" || event.type === "consultation")
+            );
+          }).length;
+          document.getElementById("meetingsThisWeek").textContent =
+            meetingsThisWeek;
+
+          // Upcoming deadlines
+          const upcomingDeadlines = this.events.filter((event) => {
+            const eventDate = new Date(event.start);
+            return eventDate >= now && event.type === "deadline";
+          }).length;
+          document.getElementById("upcomingDeadlines").textContent =
+            upcomingDeadlines;
+
+          // Urgent events (within 24 hours)
+          const urgentEvents = this.events.filter((event) => {
+            const eventDate = new Date(event.start);
+            return eventDate >= now && eventDate <= oneDayFromNow;
+          }).length;
+          document.getElementById("urgentEvents").textContent = urgentEvents;
+        }
+
+        updateEventList() {
+          const eventList = document.getElementById("eventList");
+          if (!eventList) return;
+
+          // Sort by date
+          const sortedEvents = [...this.events].sort(
+            (a, b) => new Date(a.start) - new Date(b.start),
+          );
+
+          const now = new Date();
+          const filteredEvents = sortedEvents.filter(
+            (event) => new Date(event.start) >= now,
+          );
+
+          if (filteredEvents.length === 0) {
+            eventList.innerHTML =
+              '<div class="no-events">Nuk ka takime të ardhshme</div>';
+            return;
+          }
+
+          eventList.innerHTML = filteredEvents
+            .map(
+              (event) => `
+                    <div class="event-item" data-id="${event.id}">
+                        <div class="event-color" style="background: ${event.color}"></div>
+                        <div class="event-info">
+                            <h4>${event.title}</h4>
+                            <p class="event-details">
+                                <i class="far fa-clock"></i> ${this.formatEventTime(event.start)}
+                                ${event.location ? ` • <i class="fas fa-map-marker-alt"></i> ${event.location}` : ""}
+                            </p>
+                            <span class="event-type ${event.type}">${this.getEventTypeLabel(event.type)}</span>
+                        </div>
+                        <div class="event-actions">
+                            <button class="btn-icon edit-event" title="Modifiko">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn-icon delete-event" title="Fshi">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `,
+            )
+            .join("");
+
+          // Add event listeners
+          document.querySelectorAll(".edit-event").forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+              const eventId = parseInt(
+                e.target.closest(".event-item").dataset.id,
+              );
+              const event = this.events.find((e) => e.id === eventId);
+              if (event) {
+                this.currentEvent = {
+                  id: event.id,
+                  title: event.title,
+                  start: event.start,
+                  end: event.end,
+                  color: event.color,
+                  allDay: event.allDay,
+                  extendedProps: {
+                    type: event.type,
+                    description: event.description,
+                    clientId: event.clientId,
+                    location: event.location,
+                    reminder: event.reminder,
+                    repeat: event.repeat,
+                  },
+                };
+                this.openEventModal();
+              }
+            });
+          });
+
+          document.querySelectorAll(".delete-event").forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+              const eventId = parseInt(
+                e.target.closest(".event-item").dataset.id,
+              );
+              this.deleteEvent(eventId);
+            });
+          });
+        }
+
+        formatEventTime(dateString) {
+          const date = new Date(dateString);
+          return date.toLocaleString("sq-AL", {
+            weekday: "short",
+            day: "numeric",
+            month: "short",
+            hour: "2-digit",
+            minute: "2-digit",
+          });
+        }
+
+        getEventTypeLabel(type) {
+          const labels = {
+            meeting: "Takim",
+            consultation: "Konsultim",
+            deadline: "Afat",
+            tender: "Tender",
+            reminder: "Kujtesë",
+            other: "Tjetër",
+          };
+          return labels[type] || type;
+        }
+
+        loadUpcomingEvents() {
+          const now = new Date();
+          const tomorrow = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+          const dayAfterTomorrow = new Date(
+            now.getTime() + 48 * 60 * 60 * 1000,
+          );
+
+          // Today's events
+          const todayEvents = this.events.filter((event) => {
+            const eventDate = new Date(event.start);
+            return eventDate.toDateString() === now.toDateString();
+          });
+
+          // Tomorrow's events
+          const tomorrowEvents = this.events.filter((event) => {
+            const eventDate = new Date(event.start);
+            return eventDate.toDateString() === tomorrow.toDateString();
+          });
+
+          this.displayTodayEvents(todayEvents);
+          this.displayTomorrowEvents(tomorrowEvents);
+        }
+
+        displayTodayEvents(events) {
+          const container = document.getElementById("todayEvents");
+          if (!container) return;
+
+          if (events.length === 0) {
+            container.innerHTML =
+              '<p class="no-events">Nuk ka takime për sot</p>';
+            return;
+          }
+
+          container.innerHTML = events
+            .map(
+              (event) => `
+                    <div class="upcoming-event">
+                        <div class="event-time">${this.formatTime(event.start)}</div>
+                        <div class="event-details">
+                            <h5>${event.title}</h5>
+                            <p>${this.getEventTypeLabel(event.type)} • ${event.location || "Pa vendndodhje"}</p>
+                        </div>
+                    </div>
+                `,
+            )
+            .join("");
+        }
+
+        displayTomorrowEvents(events) {
+          const container = document.getElementById("tomorrowEvents");
+          if (!container) return;
+
+          if (events.length === 0) {
+            container.innerHTML =
+              '<p class="no-events">Nuk ka takime për nesër</p>';
+            return;
+          }
+
+          container.innerHTML = events
+            .map(
+              (event) => `
+                    <div class="upcoming-event">
+                        <div class="event-time">${this.formatTime(event.start)}</div>
+                        <div class="event-details">
+                            <h5>${event.title}</h5>
+                            <p>${this.getEventTypeLabel(event.type)} • ${event.location || "Pa vendndodhje"}</p>
+                        </div>
+                    </div>
+                `,
+            )
+            .join("");
+        }
+
+        formatTime(dateString) {
+          const date = new Date(dateString);
+          return date.toLocaleTimeString("sq-AL", {
+            hour: "2-digit",
+            minute: "2-digit",
+          });
+        }
+
+        setupEventListeners() {
+          // Add event button
+          document
+            .getElementById("addEventBtn")
+            .addEventListener("click", () => {
+              this.createNewEvent();
+            });
+
+          // Calendar controls
+          document.getElementById("prevBtn").addEventListener("click", () => {
+            this.calendar.prev();
+          });
+
+          document.getElementById("nextBtn").addEventListener("click", () => {
+            this.calendar.next();
+          });
+
+          document.getElementById("todayBtn").addEventListener("click", () => {
+            this.calendar.today();
+          });
+
+          // View selector
+          document
+            .getElementById("viewSelector")
+            .addEventListener("change", (e) => {
+              this.calendar.changeView(e.target.value);
+            });
+
+          // Event filter
+          document
+            .getElementById("eventFilter")
+            .addEventListener("change", (e) => {
+              this.filterEvents(e.target.value);
+            });
+
+          // Form submission
+          document
+            .getElementById("eventForm")
+            .addEventListener("submit", (e) => {
+              this.handleFormSubmit(e);
+            });
+
+          // Close modal buttons
+          document.querySelectorAll(".close-modal").forEach((btn) => {
+            btn.addEventListener("click", () => {
+              this.closeModal();
+            });
+          });
+
+          // Close modal when clicking outside
+          document
+            .getElementById("eventModal")
+            .addEventListener("click", (e) => {
+              if (e.target === e.currentTarget) {
+                this.closeModal();
+              }
+            });
+
+          // All day checkbox
+          document
+            .getElementById("eventAllDay")
+            .addEventListener("change", (e) => {
+              const timeInput = document.getElementById("eventTime");
+              const durationSelect = document.getElementById("eventDuration");
+
+              if (e.target.checked) {
+                timeInput.disabled = true;
+                durationSelect.disabled = true;
+              } else {
+                timeInput.disabled = false;
+                durationSelect.disabled = false;
+              }
+            });
+        }
+
+        filterEvents(filterType) {
+          const now = new Date();
+          let filteredEvents = this.events.filter(
+            (event) => new Date(event.start) >= now,
+          );
+
+          if (filterType !== "all") {
+            filteredEvents = filteredEvents.filter(
+              (event) => event.type === filterType,
+            );
+          }
+
+          this.displayFilteredEvents(filteredEvents);
+        }
+
+        displayFilteredEvents(events) {
+          const eventList = document.getElementById("eventList");
+          if (!eventList) return;
+
+          if (events.length === 0) {
+            eventList.innerHTML =
+              '<div class="no-events">Nuk ka takime për këtë filtrim</div>';
+            return;
+          }
+
+          eventList.innerHTML = events
+            .map(
+              (event) => `
+                    <div class="event-item" data-id="${event.id}">
+                        <div class="event-color" style="background: ${event.color}"></div>
+                        <div class="event-info">
+                            <h4>${event.title}</h4>
+                            <p class="event-details">
+                                <i class="far fa-clock"></i> ${this.formatEventTime(event.start)}
+                                ${event.location ? ` • <i class="fas fa-map-marker-alt"></i> ${event.location}` : ""}
+                            </p>
+                            <span class="event-type ${event.type}">${this.getEventTypeLabel(event.type)}</span>
+                        </div>
+                    </div>
+                `,
+            )
+            .join("");
+        }
+
+        closeModal() {
+          document.getElementById("eventModal").classList.remove("active");
+          this.currentEvent = null;
+        }
+
+        showNotification(message, type = "info") {
+          const notification = document.createElement("div");
+          notification.className = `notification ${type}`;
+          notification.innerHTML = `
+                    <i class="fas fa-${type === "success" ? "check-circle" : "info-circle"}"></i>
+                    <span>${message}</span>
+                `;
+
+          document.body.appendChild(notification);
+
+          setTimeout(() => {
+            notification.classList.add("show");
+          }, 10);
+
+          setTimeout(() => {
+            notification.classList.remove("show");
+            setTimeout(() => {
+              if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+              }
+            }, 300);
+          }, 3000);
+        }
+      }
+
+      // Initialize calendar when page loads
+      document.addEventListener("DOMContentLoaded", () => {
+        window.calendarManager = new CalendarManager();
+
+        // Initialize datepicker for event date
+        flatpickr("#eventDate", {
+          dateFormat: "Y-m-d",
+          locale: {
+            firstDayOfWeek: 1,
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

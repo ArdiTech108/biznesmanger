@@ -1,0 +1,1667 @@
+<!doctype html>
+<html lang="sq">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Dokumentet - Biznes Manager</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="auth.js"></script>
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Sidebar Backdrop -->
+      <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+      <!-- Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <a href="index.html" class="logo">
+            <div class="logo-icon">
+              <i class="fas fa-briefcase"></i>
+            </div>
+            <div class="logo-text">
+              <span>Biznes Manager</span>
+              <span>Sistemi i Plotë i Menaxhimit</span>
+            </div>
+          </a>
+        </div>
+
+        <nav class="sidebar-nav">
+          <div class="nav-section">
+            <div class="nav-section-title">MENU KRYESORE</div>
+            <a href="index.html" class="nav-item">
+              <i class="nav-icon fas fa-home"></i>
+              <span class="nav-text">Dashboard</span>
+            </a>
+            <a href="klientet.html" class="nav-item">
+              <i class="nav-icon fas fa-users"></i>
+              <span class="nav-text">Klientët</span>
+            </a>
+          </div>
+
+          <div class="nav-section">
+            <div class="nav-section-title">BIZNESI</div>
+            <a href="planet-biznesore.html" class="nav-item">
+              <i class="nav-icon fas fa-chart-line"></i>
+              <span class="nav-text">Planet Biznesore</span>
+            </a>
+            <a href="regjistrimi-biznesit.html" class="nav-item">
+              <i class="nav-icon fas fa-file-signature"></i>
+              <span class="nav-text">Regjistrimi i Bizneseve</span>
+            </a>
+            <a href="mbyllja-biznesit.html" class="nav-item">
+              <i class="nav-icon fas fa-door-closed"></i>
+              <span class="nav-text">Mbyllja e Bizneseve</span>
+            </a>
+          </div>
+
+          <div class="nav-section">
+            <div class="nav-section-title">TENDERA & DOKUMENTA</div>
+            <a href="tenderat.html" class="nav-item">
+              <i class="nav-icon fas fa-file-contract"></i>
+              <span class="nav-text">Tenderat</span>
+            </a>
+            <a href="konsultimet.html" class="nav-item">
+              <i class="nav-icon fas fa-comments"></i>
+              <span class="nav-text">Konsultimet</span>
+            </a>
+            <a href="kontabiliteti.html" class="nav-item">
+              <i class="nav-icon fas fa-file-invoice-dollar"></i>
+              <span class="nav-text">Faturat & Pagesat</span>
+            </a>
+            <a href="dokumentet.html" class="nav-item active">
+              <i class="nav-icon fas fa-archive"></i>
+              <span class="nav-text">Arkivi i Dokumenteve</span>
+              <span class="nav-badge">245</span>
+            </a>
+          </div>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="user-info">
+            <div>Arkivi i Sigurt</div>
+            <div>
+              <i class="fas fa-shield-alt"></i>
+              245 Dokumente të Arkivuara
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Header -->
+        <header class="header">
+          <div class="header-left">
+            <button class="menu-toggle" id="menuToggle">
+              <i class="fas fa-bars"></i>
+            </button>
+            <div class="header-title">
+              <h1>Dokumentet</h1>
+              <div class="header-subtitle">
+                Arkivi i Sigurt dhe Menaxhimi i të Gjitha Dokumenteve të
+                Biznesit
+              </div>
+            </div>
+          </div>
+
+          <div class="header-right">
+            <div class="header-stats">
+              <div class="stat-mini">
+                <div class="stat-mini-value">245</div>
+                <div class="stat-mini-label">Dokumente</div>
+              </div>
+              <div class="stat-mini">
+                <div
+                  class="stat-mini-value"
+                  style="color: var(--warning-color)"
+                >
+                  15
+                </div>
+                <div class="stat-mini-label">Në Pritje</div>
+              </div>
+              <div class="stat-mini">
+                <div class="stat-mini-value success">4.2GB</div>
+                <div class="stat-mini-label">Hapsirë e Përdorur</div>
+              </div>
+            </div>
+
+            <div class="search-container">
+              <i class="fas fa-search search-icon"></i>
+              <input
+                type="text"
+                class="search-input"
+                placeholder="Kërko dokument..."
+              />
+            </div>
+
+            <div class="user-menu">
+              <div class="user-avatar">BM</div>
+              <div class="user-info">
+                <div class="user-name">Administrator</div>
+                <div class="user-role">Arkivitar Kryesor</div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="page-content">
+          <!-- Breadcrumb -->
+          <div class="breadcrumb">
+            <div class="breadcrumb-item">
+              <a href="index.html"><i class="fas fa-home"></i> Dashboard</a>
+            </div>
+            <div class="breadcrumb-separator">/</div>
+            <div class="breadcrumb-item active">
+              <i class="fas fa-archive"></i> Dokumentet
+            </div>
+          </div>
+
+          <!-- Page Header -->
+          <div class="page-header">
+            <div class="page-title-section">
+              <div class="page-title">
+                <i class="fas fa-archive"></i>
+                Arkivi i Dokumenteve të Biznesit
+              </div>
+              <div class="page-subtitle">
+                Menaxhoni dhe ruani të gjitha dokumentet e biznesit në një arkiv
+                të sigurt dhe të organizuar.
+              </div>
+            </div>
+            <div class="page-actions">
+              <button class="btn btn-outline">
+                <i class="fas fa-filter"></i> Filtro
+              </button>
+              <button class="btn btn-primary" id="newDocumentBtn">
+                <i class="fas fa-plus"></i> Ngarko Dokument
+              </button>
+              <button class="btn btn-success">
+                <i class="fas fa-folder-plus"></i> Krijo Dosje
+              </button>
+            </div>
+          </div>
+
+          <!-- Stats Overview -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon clients">
+                <i class="fas fa-folder-open"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">245</div>
+                <div class="stat-label">Dokumente të Arkivuara</div>
+                <div class="stat-change positive">
+                  <i class="fas fa-arrow-up"></i> 12 të rinj këtë javë
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon projects">
+                <i class="fas fa-hdd"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">4.2GB</div>
+                <div class="stat-label">Hapsirë e Përdorur</div>
+                <div class="stat-change positive">
+                  <i class="fas fa-arrow-up"></i> 65% e kapacitetit
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon pending">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">15</div>
+                <div class="stat-label">Dokumente në Pritje</div>
+                <div class="stat-change negative">
+                  <i class="fas fa-clock"></i> Kërkojnë verifikim
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon revenue">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">100%</div>
+                <div class="stat-label">Siguria e Dokumenteve</div>
+                <div class="stat-change positive">
+                  <i class="fas fa-check-circle"></i> Të gjitha të enkriptuara
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Document Sections -->
+          <div class="charts-container">
+            <!-- Recent Documents -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <i
+                    class="fas fa-history"
+                    style="color: var(--secondary-color)"
+                  ></i>
+                  Dokumentet e Fundit
+                </div>
+                <div class="card-actions">
+                  <div class="btn-group">
+                    <button class="btn btn-sm btn-outline active">
+                      7 Ditë
+                    </button>
+                    <button class="btn btn-sm btn-outline">30 Ditë</button>
+                    <button class="btn btn-sm btn-outline">Këtë Vit</button>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="recent-documents">
+                  <!-- Document 1 -->
+                  <div class="document-item important">
+                    <div class="document-icon">
+                      <i class="fas fa-file-contract"></i>
+                    </div>
+                    <div class="document-info">
+                      <div class="document-title">
+                        Kontrata me Agro-Shpresa ShPK
+                      </div>
+                      <div class="document-meta">
+                        <span><i class="fas fa-user"></i> Artan Shehu</span>
+                        <span><i class="fas fa-calendar"></i> 20 Maj 2024</span>
+                        <span><i class="fas fa-folder"></i> Kontratat</span>
+                        <span><i class="fas fa-file-pdf"></i> PDF • 2.4MB</span>
+                      </div>
+                      <div class="document-tags">
+                        <span class="document-tag contract">Kontratë</span>
+                        <span class="document-tag active">Aktive</span>
+                        <span class="document-tag signed">E nënshkruar</span>
+                      </div>
+                    </div>
+                    <div class="document-actions">
+                      <button class="action-btn view" title="Shiko dokumentin">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                      <button class="action-btn download" title="Shkarko">
+                        <i class="fas fa-download"></i>
+                      </button>
+                      <button class="action-btn share" title="Ndaj">
+                        <i class="fas fa-share"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Document 2 -->
+                  <div class="document-item">
+                    <div class="document-icon">
+                      <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <div class="document-info">
+                      <div class="document-title">
+                        Fatura INV-2024-087 - TeKno AL
+                      </div>
+                      <div class="document-meta">
+                        <span><i class="fas fa-user"></i> Teuta Kola</span>
+                        <span><i class="fas fa-calendar"></i> 18 Maj 2024</span>
+                        <span><i class="fas fa-folder"></i> Faturat</span>
+                        <span><i class="fas fa-file-pdf"></i> PDF • 1.8MB</span>
+                      </div>
+                      <div class="document-tags">
+                        <span class="document-tag invoice">Faturë</span>
+                        <span class="document-tag unpaid">E papesuar</span>
+                        <span class="document-tag warning">Afati 30 Maj</span>
+                      </div>
+                    </div>
+                    <div class="document-actions">
+                      <button class="action-btn view" title="Shiko dokumentin">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                      <button class="action-btn download" title="Shkarko">
+                        <i class="fas fa-download"></i>
+                      </button>
+                      <button class="action-btn print" title="Printo">
+                        <i class="fas fa-print"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Document 3 -->
+                  <div class="document-item">
+                    <div class="document-icon">
+                      <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="document-info">
+                      <div class="document-title">
+                        Raporti i Performancës - Tremujori I 2024
+                      </div>
+                      <div class="document-meta">
+                        <span><i class="fas fa-user"></i> Gentian Leka</span>
+                        <span><i class="fas fa-calendar"></i> 15 Maj 2024</span>
+                        <span><i class="fas fa-folder"></i> Raportet</span>
+                        <span
+                          ><i class="fas fa-file-excel"></i> Excel • 3.2MB</span
+                        >
+                      </div>
+                      <div class="document-tags">
+                        <span class="document-tag report">Raport</span>
+                        <span class="document-tag financial">Financiar</span>
+                        <span class="document-tag confidential"
+                          >Konfidencial</span
+                        >
+                      </div>
+                    </div>
+                    <div class="document-actions">
+                      <button class="action-btn view" title="Shiko dokumentin">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                      <button class="action-btn download" title="Shkarko">
+                        <i class="fas fa-download"></i>
+                      </button>
+                      <button class="action-btn edit" title="Edito">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Document 4 -->
+                  <div class="document-item">
+                    <div class="document-icon">
+                      <i class="fas fa-file-signature"></i>
+                    </div>
+                    <div class="document-info">
+                      <div class="document-title">
+                        Aplikimi për Regjistrim - IT Solutions Albania
+                      </div>
+                      <div class="document-meta">
+                        <span><i class="fas fa-user"></i> Klajdi Hoxha</span>
+                        <span><i class="fas fa-calendar"></i> 12 Maj 2024</span>
+                        <span><i class="fas fa-folder"></i> Regjistrimet</span>
+                        <span
+                          ><i class="fas fa-file-word"></i> Word • 1.5MB</span
+                        >
+                      </div>
+                      <div class="document-tags">
+                        <span class="document-tag registration"
+                          >Regjistrim</span
+                        >
+                        <span class="document-tag pending">Në Proces</span>
+                        <span class="document-tag review">Në Rishikim</span>
+                      </div>
+                    </div>
+                    <div class="document-actions">
+                      <button class="action-btn view" title="Shiko dokumentin">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                      <button class="action-btn download" title="Shkarko">
+                        <i class="fas fa-download"></i>
+                      </button>
+                      <button class="action-btn verify" title="Verifiko">
+                        <i class="fas fa-check-circle"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Document 5 -->
+                  <div class="document-item">
+                    <div class="document-icon">
+                      <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <div class="document-info">
+                      <div class="document-title">
+                        Auditimi i Sigurisë së të Dhënave - 2024
+                      </div>
+                      <div class="document-meta">
+                        <span><i class="fas fa-user"></i> Ana Marku</span>
+                        <span><i class="fas fa-calendar"></i> 10 Maj 2024</span>
+                        <span><i class="fas fa-folder"></i> Auditimet</span>
+                        <span><i class="fas fa-file-pdf"></i> PDF • 4.8MB</span>
+                      </div>
+                      <div class="document-tags">
+                        <span class="document-tag audit">Auditim</span>
+                        <span class="document-tag security">Siguri</span>
+                        <span class="document-tag completed">Përfunduar</span>
+                      </div>
+                    </div>
+                    <div class="document-actions">
+                      <button class="action-btn view" title="Shiko dokumentin">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                      <button class="action-btn download" title="Shkarko">
+                        <i class="fas fa-download"></i>
+                      </button>
+                      <button class="action-btn lock" title="Kufizo qasjen">
+                        <i class="fas fa-lock"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <div style="font-size: 0.875rem; color: var(--gray-600)">
+                  5 dokumentet e fundit - Shiko 240 të tjerë
+                </div>
+                <button class="btn btn-outline btn-sm">
+                  <i class="fas fa-list"></i> Shiko të Gjitha
+                </button>
+              </div>
+            </div>
+
+            <!-- Folder Structure & Storage -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <i
+                    class="fas fa-folder-tree"
+                    style="color: var(--success-color)"
+                  ></i>
+                  Struktura e Dosjeve & Hapsira e Ruajtjes
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="folder-structure">
+                  <!-- Main Folders -->
+                  <div class="folder-list">
+                    <div class="folder-item main">
+                      <div class="folder-header">
+                        <i class="fas fa-folder-open"></i>
+                        <div class="folder-info">
+                          <div class="folder-name">Kontratat</div>
+                          <div class="folder-stats">45 dokumente • 128MB</div>
+                        </div>
+                        <div class="folder-actions">
+                          <button class="btn btn-sm btn-outline">
+                            <i class="fas fa-chevron-down"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="folder-content">
+                        <div class="subfolder-item">
+                          <i class="fas fa-folder"></i>
+                          <span>Kontratat me Klientët</span>
+                          <span class="subfolder-count">28</span>
+                        </div>
+                        <div class="subfolder-item">
+                          <i class="fas fa-folder"></i>
+                          <span>Kontratat e Punës</span>
+                          <span class="subfolder-count">12</span>
+                        </div>
+                        <div class="subfolder-item">
+                          <i class="fas fa-folder"></i>
+                          <span>Marrëveshjet e Partneritetit</span>
+                          <span class="subfolder-count">5</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="folder-item main">
+                      <div class="folder-header">
+                        <i class="fas fa-folder-open"></i>
+                        <div class="folder-info">
+                          <div class="folder-name">Faturat</div>
+                          <div class="folder-stats">68 dokumente • 256MB</div>
+                        </div>
+                        <div class="folder-actions">
+                          <button class="btn btn-sm btn-outline">
+                            <i class="fas fa-chevron-down"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="folder-content">
+                        <div class="subfolder-item">
+                          <i class="fas fa-folder"></i>
+                          <span>Faturat e Dërguara</span>
+                          <span class="subfolder-count">42</span>
+                        </div>
+                        <div class="subfolder-item">
+                          <i class="fas fa-folder"></i>
+                          <span>Faturat e Marra</span>
+                          <span class="subfolder-count">26</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="folder-item main">
+                      <div class="folder-header">
+                        <i class="fas fa-folder-open"></i>
+                        <div class="folder-info">
+                          <div class="folder-name">Raportet</div>
+                          <div class="folder-stats">35 dokumente • 512MB</div>
+                        </div>
+                        <div class="folder-actions">
+                          <button class="btn btn-sm btn-outline">
+                            <i class="fas fa-chevron-down"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="folder-content">
+                        <div class="subfolder-item">
+                          <i class="fas fa-folder"></i>
+                          <span>Raportet Financiare</span>
+                          <span class="subfolder-count">15</span>
+                        </div>
+                        <div class="subfolder-item">
+                          <i class="fas fa-folder"></i>
+                          <span>Raportet e Projektit</span>
+                          <span class="subfolder-count">12</span>
+                        </div>
+                        <div class="subfolder-item">
+                          <i class="fas fa-folder"></i>
+                          <span>Raportet e Auditimit</span>
+                          <span class="subfolder-count">8</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="folder-item main">
+                      <div class="folder-header">
+                        <i class="fas fa-folder-open"></i>
+                        <div class="folder-info">
+                          <div class="folder-name">Tenderat</div>
+                          <div class="folder-stats">52 dokumente • 2.1GB</div>
+                        </div>
+                        <div class="folder-actions">
+                          <button class="btn btn-sm btn-outline">
+                            <i class="fas fa-chevron-down"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="folder-content">
+                        <div class="subfolder-item">
+                          <i class="fas fa-folder"></i>
+                          <span>Aplikimet për Tender</span>
+                          <span class="subfolder-count">25</span>
+                        </div>
+                        <div class="subfolder-item">
+                          <i class="fas fa-folder"></i>
+                          <span>Dokumentet e Tenderit</span>
+                          <span class="subfolder-count">18</span>
+                        </div>
+                        <div class="subfolder-item">
+                          <i class="fas fa-folder"></i>
+                          <span>Ofertat e Paraqitura</span>
+                          <span class="subfolder-count">9</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Storage Usage -->
+                  <div
+                    class="storage-usage"
+                    style="
+                      margin-top: 2rem;
+                      padding-top: 1.5rem;
+                      border-top: 1px solid var(--gray-200);
+                    "
+                  >
+                    <h4 style="margin-bottom: 1rem; color: var(--gray-800)">
+                      <i class="fas fa-hdd"></i>
+                      Përdorimi i Hapsirës së Ruajtjes
+                    </h4>
+                    <div class="storage-progress">
+                      <div class="progress-label">
+                        <span>4.2GB / 10GB të përdorur</span>
+                        <span>42%</span>
+                      </div>
+                      <div class="progress-bar">
+                        <div
+                          class="progress-fill primary"
+                          style="width: 42%"
+                        ></div>
+                      </div>
+                      <div class="storage-breakdown">
+                        <div class="breakdown-item">
+                          <span class="label">Tenderat</span>
+                          <span class="value">2.1GB</span>
+                          <span class="percentage">50%</span>
+                        </div>
+                        <div class="breakdown-item">
+                          <span class="label">Raportet</span>
+                          <span class="value">512MB</span>
+                          <span class="percentage">12%</span>
+                        </div>
+                        <div class="breakdown-item">
+                          <span class="label">Faturat</span>
+                          <span class="value">256MB</span>
+                          <span class="percentage">6%</span>
+                        </div>
+                        <div class="breakdown-item">
+                          <span class="label">Kontratat</span>
+                          <span class="value">128MB</span>
+                          <span class="percentage">3%</span>
+                        </div>
+                        <div class="breakdown-item">
+                          <span class="label">Të Tjera</span>
+                          <span class="value">1.2GB</span>
+                          <span class="percentage">29%</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-outline btn-sm">
+                  <i class="fas fa-expand-alt"></i> Zgjero të Gjitha
+                </button>
+                <button class="btn btn-primary btn-sm">
+                  <i class="fas fa-sync-alt"></i> Rifresko
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Document Categories & Pending Actions -->
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 1.5rem;
+              margin-top: 2rem;
+            "
+          >
+            <!-- Document Categories -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <i class="fas fa-tags" style="color: var(--info-color)"></i>
+                  Kategoritë e Dokumenteve
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="document-categories">
+                  <div class="category-grid">
+                    <div class="category-item">
+                      <div class="category-icon">
+                        <i class="fas fa-file-contract"></i>
+                      </div>
+                      <div class="category-info">
+                        <div class="category-name">Kontratat</div>
+                        <div class="category-count">45 dokumente</div>
+                        <div class="category-size">128MB</div>
+                      </div>
+                      <div class="category-actions">
+                        <button class="btn btn-sm btn-outline">
+                          <i class="fas fa-eye"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="category-item">
+                      <div class="category-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                      </div>
+                      <div class="category-info">
+                        <div class="category-name">Faturat</div>
+                        <div class="category-count">68 dokumente</div>
+                        <div class="category-size">256MB</div>
+                      </div>
+                      <div class="category-actions">
+                        <button class="btn btn-sm btn-outline">
+                          <i class="fas fa-eye"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="category-item">
+                      <div class="category-icon">
+                        <i class="fas fa-chart-line"></i>
+                      </div>
+                      <div class="category-info">
+                        <div class="category-name">Raportet</div>
+                        <div class="category-count">35 dokumente</div>
+                        <div class="category-size">512MB</div>
+                      </div>
+                      <div class="category-actions">
+                        <button class="btn btn-sm btn-outline">
+                          <i class="fas fa-eye"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="category-item">
+                      <div class="category-icon">
+                        <i class="fas fa-file-signature"></i>
+                      </div>
+                      <div class="category-info">
+                        <div class="category-name">Regjistrimet</div>
+                        <div class="category-count">28 dokumente</div>
+                        <div class="category-size">96MB</div>
+                      </div>
+                      <div class="category-actions">
+                        <button class="btn btn-sm btn-outline">
+                          <i class="fas fa-eye"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="category-item">
+                      <div class="category-icon">
+                        <i class="fas fa-file-contract"></i>
+                      </div>
+                      <div class="category-info">
+                        <div class="category-name">Tenderat</div>
+                        <div class="category-count">52 dokumente</div>
+                        <div class="category-size">2.1GB</div>
+                      </div>
+                      <div class="category-actions">
+                        <button class="btn btn-sm btn-outline">
+                          <i class="fas fa-eye"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="category-item">
+                      <div class="category-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                      </div>
+                      <div class="category-info">
+                        <div class="category-name">Auditimet</div>
+                        <div class="category-count">15 dokumente</div>
+                        <div class="category-size">64MB</div>
+                      </div>
+                      <div class="category-actions">
+                        <button class="btn btn-sm btn-outline">
+                          <i class="fas fa-eye"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pending Actions & Security -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <i
+                    class="fas fa-tasks"
+                    style="color: var(--warning-color)"
+                  ></i>
+                  Veprime në Pritje & Siguria
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="pending-actions">
+                  <!-- Pending Reviews -->
+                  <div class="pending-section">
+                    <h4 style="margin-bottom: 1rem; color: var(--gray-800)">
+                      <i class="fas fa-clock"></i>
+                      Dokumente në Pritje të Verifikimit
+                    </h4>
+                    <div class="review-list">
+                      <div class="review-item">
+                        <div class="review-info">
+                          <div class="review-title">
+                            Aplikimi për Regjistrim - Organic Food Market
+                          </div>
+                          <div class="review-meta">
+                            <span><i class="fas fa-user"></i> Anita Gjoni</span>
+                            <span
+                              ><i class="fas fa-calendar"></i> Ngarkuar: 22 Maj
+                              2024</span
+                            >
+                          </div>
+                        </div>
+                        <div class="review-actions">
+                          <button class="btn btn-sm btn-success">
+                            <i class="fas fa-check"></i> Aprovoj
+                          </button>
+                          <button class="btn btn-sm btn-outline">
+                            <i class="fas fa-times"></i> Refuzoj
+                          </button>
+                        </div>
+                      </div>
+                      <div class="review-item">
+                        <div class="review-info">
+                          <div class="review-title">
+                            Faktura e furnizuesit - Office Supplies Co.
+                          </div>
+                          <div class="review-meta">
+                            <span
+                              ><i class="fas fa-user"></i> Office Supplies
+                              Co.</span
+                            >
+                            <span
+                              ><i class="fas fa-calendar"></i> Ngarkuar: 20 Maj
+                              2024</span
+                            >
+                          </div>
+                        </div>
+                        <div class="review-actions">
+                          <button class="btn btn-sm btn-success">
+                            <i class="fas fa-check"></i> Aprovoj
+                          </button>
+                          <button class="btn btn-sm btn-outline">
+                            <i class="fas fa-times"></i> Refuzoj
+                          </button>
+                        </div>
+                      </div>
+                      <div class="review-item">
+                        <div class="review-info">
+                          <div class="review-title">
+                            Raporti i Auditimit të Sigurisë - Q1 2024
+                          </div>
+                          <div class="review-meta">
+                            <span
+                              ><i class="fas fa-user"></i> Gentian Leka</span
+                            >
+                            <span
+                              ><i class="fas fa-calendar"></i> Ngarkuar: 18 Maj
+                              2024</span
+                            >
+                          </div>
+                        </div>
+                        <div class="review-actions">
+                          <button class="btn btn-sm btn-success">
+                            <i class="fas fa-check"></i> Aprovoj
+                          </button>
+                          <button class="btn btn-sm btn-outline">
+                            <i class="fas fa-times"></i> Refuzoj
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Security Settings -->
+                  <div
+                    class="security-section"
+                    style="
+                      margin-top: 2rem;
+                      padding-top: 1.5rem;
+                      border-top: 1px solid var(--gray-200);
+                    "
+                  >
+                    <h4 style="margin-bottom: 1rem; color: var(--gray-800)">
+                      <i class="fas fa-shield-alt"></i>
+                      Cilësimet e Sigurisë
+                    </h4>
+                    <div class="security-settings">
+                      <div class="setting-item">
+                        <div class="setting-info">
+                          <div class="setting-name">
+                            Enkriptimi i Dokumenteve
+                          </div>
+                          <div class="setting-status active">Aktiv</div>
+                        </div>
+                        <div class="setting-description">
+                          Të gjitha dokumentet janë të enkriptuara me AES-256
+                        </div>
+                      </div>
+                      <div class="setting-item">
+                        <div class="setting-info">
+                          <div class="setting-name">Backup Automatik</div>
+                          <div class="setting-status active">Aktiv</div>
+                        </div>
+                        <div class="setting-description">
+                          Backup ditor në cloud dhe javor në server lokal
+                        </div>
+                      </div>
+                      <div class="setting-item">
+                        <div class="setting-info">
+                          <div class="setting-name">Qasja me Dy-Faktorë</div>
+                          <div class="setting-status active">Aktiv</div>
+                        </div>
+                        <div class="setting-description">
+                          Kërkohet verifikim me dy faktorë për qasje të
+                          dokumenteve konfidenciale
+                        </div>
+                      </div>
+                      <div class="setting-item">
+                        <div class="setting-info">
+                          <div class="setting-name">
+                            Regjistrimi i Aktivitetit
+                          </div>
+                          <div class="setting-status active">Aktiv</div>
+                        </div>
+                        <div class="setting-description">
+                          Gjurmimi i të gjitha aktiviteteve të qasjes dhe
+                          modifikimit të dokumenteve
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Quick Actions -->
+                  <div
+                    class="quick-actions-section"
+                    style="
+                      margin-top: 2rem;
+                      padding-top: 1.5rem;
+                      border-top: 1px solid var(--gray-200);
+                    "
+                  >
+                    <h4 style="margin-bottom: 1rem; color: var(--gray-800)">
+                      <i class="fas fa-bolt"></i>
+                      Veprime të Shpejta
+                    </h4>
+                    <div class="quick-actions-grid">
+                      <button class="quick-action-btn">
+                        <i class="fas fa-search"></i>
+                        <span>Kërkim i Avancuar</span>
+                      </button>
+                      <button class="quick-action-btn">
+                        <i class="fas fa-file-export"></i>
+                        <span>Eksporto të Dhëna</span>
+                      </button>
+                      <button class="quick-action-btn">
+                        <i class="fas fa-trash-alt"></i>
+                        <span>Pastro Skedarët e Vjetër</span>
+                      </button>
+                      <button class="quick-action-btn">
+                        <i class="fas fa-key"></i>
+                        <span>Menaxho Qasjet</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Modal for New Document -->
+    <div class="modal-overlay" id="newDocumentModal" style="display: none">
+      <div class="modal">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fas fa-cloud-upload-alt"></i> Ngarko Dokument të Ri
+            </div>
+            <button class="action-btn delete" id="closeDocumentModal">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="card-body">
+            <div class="form-grid">
+              <!-- Document Information -->
+              <div class="form-group">
+                <label class="form-label required">Emri i Dokumentit</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Shkruani emrin e dokumentit"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label required">Kategoria</label>
+                <div class="select-with-icon">
+                  <i class="fas fa-folder select-icon"></i>
+                  <select class="form-control" id="documentCategory">
+                    <option value="">Zgjidhni kategorinë</option>
+                    <option value="contract">Kontratat</option>
+                    <option value="invoice">Faturat</option>
+                    <option value="report">Raportet</option>
+                    <option value="registration">Regjistrimet</option>
+                    <option value="tender">Tenderat</option>
+                    <option value="audit">Auditimet</option>
+                    <option value="other">Të Tjera</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Subkategoria</label>
+                <div class="select-with-icon">
+                  <i class="fas fa-folder-open select-icon"></i>
+                  <select class="form-control" id="documentSubcategory">
+                    <option value="">Zgjidhni subkategorinë (opsionale)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Klienti/Lidhur me</label>
+                <div class="select-with-icon">
+                  <i class="fas fa-user select-icon"></i>
+                  <select class="form-control" id="documentClient">
+                    <option value="">Zgjidhni klientin (opsionale)</option>
+                    <option value="agro">Agro-Shpresa ShPK</option>
+                    <option value="tekno">TeKno AL ShPK</option>
+                    <option value="ndertim">Ndërtim Plus ShPK</option>
+                    <option value="travel">Emal Travel ShPK</option>
+                    <option value="farma">Farma Health ShPK</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label required">Data e Dokumentit</label>
+                <input type="date" class="form-control" id="documentDate" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Data e Skadencës</label>
+                <input type="date" class="form-control" id="expiryDate" />
+                <div class="form-hint">
+                  Lëreni bosh nëse dokumenti nuk skadon
+                </div>
+              </div>
+
+              <!-- Document Tags -->
+              <div class="form-group" style="grid-column: 1 / -1">
+                <label class="form-label">Etiketat (Tags)</label>
+                <div class="tags-input">
+                  <div class="tags-container">
+                    <span class="tag"
+                      >Kontratë <i class="fas fa-times remove-tag"></i
+                    ></span>
+                    <span class="tag"
+                      >Aktive <i class="fas fa-times remove-tag"></i
+                    ></span>
+                  </div>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Shtoni etiketa (shtypni Enter)..."
+                  />
+                </div>
+              </div>
+
+              <!-- Document Upload -->
+              <div class="form-group" style="grid-column: 1 / -1">
+                <label class="form-label required">Dokumenti</label>
+                <div class="file-upload-area">
+                  <div class="upload-zone">
+                    <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                    <div class="upload-text">
+                      <span class="upload-title"
+                        >Zvarritni dhe lëshoni dokumentet këtu</span
+                      >
+                      <span class="upload-subtitle"
+                        >ose klikoni për të zgjedhur skedarët</span
+                      >
+                    </div>
+                    <input
+                      type="file"
+                      id="documentFile"
+                      multiple
+                      style="display: none"
+                    />
+                    <label for="documentFile" class="btn btn-primary">
+                      <i class="fas fa-folder-open"></i> Zgjidhni Skedarët
+                    </label>
+                  </div>
+                  <div
+                    class="file-preview"
+                    id="filePreview"
+                    style="display: none"
+                  >
+                    <div class="preview-header">
+                      <span>Skedarët e Zgjedhur</span>
+                      <span class="file-count">0 skedarë</span>
+                    </div>
+                    <div class="preview-list" id="previewList">
+                      <!-- Files will be listed here -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Description & Notes -->
+              <div class="form-group" style="grid-column: 1 / -1">
+                <label class="form-label">Përshkrimi i Dokumentit</label>
+                <textarea
+                  class="form-control"
+                  rows="3"
+                  placeholder="Përshkrimi i dokumentit..."
+                ></textarea>
+              </div>
+
+              <!-- Security Settings -->
+              <div class="form-group" style="grid-column: 1 / -1">
+                <label class="form-label">Cilësimet e Sigurisë</label>
+                <div class="security-options">
+                  <div class="security-option">
+                    <input type="checkbox" id="confidential" checked />
+                    <label for="confidential">Dokument Konfidencial</label>
+                    <div class="option-hint">
+                      Kërkon autorizim special për qasje
+                    </div>
+                  </div>
+                  <div class="security-option">
+                    <input type="checkbox" id="watermark" checked />
+                    <label for="watermark">Shto Ujëmbajtës (Watermark)</label>
+                    <div class="option-hint">
+                      Shton ujëmbajtës me emrin e përdoruesit
+                    </div>
+                  </div>
+                  <div class="security-option">
+                    <input type="checkbox" id="encrypt" checked />
+                    <label for="encrypt">Enkripto Dokumentin</label>
+                    <div class="option-hint">
+                      Enkripton dokumentin me AES-256
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Access Control -->
+              <div class="form-group" style="grid-column: 1 / -1">
+                <label class="form-label">Kontrolli i Qasjes</label>
+                <div class="access-control">
+                  <div class="access-option">
+                    <input
+                      type="radio"
+                      id="accessPublic"
+                      name="access"
+                      value="public"
+                    />
+                    <label for="accessPublic"
+                      >Publike (Të gjithë përdoruesit)</label
+                    >
+                  </div>
+                  <div class="access-option">
+                    <input
+                      type="radio"
+                      id="accessDepartment"
+                      name="access"
+                      value="department"
+                      checked
+                    />
+                    <label for="accessDepartment"
+                      >Departamenti (Kontabiliteti)</label
+                    >
+                  </div>
+                  <div class="access-option">
+                    <input
+                      type="radio"
+                      id="accessRestricted"
+                      name="access"
+                      value="restricted"
+                    />
+                    <label for="accessRestricted"
+                      >E Kufizuar (Vetëm përdorues të zgjedhur)</label
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-outline" id="cancelDocumentBtn">
+              Anulo
+            </button>
+            <button class="btn btn-primary" id="saveDocumentBtn">
+              Ruaj Dokumentin
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+      // Mobile Menu Toggle
+      const menuToggle = document.getElementById("menuToggle");
+      const sidebar = document.getElementById("sidebar");
+      const mainContent = document.querySelector(".main-content");
+      const sidebarBackdrop = document.getElementById("sidebarBackdrop");
+
+      if (menuToggle && sidebar) {
+        function toggleSidebar() {
+          sidebar.classList.toggle("active");
+          if (mainContent) mainContent.classList.toggle("expanded");
+          if (window.innerWidth <= 1024 && sidebarBackdrop) {
+            sidebarBackdrop.classList.toggle("active");
+          }
+        }
+
+        function closeSidebar() {
+          sidebar.classList.remove("active");
+          if (mainContent) mainContent.classList.remove("expanded");
+          if (sidebarBackdrop) sidebarBackdrop.classList.remove("active");
+        }
+
+        menuToggle.addEventListener("click", toggleSidebar);
+
+        if (sidebarBackdrop) {
+          sidebarBackdrop.addEventListener("click", closeSidebar);
+        }
+
+        document.addEventListener("click", (e) => {
+          if (window.innerWidth <= 1024) {
+            if (
+              sidebar &&
+              !sidebar.contains(e.target) &&
+              !menuToggle.contains(e.target) &&
+              sidebar.classList.contains("active")
+            ) {
+              closeSidebar();
+            }
+          }
+        });
+      }
+    </script>
+    <script>
+      // Specific scripts for dokumentet.html
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.getElementById("menuToggle");
+        const sidebar = document.querySelector(".sidebar");
+        const newDocumentBtn = document.getElementById("newDocumentBtn");
+        const newDocumentModal = document.getElementById("newDocumentModal");
+        const closeDocumentModal =
+          document.getElementById("closeDocumentModal");
+        const cancelDocumentBtn = document.getElementById("cancelDocumentBtn");
+        const saveDocumentBtn = document.getElementById("saveDocumentBtn");
+        const documentFile = document.getElementById("documentFile");
+        const filePreview = document.getElementById("filePreview");
+        const previewList = document.getElementById("previewList");
+
+        // Toggle sidebar on mobile
+        menuToggle.addEventListener("click", () => {
+          sidebar.classList.toggle("active");
+        });
+
+        // Show new document modal
+        newDocumentBtn.addEventListener("click", () => {
+          newDocumentModal.style.display = "flex";
+          resetDocumentForm();
+        });
+
+        // Close modal
+        function closeModalFunc() {
+          newDocumentModal.style.display = "none";
+        }
+
+        closeDocumentModal.addEventListener("click", closeModalFunc);
+        cancelDocumentBtn.addEventListener("click", closeModalFunc);
+
+        // Close modal when clicking outside
+        newDocumentModal.addEventListener("click", (e) => {
+          if (e.target === newDocumentModal) {
+            closeModalFunc();
+          }
+        });
+
+        // Search functionality
+        const searchInput = document.querySelector(".search-input");
+        searchInput.addEventListener("input", function (e) {
+          const searchTerm = e.target.value.toLowerCase();
+          console.log("Kërkim për dokument:", searchTerm);
+          // Implement search logic here
+        });
+
+        // Document category change
+        const categorySelect = document.getElementById("documentCategory");
+        const subcategorySelect = document.getElementById(
+          "documentSubcategory",
+        );
+
+        const subcategories = {
+          contract: [
+            "Kontratat me Klientët",
+            "Kontratat e Punës",
+            "Marrëveshjet e Partneritetit",
+          ],
+          invoice: [
+            "Faturat e Dërguara",
+            "Faturat e Marra",
+            "Faturat e Paguara",
+            "Faturat e Papesuara",
+          ],
+          report: [
+            "Raportet Financiare",
+            "Raportet e Projektit",
+            "Raportet e Auditimit",
+            "Raportet Mujorë",
+          ],
+          registration: ["Regjistrimet e Bizneseve", "Licencat", "Autorizimet"],
+          tender: [
+            "Aplikimet për Tender",
+            "Dokumentet e Tenderit",
+            "Ofertat e Paraqitura",
+          ],
+          audit: [
+            "Auditimet Financiare",
+            "Auditimet e Sigurisë",
+            "Auditimet e Procesit",
+          ],
+          other: ["Të Tjera"],
+        };
+
+        categorySelect.addEventListener("change", function () {
+          const selectedCategory = this.value;
+          subcategorySelect.innerHTML =
+            '<option value="">Zgjidhni subkategorinë (opsionale)</option>';
+
+          if (selectedCategory && subcategories[selectedCategory]) {
+            subcategories[selectedCategory].forEach((subcat) => {
+              const option = document.createElement("option");
+              option.value = subcat.toLowerCase().replace(/\s+/g, "-");
+              option.textContent = subcat;
+              subcategorySelect.appendChild(option);
+            });
+          }
+        });
+
+        // File upload functionality
+        documentFile.addEventListener("change", function (e) {
+          const files = Array.from(e.target.files);
+          if (files.length > 0) {
+            filePreview.style.display = "block";
+            previewList.innerHTML = "";
+
+            files.forEach((file) => {
+              const fileItem = document.createElement("div");
+              fileItem.className = "preview-item";
+              fileItem.innerHTML = `
+                            <div class="file-info">
+                                <i class="fas fa-file ${getFileIcon(file.type)}"></i>
+                                <div>
+                                    <div class="file-name">${file.name}</div>
+                                    <div class="file-size">${formatFileSize(file.size)}</div>
+                                </div>
+                            </div>
+                            <button type="button" class="remove-file">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        `;
+              previewList.appendChild(fileItem);
+
+              // Add remove functionality
+              fileItem
+                .querySelector(".remove-file")
+                .addEventListener("click", function () {
+                  fileItem.remove();
+                  updateFileCount();
+                });
+            });
+
+            updateFileCount();
+          }
+        });
+
+        function getFileIcon(fileType) {
+          if (fileType.includes("pdf")) return "fa-file-pdf text-danger";
+          if (fileType.includes("word") || fileType.includes("document"))
+            return "fa-file-word text-primary";
+          if (fileType.includes("excel") || fileType.includes("spreadsheet"))
+            return "fa-file-excel text-success";
+          if (fileType.includes("image")) return "fa-file-image text-warning";
+          return "fa-file text-secondary";
+        }
+
+        function formatFileSize(bytes) {
+          if (bytes === 0) return "0 Bytes";
+          const k = 1024;
+          const sizes = ["Bytes", "KB", "MB", "GB"];
+          const i = Math.floor(Math.log(bytes) / Math.log(k));
+          return (
+            parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i]
+          );
+        }
+
+        function updateFileCount() {
+          const fileCount = previewList.children.length;
+          document.querySelector(".file-count").textContent =
+            `${fileCount} skedar${fileCount !== 1 ? "ë" : ""}`;
+        }
+
+        // Tags functionality
+        const tagsInput = document.querySelector(".tags-input input");
+        const tagsContainer = document.querySelector(".tags-container");
+
+        tagsInput.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" && this.value.trim()) {
+            e.preventDefault();
+            const tagText = this.value.trim();
+            addTag(tagText);
+            this.value = "";
+          }
+        });
+
+        function addTag(text) {
+          const tag = document.createElement("span");
+          tag.className = "tag";
+          tag.innerHTML = `
+                    ${text}
+                    <i class="fas fa-times remove-tag"></i>
+                `;
+          tagsContainer.appendChild(tag);
+
+          tag
+            .querySelector(".remove-tag")
+            .addEventListener("click", function () {
+              tag.remove();
+            });
+        }
+
+        // Remove existing tags
+        document.querySelectorAll(".remove-tag").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            this.parentElement.remove();
+          });
+        });
+
+        // Folder toggle functionality
+        document.querySelectorAll(".folder-header .btn").forEach((btn) => {
+          btn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            const folderItem = this.closest(".folder-item");
+            const folderContent = folderItem.querySelector(".folder-content");
+
+            if (
+              folderContent.style.display === "none" ||
+              !folderContent.style.display
+            ) {
+              folderContent.style.display = "block";
+              this.innerHTML = '<i class="fas fa-chevron-up"></i>';
+            } else {
+              folderContent.style.display = "none";
+              this.innerHTML = '<i class="fas fa-chevron-down"></i>';
+            }
+          });
+        });
+
+        // Document actions
+        document
+          .querySelectorAll(".document-actions .action-btn")
+          .forEach((btn) => {
+            btn.addEventListener("click", function () {
+              const documentItem = this.closest(".document-item");
+              const documentTitle =
+                documentItem.querySelector(".document-title").textContent;
+
+              if (this.classList.contains("view")) {
+                console.log(`Duke shikuar dokumentin: ${documentTitle}`);
+                alert(`Duke hapur dokumentin: ${documentTitle}`);
+              } else if (this.classList.contains("download")) {
+                console.log(`Duke shkarkuar dokumentin: ${documentTitle}`);
+                alert(`Shkarkimi i dokumentit: ${documentTitle}`);
+              } else if (this.classList.contains("share")) {
+                console.log(`Duke ndarë dokumentin: ${documentTitle}`);
+                alert(`Ndaj dokumentin: ${documentTitle}`);
+              } else if (this.classList.contains("print")) {
+                console.log(`Duke printuar dokumentin: ${documentTitle}`);
+                alert(`Printimi i dokumentit: ${documentTitle}`);
+              } else if (this.classList.contains("edit")) {
+                console.log(`Duke edituar dokumentin: ${documentTitle}`);
+                alert(`Hapja e editimit për: ${documentTitle}`);
+              } else if (this.classList.contains("verify")) {
+                console.log(`Duke verifikuar dokumentin: ${documentTitle}`);
+                alert(`Verifikimi i dokumentit: ${documentTitle}`);
+              } else if (this.classList.contains("lock")) {
+                console.log(`Duke kufizuar qasjen për: ${documentTitle}`);
+                alert(`Kufizimi i qasjes për: ${documentTitle}`);
+              }
+            });
+          });
+
+        // Review actions
+        document.querySelectorAll(".review-actions .btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const reviewItem = this.closest(".review-item");
+            const reviewTitle =
+              reviewItem.querySelector(".review-title").textContent;
+
+            if (this.textContent.includes("Aprovoj")) {
+              console.log(`Duke aprovuar dokumentin: ${reviewTitle}`);
+              reviewItem.remove();
+              alert(`Dokumenti "${reviewTitle}" u aprovua me sukses!`);
+            } else if (this.textContent.includes("Refuzoj")) {
+              console.log(`Duke refuzuar dokumentin: ${reviewTitle}`);
+              if (
+                confirm(
+                  `A jeni të sigurt që dëshironi të refuzoni dokumentin "${reviewTitle}"?`,
+                )
+              ) {
+                reviewItem.remove();
+                alert(`Dokumenti "${reviewTitle}" u refuzua.`);
+              }
+            }
+          });
+        });
+
+        // Category actions
+        document.querySelectorAll(".category-actions .btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const categoryItem = this.closest(".category-item");
+            const categoryName =
+              categoryItem.querySelector(".category-name").textContent;
+            const documentCount =
+              categoryItem.querySelector(".category-count").textContent;
+
+            console.log(
+              `Duke hapur kategorinë: ${categoryName} (${documentCount})`,
+            );
+            alert(`Hapja e kategorisë: ${categoryName}\n${documentCount}`);
+          });
+        });
+
+        // Quick actions
+        document.querySelectorAll(".quick-action-btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const action = this.querySelector("span").textContent;
+            console.log(`Veprimi i shpejtë: ${action}`);
+
+            if (action === "Kërkim i Avancuar") {
+              alert("Hapja e faqes për kërkim të avancuar të dokumenteve");
+            } else if (action === "Eksporto të Dhëna") {
+              alert("Duke eksportuar të dhënat e dokumenteve");
+            } else if (action === "Pastro Skedarët e Vjetër") {
+              alert("Hapja e faqes për pastrimin e skedarëve të vjetër");
+            } else if (action === "Menaxho Qasjet") {
+              alert("Hapja e faqes për menaxhimin e qasjeve");
+            }
+          });
+        });
+
+        // Filter buttons
+        document.querySelectorAll(".btn-group .btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            document.querySelectorAll(".btn-group .btn").forEach((b) => {
+              b.classList.remove("active");
+            });
+            this.classList.add("active");
+
+            const filter = this.textContent;
+            console.log("Filtro sipas periudhës:", filter);
+            // Implement filter logic here
+          });
+        });
+
+        // Save document
+        saveDocumentBtn.addEventListener("click", function () {
+          const documentName = document.querySelector(
+            '.form-control[placeholder*="emrin e dokumentit"]',
+          ).value;
+          const category = categorySelect.value;
+          const fileCount = previewList.children.length;
+
+          if (!documentName) {
+            alert("Ju lutem shkruani emrin e dokumentit");
+            return;
+          }
+
+          if (!category) {
+            alert("Ju lutem zgjidhni një kategori");
+            return;
+          }
+
+          if (fileCount === 0) {
+            alert("Ju lutem ngarkoni të paktën një dokument");
+            return;
+          }
+
+          console.log(`Dokumenti u ruajt: ${documentName}`);
+          alert(`Dokumenti "${documentName}" u ruajt me sukses në arkiv!`);
+          closeModalFunc();
+        });
+
+        // Set today's date as default for document date
+        const today = new Date().toISOString().split("T")[0];
+        if (document.getElementById("documentDate")) {
+          document.getElementById("documentDate").value = today;
+        }
+
+        // Drag and drop functionality
+        const uploadZone = document.querySelector(".upload-zone");
+
+        ["dragenter", "dragover", "dragleave", "drop"].forEach((eventName) => {
+          uploadZone.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+
+        ["dragenter", "dragover"].forEach((eventName) => {
+          uploadZone.addEventListener(eventName, highlight, false);
+        });
+
+        ["dragleave", "drop"].forEach((eventName) => {
+          uploadZone.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight() {
+          uploadZone.classList.add("highlight");
+        }
+
+        function unhighlight() {
+          uploadZone.classList.remove("highlight");
+        }
+
+        uploadZone.addEventListener("drop", handleDrop, false);
+
+        function handleDrop(e) {
+          const dt = e.dataTransfer;
+          const files = dt.files;
+
+          documentFile.files = files;
+          documentFile.dispatchEvent(new Event("change"));
+        }
+
+        function resetDocumentForm() {
+          document.querySelector(
+            '.form-control[placeholder*="emrin e dokumentit"]',
+          ).value = "";
+          categorySelect.selectedIndex = 0;
+          subcategorySelect.innerHTML =
+            '<option value="">Zgjidhni subkategorinë (opsionale)</option>';
+          document.getElementById("documentClient").selectedIndex = 0;
+          document.getElementById("expiryDate").value = "";
+          document.querySelector(".tags-container").innerHTML = "";
+          document.querySelector(
+            '.form-control[placeholder*="etiketa"]',
+          ).value = "";
+          previewList.innerHTML = "";
+          filePreview.style.display = "none";
+          document.querySelector("textarea").value = "";
+        }
+      });
+    </script>
+    <script src="database.js"></script>
+    <script src="dashboard.js"></script>
+  </body>
+</html>

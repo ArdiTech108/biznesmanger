@@ -1,0 +1,827 @@
+<!doctype html>
+<html lang="sq">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light only" />
+    <title>Tenderat - Biznes Manager</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="auth.js"></script>
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <a href="index.html" class="logo">
+            <div class="logo-icon">
+              <i class="fas fa-briefcase"></i>
+            </div>
+            <div class="logo-text">
+              <span>Biznes Manager</span>
+              <span>Sistemi i Plotë i Menaxhimit</span>
+            </div>
+          </a>
+        </div>
+
+        <nav class="sidebar-nav">
+          <div class="nav-section">
+            <div class="nav-section-title">MENU KRYESORE</div>
+            <a href="index.html" class="nav-item">
+              <i class="nav-icon fas fa-home"></i>
+              <span class="nav-text">Dashboard</span>
+            </a>
+            <a href="klientet.html" class="nav-item">
+              <i class="nav-icon fas fa-users"></i>
+              <span class="nav-text">Klientët</span>
+            </a>
+          </div>
+
+          <div class="nav-section">
+            <div class="nav-section-title">BIZNESI</div>
+            <a href="planet-biznesore.html" class="nav-item">
+              <i class="nav-icon fas fa-chart-line"></i>
+              <span class="nav-text">Planet Biznesore</span>
+            </a>
+            <a href="regjistrimi-biznesit.html" class="nav-item">
+              <i class="nav-icon fas fa-file-signature"></i>
+              <span class="nav-text">Regjistrimi i Bizneseve</span>
+            </a>
+            <a href="mbyllja-biznesit.html" class="nav-item">
+              <i class="nav-icon fas fa-door-closed"></i>
+              <span class="nav-text">Mbyllja e Bizneseve</span>
+            </a>
+          </div>
+
+          <div class="nav-section">
+            <div class="nav-section-title">TENDERA & DOKUMENTA</div>
+            <a href="tenderat.html" class="nav-item active">
+              <i class="nav-icon fas fa-file-contract"></i>
+              <span class="nav-text">Tenderat</span>
+              <span class="nav-badge urgent">3</span>
+            </a>
+            <a href="konsultimet.html" class="nav-item">
+              <i class="nav-icon fas fa-comments"></i>
+              <span class="nav-text">Konsultimet</span>
+            </a>
+            <a href="kontabiliteti.html" class="nav-item">
+              <i class="nav-icon fas fa-file-invoice-dollar"></i>
+              <span class="nav-text">Faturat & Pagesat</span>
+            </a>
+            <a href="dokumentet.html" class="nav-item">
+              <i class="nav-icon fas fa-archive"></i>
+              <span class="nav-text">Arkivi i Dokumenteve</span>
+            </a>
+          </div>
+        </nav>
+
+        <div
+          class="sidebar-footer"
+          style="
+            padding: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+          "
+        >
+          <div class="user-info" style="color: var(--gray-400)">
+            <div style="font-size: 0.75rem; margin-bottom: 0.25rem">
+              Sistemi i Tendereve
+            </div>
+            <div
+              style="
+                font-size: 0.875rem;
+                font-weight: 500;
+                color: var(--light-color);
+              "
+            >
+              <i class="fas fa-shield-alt" style="margin-right: 0.5rem"></i>
+              Dokumentet e Sigurta
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Header -->
+        <header class="header">
+          <div class="header-left">
+            <button class="menu-toggle" id="menuToggle">
+              <i class="fas fa-bars"></i>
+            </button>
+            <div class="header-title">
+              <h1>Tenderat</h1>
+              <div class="header-subtitle">
+                Menaxhimi i Dokumenteve dhe Proceseve të Tendereve
+              </div>
+            </div>
+          </div>
+
+          <div class="header-right">
+            <div class="header-stats">
+              <div class="stat-mini">
+                <div class="stat-mini-value">15</div>
+                <div class="stat-mini-label">Tender Aktiv</div>
+              </div>
+              <div class="stat-mini">
+                <div
+                  class="stat-mini-value"
+                  style="color: var(--warning-color)"
+                >
+                  3
+                </div>
+                <div class="stat-mini-label">Afat Afërt</div>
+              </div>
+            </div>
+
+            <div class="search-container">
+              <i class="fas fa-search search-icon"></i>
+              <input
+                type="text"
+                class="search-input"
+                placeholder="Kërko tender..."
+              />
+            </div>
+
+            <div class="user-menu">
+              <div class="user-avatar">BM</div>
+              <div class="user-info">
+                <div class="user-name">Administrator</div>
+                <div class="user-role">Menaxher i Tendereve</div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="page-content">
+          <!-- Breadcrumb -->
+          <div class="breadcrumb">
+            <div class="breadcrumb-item">
+              <a href="index.html"><i class="fas fa-home"></i> Dashboard</a>
+            </div>
+            <div class="breadcrumb-separator">/</div>
+            <div class="breadcrumb-item active">
+              <i class="fas fa-file-contract"></i> Tenderat
+            </div>
+          </div>
+
+          <!-- Page Header -->
+          <div class="page-header">
+            <div class="page-title-section">
+              <div class="page-title">
+                <i
+                  class="fas fa-file-contract"
+                  style="color: var(--secondary-color)"
+                ></i>
+                Dokumentet për Tender
+              </div>
+              <div class="page-subtitle">
+                Menaxhoni të gjitha dokumentet, aplikimet dhe proceset e
+                tenderit në një vend.
+              </div>
+            </div>
+            <div class="page-actions">
+              <button class="btn btn-outline">
+                <i class="fas fa-filter"></i> Filtro
+              </button>
+              <button class="btn btn-primary" id="newTenderBtn">
+                <i class="fas fa-plus"></i> Tender i Ri
+              </button>
+            </div>
+          </div>
+
+          <!-- Stats Overview -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon clients">
+                <i class="fas fa-file-alt"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">15</div>
+                <div class="stat-label">Tender Aktiv</div>
+                <div class="stat-change positive">
+                  <i class="fas fa-arrow-up"></i> 2 të reja këtë javë
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon projects">
+                <i class="fas fa-handshake"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">7</div>
+                <div class="stat-label">Tender të Fituar</div>
+                <div class="stat-change positive">
+                  <i class="fas fa-arrow-up"></i> 80% sukses
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon pending">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">3</div>
+                <div class="stat-label">Afat Afërt</div>
+                <div class="stat-change negative">
+                  <i class="fas fa-exclamation-triangle"></i> Kërkojnë vëmendje
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon revenue">
+                <i class="fas fa-money-bill-wave"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">€245K</div>
+                <div class="stat-label">Vlerë totale</div>
+                <div class="stat-change positive">
+                  <i class="fas fa-arrow-up"></i> 12% rritje
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Content Sections -->
+          <div class="charts-container">
+            <!-- Active Tenders Card -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <i
+                    class="fas fa-list-ol"
+                    style="color: var(--secondary-color)"
+                  ></i>
+                  Tenderat Aktivë
+                </div>
+                <div class="card-actions">
+                  <button class="btn btn-sm btn-outline">
+                    <i class="fas fa-download"></i> Eksporto
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="table-container">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>ID Tenderit</th>
+                        <th>Titulli</th>
+                        <th>Institucioni</th>
+                        <th>Vlera</th>
+                        <th>Data e Afatit</th>
+                        <th>Statusi</th>
+                        <th>Veprime</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>TDR-2024-015</td>
+                        <td>
+                          <strong>Furnizim i Pajisjeve Zyre</strong>
+                          <div
+                            style="font-size: 0.75rem; color: var(--gray-600)"
+                          >
+                            Referencë: PU-045/2024
+                          </div>
+                        </td>
+                        <td>Ministria e Financave</td>
+                        <td>€45,000</td>
+                        <td>
+                          15 Maj 2024
+                          <div class="priority-badge high">Afat afërt</div>
+                        </td>
+                        <td>
+                          <span class="status-badge pending">Në Proces</span>
+                        </td>
+                        <td>
+                          <div class="action-buttons">
+                            <button class="action-btn view" title="Shiko">
+                              <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="action-btn edit" title="Edito">
+                              <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="action-btn download" title="Shkarko">
+                              <i class="fas fa-download"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>TDR-2024-014</td>
+                        <td>
+                          <strong>Ndërtim Rruge Lokale</strong>
+                          <div
+                            style="font-size: 0.75rem; color: var(--gray-600)"
+                          >
+                            Referencë: MTP-112/2024
+                          </div>
+                        </td>
+                        <td>Bashkia Tiranë</td>
+                        <td>€120,000</td>
+                        <td>30 Qershor 2024</td>
+                        <td><span class="status-badge active">Aktiv</span></td>
+                        <td>
+                          <div class="action-buttons">
+                            <button class="action-btn view" title="Shiko">
+                              <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="action-btn edit" title="Edito">
+                              <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="action-btn download" title="Shkarko">
+                              <i class="fas fa-download"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>TDR-2024-013</td>
+                        <td>
+                          <strong>Shërbime IT për Spital</strong>
+                          <div
+                            style="font-size: 0.75rem; color: var(--gray-600)"
+                          >
+                            Referencë: MSH-078/2024
+                          </div>
+                        </td>
+                        <td>Qendra Spitalore</td>
+                        <td>€65,000</td>
+                        <td>
+                          10 Maj 2024
+                          <div class="priority-badge high">Afat afërt</div>
+                        </td>
+                        <td>
+                          <span class="status-badge pending">Dokumentim</span>
+                        </td>
+                        <td>
+                          <div class="action-buttons">
+                            <button class="action-btn view" title="Shiko">
+                              <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="action-btn edit" title="Edito">
+                              <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="action-btn download" title="Shkarko">
+                              <i class="fas fa-download"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>TDR-2024-012</td>
+                        <td>
+                          <strong>Furnizim Librash Shkollorë</strong>
+                          <div
+                            style="font-size: 0.75rem; color: var(--gray-600)"
+                          >
+                            Referencë: MASH-045/2024
+                          </div>
+                        </td>
+                        <td>Ministria e Arsimit</td>
+                        <td>€85,000</td>
+                        <td>15 Korrik 2024</td>
+                        <td><span class="status-badge active">Aktiv</span></td>
+                        <td>
+                          <div class="action-buttons">
+                            <button class="action-btn view" title="Shiko">
+                              <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="action-btn edit" title="Edito">
+                              <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="action-btn download" title="Shkarko">
+                              <i class="fas fa-download"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>TDR-2024-011</td>
+                        <td>
+                          <strong>Mirembajtje Kopshti</strong>
+                          <div
+                            style="font-size: 0.75rem; color: var(--gray-600)"
+                          >
+                            Referencë: BT-089/2024
+                          </div>
+                        </td>
+                        <td>Bashkia Durrës</td>
+                        <td>€25,000</td>
+                        <td>
+                          5 Maj 2024
+                          <div class="priority-badge high">Afat afërt</div>
+                        </td>
+                        <td>
+                          <span class="status-badge pending">Përgatitje</span>
+                        </td>
+                        <td>
+                          <div class="action-buttons">
+                            <button class="action-btn view" title="Shiko">
+                              <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="action-btn edit" title="Edito">
+                              <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="action-btn download" title="Shkarko">
+                              <i class="fas fa-download"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="card-footer">
+                <div style="font-size: 0.875rem; color: var(--gray-600)">
+                  Shfaqen 5 nga 15 tender aktiv
+                </div>
+                <button class="btn btn-outline btn-sm">
+                  <i class="fas fa-list"></i> Shiko të Gjitha
+                </button>
+              </div>
+            </div>
+
+            <!-- Document Requirements Card -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <i
+                    class="fas fa-clipboard-check"
+                    style="color: var(--success-color)"
+                  ></i>
+                  Kërkesat Dokumentare për Tender
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="document-grid">
+                  <div class="document-card">
+                    <div class="document-header">
+                      <i class="document-icon fas fa-file-signature"></i>
+                      <div class="document-info">
+                        <div class="document-title">Aplikimi Zyrtar</div>
+                        <div class="document-meta">
+                          Formulari kryesor i aplikimit
+                        </div>
+                      </div>
+                    </div>
+                    <div class="document-body">
+                      <div class="document-description">
+                        Formulari i plotësuar dhe nënshkruar për aplikim në
+                        tender.
+                      </div>
+                      <div class="progress-container">
+                        <div class="progress-label">
+                          <span>Plotësimi</span>
+                          <span>100%</span>
+                        </div>
+                        <div class="progress-bar">
+                          <div
+                            class="progress-fill success"
+                            style="width: 100%"
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="document-footer">
+                      <span class="status-badge completed">Gati</span>
+                      <button class="btn btn-sm btn-outline">
+                        <i class="fas fa-download"></i> Shkarko
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="document-card">
+                    <div class="document-header">
+                      <i class="document-icon fas fa-balance-scale"></i>
+                      <div class="document-info">
+                        <div class="document-title">Dëshmi e Regjistrimit</div>
+                        <div class="document-meta">Nenshkrimi biznesor</div>
+                      </div>
+                    </div>
+                    <div class="document-body">
+                      <div class="document-description">
+                        Dokumenti i regjistrimit të biznesit nga QNR.
+                      </div>
+                      <div class="progress-container">
+                        <div class="progress-label">
+                          <span>Plotësimi</span>
+                          <span>100%</span>
+                        </div>
+                        <div class="progress-bar">
+                          <div
+                            class="progress-fill success"
+                            style="width: 100%"
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="document-footer">
+                      <span class="status-badge completed">Gati</span>
+                      <button class="btn btn-sm btn-outline">
+                        <i class="fas fa-download"></i> Shkarko
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="document-card">
+                    <div class="document-header">
+                      <i class="document-icon fas fa-chart-line"></i>
+                      <div class="document-info">
+                        <div class="document-title">Raport Financiar</div>
+                        <div class="document-meta">3 vitet e fundit</div>
+                      </div>
+                    </div>
+                    <div class="document-body">
+                      <div class="document-description">
+                        Raport financiar i auditimit për 3 vitet e fundit.
+                      </div>
+                      <div class="progress-container">
+                        <div class="progress-label">
+                          <span>Plotësimi</span>
+                          <span>75%</span>
+                        </div>
+                        <div class="progress-bar">
+                          <div
+                            class="progress-fill warning"
+                            style="width: 75%"
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="document-footer">
+                      <span class="status-badge pending">Në Proces</span>
+                      <button class="btn btn-sm btn-primary">
+                        <i class="fas fa-upload"></i> Ngarko
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="document-card">
+                    <div class="document-header">
+                      <i class="document-icon fas fa-shield-alt"></i>
+                      <div class="document-info">
+                        <div class="document-title">Garancie Bankare</div>
+                        <div class="document-meta">5% e vlerës së tenderit</div>
+                      </div>
+                    </div>
+                    <div class="document-body">
+                      <div class="document-description">
+                        Garancia bankare për 5% të vlerës së tenderit.
+                      </div>
+                      <div class="progress-container">
+                        <div class="progress-label">
+                          <span>Plotësimi</span>
+                          <span>50%</span>
+                        </div>
+                        <div class="progress-bar">
+                          <div
+                            class="progress-fill warning"
+                            style="width: 50%"
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="document-footer">
+                      <span class="status-badge pending">Në Pritje</span>
+                      <button class="btn btn-sm btn-outline">
+                        <i class="fas fa-clock"></i> Në Proces
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Section -->
+          <div class="card" style="margin-top: 2rem">
+            <div class="card-header">
+              <div class="card-title">
+                <i class="fas fa-history" style="color: var(--info-color)"></i>
+                Kronologjia e Tenderit (TDR-2024-015)
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="timeline">
+                <div class="timeline-item completed">
+                  <div class="timeline-date">15 Prill 2024 - 10:30</div>
+                  <div class="timeline-content completed">
+                    <strong>Tender u publikua</strong>
+                    <p>
+                      Tenderi u publikua nga Ministria e Financave me referencë
+                      PU-045/2024
+                    </p>
+                  </div>
+                </div>
+                <div class="timeline-item completed">
+                  <div class="timeline-date">18 Prill 2024 - 14:15</div>
+                  <div class="timeline-content completed">
+                    <strong>U dorëzua aplikimi paraprak</strong>
+                    <p>Dorëzimi i aplikimit paraprak me sukses</p>
+                  </div>
+                </div>
+                <div class="timeline-item pending">
+                  <div class="timeline-date">25 Prill 2024 - 09:00</div>
+                  <div class="timeline-content pending">
+                    <strong>Në pritje të dokumenteve plotësuese</strong>
+                    <p>
+                      Dokumentet financiare dhe garancitë bankare priten deri më
+                      10 Maj
+                    </p>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-date">15 Maj 2024 - 17:00</div>
+                  <div class="timeline-content">
+                    <strong>Afati përfundimtar i dorëzimit</strong>
+                    <p>Data e fundit për dorëzimin e të gjitha dokumenteve</p>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-date">25 Maj 2024</div>
+                  <div class="timeline-content">
+                    <strong>Vlerësimi i ofertave</strong>
+                    <p>Komisioni do të vlerësojë ofertat e dorëzuara</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Modal for New Tender -->
+    <div class="modal-overlay" id="newTenderModal" style="display: none">
+      <div class="modal">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fas fa-plus-circle"></i> Krijo Tender të Ri
+            </div>
+            <button class="action-btn delete" id="closeModal">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="card-body">
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label required">Titulli i Tenderit</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Shkruani titullin e tenderit"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label required"
+                  >Institucioni Publikues</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Emri i institucionit"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label required">Vlera e Tenderit (€)</label>
+                <input type="number" class="form-control" placeholder="0.00" />
+              </div>
+              <div class="form-group">
+                <label class="form-label required">Data e Afatit</label>
+                <input type="date" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Numri i Referencës</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="PU-XXX/2024"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Kategoria</label>
+                <div class="select-with-icon">
+                  <i class="fas fa-folder select-icon"></i>
+                  <select class="form-control">
+                    <option value="">Zgjidhni kategorinë</option>
+                    <option value="ndertim">Ndërtim</option>
+                    <option value="furnizim">Furnizim</option>
+                    <option value="sherbime">Shërbime</option>
+                    <option value="it">IT & Teknologji</option>
+                    <option value="tjera">Të Tjera</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group" style="grid-column: 1 / -1">
+                <label class="form-label">Përshkrimi i Tenderit</label>
+                <textarea
+                  class="form-control"
+                  rows="4"
+                  placeholder="Përshkrim i detajuar të tenderit..."
+                ></textarea>
+              </div>
+              <div class="form-group" style="grid-column: 1 / -1">
+                <label class="form-label">Dokumentet e Kërkuara</label>
+                <div class="file-upload">
+                  <label class="file-upload-label">
+                    <i class="fas fa-cloud-upload-alt file-upload-icon"></i>
+                    <span class="file-upload-text"
+                      >Klikoni për të ngarkuar dokumentet</span
+                    >
+                    <span class="file-upload-hint"
+                      >PDF, DOC, XLS deri në 10MB</span
+                    >
+                    <input type="file" multiple />
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-outline" id="cancelBtn">Anulo</button>
+            <button class="btn btn-primary">Ruaj Tenderin</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+      // Specific scripts for tenderat.html
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.getElementById("menuToggle");
+        const sidebar = document.querySelector(".sidebar");
+        const newTenderBtn = document.getElementById("newTenderBtn");
+        const newTenderModal = document.getElementById("newTenderModal");
+        const closeModal = document.getElementById("closeModal");
+        const cancelBtn = document.getElementById("cancelBtn");
+
+        // Toggle sidebar on mobile
+        menuToggle.addEventListener("click", () => {
+          sidebar.classList.toggle("active");
+        });
+
+        // Show new tender modal
+        newTenderBtn.addEventListener("click", () => {
+          newTenderModal.style.display = "flex";
+        });
+
+        // Close modal
+        function closeModalFunc() {
+          newTenderModal.style.display = "none";
+        }
+
+        closeModal.addEventListener("click", closeModalFunc);
+        cancelBtn.addEventListener("click", closeModalFunc);
+
+        // Close modal when clicking outside
+        newTenderModal.addEventListener("click", (e) => {
+          if (e.target === newTenderModal) {
+            closeModalFunc();
+          }
+        });
+
+        // Add click handlers to action buttons
+        document.querySelectorAll(".action-btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const action = this.classList.contains("view")
+              ? "Shiko"
+              : this.classList.contains("edit")
+                ? "Edito"
+                : this.classList.contains("download")
+                  ? "Shkarko"
+                  : "Vepro";
+
+            console.log(`${action} u klikua`);
+            // Add your action logic here
+          });
+        });
+
+        // Search functionality
+        const searchInput = document.querySelector(".search-input");
+        searchInput.addEventListener("input", function (e) {
+          const searchTerm = e.target.value.toLowerCase();
+          console.log("Kërkim për:", searchTerm);
+          // Implement search logic here
+        });
+      });
+    </script>
+    <script src="database.js"></script>
+    <script src="dashboard.js"></script>
+  </body>
+</html>

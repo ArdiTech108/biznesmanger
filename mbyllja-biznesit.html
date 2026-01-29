@@ -1,0 +1,1327 @@
+<!doctype html>
+<html lang="sq">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light only" />
+    <title>Mbyllja e Bizneseve - Biznes Manager</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="auth.js"></script>
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <a href="index.html" class="logo">
+            <div class="logo-icon">
+              <i class="fas fa-briefcase"></i>
+            </div>
+            <div class="logo-text">
+              <span>Biznes Manager</span>
+              <span>Sistemi i Plotë i Menaxhimit</span>
+            </div>
+          </a>
+        </div>
+
+        <nav class="sidebar-nav">
+          <div class="nav-section">
+            <div class="nav-section-title">MENU KRYESORE</div>
+            <a href="index.html" class="nav-item">
+              <i class="nav-icon fas fa-home"></i>
+              <span class="nav-text">Dashboard</span>
+            </a>
+            <a href="klientet.html" class="nav-item">
+              <i class="nav-icon fas fa-users"></i>
+              <span class="nav-text">Klientët</span>
+            </a>
+          </div>
+
+          <div class="nav-section">
+            <div class="nav-section-title">BIZNESI</div>
+            <a href="planet-biznesore.html" class="nav-item">
+              <i class="nav-icon fas fa-chart-line"></i>
+              <span class="nav-text">Planet Biznesore</span>
+            </a>
+            <a href="regjistrimi-biznesit.html" class="nav-item">
+              <i class="nav-icon fas fa-file-signature"></i>
+              <span class="nav-text">Regjistrimi i Bizneseve</span>
+            </a>
+            <a href="mbyllja-biznesit.html" class="nav-item active">
+              <i class="nav-icon fas fa-door-closed"></i>
+              <span class="nav-text">Mbyllja e Bizneseve</span>
+              <span class="nav-badge">5</span>
+            </a>
+          </div>
+
+          <div class="nav-section">
+            <div class="nav-section-title">TENDERA & DOKUMENTA</div>
+            <a href="tenderat.html" class="nav-item">
+              <i class="nav-icon fas fa-file-contract"></i>
+              <span class="nav-text">Tenderat</span>
+            </a>
+            <a href="konsultimet.html" class="nav-item">
+              <i class="nav-icon fas fa-comments"></i>
+              <span class="nav-text">Konsultimet</span>
+            </a>
+            <a href="kontabiliteti.html" class="nav-item">
+              <i class="nav-icon fas fa-file-invoice-dollar"></i>
+              <span class="nav-text">Faturat & Pagesat</span>
+            </a>
+            <a href="dokumentet.html" class="nav-item">
+              <i class="nav-icon fas fa-archive"></i>
+              <span class="nav-text">Arkivi i Dokumenteve</span>
+            </a>
+          </div>
+        </nav>
+
+        <div
+          class="sidebar-footer"
+          style="
+            padding: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+          "
+        >
+          <div class="user-info" style="color: var(--gray-400)">
+            <div style="font-size: 0.75rem; margin-bottom: 0.25rem">
+              Procesi i Mbylljes së Bizneseve
+            </div>
+            <div
+              style="
+                font-size: 0.875rem;
+                font-weight: 500;
+                color: var(--light-color);
+              "
+            >
+              <i
+                class="fas fa-exclamation-triangle"
+                style="margin-right: 0.5rem"
+              ></i>
+              5 në Proces
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Header -->
+        <header class="header">
+          <div class="header-left">
+            <button class="menu-toggle" id="menuToggle">
+              <i class="fas fa-bars"></i>
+            </button>
+            <div class="header-title">
+              <h1>Mbyllja e Bizneseve</h1>
+              <div class="header-subtitle">
+                Procesi i Mbylljes dhe Lëshimit të Bizneseve
+              </div>
+            </div>
+          </div>
+
+          <div class="header-right">
+            <div class="header-stats">
+              <div class="stat-mini">
+                <div class="stat-mini-value">5</div>
+                <div class="stat-mini-label">Në Proces</div>
+              </div>
+              <div class="stat-mini">
+                <div
+                  class="stat-mini-value"
+                  style="color: var(--warning-color)"
+                >
+                  3
+                </div>
+                <div class="stat-mini-label">Kërkojnë Vëmendje</div>
+              </div>
+              <div class="stat-mini">
+                <div
+                  class="stat-mini-value"
+                  style="color: var(--success-color)"
+                >
+                  12
+                </div>
+                <div class="stat-mini-label">U Mbyllën</div>
+              </div>
+            </div>
+
+            <div class="search-container">
+              <i class="fas fa-search search-icon"></i>
+              <input
+                type="text"
+                class="search-input"
+                placeholder="Kërko biznes..."
+              />
+            </div>
+
+            <div class="user-menu">
+              <div class="user-avatar">BM</div>
+              <div class="user-info">
+                <div class="user-name">Administrator</div>
+                <div class="user-role">Ekspert i Mbylljes së Bizneseve</div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="page-content">
+          <!-- Breadcrumb -->
+          <div class="breadcrumb">
+            <div class="breadcrumb-item">
+              <a href="index.html"><i class="fas fa-home"></i> Dashboard</a>
+            </div>
+            <div class="breadcrumb-separator">/</div>
+            <div class="breadcrumb-item active">
+              <i class="fas fa-door-closed"></i> Mbyllja e Bizneseve
+            </div>
+          </div>
+
+          <!-- Page Header -->
+          <div class="page-header">
+            <div class="page-title-section">
+              <div class="page-title">
+                <i
+                  class="fas fa-door-closed"
+                  style="color: var(--warning-color)"
+                ></i>
+                Procesi i Mbylljes së Bizneseve
+              </div>
+              <div class="page-subtitle">
+                Menaxhoni të gjithë procesin e mbylljes së bizneseve, nga
+                dokumentimi deri te lëshimi përfundimtar.
+              </div>
+            </div>
+            <div class="page-actions">
+              <button class="btn btn-outline">
+                <i class="fas fa-filter"></i> Filtro Sipas Statusit
+              </button>
+              <button class="btn btn-warning" id="newClosureBtn">
+                <i class="fas fa-plus"></i> Mbyllje e Re
+              </button>
+              <button class="btn btn-success">
+                <i class="fas fa-file-pdf"></i> Gjenero Raport
+              </button>
+            </div>
+          </div>
+
+          <!-- Stats Overview -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon clients">
+                <i class="fas fa-hourglass-half"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">5</div>
+                <div class="stat-label">Biznese në Proces</div>
+                <div class="stat-change negative">
+                  <i class="fas fa-exclamation-triangle"></i> 3 kërkojnë
+                  vëmendje
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon projects">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">12</div>
+                <div class="stat-label">U Mbyllën me Sukses</div>
+                <div class="stat-change positive">
+                  <i class="fas fa-arrow-up"></i> 4 këtë vit
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon pending">
+                <i class="fas fa-file-invoice-dollar"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">8</div>
+                <div class="stat-label">Detyrime Financiare</div>
+                <div class="stat-change negative">
+                  <i class="fas fa-clock"></i> 15 ditë afat mesatar
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon revenue">
+                <i class="fas fa-balance-scale"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">100%</div>
+                <div class="stat-label">Pajtueshmëri Ligjore</div>
+                <div class="stat-change positive">
+                  <i class="fas fa-shield-alt"></i> Asnjë problem juridik
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Content Sections -->
+          <div class="charts-container">
+            <!-- Active Closure Processes -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <i
+                    class="fas fa-list"
+                    style="color: var(--warning-color)"
+                  ></i>
+                  Proceset Aktive të Mbylljes
+                </div>
+                <div class="card-actions">
+                  <div class="btn-group">
+                    <button class="btn btn-sm btn-outline active">
+                      Të Gjitha
+                    </button>
+                    <button class="btn btn-sm btn-outline">Urgjente</button>
+                    <button class="btn btn-sm btn-outline">Në Pritje</button>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="table-container">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>ID Procesi</th>
+                        <th>Biznesi</th>
+                        <th>Data e Fillimit</th>
+                        <th>Statusi Aktual</th>
+                        <th>Detyrimet e Mbetura</th>
+                        <th>Afati i Përfundimit</th>
+                        <th>Veprime</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>MB-2024-015</td>
+                        <td>
+                          <strong>Agro-Shpresa ShPK</strong>
+                          <div
+                            style="font-size: 0.75rem; color: var(--gray-600)"
+                          >
+                            NIB: J614000123L • Arta Shehu
+                          </div>
+                        </td>
+                        <td>15 Mars 2024</td>
+                        <td>
+                          <span class="status-badge pending">Dokumentim</span>
+                          <div class="priority-badge high">Urgjente</div>
+                        </td>
+                        <td>
+                          <div>3/8 hapa</div>
+                          <div class="progress-bar" style="margin-top: 0.5rem">
+                            <div
+                              class="progress-fill warning"
+                              style="width: 37.5%"
+                            ></div>
+                          </div>
+                        </td>
+                        <td>
+                          30 Qershor 2024
+                          <div
+                            style="
+                              font-size: 0.75rem;
+                              color: var(--danger-color);
+                            "
+                          >
+                            <i class="fas fa-clock"></i> 45 ditë të mbetura
+                          </div>
+                        </td>
+                        <td>
+                          <div class="action-buttons">
+                            <button
+                              class="action-btn view"
+                              title="Shiko detajet"
+                            >
+                              <i class="fas fa-eye"></i>
+                            </button>
+                            <button
+                              class="action-btn edit"
+                              title="Vazhdo procesin"
+                            >
+                              <i class="fas fa-forward"></i>
+                            </button>
+                            <button
+                              class="action-btn download"
+                              title="Shkarko dokumentet"
+                            >
+                              <i class="fas fa-download"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>MB-2024-014</td>
+                        <td>
+                          <strong>Kafe Aroma ShPK</strong>
+                          <div
+                            style="font-size: 0.75rem; color: var(--gray-600)"
+                          >
+                            NIB: J614002345L • Besnik Gjoka
+                          </div>
+                        </td>
+                        <td>10 Prill 2024</td>
+                        <td>
+                          <span class="status-badge pending"
+                            >Pranimi Autoriteteve</span
+                          >
+                          <div class="priority-badge medium">Në Proces</div>
+                        </td>
+                        <td>
+                          <div>6/8 hapa</div>
+                          <div class="progress-bar" style="margin-top: 0.5rem">
+                            <div
+                              class="progress-fill primary"
+                              style="width: 75%"
+                            ></div>
+                          </div>
+                        </td>
+                        <td>
+                          15 Korrik 2024
+                          <div
+                            style="
+                              font-size: 0.75rem;
+                              color: var(--warning-color);
+                            "
+                          >
+                            <i class="fas fa-clock"></i> 75 ditë të mbetura
+                          </div>
+                        </td>
+                        <td>
+                          <div class="action-buttons">
+                            <button
+                              class="action-btn view"
+                              title="Shiko detajet"
+                            >
+                              <i class="fas fa-eye"></i>
+                            </button>
+                            <button
+                              class="action-btn edit"
+                              title="Vazhdo procesin"
+                            >
+                              <i class="fas fa-forward"></i>
+                            </button>
+                            <button
+                              class="action-btn download"
+                              title="Shkarko dokumentet"
+                            >
+                              <i class="fas fa-download"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>MB-2024-013</td>
+                        <td>
+                          <strong>Tekstil Stili ShPK</strong>
+                          <div
+                            style="font-size: 0.75rem; color: var(--gray-600)"
+                          >
+                            NIB: J614003456L • Elona Marku
+                          </div>
+                        </td>
+                        <td>5 Maj 2024</td>
+                        <td>
+                          <span class="status-badge pending"
+                            >Pastro Ditari</span
+                          >
+                          <div class="priority-badge high">Urgjente</div>
+                        </td>
+                        <td>
+                          <div>2/8 hapa</div>
+                          <div class="progress-bar" style="margin-top: 0.5rem">
+                            <div
+                              class="progress-fill danger"
+                              style="width: 25%"
+                            ></div>
+                          </div>
+                        </td>
+                        <td>
+                          20 Shtator 2024
+                          <div
+                            style="font-size: 0.75rem; color: var(--gray-600)"
+                          >
+                            <i class="fas fa-clock"></i> 130 ditë të mbetura
+                          </div>
+                        </td>
+                        <td>
+                          <div class="action-buttons">
+                            <button
+                              class="action-btn view"
+                              title="Shiko detajet"
+                            >
+                              <i class="fas fa-eye"></i>
+                            </button>
+                            <button
+                              class="action-btn edit"
+                              title="Vazhdo procesin"
+                            >
+                              <i class="fas fa-forward"></i>
+                            </button>
+                            <button
+                              class="action-btn download"
+                              title="Shkarko dokumentet"
+                            >
+                              <i class="fas fa-download"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>MB-2024-012</td>
+                        <td>
+                          <strong>Auto Servis AL ShPK</strong>
+                          <div
+                            style="font-size: 0.75rem; color: var(--gray-600)"
+                          >
+                            NIB: J614004567L • Fatmir Hoxha
+                          </div>
+                        </td>
+                        <td>20 Janar 2024</td>
+                        <td>
+                          <span class="status-badge completed"
+                            >Në Pritje të Konfirmimit</span
+                          >
+                          <div class="priority-badge low">Pothuajse Gati</div>
+                        </td>
+                        <td>
+                          <div>7/8 hapa</div>
+                          <div class="progress-bar" style="margin-top: 0.5rem">
+                            <div
+                              class="progress-fill success"
+                              style="width: 87.5%"
+                            ></div>
+                          </div>
+                        </td>
+                        <td>
+                          30 Qershor 2024
+                          <div
+                            style="
+                              font-size: 0.75rem;
+                              color: var(--success-color);
+                            "
+                          >
+                            <i class="fas fa-check-circle"></i> Gati për
+                            përfundim
+                          </div>
+                        </td>
+                        <td>
+                          <div class="action-buttons">
+                            <button
+                              class="action-btn view"
+                              title="Shiko detajet"
+                            >
+                              <i class="fas fa-eye"></i>
+                            </button>
+                            <button
+                              class="action-btn edit"
+                              title="Vazhdo procesin"
+                            >
+                              <i class="fas fa-forward"></i>
+                            </button>
+                            <button
+                              class="action-btn download"
+                              title="Shkarko dokumentet"
+                            >
+                              <i class="fas fa-download"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>MB-2024-011</td>
+                        <td>
+                          <strong>Konstruksion Plus ShPK</strong>
+                          <div
+                            style="font-size: 0.75rem; color: var(--gray-600)"
+                          >
+                            NIB: J614005678L • Gentian Leka
+                          </div>
+                        </td>
+                        <td>15 Shkurt 2024</td>
+                        <td>
+                          <span class="status-badge pending"
+                            >Pagesa e Tatimeve</span
+                          >
+                          <div class="priority-badge high">Urgjente</div>
+                        </td>
+                        <td>
+                          <div>4/8 hapa</div>
+                          <div class="progress-bar" style="margin-top: 0.5rem">
+                            <div
+                              class="progress-fill warning"
+                              style="width: 50%"
+                            ></div>
+                          </div>
+                        </td>
+                        <td>
+                          15 Gusht 2024
+                          <div
+                            style="
+                              font-size: 0.75rem;
+                              color: var(--warning-color);
+                            "
+                          >
+                            <i class="fas fa-clock"></i> 90 ditë të mbetura
+                          </div>
+                        </td>
+                        <td>
+                          <div class="action-buttons">
+                            <button
+                              class="action-btn view"
+                              title="Shiko detajet"
+                            >
+                              <i class="fas fa-eye"></i>
+                            </button>
+                            <button
+                              class="action-btn edit"
+                              title="Vazhdo procesin"
+                            >
+                              <i class="fas fa-forward"></i>
+                            </button>
+                            <button
+                              class="action-btn download"
+                              title="Shkarko dokumentet"
+                            >
+                              <i class="fas fa-download"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="card-footer">
+                <div style="font-size: 0.875rem; color: var(--gray-600)">
+                  Shfaqen 5 procese aktive të mbylljes
+                </div>
+                <button class="btn btn-outline btn-sm">
+                  <i class="fas fa-list"></i> Shiko të Gjitha Proceset
+                </button>
+              </div>
+            </div>
+
+            <!-- Closure Process Steps -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <i
+                    class="fas fa-project-diagram"
+                    style="color: var(--info-color)"
+                  ></i>
+                  Hapat e Procesit të Mbylljes (MB-2024-015)
+                </div>
+                <div class="card-actions">
+                  <span class="status-badge active">Në Progres: 3/8 hapa</span>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="closure-process-timeline">
+                  <!-- Step 1 -->
+                  <div class="process-step completed">
+                    <div class="step-header">
+                      <div class="step-number">1</div>
+                      <div class="step-title">Kërkesa Formale</div>
+                      <div class="step-status">
+                        <span class="status-badge completed">Përfunduar</span>
+                      </div>
+                    </div>
+                    <div class="step-content">
+                      <p>Dorëzimi i kërkesës formale për mbyllje në QNR</p>
+                      <div class="step-details">
+                        <div
+                          style="
+                            display: flex;
+                            justify-content: space-between;
+                            font-size: 0.75rem;
+                            color: var(--gray-600);
+                          "
+                        >
+                          <span>Data: 15 Mars 2024</span>
+                          <span>Dokumenti: Kërkesa_001.pdf</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Step 2 -->
+                  <div class="process-step completed">
+                    <div class="step-header">
+                      <div class="step-number">2</div>
+                      <div class="step-title">Auditimi Financiar</div>
+                      <div class="step-status">
+                        <span class="status-badge completed">Përfunduar</span>
+                      </div>
+                    </div>
+                    <div class="step-content">
+                      <p>Kontrollimi i të gjitha transaksioneve financiare</p>
+                      <div class="step-details">
+                        <div
+                          style="
+                            display: flex;
+                            justify-content: space-between;
+                            font-size: 0.75rem;
+                            color: var(--gray-600);
+                          "
+                        >
+                          <span>Data: 25 Mars 2024</span>
+                          <span>Raporti: Auditim_2024.pdf</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Step 3 -->
+                  <div class="process-step completed">
+                    <div class="step-header">
+                      <div class="step-number">3</div>
+                      <div class="step-title">Deklarata Tatimore</div>
+                      <div class="step-status">
+                        <span class="status-badge completed">Përfunduar</span>
+                      </div>
+                    </div>
+                    <div class="step-content">
+                      <p>Dorëzimi i deklaratës tatimore përfundimtare</p>
+                      <div class="step-details">
+                        <div
+                          style="
+                            display: flex;
+                            justify-content: space-between;
+                            font-size: 0.75rem;
+                            color: var(--gray-600);
+                          "
+                        >
+                          <span>Data: 5 Prill 2024</span>
+                          <span>Dokumenti: Tatimi_Final.pdf</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Step 4 -->
+                  <div class="process-step current">
+                    <div class="step-header">
+                      <div class="step-number">4</div>
+                      <div class="step-title">Pagesa e Detyrimeve</div>
+                      <div class="step-status">
+                        <span class="status-badge pending">Në Progres</span>
+                      </div>
+                    </div>
+                    <div class="step-content">
+                      <p>
+                        Pagesa e të gjitha detyrimeve ndaj shtetit dhe palëve të
+                        treta
+                      </p>
+                      <div class="step-details">
+                        <div class="obligations-list">
+                          <div class="obligation-item">
+                            <span>Tatimi mbi të Ardhurat</span>
+                            <span class="amount">€2,450</span>
+                            <span class="status-badge completed">Paguar</span>
+                          </div>
+                          <div class="obligation-item">
+                            <span>TVI për tremujorin IV</span>
+                            <span class="amount">€1,850</span>
+                            <span class="status-badge pending">Në Pritje</span>
+                          </div>
+                          <div class="obligation-item">
+                            <span>Kontributet Sociale</span>
+                            <span class="amount">€3,200</span>
+                            <span class="status-badge pending">Në Pritje</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Step 5 -->
+                  <div class="process-step pending">
+                    <div class="step-header">
+                      <div class="step-number">5</div>
+                      <div class="step-title">Pastro Ditari</div>
+                      <div class="step-status">
+                        <span class="status-badge draft">Në Pritje</span>
+                      </div>
+                    </div>
+                    <div class="step-content">
+                      <p>Pastro ditarin e biznesit dhe arkivin financiar</p>
+                    </div>
+                  </div>
+
+                  <!-- Step 6 -->
+                  <div class="process-step pending">
+                    <div class="step-header">
+                      <div class="step-number">6</div>
+                      <div class="step-title">Publikimi i Njoftimit</div>
+                      <div class="step-status">
+                        <span class="status-badge draft">Në Pritje</span>
+                      </div>
+                    </div>
+                    <div class="step-content">
+                      <p>
+                        Publikimi i njoftimit për mbyllje në gazetën zyrtare
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Step 7 -->
+                  <div class="process-step pending">
+                    <div class="step-header">
+                      <div class="step-number">7</div>
+                      <div class="step-title">Pranimi i Autoriteteve</div>
+                      <div class="step-status">
+                        <span class="status-badge draft">Në Pritje</span>
+                      </div>
+                    </div>
+                    <div class="step-content">
+                      <p>Pranimi i konfirmimit nga autoritetet kompetente</p>
+                    </div>
+                  </div>
+
+                  <!-- Step 8 -->
+                  <div class="process-step pending">
+                    <div class="step-header">
+                      <div class="step-number">8</div>
+                      <div class="step-title">Dëshmia e Mbylljes</div>
+                      <div class="step-status">
+                        <span class="status-badge draft">Në Pritje</span>
+                      </div>
+                    </div>
+                    <div class="step-content">
+                      <p>Lëshimi i dëshmisë përfundimtare të mbylljes</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-outline">
+                  <i class="fas fa-pause"></i> Pauzo Procesin
+                </button>
+                <button class="btn btn-primary">
+                  <i class="fas fa-forward"></i> Vazhdo Hapin tjetër
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Required Documents & Financial Summary -->
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 1.5rem;
+              margin-top: 2rem;
+            "
+          >
+            <!-- Required Documents -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <i
+                    class="fas fa-file-alt"
+                    style="color: var(--secondary-color)"
+                  ></i>
+                  Dokumentet e Kërkuara
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="document-checklist">
+                  <div class="checklist-item">
+                    <div class="checklist-icon completed">
+                      <i class="fas fa-check"></i>
+                    </div>
+                    <div class="checklist-content">
+                      <div class="checklist-title">
+                        Kërkesa Formale për Mbyllje
+                      </div>
+                      <div class="checklist-description">
+                        Formulari i plotësuar dhe nënshkruar
+                      </div>
+                    </div>
+                    <button class="btn btn-sm btn-outline">
+                      <i class="fas fa-download"></i>
+                    </button>
+                  </div>
+                  <div class="checklist-item">
+                    <div class="checklist-icon completed">
+                      <i class="fas fa-check"></i>
+                    </div>
+                    <div class="checklist-content">
+                      <div class="checklist-title">
+                        Deklarata Tatimore Përfundimtare
+                      </div>
+                      <div class="checklist-description">
+                        Deklarata për periudhën deri në mbyllje
+                      </div>
+                    </div>
+                    <button class="btn btn-sm btn-outline">
+                      <i class="fas fa-download"></i>
+                    </button>
+                  </div>
+                  <div class="checklist-item">
+                    <div class="checklist-icon pending">
+                      <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="checklist-content">
+                      <div class="checklist-title">
+                        Dëshmia e Pagesës së Tatimeve
+                      </div>
+                      <div class="checklist-description">
+                        Konfirmimi nga Drejtoria Tatimore
+                      </div>
+                    </div>
+                    <button class="btn btn-sm btn-warning">
+                      <i class="fas fa-upload"></i> Ngarko
+                    </button>
+                  </div>
+                  <div class="checklist-item">
+                    <div class="checklist-icon missing">
+                      <i class="fas fa-times"></i>
+                    </div>
+                    <div class="checklist-content">
+                      <div class="checklist-title">
+                        Raporti i Auditimit Financiar
+                      </div>
+                      <div class="checklist-description">
+                        Auditim i pavarur financiar
+                      </div>
+                    </div>
+                    <button class="btn btn-sm btn-outline">
+                      <i class="fas fa-plus"></i> Krijo
+                    </button>
+                  </div>
+                  <div class="checklist-item">
+                    <div class="checklist-icon missing">
+                      <i class="fas fa-times"></i>
+                    </div>
+                    <div class="checklist-content">
+                      <div class="checklist-title">Lista e Kreditorëve</div>
+                      <div class="checklist-description">
+                        Lista e plotë e të gjitha detyrimeve
+                      </div>
+                    </div>
+                    <button class="btn btn-sm btn-outline">
+                      <i class="fas fa-plus"></i> Krijo
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Financial Summary -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <i
+                    class="fas fa-calculator"
+                    style="color: var(--success-color)"
+                  ></i>
+                  Përmbledhje Financiare
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="financial-summary">
+                  <div class="summary-item">
+                    <span>Asetet e Mbetura</span>
+                    <span class="amount positive">€45,200</span>
+                  </div>
+                  <div class="summary-item">
+                    <span>Detyrimet Totale</span>
+                    <span class="amount negative">€18,500</span>
+                  </div>
+                  <div class="summary-item">
+                    <span>Kosto e Procesit të Mbylljes</span>
+                    <span class="amount negative">€2,500</span>
+                  </div>
+                  <div class="summary-item total">
+                    <span>Bilanci Përfundimtar</span>
+                    <span class="amount positive">€24,200</span>
+                  </div>
+
+                  <div class="distribution-chart" style="margin-top: 2rem">
+                    <h4 style="margin-bottom: 1rem; font-size: 1rem">
+                      Shpërndarja e Detyrimeve
+                    </h4>
+                    <div class="distribution-bar">
+                      <div
+                        class="bar-segment tax"
+                        style="width: 40%"
+                        title="Tatimet: €7,400"
+                      >
+                        <span>Tatimet</span>
+                      </div>
+                      <div
+                        class="bar-segment social"
+                        style="width: 30%"
+                        title="Kontributet Sociale: €5,550"
+                      >
+                        <span>Kontributet</span>
+                      </div>
+                      <div
+                        class="bar-segment creditors"
+                        style="width: 20%"
+                        title="Kreditorë: €3,700"
+                      >
+                        <span>Kreditorë</span>
+                      </div>
+                      <div
+                        class="bar-segment other"
+                        style="width: 10%"
+                        title="Të Tjera: €1,850"
+                      >
+                        <span>Të Tjera</span>
+                      </div>
+                    </div>
+                    <div class="distribution-legend">
+                      <div class="legend-item">
+                        <span class="legend-color tax"></span>
+                        <span>Tatimet</span>
+                        <span class="legend-value">€7,400</span>
+                      </div>
+                      <div class="legend-item">
+                        <span class="legend-color social"></span>
+                        <span>Kontributet Sociale</span>
+                        <span class="legend-value">€5,550</span>
+                      </div>
+                      <div class="legend-item">
+                        <span class="legend-color creditors"></span>
+                        <span>Kreditorë</span>
+                        <span class="legend-value">€3,700</span>
+                      </div>
+                      <div class="legend-item">
+                        <span class="legend-color other"></span>
+                        <span>Të Tjera</span>
+                        <span class="legend-value">€1,850</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-outline btn-sm">
+                  <i class="fas fa-print"></i> Printo Raportin
+                </button>
+                <button class="btn btn-success btn-sm">
+                  <i class="fas fa-file-export"></i> Eksporto Excel
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Closed Businesses -->
+          <div class="card" style="margin-top: 2rem">
+            <div class="card-header">
+              <div class="card-title">
+                <i class="fas fa-history" style="color: var(--info-color)"></i>
+                Biznese të Mbyllura Së Fundmi
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="closed-businesses-grid">
+                <div class="closed-business-card">
+                  <div class="business-header">
+                    <h4>Restorant Delikate</h4>
+                    <span class="status-badge completed">U Mbyll</span>
+                  </div>
+                  <div class="business-details">
+                    <div class="detail-item">
+                      <span>Data e Mbylljes:</span>
+                      <span>15 Prill 2024</span>
+                    </div>
+                    <div class="detail-item">
+                      <span>Kohëzgjatja e Procesit:</span>
+                      <span>45 ditë</span>
+                    </div>
+                    <div class="detail-item">
+                      <span>Vlera e Mbetur:</span>
+                      <span class="positive">€12,500</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="closed-business-card">
+                  <div class="business-header">
+                    <h4>Studio Fotografike Art</h4>
+                    <span class="status-badge completed">U Mbyll</span>
+                  </div>
+                  <div class="business-details">
+                    <div class="detail-item">
+                      <span>Data e Mbylljes:</span>
+                      <span>28 Mars 2024</span>
+                    </div>
+                    <div class="detail-item">
+                      <span>Kohëzgjatja e Procesit:</span>
+                      <span>60 ditë</span>
+                    </div>
+                    <div class="detail-item">
+                      <span>Vlera e Mbetur:</span>
+                      <span class="positive">€8,200</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="closed-business-card">
+                  <div class="business-header">
+                    <h4>Dyqan Tekstilesh</h4>
+                    <span class="status-badge completed">U Mbyll</span>
+                  </div>
+                  <div class="business-details">
+                    <div class="detail-item">
+                      <span>Data e Mbylljes:</span>
+                      <span>10 Mars 2024</span>
+                    </div>
+                    <div class="detail-item">
+                      <span>Kohëzgjatja e Procesit:</span>
+                      <span>75 ditë</span>
+                    </div>
+                    <div class="detail-item">
+                      <span>Vlera e Mbetur:</span>
+                      <span class="positive">€5,800</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Modal for New Business Closure -->
+    <div class="modal-overlay" id="newClosureModal" style="display: none">
+      <div class="modal">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fas fa-door-closed"></i> Filloni Proces të Ri të
+              Mbylljes
+            </div>
+            <button class="action-btn delete" id="closeClosureModal">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="card-body">
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label required">Emri i Biznesit</label>
+                <div class="select-with-icon">
+                  <i class="fas fa-building select-icon"></i>
+                  <select class="form-control">
+                    <option value="">Zgjidhni biznesin</option>
+                    <option value="agro-shpresa">Agro-Shpresa ShPK</option>
+                    <option value="teknologi">TeKno AL ShPK</option>
+                    <option value="ndertim">Ndërtim Plus ShPK</option>
+                    <option value="travel">Emal Travel ShPK</option>
+                    <option value="farma">Farma Health ShPK</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label required"
+                  >Data e Fillimit të Procesit</label
+                >
+                <input type="date" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Arsyeja e Mbylljes</label>
+                <div class="select-with-icon">
+                  <i class="fas fa-question-circle select-icon"></i>
+                  <select class="form-control">
+                    <option value="">Zgjidhni arsyen</option>
+                    <option value="falimentim">Falimentim</option>
+                    <option value="bashkim">Bashkim me Kompani tjetër</option>
+                    <option value="dalje">Dalje nga Tregu</option>
+                    <option value="restrukturim">Restrukturim</option>
+                    <option value="vullnetare">Mbyllje Vullnetare</option>
+                    <option value="gjykate">Vendim Gjyqësor</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label"
+                  >Afati i Parashikuar për Përfundim</label
+                >
+                <input type="date" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Menaxheri i Procesit</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Emri i menaxherit përgjegjës"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Vlerësimi Fillestar i Aktiveve</label>
+                <input type="number" class="form-control" placeholder="€0.00" />
+              </div>
+              <div class="form-group" style="grid-column: 1 / -1">
+                <label class="form-label">Shënime Fillestare</label>
+                <textarea
+                  class="form-control"
+                  rows="3"
+                  placeholder="Shënime për procesin e mbylljes..."
+                ></textarea>
+              </div>
+              <div class="form-group" style="grid-column: 1 / -1">
+                <label class="form-label">Dokumentet Fillestare</label>
+                <div class="file-upload">
+                  <label class="file-upload-label">
+                    <i class="fas fa-cloud-upload-alt file-upload-icon"></i>
+                    <span class="file-upload-text"
+                      >Klikoni për të ngarkuar dokumentet fillestare</span
+                    >
+                    <span class="file-upload-hint"
+                      >PDF, JPG, PNG deri në 10MB</span
+                    >
+                    <input type="file" multiple />
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-outline" id="cancelClosureBtn">Anulo</button>
+            <button class="btn btn-warning">Filloni Procesin</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+      // Specific scripts for mbyllja-biznesit.html
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.getElementById("menuToggle");
+        const sidebar = document.querySelector(".sidebar");
+        const newClosureBtn = document.getElementById("newClosureBtn");
+        const newClosureModal = document.getElementById("newClosureModal");
+        const closeClosureModal = document.getElementById("closeClosureModal");
+        const cancelClosureBtn = document.getElementById("cancelClosureBtn");
+
+        // Toggle sidebar on mobile
+        menuToggle.addEventListener("click", () => {
+          sidebar.classList.toggle("active");
+        });
+
+        // Show new closure modal
+        newClosureBtn.addEventListener("click", () => {
+          newClosureModal.style.display = "flex";
+        });
+
+        // Close modal
+        function closeModalFunc() {
+          newClosureModal.style.display = "none";
+        }
+
+        closeClosureModal.addEventListener("click", closeModalFunc);
+        cancelClosureBtn.addEventListener("click", closeModalFunc);
+
+        // Close modal when clicking outside
+        newClosureModal.addEventListener("click", (e) => {
+          if (e.target === newClosureModal) {
+            closeModalFunc();
+          }
+        });
+
+        // Search functionality
+        const searchInput = document.querySelector(".search-input");
+        searchInput.addEventListener("input", function (e) {
+          const searchTerm = e.target.value.toLowerCase();
+          console.log("Kërkim për biznes:", searchTerm);
+          // Implement search logic here
+        });
+
+        // Process step interactions
+        document.querySelectorAll(".process-step").forEach((step) => {
+          step.addEventListener("click", function () {
+            if (
+              this.classList.contains("current") ||
+              this.classList.contains("pending")
+            ) {
+              const stepNumber = this.querySelector(".step-number").textContent;
+              const stepTitle = this.querySelector(".step-title").textContent;
+              console.log(`Hapi ${stepNumber}: ${stepTitle}`);
+
+              if (this.classList.contains("current")) {
+                alert(`Duke vazhduar me hapin ${stepNumber}: ${stepTitle}`);
+              } else if (this.classList.contains("pending")) {
+                alert(`Hapi ${stepNumber} është në pritje: ${stepTitle}`);
+              }
+            }
+          });
+        });
+
+        // Action buttons for closures
+        document.querySelectorAll(".action-btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const row = this.closest("tr");
+            const businessName = row.querySelector("strong").textContent;
+            const processId = row.querySelector("td:first-child").textContent;
+
+            const action = this.classList.contains("view")
+              ? "Shiko"
+              : this.classList.contains("edit")
+                ? "Vazhdo"
+                : this.classList.contains("download")
+                  ? "Shkarko"
+                  : "Vepro";
+
+            console.log(`${action} procesin ${processId} për ${businessName}`);
+
+            if (this.classList.contains("view")) {
+              alert(`Duke shfaqur detajet e procesit ${processId}`);
+            } else if (this.classList.contains("edit")) {
+              alert(`Duke vazhduar procesin ${processId}`);
+            }
+          });
+        });
+
+        // Document checklist interactions
+        document.querySelectorAll(".checklist-item .btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const item = this.closest(".checklist-item");
+            const docTitle = item.querySelector(".checklist-title").textContent;
+
+            if (this.textContent.includes("Ngarko")) {
+              console.log(`Duke ngarkuar dokumentin: ${docTitle}`);
+              alert(`Ngarko dokumentin: ${docTitle}`);
+            } else if (this.textContent.includes("Krijo")) {
+              console.log(`Duke krijuar dokumentin: ${docTitle}`);
+              alert(`Krijo dokumentin: ${docTitle}`);
+            }
+          });
+        });
+
+        // Filter buttons
+        document.querySelectorAll(".btn-group .btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            document.querySelectorAll(".btn-group .btn").forEach((b) => {
+              b.classList.remove("active");
+            });
+            this.classList.add("active");
+
+            const filter = this.textContent;
+            console.log("Filtro sipas statusit:", filter);
+            // Implement filter logic here
+          });
+        });
+      });
+    </script>
+    <script src="database.js"></script>
+    <script src="dashboard.js"></script>
+  </body>
+</html>

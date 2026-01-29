@@ -1,0 +1,1746 @@
+<!doctype html>
+<html lang="sq">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light only" />
+    <title>Regjistrimi i Bizneseve - Biznes Manager</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="auth.js"></script>
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <a href="index.html" class="logo">
+            <div class="logo-icon">
+              <i class="fas fa-briefcase"></i>
+            </div>
+            <div class="logo-text">
+              <span>Biznes Manager</span>
+              <span>Sistemi i Plotë i Menaxhimit</span>
+            </div>
+          </a>
+        </div>
+
+        <nav class="sidebar-nav">
+          <div class="nav-section">
+            <div class="nav-section-title">MENU KRYESORE</div>
+            <a href="index.html" class="nav-item">
+              <i class="nav-icon fas fa-home"></i>
+              <span class="nav-text">Dashboard</span>
+            </a>
+            <a href="klientet.html" class="nav-item">
+              <i class="nav-icon fas fa-users"></i>
+              <span class="nav-text">Klientët</span>
+            </a>
+          </div>
+
+          <div class="nav-section">
+            <div class="nav-section-title">BIZNESI</div>
+            <a href="planet-biznesore.html" class="nav-item">
+              <i class="nav-icon fas fa-chart-line"></i>
+              <span class="nav-text">Planet Biznesore</span>
+            </a>
+            <a href="regjistrimi-biznesit.html" class="nav-item active">
+              <i class="nav-icon fas fa-file-signature"></i>
+              <span class="nav-text">Regjistrimi i Bizneseve</span>
+              <span class="nav-badge urgent">12</span>
+            </a>
+            <a href="mbyllja-biznesit.html" class="nav-item">
+              <i class="nav-icon fas fa-door-closed"></i>
+              <span class="nav-text">Mbyllja e Bizneseve</span>
+            </a>
+          </div>
+
+          <div class="nav-section">
+            <div class="nav-section-title">TENDERA & DOKUMENTA</div>
+            <a href="tenderat.html" class="nav-item">
+              <i class="nav-icon fas fa-file-contract"></i>
+              <span class="nav-text">Tenderat</span>
+            </a>
+            <a href="konsultimet.html" class="nav-item">
+              <i class="nav-icon fas fa-comments"></i>
+              <span class="nav-text">Konsultimet</span>
+            </a>
+            <a href="kontabiliteti.html" class="nav-item">
+              <i class="nav-icon fas fa-file-invoice-dollar"></i>
+              <span class="nav-text">Faturat & Pagesat</span>
+            </a>
+            <a href="dokumentet.html" class="nav-item">
+              <i class="nav-icon fas fa-archive"></i>
+              <span class="nav-text">Arkivi i Dokumenteve</span>
+            </a>
+          </div>
+        </nav>
+
+        <div
+          class="sidebar-footer"
+          style="
+            padding: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+          "
+        >
+          <div class="user-info" style="color: var(--gray-400)">
+            <div style="font-size: 0.75rem; margin-bottom: 0.25rem">
+              Procesi i Regjistrimit
+            </div>
+            <div
+              style="
+                font-size: 0.875rem;
+                font-weight: 500;
+                color: var(--light-color);
+              "
+            >
+              <i class="fas fa-file-signature" style="margin-right: 0.5rem"></i>
+              12 Regjistrime në Proces
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Header -->
+        <header class="header">
+          <div class="header-left">
+            <button class="menu-toggle" id="menuToggle">
+              <i class="fas fa-bars"></i>
+            </button>
+            <div class="header-title">
+              <h1>Regjistrimi i Bizneseve</h1>
+              <div class="header-subtitle">
+                Procesi i Plotë i Regjistrimit dhe Licencimit të Bizneseve
+              </div>
+            </div>
+          </div>
+
+          <div class="header-right">
+            <div class="header-stats">
+              <div class="stat-mini">
+                <div class="stat-mini-value">12</div>
+                <div class="stat-mini-label">Në Proces</div>
+              </div>
+              <div class="stat-mini">
+                <div
+                  class="stat-mini-value"
+                  style="color: var(--success-color)"
+                >
+                  45
+                </div>
+                <div class="stat-mini-label">U Regjistruan</div>
+              </div>
+              <div class="stat-mini">
+                <div
+                  class="stat-mini-value"
+                  style="color: var(--warning-color)"
+                >
+                  5
+                </div>
+                <div class="stat-mini-label">Kërkojnë Vëmendje</div>
+              </div>
+            </div>
+
+            <div class="search-container">
+              <i class="fas fa-search search-icon"></i>
+              <input
+                type="text"
+                class="search-input"
+                placeholder="Kërko biznes..."
+              />
+            </div>
+
+            <div class="user-menu">
+              <div class="user-avatar">BM</div>
+              <div class="user-info">
+                <div class="user-name">Administrator</div>
+                <div class="user-role">Ekspert i Regjistrimit</div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="page-content">
+          <!-- Breadcrumb -->
+          <div class="breadcrumb">
+            <div class="breadcrumb-item">
+              <a href="index.html"><i class="fas fa-home"></i> Dashboard</a>
+            </div>
+            <div class="breadcrumb-separator">/</div>
+            <div class="breadcrumb-item active">
+              <i class="fas fa-file-signature"></i> Regjistrimi i Bizneseve
+            </div>
+          </div>
+
+          <!-- Page Header -->
+          <div class="page-header">
+            <div class="page-title-section">
+              <div class="page-title">
+                <i
+                  class="fas fa-file-signature"
+                  style="color: var(--secondary-color)"
+                ></i>
+                Procesi i Regjistrimit të Bizneseve
+              </div>
+              <div class="page-subtitle">
+                Menaxhoni të gjithë procesin e regjistrimit të bizneseve të
+                reja, nga aplikimi deri te lëshimi i licencave.
+              </div>
+            </div>
+            <div class="page-actions">
+              <button class="btn btn-outline">
+                <i class="fas fa-filter"></i> Filtro Sipas Statusit
+              </button>
+              <button class="btn btn-primary" id="newRegistrationBtn">
+                <i class="fas fa-plus"></i> Regjistrim i Ri
+              </button>
+              <button class="btn btn-success">
+                <i class="fas fa-file-pdf"></i> Gjenero Raport
+              </button>
+            </div>
+          </div>
+
+          <!-- Stats Overview -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon clients">
+                <i class="fas fa-hourglass-half"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">12</div>
+                <div class="stat-label">Regjistrime në Proces</div>
+                <div class="stat-change negative">
+                  <i class="fas fa-exclamation-triangle"></i> 5 kërkojnë
+                  vëmendje
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon projects">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">45</div>
+                <div class="stat-label">Biznese të Regjistruara</div>
+                <div class="stat-change positive">
+                  <i class="fas fa-arrow-up"></i> 8 këtë muaj
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon pending">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">7</div>
+                <div class="stat-label">Ditë Mesatare e Procesit</div>
+                <div class="stat-change positive">
+                  <i class="fas fa-arrow-down"></i> 2 ditë më shpejt
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon revenue">
+                <i class="fas fa-percentage"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">98%</div>
+                <div class="stat-label">Shkallë Suksesi</div>
+                <div class="stat-change positive">
+                  <i class="fas fa-arrow-up"></i> 3% më mirë se mesatarja
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Registration Processes Table -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">
+                <i
+                  class="fas fa-list"
+                  style="color: var(--secondary-color)"
+                ></i>
+                Proceset Aktive të Regjistrimit
+              </div>
+              <div class="card-actions">
+                <div class="btn-group">
+                  <button class="btn btn-sm btn-outline active">
+                    Të Gjitha
+                  </button>
+                  <button class="btn btn-sm btn-outline">Aplikim</button>
+                  <button class="btn btn-sm btn-outline">Verifikim</button>
+                  <button class="btn btn-sm btn-outline">Licencim</button>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="table-container">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>ID Aplikimit</th>
+                      <th>Emri i Biznesit</th>
+                      <th>Tipi i Biznesit</th>
+                      <th>Data e Aplikimit</th>
+                      <th>Statusi Aktual</th>
+                      <th>Progresi</th>
+                      <th>Afati i Vlerësimit</th>
+                      <th>Veprime</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>REG-2024-087</td>
+                      <td>
+                        <strong>Green Energy Solutions ShPK</strong>
+                        <div style="font-size: 0.75rem; color: var(--gray-600)">
+                          Drini Krasniqi • Energji të Rinovueshme
+                        </div>
+                      </td>
+                      <td>ShPK</td>
+                      <td>15 Maj 2024</td>
+                      <td>
+                        <span class="status-badge pending">Në Verifikim</span>
+                        <div class="priority-badge high">Urgjente</div>
+                      </td>
+                      <td>
+                        <div>3/6 hapa</div>
+                        <div class="progress-bar" style="margin-top: 0.5rem">
+                          <div
+                            class="progress-fill warning"
+                            style="width: 50%"
+                          ></div>
+                        </div>
+                      </td>
+                      <td>
+                        25 Maj 2024
+                        <div
+                          style="font-size: 0.75rem; color: var(--danger-color)"
+                        >
+                          <i class="fas fa-clock"></i> 3 ditë të mbetura
+                        </div>
+                      </td>
+                      <td>
+                        <div class="action-buttons">
+                          <button
+                            class="action-btn view"
+                            title="Shiko aplikimin"
+                          >
+                            <i class="fas fa-eye"></i>
+                          </button>
+                          <button
+                            class="action-btn edit"
+                            title="Vazhdo procesin"
+                          >
+                            <i class="fas fa-forward"></i>
+                          </button>
+                          <button
+                            class="action-btn download"
+                            title="Shkarko dokumentet"
+                          >
+                            <i class="fas fa-download"></i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>REG-2024-086</td>
+                      <td>
+                        <strong>Digital Marketing Pro ShPK</strong>
+                        <div style="font-size: 0.75rem; color: var(--gray-600)">
+                          Ana Gjika • Marketing Digjital
+                        </div>
+                      </td>
+                      <td>ShPK</td>
+                      <td>12 Maj 2024</td>
+                      <td>
+                        <span class="status-badge active"
+                          >Aplikimi Pranuar</span
+                        >
+                        <div class="priority-badge medium">Në Proces</div>
+                      </td>
+                      <td>
+                        <div>4/6 hapa</div>
+                        <div class="progress-bar" style="margin-top: 0.5rem">
+                          <div
+                            class="progress-fill primary"
+                            style="width: 66%"
+                          ></div>
+                        </div>
+                      </td>
+                      <td>
+                        30 Maj 2024
+                        <div
+                          style="
+                            font-size: 0.75rem;
+                            color: var(--warning-color);
+                          "
+                        >
+                          <i class="fas fa-clock"></i> 8 ditë të mbetura
+                        </div>
+                      </td>
+                      <td>
+                        <div class="action-buttons">
+                          <button
+                            class="action-btn view"
+                            title="Shiko aplikimin"
+                          >
+                            <i class="fas fa-eye"></i>
+                          </button>
+                          <button
+                            class="action-btn edit"
+                            title="Vazhdo procesin"
+                          >
+                            <i class="fas fa-forward"></i>
+                          </button>
+                          <button
+                            class="action-btn download"
+                            title="Shkarko dokumentet"
+                          >
+                            <i class="fas fa-download"></i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>REG-2024-085</td>
+                      <td>
+                        <strong>Pharma Care Plus ShPK</strong>
+                        <div style="font-size: 0.75rem; color: var(--gray-600)">
+                          Dr. Elton Berisha • Farmaci dhe Kujdes Shëndetësor
+                        </div>
+                      </td>
+                      <td>ShPK</td>
+                      <td>8 Maj 2024</td>
+                      <td>
+                        <span class="status-badge pending"
+                          >Në Pritje të Licencës</span
+                        >
+                        <div class="priority-badge low">Rregullt</div>
+                      </td>
+                      <td>
+                        <div>5/6 hapa</div>
+                        <div class="progress-bar" style="margin-top: 0.5rem">
+                          <div
+                            class="progress-fill success"
+                            style="width: 83%"
+                          ></div>
+                        </div>
+                      </td>
+                      <td>
+                        22 Maj 2024
+                        <div
+                          style="
+                            font-size: 0.75rem;
+                            color: var(--success-color);
+                          "
+                        >
+                          <i class="fas fa-check-circle"></i> Gati për përfundim
+                        </div>
+                      </td>
+                      <td>
+                        <div class="action-buttons">
+                          <button
+                            class="action-btn view"
+                            title="Shiko aplikimin"
+                          >
+                            <i class="fas fa-eye"></i>
+                          </button>
+                          <button
+                            class="action-btn edit"
+                            title="Vazhdo procesin"
+                          >
+                            <i class="fas fa-forward"></i>
+                          </button>
+                          <button
+                            class="action-btn download"
+                            title="Shkarko dokumentet"
+                          >
+                            <i class="fas fa-download"></i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>REG-2024-084</td>
+                      <td>
+                        <strong>Construction Masters ShPK</strong>
+                        <div style="font-size: 0.75rem; color: var(--gray-600)">
+                          Genti Leka • Ndërtim dhe Renovim
+                        </div>
+                      </td>
+                      <td>ShPK</td>
+                      <td>5 Maj 2024</td>
+                      <td>
+                        <span class="status-badge pending"
+                          >Kërkesë për Dokumente Shtesë</span
+                        >
+                        <div class="priority-badge high">Urgjente</div>
+                      </td>
+                      <td>
+                        <div>2/6 hapa</div>
+                        <div class="progress-bar" style="margin-top: 0.5rem">
+                          <div
+                            class="progress-fill danger"
+                            style="width: 33%"
+                          ></div>
+                        </div>
+                      </td>
+                      <td>
+                        20 Maj 2024
+                        <div
+                          style="font-size: 0.75rem; color: var(--danger-color)"
+                        >
+                          <i class="fas fa-exclamation-triangle"></i> Kërkon
+                          vëmendje
+                        </div>
+                      </td>
+                      <td>
+                        <div class="action-buttons">
+                          <button
+                            class="action-btn view"
+                            title="Shiko aplikimin"
+                          >
+                            <i class="fas fa-eye"></i>
+                          </button>
+                          <button
+                            class="action-btn edit"
+                            title="Vazhdo procesin"
+                          >
+                            <i class="fas fa-forward"></i>
+                          </button>
+                          <button
+                            class="action-btn download"
+                            title="Shkarko dokumentet"
+                          >
+                            <i class="fas fa-download"></i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>REG-2024-083</td>
+                      <td>
+                        <strong>IT Solutions Albania ShPK</strong>
+                        <div style="font-size: 0.75rem; color: var(--gray-600)">
+                          Klajdi Hoxha • Zhvillim Software
+                        </div>
+                      </td>
+                      <td>ShPK</td>
+                      <td>1 Maj 2024</td>
+                      <td>
+                        <span class="status-badge completed"
+                          >U Regjistrua me Sukses</span
+                        >
+                        <div class="priority-badge low">Përfunduar</div>
+                      </td>
+                      <td>
+                        <div>6/6 hapa</div>
+                        <div class="progress-bar" style="margin-top: 0.5rem">
+                          <div
+                            class="progress-fill success"
+                            style="width: 100%"
+                          ></div>
+                        </div>
+                      </td>
+                      <td>
+                        10 Maj 2024
+                        <div
+                          style="
+                            font-size: 0.75rem;
+                            color: var(--success-color);
+                          "
+                        >
+                          <i class="fas fa-check-circle"></i> Përfunduar
+                        </div>
+                      </td>
+                      <td>
+                        <div class="action-buttons">
+                          <button
+                            class="action-btn view"
+                            title="Shiko aplikimin"
+                          >
+                            <i class="fas fa-eye"></i>
+                          </button>
+                          <button
+                            class="action-btn edit"
+                            title="Shiko certifikatën"
+                          >
+                            <i class="fas fa-certificate"></i>
+                          </button>
+                          <button
+                            class="action-btn download"
+                            title="Shkarko dokumentet"
+                          >
+                            <i class="fas fa-download"></i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div style="font-size: 0.875rem; color: var(--gray-600)">
+                Shfaqen 5 nga 12 procese aktive
+              </div>
+              <button class="btn btn-outline btn-sm">
+                <i class="fas fa-list"></i> Shiko të Gjitha Proceset
+              </button>
+            </div>
+          </div>
+
+          <!-- Registration Process & Documents -->
+          <div class="charts-container" style="margin-top: 2rem">
+            <!-- Registration Process Steps -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <i
+                    class="fas fa-project-diagram"
+                    style="color: var(--info-color)"
+                  ></i>
+                  Hapat e Procesit të Regjistrimit (REG-2024-087)
+                </div>
+                <div class="card-actions">
+                  <span class="status-badge active">Në Progres: 3/6 hapa</span>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="registration-process">
+                  <!-- Step 1 -->
+                  <div class="process-step completed">
+                    <div class="step-header">
+                      <div class="step-number">1</div>
+                      <div class="step-title">Aplikimi Fillestar</div>
+                      <div class="step-status">
+                        <span class="status-badge completed">Përfunduar</span>
+                      </div>
+                    </div>
+                    <div class="step-content">
+                      <p>Dorëzimi i aplikimit fillestar në QNR</p>
+                      <div class="step-details">
+                        <div
+                          style="
+                            display: flex;
+                            justify-content: space-between;
+                            font-size: 0.75rem;
+                            color: var(--gray-600);
+                          "
+                        >
+                          <span>Data: 15 Maj 2024</span>
+                          <span>Referenca: QNR-04587/2024</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Step 2 -->
+                  <div class="process-step completed">
+                    <div class="step-header">
+                      <div class="step-number">2</div>
+                      <div class="step-title">Verifikimi i Dokumenteve</div>
+                      <div class="step-status">
+                        <span class="status-badge completed">Përfunduar</span>
+                      </div>
+                    </div>
+                    <div class="step-content">
+                      <p>
+                        Kontrollimi i plotësisë dhe vërtetësisë së dokumenteve
+                      </p>
+                      <div class="step-details">
+                        <div
+                          style="
+                            display: flex;
+                            justify-content: space-between;
+                            font-size: 0.75rem;
+                            color: var(--gray-600);
+                          "
+                        >
+                          <span>Data: 17 Maj 2024</span>
+                          <span>Verifikues: Agjencia Tatimore</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Step 3 -->
+                  <div class="process-step current">
+                    <div class="step-header">
+                      <div class="step-number">3</div>
+                      <div class="step-title">Pagesa e Tarifave</div>
+                      <div class="step-status">
+                        <span class="status-badge pending">Në Progres</span>
+                      </div>
+                    </div>
+                    <div class="step-content">
+                      <p>Pagesa e tarifave të regjistrimit dhe licencimit</p>
+                      <div class="step-details">
+                        <div class="fee-breakdown">
+                          <div class="fee-item">
+                            <span>Tarifa e Regjistrimit</span>
+                            <span class="amount">€100</span>
+                            <span class="status-badge completed">Paguar</span>
+                          </div>
+                          <div class="fee-item">
+                            <span>Licenca e Veprimit</span>
+                            <span class="amount">€250</span>
+                            <span class="status-badge pending">Në Pritje</span>
+                          </div>
+                          <div class="fee-item">
+                            <span>Tarifa e Publikimit</span>
+                            <span class="amount">€50</span>
+                            <span class="status-badge pending">Në Pritje</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Step 4 -->
+                  <div class="process-step pending">
+                    <div class="step-header">
+                      <div class="step-number">4</div>
+                      <div class="step-title">Publikimi në Gazetën Zyrtare</div>
+                      <div class="step-status">
+                        <span class="status-badge draft">Në Pritje</span>
+                      </div>
+                    </div>
+                    <div class="step-content">
+                      <p>
+                        Publikimi i njoftimit për themelim në gazetën zyrtare
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Step 5 -->
+                  <div class="process-step pending">
+                    <div class="step-header">
+                      <div class="step-number">5</div>
+                      <div class="step-title">Lëshimi i NIB-së</div>
+                      <div class="step-status">
+                        <span class="status-badge draft">Në Pritje</span>
+                      </div>
+                    </div>
+                    <div class="step-content">
+                      <p>Gjenerimi i Numrit Identifikues të Biznesit</p>
+                    </div>
+                  </div>
+
+                  <!-- Step 6 -->
+                  <div class="process-step pending">
+                    <div class="step-header">
+                      <div class="step-number">6</div>
+                      <div class="step-title">Dëshmia e Regjistrimit</div>
+                      <div class="step-status">
+                        <span class="status-badge draft">Në Pritje</span>
+                      </div>
+                    </div>
+                    <div class="step-content">
+                      <p>Lëshimi i dëshmisë përfundimtare të regjistrimit</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-outline">
+                  <i class="fas fa-pause"></i> Pauzo Procesin
+                </button>
+                <button class="btn btn-primary">
+                  <i class="fas fa-forward"></i> Vazhdo me Pagesën
+                </button>
+              </div>
+            </div>
+
+            <!-- Required Documents & Fees -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <i
+                    class="fas fa-file-alt"
+                    style="color: var(--secondary-color)"
+                  ></i>
+                  Dokumentet e Kërkuara & Tarifat
+                </div>
+              </div>
+              <div class="card-body">
+                <!-- Documents Section -->
+                <div class="documents-section">
+                  <h4 style="margin-bottom: 1rem; color: var(--gray-800)">
+                    <i class="fas fa-folder-open"></i>
+                    Dokumentet e Kërkuara
+                  </h4>
+                  <div class="documents-checklist">
+                    <div class="document-item completed">
+                      <div class="document-icon">
+                        <i class="fas fa-check-circle"></i>
+                      </div>
+                      <div class="document-info">
+                        <div class="document-title">Aplikimi i Plotësuar</div>
+                        <div class="document-description">
+                          Formulari zyrtar i aplikimit
+                        </div>
+                      </div>
+                      <button class="btn btn-sm btn-outline">
+                        <i class="fas fa-download"></i>
+                      </button>
+                    </div>
+                    <div class="document-item completed">
+                      <div class="document-icon">
+                        <i class="fas fa-check-circle"></i>
+                      </div>
+                      <div class="document-info">
+                        <div class="document-title">Statuti i Biznesit</div>
+                        <div class="document-description">
+                          Kopje e statutit të nënshkruar
+                        </div>
+                      </div>
+                      <button class="btn btn-sm btn-outline">
+                        <i class="fas fa-download"></i>
+                      </button>
+                    </div>
+                    <div class="document-item completed">
+                      <div class="document-icon">
+                        <i class="fas fa-check-circle"></i>
+                      </div>
+                      <div class="document-info">
+                        <div class="document-title">Dëshmia e Adresës</div>
+                        <div class="document-description">
+                          Vërtetim i adresës së biznesit
+                        </div>
+                      </div>
+                      <button class="btn btn-sm btn-outline">
+                        <i class="fas fa-download"></i>
+                      </button>
+                    </div>
+                    <div class="document-item pending">
+                      <div class="document-icon">
+                        <i class="fas fa-clock"></i>
+                      </div>
+                      <div class="document-info">
+                        <div class="document-title">
+                          Dëshmia e Papastërtisë Penale
+                        </div>
+                        <div class="document-description">
+                          Për të gjithë partnerët
+                        </div>
+                      </div>
+                      <button class="btn btn-sm btn-warning">
+                        <i class="fas fa-upload"></i> Ngarko
+                      </button>
+                    </div>
+                    <div class="document-item missing">
+                      <div class="document-icon">
+                        <i class="fas fa-times-circle"></i>
+                      </div>
+                      <div class="document-info">
+                        <div class="document-title">Plan Biznesor</div>
+                        <div class="document-description">
+                          Plan financiar 3-vjeçar
+                        </div>
+                      </div>
+                      <button class="btn btn-sm btn-outline">
+                        <i class="fas fa-plus"></i> Krijo
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Fees Section -->
+                <div
+                  class="fees-section"
+                  style="
+                    margin-top: 2rem;
+                    padding-top: 1.5rem;
+                    border-top: 1px solid var(--gray-200);
+                  "
+                >
+                  <h4 style="margin-bottom: 1rem; color: var(--gray-800)">
+                    <i class="fas fa-money-bill-wave"></i>
+                    Tarifat dhe Pagesat
+                  </h4>
+                  <div class="fees-breakdown">
+                    <div class="fee-summary-item">
+                      <span>Tarifa e Regjistrimit</span>
+                      <span class="amount">€100.00</span>
+                    </div>
+                    <div class="fee-summary-item">
+                      <span>Licenca e Veprimit</span>
+                      <span class="amount">€250.00</span>
+                    </div>
+                    <div class="fee-summary-item">
+                      <span>Tarifa e Publikimit</span>
+                      <span class="amount">€50.00</span>
+                    </div>
+                    <div class="fee-summary-item">
+                      <span>Shërbime Konsulence</span>
+                      <span class="amount">€300.00</span>
+                    </div>
+                    <div class="fee-summary-item total">
+                      <span>Totali</span>
+                      <span class="amount">€700.00</span>
+                    </div>
+                  </div>
+
+                  <div class="payment-status" style="margin-top: 1.5rem">
+                    <h5 style="margin-bottom: 0.75rem; color: var(--gray-700)">
+                      Statusi i Pagesave
+                    </h5>
+                    <div class="payment-progress">
+                      <div class="progress-label">
+                        <span>Pagesa e Përgjithshme</span>
+                        <span>€100/€700 (14%)</span>
+                      </div>
+                      <div class="progress-bar">
+                        <div
+                          class="progress-fill warning"
+                          style="width: 14%"
+                        ></div>
+                      </div>
+                    </div>
+                    <div
+                      class="payment-actions"
+                      style="margin-top: 1rem; display: flex; gap: 0.5rem"
+                    >
+                      <button class="btn btn-sm btn-outline">
+                        <i class="fas fa-receipt"></i> Gjenero Faturë
+                      </button>
+                      <button class="btn btn-sm btn-success">
+                        <i class="fas fa-credit-card"></i> Kryej Pagesën
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Business Types & Registration Statistics -->
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 1.5rem;
+              margin-top: 2rem;
+            "
+          >
+            <!-- Business Types Distribution -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <i
+                    class="fas fa-chart-pie"
+                    style="color: var(--success-color)"
+                  ></i>
+                  Shpërndarja e Llojeve të Bizneseve
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="business-types-distribution">
+                  <div class="type-item">
+                    <div
+                      style="
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 0.5rem;
+                      "
+                    >
+                      <span style="font-size: 0.875rem"
+                        >ShPK (Shoqëri me Përgjegjësi të Kufizuar)</span
+                      >
+                      <span style="font-weight: 600">65%</span>
+                    </div>
+                    <div class="progress-bar">
+                      <div
+                        class="progress-fill primary"
+                        style="width: 65%"
+                      ></div>
+                    </div>
+                  </div>
+                  <div class="type-item">
+                    <div
+                      style="
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 0.5rem;
+                      "
+                    >
+                      <span style="font-size: 0.875rem"
+                        >Njeri-fis (Person Fizik)</span
+                      >
+                      <span style="font-weight: 600">20%</span>
+                    </div>
+                    <div class="progress-bar">
+                      <div
+                        class="progress-fill success"
+                        style="width: 20%"
+                      ></div>
+                    </div>
+                  </div>
+                  <div class="type-item">
+                    <div
+                      style="
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 0.5rem;
+                      "
+                    >
+                      <span style="font-size: 0.875rem"
+                        >SHA (Shoqëri Aksionare)</span
+                      >
+                      <span style="font-weight: 600">10%</span>
+                    </div>
+                    <div class="progress-bar">
+                      <div
+                        class="progress-fill warning"
+                        style="width: 10%"
+                      ></div>
+                    </div>
+                  </div>
+                  <div class="type-item">
+                    <div
+                      style="
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 0.5rem;
+                      "
+                    >
+                      <span style="font-size: 0.875rem"
+                        >Dega e Kompanisë së Huaj</span
+                      >
+                      <span style="font-weight: 600">5%</span>
+                    </div>
+                    <div class="progress-bar">
+                      <div class="progress-fill danger" style="width: 5%"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="registration-tips"
+                  style="
+                    margin-top: 2rem;
+                    padding: 1rem;
+                    background: var(--gray-100);
+                    border-radius: var(--border-radius);
+                  "
+                >
+                  <h5 style="margin-bottom: 0.5rem; color: var(--gray-800)">
+                    <i class="fas fa-lightbulb"></i> Këshilla për Regjistrim të
+                    Suksesshëm
+                  </h5>
+                  <ul
+                    style="
+                      padding-left: 1.5rem;
+                      margin: 0;
+                      font-size: 0.875rem;
+                      color: var(--gray-700);
+                    "
+                  >
+                    <li>Përgatitni të gjitha dokumentet paraprakisht</li>
+                    <li>Verifikoni disponueshmërinë e emrit të biznesit</li>
+                    <li>Planifikoni buxhetin për tarifat dhe shërbimet</li>
+                    <li>
+                      Konsideroni llojin e duhur të biznesit për nevojat tuaja
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent Registrations -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <i
+                    class="fas fa-history"
+                    style="color: var(--info-color)"
+                  ></i>
+                  Regjistrime të Fundit
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="recent-registrations">
+                  <div class="registration-item">
+                    <div class="registration-header">
+                      <h4>IT Solutions Albania</h4>
+                      <span class="status-badge completed">U Regjistrua</span>
+                    </div>
+                    <div class="registration-details">
+                      <div class="detail-item">
+                        <span>Data e Regjistrimit:</span>
+                        <span>10 Maj 2024</span>
+                      </div>
+                      <div class="detail-item">
+                        <span>NIB:</span>
+                        <span class="mono">J614080123L</span>
+                      </div>
+                      <div class="detail-item">
+                        <span>Tipi:</span>
+                        <span>ShPK</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="registration-item">
+                    <div class="registration-header">
+                      <h4>Organic Food Market</h4>
+                      <span class="status-badge completed">U Regjistrua</span>
+                    </div>
+                    <div class="registration-details">
+                      <div class="detail-item">
+                        <span>Data e Regjistrimit:</span>
+                        <span>5 Maj 2024</span>
+                      </div>
+                      <div class="detail-item">
+                        <span>NIB:</span>
+                        <span class="mono">J614079456L</span>
+                      </div>
+                      <div class="detail-item">
+                        <span>Tipi:</span>
+                        <span>Person Fizik</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="registration-item">
+                    <div class="registration-header">
+                      <h4>Auto Service Center</h4>
+                      <span class="status-badge completed">U Regjistrua</span>
+                    </div>
+                    <div class="registration-details">
+                      <div class="detail-item">
+                        <span>Data e Regjistrimit:</span>
+                        <span>28 Prill 2024</span>
+                      </div>
+                      <div class="detail-item">
+                        <span>NIB:</span>
+                        <span class="mono">J614078789L</span>
+                      </div>
+                      <div class="detail-item">
+                        <span>Tipi:</span>
+                        <span>ShPK</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-outline btn-sm">
+                  <i class="fas fa-list"></i> Shiko të Gjitha Regjistrimet
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Modal for New Business Registration -->
+    <div class="modal-overlay" id="newRegistrationModal" style="display: none">
+      <div class="modal" style="max-width: 900px">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fas fa-file-signature"></i> Filloni Regjistrim të Ri të
+              Biznesit
+            </div>
+            <button class="action-btn delete" id="closeRegistrationModal">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="card-body">
+            <!-- Form Steps -->
+            <div class="form-steps">
+              <div class="step-indicator">
+                <div class="step active" data-step="1">
+                  1. Informacionet Bazë
+                </div>
+                <div class="step" data-step="2">2. Tipi i Biznesit</div>
+                <div class="step" data-step="3">3. Dokumentet</div>
+                <div class="step" data-step="4">4. Përmbledhje</div>
+              </div>
+
+              <!-- Step 1: Basic Information -->
+              <div class="form-step active" id="step1">
+                <h4 style="margin-bottom: 1.5rem; color: var(--gray-800)">
+                  <i class="fas fa-info-circle"></i> Informacionet Bazë të
+                  Biznesit
+                </h4>
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label class="form-label required">Emri i Biznesit</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Shkruani emrin e plotë të biznesit"
+                    />
+                    <div class="form-hint">
+                      Emri duhet të jetë unik dhe i disponueshëm
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label required">Adresa e Biznesit</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Adresa e plotë e biznesit"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label required">Qyteti</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Qyteti ku ndodhet biznesi"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label required">Telefon</label>
+                    <input
+                      type="tel"
+                      class="form-control"
+                      placeholder="+355 XX XXX XXXX"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label required">Email</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      placeholder="kontakt@biznes.al"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label"
+                      >Faqja e Internetit (nëse ka)</label
+                    >
+                    <input
+                      type="url"
+                      class="form-control"
+                      placeholder="https://www.example.al"
+                    />
+                  </div>
+                  <div class="form-group" style="grid-column: 1 / -1">
+                    <label class="form-label required"
+                      >Përshkrimi i Aktivitetit</label
+                    >
+                    <textarea
+                      class="form-control"
+                      rows="3"
+                      placeholder="Përshkruani aktivitetin kryesor të biznesit..."
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 2: Business Type -->
+              <div class="form-step" id="step2" style="display: none">
+                <h4 style="margin-bottom: 1.5rem; color: var(--gray-800)">
+                  <i class="fas fa-building"></i> Zgjidhni Llojin e Biznesit
+                </h4>
+                <div class="business-type-options">
+                  <div class="type-option active">
+                    <div class="type-header">
+                      <i class="fas fa-users"></i>
+                      <h5>ShPK</h5>
+                      <span class="type-popular">Më e popullarizuara</span>
+                    </div>
+                    <div class="type-description">
+                      <p><strong>Shoqëri me Përgjegjësi të Kufizuar</strong></p>
+                      <ul>
+                        <li>Kapitali minimal: €1</li>
+                        <li>Përgjegjësi e kufizuar</li>
+                        <li>1 deri në 50 partnerë</li>
+                        <li>Më e lehtë për administrim</li>
+                      </ul>
+                    </div>
+                    <div class="type-fees">
+                      <span>Tarifa e Regjistrimit: €100</span>
+                    </div>
+                  </div>
+                  <div class="type-option">
+                    <div class="type-header">
+                      <i class="fas fa-user"></i>
+                      <h5>Person Fizik</h5>
+                    </div>
+                    <div class="type-description">
+                      <p><strong>Biznes Individual</strong></p>
+                      <ul>
+                        <li>Nuk kërkon kapital fillestar</li>
+                        <li>Përgjegjësi e pakufizuar</li>
+                        <li>Administrim i thjeshtë</li>
+                        <li>Për veprimtari të vogla</li>
+                      </ul>
+                    </div>
+                    <div class="type-fees">
+                      <span>Tarifa e Regjistrimit: €50</span>
+                    </div>
+                  </div>
+                  <div class="type-option">
+                    <div class="type-header">
+                      <i class="fas fa-chart-line"></i>
+                      <h5>SHA</h5>
+                    </div>
+                    <div class="type-description">
+                      <p><strong>Shoqëri Aksionare</strong></p>
+                      <ul>
+                        <li>Kapitali minimal: €3,500</li>
+                        <li>Përgjegjësi e kufizuar</li>
+                        <li>Në minimum 2 aksionerë</li>
+                        <li>Më komplekse administrativisht</li>
+                      </ul>
+                    </div>
+                    <div class="type-fees">
+                      <span>Tarifa e Regjistrimit: €500</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group" style="margin-top: 1.5rem">
+                  <label class="form-label required"
+                    >Kapitali Fillestar (€)</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    placeholder="0.00"
+                    min="0"
+                  />
+                </div>
+              </div>
+
+              <!-- Step 3: Documents -->
+              <div class="form-step" id="step3" style="display: none">
+                <h4 style="margin-bottom: 1.5rem; color: var(--gray-800)">
+                  <i class="fas fa-folder-open"></i> Dokumentet e Kërkuara
+                </h4>
+                <div class="documents-upload">
+                  <div class="document-upload-item">
+                    <div class="document-info">
+                      <div class="document-title">Aplikimi i Plotësuar</div>
+                      <div class="document-description">
+                        Formulari zyrtar i aplikimit të nënshkruar
+                      </div>
+                    </div>
+                    <div class="document-upload">
+                      <input
+                        type="file"
+                        id="appForm"
+                        accept=".pdf,.doc,.docx"
+                        style="display: none"
+                      />
+                      <label for="appForm" class="btn btn-outline btn-sm">
+                        <i class="fas fa-upload"></i> Ngarko
+                      </label>
+                    </div>
+                  </div>
+                  <div class="document-upload-item">
+                    <div class="document-info">
+                      <div class="document-title">Kopje e Pasaportës/ID</div>
+                      <div class="document-description">
+                        Për të gjithë partnerët/themeluesit
+                      </div>
+                    </div>
+                    <div class="document-upload">
+                      <input
+                        type="file"
+                        id="idCopy"
+                        accept=".pdf,.jpg,.png"
+                        style="display: none"
+                      />
+                      <label for="idCopy" class="btn btn-outline btn-sm">
+                        <i class="fas fa-upload"></i> Ngarko
+                      </label>
+                    </div>
+                  </div>
+                  <div class="document-upload-item">
+                    <div class="document-info">
+                      <div class="document-title">Dëshmia e Adresës</div>
+                      <div class="document-description">
+                        Vërtetim i adresës së biznesit
+                      </div>
+                    </div>
+                    <div class="document-upload">
+                      <input
+                        type="file"
+                        id="addressProof"
+                        accept=".pdf,.jpg,.png"
+                        style="display: none"
+                      />
+                      <label for="addressProof" class="btn btn-outline btn-sm">
+                        <i class="fas fa-upload"></i> Ngarko
+                      </label>
+                    </div>
+                  </div>
+                  <div class="document-upload-item">
+                    <div class="document-info">
+                      <div class="document-title">Plan Biznesor</div>
+                      <div class="document-description">
+                        Plan financiar 3-vjeçar (opsional)
+                      </div>
+                    </div>
+                    <div class="document-upload">
+                      <input
+                        type="file"
+                        id="businessPlan"
+                        accept=".pdf,.doc,.docx,.xls,.xlsx"
+                        style="display: none"
+                      />
+                      <label for="businessPlan" class="btn btn-outline btn-sm">
+                        <i class="fas fa-upload"></i> Ngarko
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 4: Summary -->
+              <div class="form-step" id="step4" style="display: none">
+                <h4 style="margin-bottom: 1.5rem; color: var(--gray-800)">
+                  <i class="fas fa-check-circle"></i> Përmbledhje dhe Konfirmim
+                </h4>
+                <div class="registration-summary">
+                  <div class="summary-section">
+                    <h5>Informacionet e Biznesit</h5>
+                    <div class="summary-item">
+                      <span>Emri i Biznesit:</span>
+                      <span class="summary-value"
+                        >Green Energy Solutions ShPK</span
+                      >
+                    </div>
+                    <div class="summary-item">
+                      <span>Adresa:</span>
+                      <span class="summary-value"
+                        >Rr. "Dëshmorët e Kombit", Tiranë</span
+                      >
+                    </div>
+                    <div class="summary-item">
+                      <span>Tipi i Biznesit:</span>
+                      <span class="summary-value">ShPK</span>
+                    </div>
+                    <div class="summary-item">
+                      <span>Kapitali Fillestar:</span>
+                      <span class="summary-value">€5,000</span>
+                    </div>
+                  </div>
+                  <div class="summary-section">
+                    <h5>Tarifat e Vlerësuara</h5>
+                    <div class="summary-item">
+                      <span>Tarifa e Regjistrimit:</span>
+                      <span class="summary-value">€100</span>
+                    </div>
+                    <div class="summary-item">
+                      <span>Licenca e Veprimit:</span>
+                      <span class="summary-value">€250</span>
+                    </div>
+                    <div class="summary-item">
+                      <span>Tarifa e Publikimit:</span>
+                      <span class="summary-value">€50</span>
+                    </div>
+                    <div class="summary-item total">
+                      <span>Totali:</span>
+                      <span class="summary-value">€400</span>
+                    </div>
+                  </div>
+                  <div class="summary-section">
+                    <h5>Dokumentet e Ngarkuara</h5>
+                    <div class="documents-list">
+                      <div class="doc-item">
+                        <i
+                          class="fas fa-check-circle"
+                          style="color: var(--success-color)"
+                        ></i>
+                        <span>Aplikimi i Plotësuar</span>
+                      </div>
+                      <div class="doc-item">
+                        <i
+                          class="fas fa-check-circle"
+                          style="color: var(--success-color)"
+                        ></i>
+                        <span>Kopje e Pasaportës</span>
+                      </div>
+                      <div class="doc-item">
+                        <i
+                          class="fas fa-clock"
+                          style="color: var(--warning-color)"
+                        ></i>
+                        <span>Dëshmia e Adresës</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="terms-agreement"
+                  style="
+                    margin-top: 1.5rem;
+                    padding: 1rem;
+                    background: var(--gray-100);
+                    border-radius: var(--border-radius);
+                  "
+                >
+                  <div class="form-check">
+                    <input
+                      type="checkbox"
+                      id="agreeTerms"
+                      class="form-check-input"
+                    />
+                    <label for="agreeTerms" class="form-check-label">
+                      Unë pranoj <a href="#">kushtet e shërbimit</a> dhe
+                      konfirmoj se të gjitha informacionet e dhëna janë të sakta
+                      dhe të plota.
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+              "
+            >
+              <button
+                class="btn btn-outline"
+                id="prevStepBtn"
+                style="display: none"
+              >
+                <i class="fas fa-arrow-left"></i> Prapa
+              </button>
+              <button class="btn btn-primary" id="nextStepBtn">
+                Vazhdo <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+      // Specific scripts for regjistrimi-biznesit.html
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.getElementById("menuToggle");
+        const sidebar = document.querySelector(".sidebar");
+        const newRegistrationBtn =
+          document.getElementById("newRegistrationBtn");
+        const newRegistrationModal = document.getElementById(
+          "newRegistrationModal",
+        );
+        const closeRegistrationModal = document.getElementById(
+          "closeRegistrationModal",
+        );
+
+        // Registration modal step management
+        const stepIndicator = document.querySelector(".step-indicator");
+        const steps = document.querySelectorAll(".form-step");
+        const stepButtons = document.querySelectorAll(".step-indicator .step");
+        const prevStepBtn = document.getElementById("prevStepBtn");
+        const nextStepBtn = document.getElementById("nextStepBtn");
+
+        let currentStep = 1;
+        const totalSteps = 4;
+
+        // Toggle sidebar on mobile
+        menuToggle.addEventListener("click", () => {
+          sidebar.classList.toggle("active");
+        });
+
+        // Show new registration modal
+        newRegistrationBtn.addEventListener("click", () => {
+          newRegistrationModal.style.display = "flex";
+          resetFormSteps();
+        });
+
+        // Close modal
+        function closeModalFunc() {
+          newRegistrationModal.style.display = "none";
+        }
+
+        closeRegistrationModal.addEventListener("click", closeModalFunc);
+
+        // Close modal when clicking outside
+        newRegistrationModal.addEventListener("click", (e) => {
+          if (e.target === newRegistrationModal) {
+            closeModalFunc();
+          }
+        });
+
+        // Search functionality
+        const searchInput = document.querySelector(".search-input");
+        searchInput.addEventListener("input", function (e) {
+          const searchTerm = e.target.value.toLowerCase();
+          console.log("Kërkim për biznes:", searchTerm);
+          // Implement search logic here
+        });
+
+        // Form step navigation
+        function updateStepNavigation() {
+          // Hide all steps
+          steps.forEach((step) => {
+            step.style.display = "none";
+          });
+
+          // Show current step
+          document.getElementById(`step${currentStep}`).style.display = "block";
+
+          // Update step indicator
+          stepButtons.forEach((step) => {
+            step.classList.remove("active");
+            if (parseInt(step.dataset.step) === currentStep) {
+              step.classList.add("active");
+            }
+          });
+
+          // Update buttons
+          if (currentStep === 1) {
+            prevStepBtn.style.display = "none";
+            nextStepBtn.textContent = "Vazhdo ";
+            nextStepBtn.innerHTML = 'Vazhdo <i class="fas fa-arrow-right"></i>';
+          } else if (currentStep === totalSteps) {
+            prevStepBtn.style.display = "inline-flex";
+            nextStepBtn.textContent = "Konfirmo Regjistrimin";
+            nextStepBtn.innerHTML =
+              'Konfirmo Regjistrimin <i class="fas fa-check"></i>';
+          } else {
+            prevStepBtn.style.display = "inline-flex";
+            nextStepBtn.textContent = "Vazhdo ";
+            nextStepBtn.innerHTML = 'Vazhdo <i class="fas fa-arrow-right"></i>';
+          }
+        }
+
+        function resetFormSteps() {
+          currentStep = 1;
+          updateStepNavigation();
+        }
+
+        // Step indicator click
+        stepButtons.forEach((step) => {
+          step.addEventListener("click", function () {
+            const stepNumber = parseInt(this.dataset.step);
+            if (stepNumber <= currentStep) {
+              currentStep = stepNumber;
+              updateStepNavigation();
+            }
+          });
+        });
+
+        // Next step button
+        nextStepBtn.addEventListener("click", function () {
+          if (currentStep < totalSteps) {
+            currentStep++;
+            updateStepNavigation();
+          } else {
+            // Submit form
+            if (document.getElementById("agreeTerms").checked) {
+              console.log("Forma u dërgua me sukses");
+              alert("Aplikimi për regjistrim të biznesit u dërgua me sukses!");
+              closeModalFunc();
+            } else {
+              alert("Ju lutem pranoni kushtet e shërbimit për të vazhduar.");
+            }
+          }
+        });
+
+        // Previous step button
+        prevStepBtn.addEventListener("click", function () {
+          if (currentStep > 1) {
+            currentStep--;
+            updateStepNavigation();
+          }
+        });
+
+        // Business type selection
+        document.querySelectorAll(".type-option").forEach((option) => {
+          option.addEventListener("click", function () {
+            document.querySelectorAll(".type-option").forEach((opt) => {
+              opt.classList.remove("active");
+            });
+            this.classList.add("active");
+          });
+        });
+
+        // Action buttons for registrations
+        document.querySelectorAll(".action-btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const row = this.closest("tr");
+            const businessName = row.querySelector("strong").textContent;
+            const registrationId =
+              row.querySelector("td:first-child").textContent;
+
+            const action = this.classList.contains("view")
+              ? "Shiko"
+              : this.classList.contains("edit")
+                ? "Vazhdo"
+                : this.classList.contains("download")
+                  ? "Shkarko"
+                  : "Vepro";
+
+            console.log(
+              `${action} aplikimin ${registrationId} për ${businessName}`,
+            );
+
+            if (this.classList.contains("view")) {
+              alert(`Duke shfaqur aplikimin ${registrationId}`);
+            } else if (this.classList.contains("edit")) {
+              alert(`Duke vazhduar procesin ${registrationId}`);
+            }
+          });
+        });
+
+        // Document upload functionality
+        document
+          .querySelectorAll(".document-upload-item label")
+          .forEach((label) => {
+            label.addEventListener("click", function () {
+              const input = this.previousElementSibling;
+              input.addEventListener("change", function () {
+                const fileName =
+                  this.files[0]?.name || "Asnjë skedar i zgjedhur";
+                console.log(`U ngarkua: ${fileName}`);
+                // Update UI to show uploaded file
+                label.innerHTML = `<i class="fas fa-check"></i> ${fileName.substring(0, 20)}...`;
+                label.classList.remove("btn-outline");
+                label.classList.add("btn-success");
+              });
+            });
+          });
+
+        // Filter buttons
+        document.querySelectorAll(".btn-group .btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            document.querySelectorAll(".btn-group .btn").forEach((b) => {
+              b.classList.remove("active");
+            });
+            this.classList.add("active");
+
+            const filter = this.textContent;
+            console.log("Filtro sipas statusit:", filter);
+            // Implement filter logic here
+          });
+        });
+      });
+    </script>
+    <script src="app.js"></script>
+    <script src="database.js"></script>
+    <script src="dashboard.js"></script>
+  </body>
+</html>

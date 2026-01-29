@@ -1,0 +1,1451 @@
+<!doctype html>
+<html lang="sq">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light only" />
+    <title>Konsultimet - Biznes Manager</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="auth.js"></script>
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <a href="index.html" class="logo">
+            <div class="logo-icon">
+              <i class="fas fa-briefcase"></i>
+            </div>
+            <div class="logo-text">
+              <span>Biznes Manager</span>
+              <span>Sistemi i Plotë i Menaxhimit</span>
+            </div>
+          </a>
+        </div>
+
+        <nav class="sidebar-nav">
+          <div class="nav-section">
+            <div class="nav-section-title">MENU KRYESORE</div>
+            <a href="index.html" class="nav-item">
+              <i class="nav-icon fas fa-home"></i>
+              <span class="nav-text">Dashboard</span>
+            </a>
+            <a href="klientet.html" class="nav-item">
+              <i class="nav-icon fas fa-users"></i>
+              <span class="nav-text">Klientët</span>
+            </a>
+          </div>
+
+          <div class="nav-section">
+            <div class="nav-section-title">BIZNESI</div>
+            <a href="planet-biznesore.html" class="nav-item">
+              <i class="nav-icon fas fa-chart-line"></i>
+              <span class="nav-text">Planet Biznesore</span>
+            </a>
+            <a href="regjistrimi-biznesit.html" class="nav-item">
+              <i class="nav-icon fas fa-file-signature"></i>
+              <span class="nav-text">Regjistrimi i Bizneseve</span>
+            </a>
+            <a href="mbyllja-biznesit.html" class="nav-item">
+              <i class="nav-icon fas fa-door-closed"></i>
+              <span class="nav-text">Mbyllja e Bizneseve</span>
+            </a>
+          </div>
+
+          <div class="nav-section">
+            <div class="nav-section-title">TENDERA & DOKUMENTA</div>
+            <a href="tenderat.html" class="nav-item">
+              <i class="nav-icon fas fa-file-contract"></i>
+              <span class="nav-text">Tenderat</span>
+            </a>
+            <a href="konsultimet.html" class="nav-item active">
+              <i class="nav-icon fas fa-comments"></i>
+              <span class="nav-text">Konsultimet</span>
+              <span class="nav-badge">8</span>
+            </a>
+            <a href="kontabiliteti.html" class="nav-item">
+              <i class="nav-icon fas fa-file-invoice-dollar"></i>
+              <span class="nav-text">Faturat & Pagesat</span>
+            </a>
+            <a href="dokumentet.html" class="nav-item">
+              <i class="nav-icon fas fa-archive"></i>
+              <span class="nav-text">Arkivi i Dokumenteve</span>
+            </a>
+          </div>
+        </nav>
+
+        <div
+          class="sidebar-footer"
+          style="
+            padding: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+          "
+        >
+          <div class="user-info" style="color: var(--gray-400)">
+            <div style="font-size: 0.75rem; margin-bottom: 0.25rem">
+              Menaxhimi i Konsultimeve
+            </div>
+            <div
+              style="
+                font-size: 0.875rem;
+                font-weight: 500;
+                color: var(--light-color);
+              "
+            >
+              <i class="fas fa-calendar-check" style="margin-right: 0.5rem"></i>
+              8 Takime Sot
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Header -->
+        <header class="header">
+          <div class="header-left">
+            <button class="menu-toggle" id="menuToggle">
+              <i class="fas fa-bars"></i>
+            </button>
+            <div class="header-title">
+              <h1>Konsultimet</h1>
+              <div class="header-subtitle">
+                Menaxhimi i Konsultimeve dhe Takimeve me Klientët
+              </div>
+            </div>
+          </div>
+
+          <div class="header-right">
+            <div class="header-stats">
+              <div class="stat-mini">
+                <div class="stat-mini-value">8</div>
+                <div class="stat-mini-label">Sot</div>
+              </div>
+              <div class="stat-mini">
+                <div
+                  class="stat-mini-value"
+                  style="color: var(--warning-color)"
+                >
+                  3
+                </div>
+                <div class="stat-mini-label">Në Pritje</div>
+              </div>
+              <div class="stat-mini">
+                <div
+                  class="stat-mini-value"
+                  style="color: var(--success-color)"
+                >
+                  24
+                </div>
+                <div class="stat-mini-label">Këtë Javë</div>
+              </div>
+            </div>
+
+            <div class="search-container">
+              <i class="fas fa-search search-icon"></i>
+              <input
+                type="text"
+                class="search-input"
+                placeholder="Kërko konsultim..."
+              />
+            </div>
+
+            <div class="user-menu">
+              <div class="user-avatar">BM</div>
+              <div class="user-info">
+                <div class="user-name">Administrator</div>
+                <div class="user-role">Konsulent Kryesor</div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="page-content">
+          <!-- Breadcrumb -->
+          <div class="breadcrumb">
+            <div class="breadcrumb-item">
+              <a href="index.html"><i class="fas fa-home"></i> Dashboard</a>
+            </div>
+            <div class="breadcrumb-separator">/</div>
+            <div class="breadcrumb-item active">
+              <i class="fas fa-comments"></i> Konsultimet
+            </div>
+          </div>
+
+          <!-- Page Header -->
+          <div class="page-header">
+            <div class="page-title-section">
+              <div class="page-title">
+                <i class="fas fa-comments" style="color: var(--info-color)"></i>
+                Menaxhimi i Konsultimeve
+              </div>
+              <div class="page-subtitle">
+                Planifikoni, menaxhoni dhe ndiqni të gjitha konsultimet dhe
+                takimet me klientët tuaj.
+              </div>
+            </div>
+            <div class="page-actions">
+              <button class="btn btn-outline">
+                <i class="fas fa-filter"></i> Filtro
+              </button>
+              <button class="btn btn-primary" id="newConsultationBtn">
+                <i class="fas fa-plus"></i> Konsultim i Ri
+              </button>
+              <button class="btn btn-success">
+                <i class="fas fa-calendar-plus"></i> Kalendari
+              </button>
+            </div>
+          </div>
+
+          <!-- Stats Overview -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon clients">
+                <i class="fas fa-calendar-day"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">8</div>
+                <div class="stat-label">Konsultime Sot</div>
+                <div class="stat-change positive">
+                  <i class="fas fa-arrow-up"></i> 2 më shumë se dje
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon projects">
+                <i class="fas fa-user-check"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">92%</div>
+                <div class="stat-label">Shkalla e Pranimit</div>
+                <div class="stat-change positive">
+                  <i class="fas fa-arrow-up"></i> 5% më mirë se mesatarja
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon pending">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">3</div>
+                <div class="stat-label">Kërkesa në Pritje</div>
+                <div class="stat-change negative">
+                  <i class="fas fa-clock"></i> Kërkojnë përgjigje
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon revenue">
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">4.8/5</div>
+                <div class="stat-label">Vlerësimi Mesatar</div>
+                <div class="stat-change positive">
+                  <i class="fas fa-arrow-up"></i> 96% kënaqësi
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Content Sections -->
+          <div class="charts-container">
+            <!-- Today's Consultations -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <i
+                    class="fas fa-calendar-day"
+                    style="color: var(--success-color)"
+                  ></i>
+                  Konsultimet për Sot
+                </div>
+                <div class="card-actions">
+                  <div class="btn-group">
+                    <button class="btn btn-sm btn-outline active">
+                      Të Gjitha
+                    </button>
+                    <button class="btn btn-sm btn-outline">Para Dreke</button>
+                    <button class="btn btn-sm btn-outline">Pas Dreke</button>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="consultations-today">
+                  <!-- Consultation 1 -->
+                  <div class="consultation-item urgent">
+                    <div class="consultation-time">
+                      <div class="time-slot">09:00 - 10:00</div>
+                      <div class="time-remaining">Në 45 minuta</div>
+                    </div>
+                    <div class="consultation-details">
+                      <div class="consultation-client">
+                        <div class="client-avatar">AS</div>
+                        <div class="client-info">
+                          <div class="client-name">Artan Shehu</div>
+                          <div class="client-company">Agro-Shpresa ShPK</div>
+                        </div>
+                      </div>
+                      <div class="consultation-topic">
+                        <h4>Strategji për Zgjerim në Tregun Rajonal</h4>
+                        <p>
+                          Diskutim për planin e depërtimit në tregjet e Kosovës
+                          dhe Maqedonisë së Veriut
+                        </p>
+                      </div>
+                      <div class="consultation-meta">
+                        <div class="meta-item">
+                          <i class="fas fa-video"></i>
+                          <span>Video Konference</span>
+                        </div>
+                        <div class="meta-item">
+                          <i class="fas fa-clock"></i>
+                          <span>60 minuta</span>
+                        </div>
+                        <div class="meta-item">
+                          <i class="fas fa-user-tie"></i>
+                          <span>Konsulent: Drini Berisha</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="consultation-actions">
+                      <button class="btn btn-sm btn-outline">
+                        <i class="fas fa-video"></i> Hyr
+                      </button>
+                      <button class="btn btn-sm btn-primary">
+                        <i class="fas fa-check"></i> Konfirmo
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Consultation 2 -->
+                  <div class="consultation-item">
+                    <div class="consultation-time">
+                      <div class="time-slot">11:00 - 11:45</div>
+                      <div class="time-remaining">Në 2 orë</div>
+                    </div>
+                    <div class="consultation-details">
+                      <div class="consultation-client">
+                        <div class="client-avatar">TK</div>
+                        <div class="client-info">
+                          <div class="client-name">Teuta Kola</div>
+                          <div class="client-company">TeKno AL ShPK</div>
+                        </div>
+                      </div>
+                      <div class="consultation-topic">
+                        <h4>Rishikim i Kontratës së Shërbimit</h4>
+                        <p>
+                          Diskutim për përditësimin e kontratës së shërbimit IT
+                          për vitin e ardhshëm
+                        </p>
+                      </div>
+                      <div class="consultation-meta">
+                        <div class="meta-item">
+                          <i class="fas fa-building"></i>
+                          <span>Në Zyrë</span>
+                        </div>
+                        <div class="meta-item">
+                          <i class="fas fa-clock"></i>
+                          <span>45 minuta</span>
+                        </div>
+                        <div class="meta-item">
+                          <i class="fas fa-user-tie"></i>
+                          <span>Konsulent: Ana Marku</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="consultation-actions">
+                      <button class="btn btn-sm btn-outline">
+                        <i class="fas fa-map-marker-alt"></i> Drejtimi
+                      </button>
+                      <button class="btn btn-sm btn-success">
+                        <i class="fas fa-check-circle"></i> E Konfirmuar
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Consultation 3 -->
+                  <div class="consultation-item">
+                    <div class="consultation-time">
+                      <div class="time-slot">14:00 - 15:30</div>
+                      <div class="time-remaining">Në 5 orë</div>
+                    </div>
+                    <div class="consultation-details">
+                      <div class="consultation-client">
+                        <div class="client-avatar">ND</div>
+                        <div class="client-info">
+                          <div class="client-name">Ndue Doda</div>
+                          <div class="client-company">Ndërtim Plus ShPK</div>
+                        </div>
+                      </div>
+                      <div class="consultation-topic">
+                        <h4>Konsultim për Tenderin e Ri</h4>
+                        <p>
+                          Përgatitje për aplikimin në tenderin e Ministrisë së
+                          Infrastrukturës
+                        </p>
+                      </div>
+                      <div class="consultation-meta">
+                        <div class="meta-item">
+                          <i class="fas fa-phone"></i>
+                          <span>Telefonatë</span>
+                        </div>
+                        <div class="meta-item">
+                          <i class="fas fa-clock"></i>
+                          <span>90 minuta</span>
+                        </div>
+                        <div class="meta-item">
+                          <i class="fas fa-user-tie"></i>
+                          <span>Konsulent: Gentian Leka</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="consultation-actions">
+                      <button class="btn btn-sm btn-outline">
+                        <i class="fas fa-phone"></i> Thirr
+                      </button>
+                      <button class="btn btn-sm btn-warning">
+                        <i class="fas fa-clock"></i> Në Pritje
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Consultation 4 -->
+                  <div class="consultation-item">
+                    <div class="consultation-time">
+                      <div class="time-slot">16:00 - 17:00</div>
+                      <div class="time-remaining">Në 7 orë</div>
+                    </div>
+                    <div class="consultation-details">
+                      <div class="consultation-client">
+                        <div class="client-avatar">EM</div>
+                        <div class="client-info">
+                          <div class="client-name">Ema Leka</div>
+                          <div class="client-company">Emal Travel ShPK</div>
+                        </div>
+                      </div>
+                      <div class="consultation-topic">
+                        <h4>Strategji Marketingu për Sezonin e Verës</h4>
+                        <p>
+                          Planifikim i kampanjave marketing për ofertat e
+                          sezonit turistik
+                        </p>
+                      </div>
+                      <div class="consultation-meta">
+                        <div class="meta-item">
+                          <i class="fas fa-video"></i>
+                          <span>Video Konference</span>
+                        </div>
+                        <div class="meta-item">
+                          <i class="fas fa-clock"></i>
+                          <span>60 minuta</span>
+                        </div>
+                        <div class="meta-item">
+                          <i class="fas fa-user-tie"></i>
+                          <span>Konsulent: Blerta Gjoka</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="consultation-actions">
+                      <button class="btn btn-sm btn-outline">
+                        <i class="fas fa-video"></i> Hyr
+                      </button>
+                      <button class="btn btn-sm btn-success">
+                        <i class="fas fa-check-circle"></i> E Konfirmuar
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <div style="font-size: 0.875rem; color: var(--gray-600)">
+                  4 konsultime të planifikuara për sot
+                </div>
+                <button class="btn btn-outline btn-sm">
+                  <i class="fas fa-list"></i> Shiko të Gjitha
+                </button>
+              </div>
+            </div>
+
+            <!-- Upcoming Consultations & Calendar -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <i
+                    class="fas fa-calendar-alt"
+                    style="color: var(--secondary-color)"
+                  ></i>
+                  Konsultimet e Ardhshme & Kalendari
+                </div>
+                <div class="card-actions">
+                  <div class="btn-group">
+                    <button class="btn btn-sm btn-outline active">Java</button>
+                    <button class="btn btn-sm btn-outline">Muaj</button>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="consultations-upcoming">
+                  <!-- Week View -->
+                  <div class="week-calendar">
+                    <div class="week-header">
+                      <div class="day">E Hënë</div>
+                      <div class="day">E Martë</div>
+                      <div class="day">E Mërkurë</div>
+                      <div class="day">E Enjte</div>
+                      <div class="day">E Premte</div>
+                      <div class="day">E Shtunë</div>
+                      <div class="day">E Diel</div>
+                    </div>
+                    <div class="week-grid">
+                      <!-- Monday -->
+                      <div class="day-column">
+                        <div class="date">20 Maj</div>
+                        <div class="consultation-slot">
+                          <div class="slot-time">10:00</div>
+                          <div class="slot-details">
+                            <div class="slot-client">FK</div>
+                            <div class="slot-topic">Konsultim Financiar</div>
+                          </div>
+                        </div>
+                        <div class="consultation-slot">
+                          <div class="slot-time">14:30</div>
+                          <div class="slot-details">
+                            <div class="slot-client">BG</div>
+                            <div class="slot-topic">Plan Biznesor</div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Tuesday -->
+                      <div class="day-column">
+                        <div class="date">21 Maj</div>
+                        <div class="consultation-slot">
+                          <div class="slot-time">09:00</div>
+                          <div class="slot-details">
+                            <div class="slot-client">AS</div>
+                            <div class="slot-topic">Strategji</div>
+                          </div>
+                        </div>
+                        <div class="consultation-slot">
+                          <div class="slot-time">11:00</div>
+                          <div class="slot-details">
+                            <div class="slot-client">TK</div>
+                            <div class="slot-topic">Kontratë</div>
+                          </div>
+                        </div>
+                        <div class="consultation-slot">
+                          <div class="slot-time">16:00</div>
+                          <div class="slot-details">
+                            <div class="slot-client">ND</div>
+                            <div class="slot-topic">Tender</div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Wednesday -->
+                      <div class="day-column">
+                        <div class="date">22 Maj</div>
+                        <div class="consultation-slot">
+                          <div class="slot-time">13:00</div>
+                          <div class="slot-details">
+                            <div class="slot-client">EM</div>
+                            <div class="slot-topic">Marketing</div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Thursday -->
+                      <div class="day-column">
+                        <div class="date">23 Maj</div>
+                        <div class="consultation-slot">
+                          <div class="slot-time">10:30</div>
+                          <div class="slot-details">
+                            <div class="slot-client">GL</div>
+                            <div class="slot-topic">Regjistrim</div>
+                          </div>
+                        </div>
+                        <div class="consultation-slot">
+                          <div class="slot-time">15:00</div>
+                          <div class="slot-details">
+                            <div class="slot-client">AH</div>
+                            <div class="slot-topic">Analizë</div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Friday -->
+                      <div class="day-column">
+                        <div class="date">24 Maj</div>
+                        <div class="consultation-slot">
+                          <div class="slot-time">09:00</div>
+                          <div class="slot-details">
+                            <div class="slot-client">FH</div>
+                            <div class="slot-topic">Mbyllje Biznesi</div>
+                          </div>
+                        </div>
+                        <div class="consultation-slot">
+                          <div class="slot-time">11:30</div>
+                          <div class="slot-details">
+                            <div class="slot-client">EB</div>
+                            <div class="slot-topic">Konsultim Juridik</div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Saturday -->
+                      <div class="day-column">
+                        <div class="date">25 Maj</div>
+                        <div class="consultation-slot free">
+                          <div class="slot-time">-</div>
+                          <div class="slot-details">
+                            <div class="slot-client">
+                              <i class="fas fa-coffee"></i>
+                            </div>
+                            <div class="slot-topic">Pushim</div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Sunday -->
+                      <div class="day-column">
+                        <div class="date">26 Maj</div>
+                        <div class="consultation-slot free">
+                          <div class="slot-time">-</div>
+                          <div class="slot-details">
+                            <div class="slot-client">
+                              <i class="fas fa-home"></i>
+                            </div>
+                            <div class="slot-topic">Pushim</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Pending Consultation Requests -->
+                  <div
+                    class="pending-requests"
+                    style="
+                      margin-top: 2rem;
+                      padding-top: 1.5rem;
+                      border-top: 1px solid var(--gray-200);
+                    "
+                  >
+                    <h4 style="margin-bottom: 1rem; color: var(--gray-800)">
+                      <i
+                        class="fas fa-clock"
+                        style="color: var(--warning-color)"
+                      ></i>
+                      Kërkesa në Pritje
+                    </h4>
+                    <div class="request-list">
+                      <div class="request-item">
+                        <div class="request-client">
+                          <div class="client-avatar-small">KL</div>
+                          <div class="client-info">
+                            <div class="client-name">Klajdi Hoxha</div>
+                            <div class="client-company">
+                              IT Solutions Albania
+                            </div>
+                          </div>
+                        </div>
+                        <div class="request-details">
+                          <div class="request-topic">
+                            Konsultim për Licencimin e Softuerit
+                          </div>
+                          <div class="request-meta">
+                            <span
+                              ><i class="fas fa-calendar"></i> 27 Maj 2024</span
+                            >
+                            <span><i class="fas fa-clock"></i> 60 minuta</span>
+                            <span
+                              ><i class="fas fa-video"></i> Video
+                              Konference</span
+                            >
+                          </div>
+                        </div>
+                        <div class="request-actions">
+                          <button class="btn btn-sm btn-success">
+                            <i class="fas fa-check"></i> Pranoj
+                          </button>
+                          <button class="btn btn-sm btn-outline">
+                            <i class="fas fa-times"></i> Refuzoj
+                          </button>
+                        </div>
+                      </div>
+                      <div class="request-item">
+                        <div class="request-client">
+                          <div class="client-avatar-small">AG</div>
+                          <div class="client-info">
+                            <div class="client-name">Anita Gjoni</div>
+                            <div class="client-company">Restorant Delikate</div>
+                          </div>
+                        </div>
+                        <div class="request-details">
+                          <div class="request-topic">
+                            Konsultim për Strategjinë e Çmimeve
+                          </div>
+                          <div class="request-meta">
+                            <span
+                              ><i class="fas fa-calendar"></i> 28 Maj 2024</span
+                            >
+                            <span><i class="fas fa-clock"></i> 45 minuta</span>
+                            <span><i class="fas fa-building"></i> Në Zyrë</span>
+                          </div>
+                        </div>
+                        <div class="request-actions">
+                          <button class="btn btn-sm btn-success">
+                            <i class="fas fa-check"></i> Pranoj
+                          </button>
+                          <button class="btn btn-sm btn-outline">
+                            <i class="fas fa-times"></i> Refuzoj
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-outline btn-sm">
+                  <i class="fas fa-print"></i> Printo Orarin
+                </button>
+                <button class="btn btn-primary btn-sm">
+                  <i class="fas fa-sync-alt"></i> Përditëso Kalendarin
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Consultation History & Analytics -->
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 1.5rem;
+              margin-top: 2rem;
+            "
+          >
+            <!-- Consultation History -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <i
+                    class="fas fa-history"
+                    style="color: var(--info-color)"
+                  ></i>
+                  Historiku i Konsultimeve
+                </div>
+                <div class="card-actions">
+                  <div class="btn-group">
+                    <button class="btn btn-sm btn-outline active">
+                      7 Ditë
+                    </button>
+                    <button class="btn btn-sm btn-outline">30 Ditë</button>
+                    <button class="btn btn-sm btn-outline">90 Ditë</button>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="consultation-history">
+                  <div class="history-item completed">
+                    <div class="history-date">
+                      <div class="day">E Martë</div>
+                      <div class="date">14 Maj 2024</div>
+                      <div class="time">10:00 - 11:00</div>
+                    </div>
+                    <div class="history-details">
+                      <div class="history-client">
+                        <strong>Artan Shehu</strong>
+                        <span class="company">Agro-Shpresa ShPK</span>
+                      </div>
+                      <div class="history-topic">
+                        Diskutim për Planin Financiar 2024
+                      </div>
+                      <div class="history-meta">
+                        <span class="status-badge completed">Përfunduar</span>
+                        <span class="rating">★★★★★</span>
+                        <span class="duration">60 min</span>
+                      </div>
+                    </div>
+                    <div class="history-actions">
+                      <button class="action-btn view" title="Shiko detajet">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                      <button
+                        class="action-btn download"
+                        title="Shkarko shënimet"
+                      >
+                        <i class="fas fa-download"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="history-item completed">
+                    <div class="history-date">
+                      <div class="day">E Mërkurë</div>
+                      <div class="date">15 Maj 2024</div>
+                      <div class="time">14:00 - 15:30</div>
+                    </div>
+                    <div class="history-details">
+                      <div class="history-client">
+                        <strong>Teuta Kola</strong>
+                        <span class="company">TeKno AL ShPK</span>
+                      </div>
+                      <div class="history-topic">
+                        Analizë e Sistemit të Menaxhimit të Projektit
+                      </div>
+                      <div class="history-meta">
+                        <span class="status-badge completed">Përfunduar</span>
+                        <span class="rating">★★★★☆</span>
+                        <span class="duration">90 min</span>
+                      </div>
+                    </div>
+                    <div class="history-actions">
+                      <button class="action-btn view" title="Shiko detajet">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                      <button
+                        class="action-btn download"
+                        title="Shkarko shënimet"
+                      >
+                        <i class="fas fa-download"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="history-item cancelled">
+                    <div class="history-date">
+                      <div class="day">E Enjte</div>
+                      <div class="date">16 Maj 2024</div>
+                      <div class="time">11:00 - 12:00</div>
+                    </div>
+                    <div class="history-details">
+                      <div class="history-client">
+                        <strong>Ndue Doda</strong>
+                        <span class="company">Ndërtim Plus ShPK</span>
+                      </div>
+                      <div class="history-topic">
+                        Konsultim për Kontratat e Ndërtimit
+                      </div>
+                      <div class="history-meta">
+                        <span class="status-badge rejected">Anuluar</span>
+                        <span class="reason">Klienti anuloi</span>
+                        <span class="duration">-</span>
+                      </div>
+                    </div>
+                    <div class="history-actions">
+                      <button class="action-btn view" title="Shiko detajet">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                      <button class="action-btn edit" title="Riparako">
+                        <i class="fas fa-redo"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="history-item completed">
+                    <div class="history-date">
+                      <div class="day">E Premte</div>
+                      <div class="date">17 Maj 2024</div>
+                      <div class="time">09:30 - 10:15</div>
+                    </div>
+                    <div class="history-details">
+                      <div class="history-client">
+                        <strong>Ema Leka</strong>
+                        <span class="company">Emal Travel ShPK</span>
+                      </div>
+                      <div class="history-topic">
+                        Diskutim për Strategjinë e Marketingut Digjital
+                      </div>
+                      <div class="history-meta">
+                        <span class="status-badge completed">Përfunduar</span>
+                        <span class="rating">★★★★★</span>
+                        <span class="duration">45 min</span>
+                      </div>
+                    </div>
+                    <div class="history-actions">
+                      <button class="action-btn view" title="Shiko detajet">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                      <button
+                        class="action-btn download"
+                        title="Shkarko shënimet"
+                      >
+                        <i class="fas fa-download"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-outline btn-sm">
+                  <i class="fas fa-chart-line"></i> Shiko Raportin
+                </button>
+                <button class="btn btn-primary btn-sm">
+                  <i class="fas fa-download"></i> Eksporto të Dhënat
+                </button>
+              </div>
+            </div>
+
+            <!-- Consultation Analytics -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <i
+                    class="fas fa-chart-pie"
+                    style="color: var(--success-color)"
+                  ></i>
+                  Analitika e Konsultimeve
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="consultation-analytics">
+                  <!-- Consultation Types Distribution -->
+                  <div class="analytics-section">
+                    <h4 style="margin-bottom: 1rem; color: var(--gray-800)">
+                      <i class="fas fa-chart-bar"></i>
+                      Shpërndarja sipas Llojit
+                    </h4>
+                    <div class="type-distribution">
+                      <div class="type-item">
+                        <div
+                          style="
+                            display: flex;
+                            justify-content: space-between;
+                            margin-bottom: 0.5rem;
+                          "
+                        >
+                          <span style="font-size: 0.875rem"
+                            >Konsultime Strategjike</span
+                          >
+                          <span style="font-weight: 600">35%</span>
+                        </div>
+                        <div class="progress-bar">
+                          <div
+                            class="progress-fill primary"
+                            style="width: 35%"
+                          ></div>
+                        </div>
+                      </div>
+                      <div class="type-item">
+                        <div
+                          style="
+                            display: flex;
+                            justify-content: space-between;
+                            margin-bottom: 0.5rem;
+                          "
+                        >
+                          <span style="font-size: 0.875rem"
+                            >Konsultime Financiare</span
+                          >
+                          <span style="font-weight: 600">25%</span>
+                        </div>
+                        <div class="progress-bar">
+                          <div
+                            class="progress-fill success"
+                            style="width: 25%"
+                          ></div>
+                        </div>
+                      </div>
+                      <div class="type-item">
+                        <div
+                          style="
+                            display: flex;
+                            justify-content: space-between;
+                            margin-bottom: 0.5rem;
+                          "
+                        >
+                          <span style="font-size: 0.875rem"
+                            >Konsultime Juridike</span
+                          >
+                          <span style="font-weight: 600">20%</span>
+                        </div>
+                        <div class="progress-bar">
+                          <div
+                            class="progress-fill warning"
+                            style="width: 20%"
+                          ></div>
+                        </div>
+                      </div>
+                      <div class="type-item">
+                        <div
+                          style="
+                            display: flex;
+                            justify-content: space-between;
+                            margin-bottom: 0.5rem;
+                          "
+                        >
+                          <span style="font-size: 0.875rem"
+                            >Konsultime Teknologjike</span
+                          >
+                          <span style="font-weight: 600">15%</span>
+                        </div>
+                        <div class="progress-bar">
+                          <div
+                            class="progress-fill info"
+                            style="width: 15%"
+                          ></div>
+                        </div>
+                      </div>
+                      <div class="type-item">
+                        <div
+                          style="
+                            display: flex;
+                            justify-content: space-between;
+                            margin-bottom: 0.5rem;
+                          "
+                        >
+                          <span style="font-size: 0.875rem">Të Tjera</span>
+                          <span style="font-weight: 600">5%</span>
+                        </div>
+                        <div class="progress-bar">
+                          <div
+                            class="progress-fill"
+                            style="width: 5%; background: var(--gray-500)"
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Performance Metrics -->
+                  <div
+                    class="analytics-section"
+                    style="
+                      margin-top: 2rem;
+                      padding-top: 1.5rem;
+                      border-top: 1px solid var(--gray-200);
+                    "
+                  >
+                    <h4 style="margin-bottom: 1rem; color: var(--gray-800)">
+                      <i class="fas fa-tachometer-alt"></i>
+                      Metrikat e Performancës
+                    </h4>
+                    <div class="performance-metrics-grid">
+                      <div class="metric-item">
+                        <div class="metric-value">92%</div>
+                        <div class="metric-label">Shkalla e Pranimit</div>
+                        <div class="metric-change positive">
+                          <i class="fas fa-arrow-up"></i> 3%
+                        </div>
+                      </div>
+                      <div class="metric-item">
+                        <div class="metric-value">15%</div>
+                        <div class="metric-label">Shkalla e Anulimit</div>
+                        <div class="metric-change negative">
+                          <i class="fas fa-arrow-down"></i> 2%
+                        </div>
+                      </div>
+                      <div class="metric-item">
+                        <div class="metric-value">45 min</div>
+                        <div class="metric-label">Kohëzgjatja Mesatare</div>
+                        <div class="metric-change positive">
+                          <i class="fas fa-arrow-down"></i> 5 min
+                        </div>
+                      </div>
+                      <div class="metric-item">
+                        <div class="metric-value">4.8/5</div>
+                        <div class="metric-label">Vlerësimi Mesatar</div>
+                        <div class="metric-change positive">
+                          <i class="fas fa-arrow-up"></i> 0.2
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Revenue Analytics -->
+                  <div
+                    class="analytics-section"
+                    style="
+                      margin-top: 2rem;
+                      padding-top: 1.5rem;
+                      border-top: 1px solid var(--gray-200);
+                    "
+                  >
+                    <h4 style="margin-bottom: 1rem; color: var(--gray-800)">
+                      <i class="fas fa-euro-sign"></i>
+                      Analitika e të Ardhurave
+                    </h4>
+                    <div class="revenue-breakdown">
+                      <div class="revenue-item">
+                        <span>Konsultime të Kryera</span>
+                        <span class="amount">€8,450</span>
+                      </div>
+                      <div class="revenue-item">
+                        <span>Konsultime të Planifikuara</span>
+                        <span class="amount">€12,500</span>
+                      </div>
+                      <div class="revenue-item">
+                        <span>Të Ardhura të Projektuara (Muaji)</span>
+                        <span class="amount">€20,950</span>
+                      </div>
+                      <div class="revenue-item total">
+                        <span>Totali (Këtë Vit)</span>
+                        <span class="amount">€125,700</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Modal for New Consultation -->
+    <div class="modal-overlay" id="newConsultationModal" style="display: none">
+      <div class="modal">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fas fa-calendar-plus"></i> Planifiko Konsultim të Ri
+            </div>
+            <button class="action-btn delete" id="closeConsultationModal">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="card-body">
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label required">Klienti</label>
+                <div class="select-with-icon">
+                  <i class="fas fa-user select-icon"></i>
+                  <select class="form-control">
+                    <option value="">Zgjidhni klientin</option>
+                    <option value="artan">Artan Shehu - Agro-Shpresa</option>
+                    <option value="teuta">Teuta Kola - TeKno AL</option>
+                    <option value="ndue">Ndue Doda - Ndërtim Plus</option>
+                    <option value="ema">Ema Leka - Emal Travel</option>
+                    <option value="flamur">Flamur Hoxha - Farma Health</option>
+                    <option value="klajdi">Klajdi Hoxha - IT Solutions</option>
+                    <option value="anita">
+                      Anita Gjoni - Restorant Delikate
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label required">Data</label>
+                <input type="date" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label class="form-label required">Koha e Fillimit</label>
+                <input type="time" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label class="form-label required">Kohëzgjatja</label>
+                <div class="select-with-icon">
+                  <i class="fas fa-clock select-icon"></i>
+                  <select class="form-control">
+                    <option value="">Zgjidhni kohëzgjatjen</option>
+                    <option value="30">30 minuta</option>
+                    <option value="45">45 minuta</option>
+                    <option value="60">1 orë</option>
+                    <option value="90">1 orë 30 minuta</option>
+                    <option value="120">2 orë</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label required">Lloji i Konsultimit</label>
+                <div class="select-with-icon">
+                  <i class="fas fa-comments select-icon"></i>
+                  <select class="form-control">
+                    <option value="">Zgjidhni llojin</option>
+                    <option value="strategjik">Konsultim Strategjik</option>
+                    <option value="financiar">Konsultim Financiar</option>
+                    <option value="juridik">Konsultim Juridik</option>
+                    <option value="teknologjik">Konsultim Teknologjik</option>
+                    <option value="marketing">Konsultim Marketing</option>
+                    <option value="projekt">Menaxhimi i Projektit</option>
+                    <option value="tjera">Të Tjera</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label required">Metoda</label>
+                <div class="consultation-methods">
+                  <div class="method-option active">
+                    <i class="fas fa-video"></i>
+                    <span>Video Konference</span>
+                  </div>
+                  <div class="method-option">
+                    <i class="fas fa-building"></i>
+                    <span>Në Zyrë</span>
+                  </div>
+                  <div class="method-option">
+                    <i class="fas fa-phone"></i>
+                    <span>Telefonatë</span>
+                  </div>
+                  <div class="method-option">
+                    <i class="fas fa-laptop-house"></i>
+                    <span>Në Shtëpi të Klientit</span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Konsulent i Caktuar</label>
+                <div class="select-with-icon">
+                  <i class="fas fa-user-tie select-icon"></i>
+                  <select class="form-control">
+                    <option value="">Zgjidhni konsulentin</option>
+                    <option value="drini">Drini Berisha</option>
+                    <option value="ana">Ana Marku</option>
+                    <option value="gentian">Gentian Leka</option>
+                    <option value="blerta">Blerta Gjoka</option>
+                    <option value="fatmir">Fatmir Hoxha</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group" style="grid-column: 1 / -1">
+                <label class="form-label required">Tema e Konsultimit</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Shkruani temën kryesore të konsultimit"
+                />
+              </div>
+              <div class="form-group" style="grid-column: 1 / -1">
+                <label class="form-label">Përshkrimi i Detajuar</label>
+                <textarea
+                  class="form-control"
+                  rows="4"
+                  placeholder="Përshkruani detajet e konsultimit..."
+                ></textarea>
+              </div>
+              <div class="form-group" style="grid-column: 1 / -1">
+                <label class="form-label">Dokumentet e Bashkangjitura</label>
+                <div class="file-upload">
+                  <label class="file-upload-label">
+                    <i class="fas fa-cloud-upload-alt file-upload-icon"></i>
+                    <span class="file-upload-text"
+                      >Klikoni për të ngarkuar dokumentet përpara
+                      konsultimit</span
+                    >
+                    <span class="file-upload-hint"
+                      >PDF, DOC, XLS deri në 10MB</span
+                    >
+                    <input type="file" multiple />
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-outline" id="cancelConsultationBtn">
+              Anulo
+            </button>
+            <button class="btn btn-primary">Ruaj Konsultimin</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+      // Specific scripts for konsultimet.html
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.getElementById("menuToggle");
+        const sidebar = document.querySelector(".sidebar");
+        const newConsultationBtn =
+          document.getElementById("newConsultationBtn");
+        const newConsultationModal = document.getElementById(
+          "newConsultationModal",
+        );
+        const closeConsultationModal = document.getElementById(
+          "closeConsultationModal",
+        );
+        const cancelConsultationBtn = document.getElementById(
+          "cancelConsultationBtn",
+        );
+
+        // Toggle sidebar on mobile
+        menuToggle.addEventListener("click", () => {
+          sidebar.classList.toggle("active");
+        });
+
+        // Show new consultation modal
+        newConsultationBtn.addEventListener("click", () => {
+          newConsultationModal.style.display = "flex";
+        });
+
+        // Close modal
+        function closeModalFunc() {
+          newConsultationModal.style.display = "none";
+        }
+
+        closeConsultationModal.addEventListener("click", closeModalFunc);
+        cancelConsultationBtn.addEventListener("click", closeModalFunc);
+
+        // Close modal when clicking outside
+        newConsultationModal.addEventListener("click", (e) => {
+          if (e.target === newConsultationModal) {
+            closeModalFunc();
+          }
+        });
+
+        // Search functionality
+        const searchInput = document.querySelector(".search-input");
+        searchInput.addEventListener("input", function (e) {
+          const searchTerm = e.target.value.toLowerCase();
+          console.log("Kërkim për konsultim:", searchTerm);
+          // Implement search logic here
+        });
+
+        // Consultation methods selection
+        document.querySelectorAll(".method-option").forEach((option) => {
+          option.addEventListener("click", function () {
+            document.querySelectorAll(".method-option").forEach((opt) => {
+              opt.classList.remove("active");
+            });
+            this.classList.add("active");
+          });
+        });
+
+        // Consultation actions
+        document
+          .querySelectorAll(".consultation-actions .btn")
+          .forEach((btn) => {
+            btn.addEventListener("click", function () {
+              const consultationItem = this.closest(".consultation-item");
+              const clientName =
+                consultationItem.querySelector(".client-name").textContent;
+              const timeSlot =
+                consultationItem.querySelector(".time-slot").textContent;
+
+              if (this.textContent.includes("Hyr")) {
+                console.log(
+                  `Duke hyrë në konsultim me ${clientName} në ${timeSlot}`,
+                );
+                alert(`Duke hapur video konferencën me ${clientName}`);
+              } else if (this.textContent.includes("Konfirmo")) {
+                console.log(`Duke konfirmuar konsultimin me ${clientName}`);
+                this.innerHTML =
+                  '<i class="fas fa-check-circle"></i> E Konfirmuar';
+                this.classList.remove("btn-primary");
+                this.classList.add("btn-success");
+                alert(`Konsultimi me ${clientName} u konfirmua me sukses!`);
+              } else if (this.textContent.includes("Thirr")) {
+                console.log(`Duke thirrur ${clientName}`);
+                alert(`Duke thirrur ${clientName} për konsultim telefonik`);
+              }
+            });
+          });
+
+        // Pending requests actions
+        document.querySelectorAll(".request-actions .btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const requestItem = this.closest(".request-item");
+            const clientName =
+              requestItem.querySelector(".client-name").textContent;
+            const topic =
+              requestItem.querySelector(".request-topic").textContent;
+
+            if (this.textContent.includes("Pranoj")) {
+              console.log(
+                `Duke pranuar kërkesën nga ${clientName} për ${topic}`,
+              );
+              requestItem.remove();
+              alert(`Kërkesa nga ${clientName} u pranua me sukses!`);
+            } else if (this.textContent.includes("Refuzoj")) {
+              console.log(`Duke refuzuar kërkesën nga ${clientName}`);
+              if (
+                confirm(
+                  `A jeni të sigurt që dëshironi të refuzoni kërkesën nga ${clientName}?`,
+                )
+              ) {
+                requestItem.remove();
+                alert(`Kërkesa nga ${clientName} u refuzua.`);
+              }
+            }
+          });
+        });
+
+        // History actions
+        document
+          .querySelectorAll(".history-actions .action-btn")
+          .forEach((btn) => {
+            btn.addEventListener("click", function () {
+              const historyItem = this.closest(".history-item");
+              const clientName =
+                historyItem.querySelector("strong").textContent;
+              const date = historyItem.querySelector(".date").textContent;
+
+              if (this.classList.contains("view")) {
+                console.log(
+                  `Duke shikuar historinë e konsultimit me ${clientName} më ${date}`,
+                );
+                alert(`Detajet e konsultimit me ${clientName} më ${date}`);
+              } else if (this.classList.contains("download")) {
+                console.log(
+                  `Duke shkarkuar shënimet e konsultimit me ${clientName}`,
+                );
+                alert(`Shkarkimi i shënimeve për konsultimin me ${clientName}`);
+              } else if (this.classList.contains("edit")) {
+                console.log(`Duke riparakur konsultimin me ${clientName}`);
+                alert(`Riparako konsultimin me ${clientName}`);
+              }
+            });
+          });
+
+        // Calendar slot clicks
+        document
+          .querySelectorAll(".consultation-slot:not(.free)")
+          .forEach((slot) => {
+            slot.addEventListener("click", function () {
+              const client = this.querySelector(".slot-client").textContent;
+              const topic = this.querySelector(".slot-topic").textContent;
+              const time = this.querySelector(".slot-time").textContent;
+              const dayColumn = this.closest(".day-column");
+              const date = dayColumn.querySelector(".date").textContent;
+
+              console.log(
+                `Konsultimi me ${client} për ${topic} në ${time}, ${date}`,
+              );
+              alert(
+                `Konsultimi me ${client}\nTema: ${topic}\nKoha: ${time}\nData: ${date}`,
+              );
+            });
+          });
+
+        // Filter buttons
+        document.querySelectorAll(".btn-group .btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            document.querySelectorAll(".btn-group .btn").forEach((b) => {
+              b.classList.remove("active");
+            });
+            this.classList.add("active");
+
+            const filter = this.textContent;
+            console.log("Filtro sipas:", filter);
+            // Implement filter logic here
+          });
+        });
+
+        // Time remaining updates
+        function updateTimeRemaining() {
+          document.querySelectorAll(".time-remaining").forEach((element) => {
+            const text = element.textContent;
+            if (text.includes("Në")) {
+              // Update time dynamically (this is a simple example)
+              console.log("Përditësimi i kohës së mbetur...");
+            }
+          });
+        }
+
+        // Update time every minute
+        setInterval(updateTimeRemaining, 60000);
+      });
+    </script>
+    <script src="database.js"></script>
+    <script src="dashboard.js"></script>
+  </body>
+</html>

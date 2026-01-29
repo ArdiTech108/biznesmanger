@@ -1,0 +1,1849 @@
+<!doctype html>
+<html lang="sq">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Biznes Manager</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      /* ===== VARIABLES ===== */
+      :root {
+        --primary-color: #4a90e2;
+        --secondary-color: #50e3c2;
+        --danger-color: #d0021b;
+        --warning-color: #f5a623;
+        --success-color: #7ed321;
+        --dark-color: #2c3e50;
+        --light-color: #f8f9fa;
+        --text-dark: #333333;
+        --text-light: #666666;
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        --transition: all 0.3s ease;
+      }
+
+      /* ===== RESET & BASE ===== */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: var(--text-dark);
+        line-height: 1.6;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      body:before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" opacity="0.05"><path d="M0,0 L100,0 L100,100 Z" fill="white"/></svg>');
+        background-size: cover;
+        z-index: -1;
+      }
+
+      /* ===== PARTICLES ANIMATION ===== */
+      .particles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: hidden;
+      }
+
+      .particle {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        animation: float 15s infinite linear;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      /* ===== LOGIN CONTAINER ===== */
+      .login-container {
+        width: 100%;
+        max-width: 1200px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 700px;
+        border-radius: 25px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        animation: fadeIn 0.8s ease;
+        background: white;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ===== LEFT SIDE - HERO ===== */
+      .login-left {
+        background: linear-gradient(135deg, var(--dark-color) 0%, #1a2530 100%);
+        color: white;
+        padding: 60px 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .login-left:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" opacity="0.03"><path d="M0,0 L100,0 L50,100 Z" fill="white"/></svg>');
+        background-size: cover;
+      }
+
+      .logo-section {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .logo {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(
+          45deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        border-radius: 20px;
+        margin-bottom: 20px;
+        animation: logoFloat 3s infinite ease-in-out;
+      }
+
+      @keyframes logoFloat {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      .logo i {
+        font-size: 2.5rem;
+        color: white;
+      }
+
+      .logo-section h1 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+        background: linear-gradient(45deg, #fff, var(--secondary-color));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .logo-section p {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 1.1rem;
+      }
+
+      .features {
+        margin: 40px 0;
+      }
+
+      .feature-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+        padding: 15px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.05);
+        transition: var(--transition);
+      }
+
+      .feature-item:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateX(10px);
+      }
+
+      .feature-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        background: linear-gradient(
+          45deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        flex-shrink: 0;
+      }
+
+      .feature-icon i {
+        font-size: 1.5rem;
+        color: white;
+      }
+
+      .feature-text h4 {
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+      }
+
+      .feature-text p {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.9rem;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-top: 30px;
+      }
+
+      .stat-item {
+        text-align: center;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        transition: var(--transition);
+      }
+
+      .stat-item:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-5px);
+      }
+
+      .stat-number {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--secondary-color);
+        margin-bottom: 5px;
+      }
+
+      .stat-label {
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.7);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* ===== RIGHT SIDE - LOGIN FORM ===== */
+      .login-right {
+        padding: 60px 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: white;
+        position: relative;
+      }
+
+      .login-header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .login-header h2 {
+        font-size: 2rem;
+        color: var(--dark-color);
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .login-header h2 i {
+        color: var(--primary-color);
+      }
+
+      .login-header p {
+        color: var(--text-light);
+        font-size: 1.1rem;
+      }
+
+      /* ===== FORM ===== */
+      .login-form {
+        max-width: 400px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .form-group {
+        margin-bottom: 25px;
+        position: relative;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--dark-color);
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .form-group label i {
+        color: var(--primary-color);
+        width: 20px;
+      }
+
+      .input-with-icon {
+        position: relative;
+      }
+
+      .input-with-icon i {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-light);
+        font-size: 1.1rem;
+        transition: var(--transition);
+      }
+
+      .input-with-icon input {
+        width: 100%;
+        padding: 15px 15px 15px 50px;
+        border: 2px solid var(--border-color, #e0e0e0);
+        border-radius: 12px;
+        font-size: 1rem;
+        transition: var(--transition);
+        background: white;
+        color: var(--text-dark);
+      }
+
+      .input-with-icon input:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 4px rgba(74, 144, 226, 0.1);
+      }
+
+      .input-with-icon input:focus + i {
+        color: var(--primary-color);
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      .password-toggle {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: var(--text-light);
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .password-toggle:hover {
+        color: var(--primary-color);
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      .remember-forgot {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .remember-me {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .remember-me input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        accent-color: var(--primary-color);
+        cursor: pointer;
+      }
+
+      .remember-me label {
+        color: var(--text-light);
+        font-size: 0.95rem;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      .forgot-password {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 500;
+        transition: var(--transition);
+      }
+
+      .forgot-password:hover {
+        color: var(--dark-color);
+        text-decoration: underline;
+      }
+
+      /* ===== BUTTONS ===== */
+      .btn {
+        padding: 16px 32px;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        cursor: pointer;
+        border: none;
+        width: 100%;
+      }
+
+      .btn-primary {
+        background: linear-gradient(45deg, var(--primary-color), #667eea);
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-primary:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        transform: translate(-50%, -50%);
+        transition:
+          width 0.6s,
+          height 0.6s;
+      }
+
+      .btn-primary:hover:before {
+        width: 300px;
+        height: 300px;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(74, 144, 226, 0.3);
+      }
+
+      .btn-google {
+        background: white;
+        color: var(--text-dark);
+        border: 2px solid var(--border-color);
+        margin-top: 15px;
+      }
+
+      .btn-google:hover {
+        border-color: var(--primary-color);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn-google i {
+        color: #db4437;
+        font-size: 1.2rem;
+      }
+
+      /* ===== DIVIDER ===== */
+      .divider {
+        display: flex;
+        align-items: center;
+        margin: 25px 0;
+        color: var(--text-light);
+      }
+
+      .divider:before,
+      .divider:after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--border-color);
+      }
+
+      .divider span {
+        padding: 0 15px;
+        font-size: 0.9rem;
+      }
+
+      /* ===== SIGNUP LINK ===== */
+      .signup-link {
+        text-align: center;
+        margin-top: 30px;
+        color: var(--text-light);
+        font-size: 0.95rem;
+      }
+
+      .signup-link a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 600;
+        transition: var(--transition);
+      }
+
+      .signup-link a:hover {
+        color: var(--dark-color);
+        text-decoration: underline;
+      }
+
+      /* ===== NOTIFICATION ===== */
+      .notification {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 18px 25px;
+        border-radius: 12px;
+        background: white;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        z-index: 2000;
+        transform: translateX(150%);
+        transition: transform 0.3s ease;
+      }
+
+      .notification.show {
+        transform: translateX(0);
+      }
+
+      .notification i {
+        font-size: 1.4rem;
+      }
+
+      .notification.success {
+        border-left: 5px solid var(--success-color);
+      }
+
+      .notification.success i {
+        color: var(--success-color);
+      }
+
+      .notification.error {
+        border-left: 5px solid var(--danger-color);
+      }
+
+      .notification.error i {
+        color: var(--danger-color);
+      }
+
+      .notification.info {
+        border-left: 5px solid var(--primary-color);
+      }
+
+      .notification.info i {
+        color: var(--primary-color);
+      }
+
+      /* ===== LOADING ===== */
+      .loading {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 3000;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .loading.active {
+        display: flex;
+        animation: fadeIn 0.3s ease;
+      }
+
+      .spinner {
+        width: 60px;
+        height: 60px;
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: var(--primary-color);
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* ===== FORGOT PASSWORD MODAL ===== */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .modal.active {
+        display: flex;
+        animation: fadeIn 0.3s ease;
+      }
+
+      .modal-content {
+        background: white;
+        border-radius: 20px;
+        width: 100%;
+        max-width: 500px;
+        padding: 30px;
+        animation: modalSlideIn 0.3s ease;
+      }
+
+      @keyframes modalSlideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid var(--border-color);
+      }
+
+      .modal-header h3 {
+        color: var(--dark-color);
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .modal-header h3 i {
+        color: var(--primary-color);
+      }
+
+      .close-modal {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--light-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        transition: var(--transition);
+        border: none;
+        cursor: pointer;
+      }
+
+      .close-modal:hover {
+        background: var(--danger-color);
+        color: white;
+        transform: rotate(90deg);
+      }
+
+      /* ===== LANGUAGE SELECTOR ===== */
+      .language-selector {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 8px 15px;
+        border-radius: 25px;
+        backdrop-filter: blur(10px);
+      }
+
+      .language-selector i {
+        color: white;
+      }
+
+      .language-selector select {
+        background: transparent;
+        border: none;
+        color: white;
+        font-size: 0.9rem;
+        cursor: pointer;
+      }
+
+      .language-selector select option {
+        color: var(--dark-color);
+      }
+
+      /* ===== RESPONSIVE DESIGN ===== */
+      @media (max-width: 1024px) {
+        .login-container {
+          grid-template-columns: 1fr;
+          max-width: 600px;
+        }
+
+        .login-left {
+          display: none;
+        }
+
+        .login-right {
+          padding: 40px 30px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding: 10px;
+        }
+
+        .login-container {
+          min-height: auto;
+        }
+
+        .login-right {
+          padding: 30px 20px;
+        }
+
+        .login-header h2 {
+          font-size: 1.8rem;
+        }
+
+        .remember-forgot {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .stats {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .stats {
+          grid-template-columns: 1fr;
+        }
+
+        .login-header h2 {
+          font-size: 1.5rem;
+        }
+
+        .btn {
+          padding: 14px 20px;
+        }
+
+        .feature-item {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .feature-icon {
+          margin-right: 0;
+          margin-bottom: 10px;
+        }
+      }
+
+      /* ===== WELCOME ANIMATION ===== */
+      .welcome-message {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 4000;
+        animation: welcomeOut 0.8s ease 1.5s forwards;
+        transform-origin: center;
+      }
+
+      @keyframes welcomeOut {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1.1);
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+
+      .welcome-logo {
+        width: 120px;
+        height: 120px;
+        background: white;
+        border-radius: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 30px;
+        animation: logoBounce 1s ease;
+      }
+
+      @keyframes logoBounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      .welcome-logo i {
+        font-size: 3rem;
+        color: var(--primary-color);
+      }
+
+      .welcome-text {
+        text-align: center;
+        color: white;
+      }
+
+      .welcome-text h1 {
+        font-size: 3rem;
+        margin-bottom: 10px;
+        font-weight: 700;
+      }
+
+      .welcome-text p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Welcome Animation -->
+    <div class="welcome-message">
+      <div class="welcome-logo">
+        <i class="fas fa-briefcase"></i>
+      </div>
+      <div class="welcome-text">
+        <h1>Biznes Manager</h1>
+        <p>Duke ngarkuar...</p>
+      </div>
+    </div>
+
+    <!-- Particles Animation -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Language Selector -->
+    <div class="language-selector">
+      <i class="fas fa-globe"></i>
+      <select id="languageSelect">
+        <option value="sq">Shqip</option>
+        <option value="en">English</option>
+        <option value="it">Italiano</option>
+      </select>
+    </div>
+
+    <!-- Login Container -->
+    <div class="login-container">
+      <!-- Left Side - Hero Section -->
+      <div class="login-left">
+        <div class="logo-section">
+          <div class="logo">
+            <i class="fas fa-briefcase"></i>
+          </div>
+          <h1>Biznes Manager Pro</h1>
+          <p>Platforma e plotë për menaxhimin e biznesit tuaj</p>
+        </div>
+
+        <div class="features">
+          <div class="feature-item">
+            <div class="feature-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="feature-text">
+              <h4>Analizë në Real-Time</h4>
+              <p>
+                Monitoroni performancën e biznesit në kohë reale me grafikë dhe
+                raporte të avancuara.
+              </p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <div class="feature-text">
+              <h4>Menaxhim Klientësh</h4>
+              <p>
+                Menaxhoni të gjithë klientët tuaj nga një vend i vetëm me detaje
+                të plota dhe historik.
+              </p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">
+              <i class="fas fa-file-invoice-dollar"></i>
+            </div>
+            <div class="feature-text">
+              <h4>Kontabilitet i Automatizuar</h4>
+              <p>
+                Gjeneroni faturat, ndiqni pagesat dhe menaxhoni financat në
+                mënyrë automatike.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats">
+          <div class="stat-item">
+            <div class="stat-number">500+</div>
+            <div class="stat-label">Biznese</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">10K+</div>
+            <div class="stat-label">Klientë</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">99.8%</div>
+            <div class="stat-label">Kënaqësi</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side - Login Form -->
+      <div class="login-right">
+        <div class="login-header">
+          <h2><i class="fas fa-sign-in-alt"></i> Mirë se vini!</h2>
+          <p>Ju lutem hyni në llogarinë tuaj për të vazhduar</p>
+        </div>
+
+        <form class="login-form" id="loginForm">
+          <div class="form-group">
+            <label for="username"
+              ><i class="fas fa-user"></i> Emri i Përdoruesit</label
+            >
+            <div class="input-with-icon">
+              <input
+                type="text"
+                id="username"
+                placeholder="Shkruani emrin e përdoruesit"
+                required
+              />
+              <i class="fas fa-user"></i>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="password"
+              ><i class="fas fa-lock"></i> Fjalëkalimi</label
+            >
+            <div class="input-with-icon">
+              <input
+                type="password"
+                id="password"
+                placeholder="Shkruani fjalëkalimin"
+                required
+              />
+              <i class="fas fa-lock"></i>
+              <button type="button" class="password-toggle" id="togglePassword">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="remember-forgot">
+            <div class="remember-me">
+              <input type="checkbox" id="rememberMe" />
+              <label for="rememberMe">Më mbaj mend</label>
+            </div>
+            <a href="#" class="forgot-password" id="forgotPassword"
+              >Keni harruar fjalëkalimin?</a
+            >
+          </div>
+
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-sign-in-alt"></i> Hyni në Llogari
+          </button>
+
+          <div class="divider">
+            <span>Ose hyni me</span>
+          </div>
+
+          <button type="button" class="btn btn-google" id="googleLogin">
+            <i class="fab fa-google"></i> Vazhdoni me Google
+          </button>
+
+        <div class="signup-link">
+          Nuk keni një llogari?
+          <a href="regjister.html" id="signupLink">Regjistrohuni tani</a>
+        </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div class="modal" id="forgotPasswordModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3><i class="fas fa-key"></i> Rivendosni Fjalëkalimin</h3>
+          <button class="close-modal">&times;</button>
+        </div>
+        <form id="resetPasswordForm">
+          <div class="form-group">
+            <label for="resetEmail"
+              ><i class="fas fa-envelope"></i> Email Adresa</label
+            >
+            <div class="input-with-icon">
+              <input
+                type="email"
+                id="resetEmail"
+                placeholder="Shkruani email-in tuaj"
+                required
+              />
+              <i class="fas fa-envelope"></i>
+            </div>
+            <p
+              style="
+                font-size: 0.9rem;
+                color: var(--text-light);
+                margin-top: 8px;
+              "
+            >
+              Do t'ju dërgojmë një lidhje për të rivendosur fjalëkalimin tuaj.
+            </p>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn btn-secondary close-modal">
+              Anulo
+            </button>
+            <button type="submit" class="btn btn-primary">Dërgo Lidhjen</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal" id="signupModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3><i class="fas fa-user-plus"></i> Krijo Llogari të Re</h3>
+          <button class="close-modal">&times;</button>
+        </div>
+        <form id="signupForm">
+          <div class="form-group">
+            <label for="fullName"
+              ><i class="fas fa-user"></i> Emri i Plotë</label
+            >
+            <div class="input-with-icon">
+              <input
+                type="text"
+                id="fullName"
+                placeholder="Shkruani emrin tuaj të plotë"
+                required
+              />
+              <i class="fas fa-user"></i>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="signupEmail"
+              ><i class="fas fa-envelope"></i> Email Adresa</label
+            >
+            <div class="input-with-icon">
+              <input
+                type="email"
+                id="signupEmail"
+                placeholder="Shkruani email-in tuaj"
+                required
+              />
+              <i class="fas fa-envelope"></i>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="signupUsername"
+              ><i class="fas fa-at"></i> Emri i Përdoruesit</label
+            >
+            <div class="input-with-icon">
+              <input
+                type="text"
+                id="signupUsername"
+                placeholder="Zgjidhni një emër përdoruesi"
+                required
+              />
+              <i class="fas fa-at"></i>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="signupPassword"
+              ><i class="fas fa-lock"></i> Fjalëkalimi</label
+            >
+            <div class="input-with-icon">
+              <input
+                type="password"
+                id="signupPassword"
+                placeholder="Krijoni një fjalëkalim"
+                required
+              />
+              <i class="fas fa-lock"></i>
+              <button type="button" class="password-toggle">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword"
+              ><i class="fas fa-lock"></i> Konfirmo Fjalëkalimin</label
+            >
+            <div class="input-with-icon">
+              <input
+                type="password"
+                id="confirmPassword"
+                placeholder="Përsëritni fjalëkalimin"
+                required
+              />
+              <i class="fas fa-lock"></i>
+              <button type="button" class="password-toggle">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="companyName"
+              ><i class="fas fa-building"></i> Emri i Kompanisë
+              (opsional)</label
+            >
+            <div class="input-with-icon">
+              <input
+                type="text"
+                id="companyName"
+                placeholder="Emri i kompanisë suaj"
+              />
+              <i class="fas fa-building"></i>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="remember-me">
+              <input type="checkbox" id="termsAgreement" required />
+              <label for="termsAgreement">
+                Unë pranoj
+                <a href="#" style="color: var(--primary-color)"
+                  >kushtet e shërbimit</a
+                >
+                dhe
+                <a href="#" style="color: var(--primary-color)"
+                  >politikën e privatësisë</a
+                >
+              </label>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-secondary close-modal">
+              Anulo
+            </button>
+            <button type="submit" class="btn btn-primary">
+              Krijo Llogarinë
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // Login System with Enhanced Features
+      class LoginSystem {
+        constructor() {
+          this.users = this.loadUsersFromStorage();
+          this.currentUser = null;
+          this.setupEventListeners();
+          this.createParticles();
+          this.initWelcomeAnimation();
+          this.setupPasswordToggles();
+          this.initLanguageSelector();
+        }
+
+        initWelcomeAnimation() {
+          // Hide welcome animation after 2 seconds
+          setTimeout(() => {
+            document.querySelector(".welcome-message").style.animation =
+              "welcomeOut 0.8s ease forwards";
+            setTimeout(() => {
+              document.querySelector(".welcome-message").style.display = "none";
+            }, 800);
+          }, 1500);
+        }
+
+        createParticles() {
+          const particlesContainer = document.getElementById("particles");
+          const particleCount = 50;
+
+          for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement("div");
+            particle.classList.add("particle");
+
+            // Random size between 2px and 8px
+            const size = Math.random() * 6 + 2;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+
+            // Random position
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+
+            // Random animation delay and duration
+            particle.style.animationDelay = `${Math.random() * 15}s`;
+            particle.style.animationDuration = `${Math.random() * 10 + 10}s`;
+
+            particlesContainer.appendChild(particle);
+          }
+        }
+
+        loadUsersFromStorage() {
+          const users = localStorage.getItem("biznesManagerUsers");
+          if (users) {
+            return JSON.parse(users);
+          }
+
+          // Default admin user if none exist
+          const defaultUsers = [
+            {
+              id: 1,
+              fullName: "Administrator",
+              username: "admin",
+              email: "admin@biznesmanager.al",
+              password: "admin123",
+              company: "Biznes Manager",
+              role: "admin",
+              createdAt: new Date().toISOString(),
+              lastLogin: null,
+            },
+          ];
+          
+          // Also create a test user for easier access
+          defaultUsers.push({
+            id: 2,
+            fullName: "Test Përdorues",
+            username: "test",
+            email: "test@test.com",
+            password: "test123",
+            company: "Test Company",
+            role: "user",
+            createdAt: new Date().toISOString(),
+            lastLogin: null,
+          });
+
+          this.saveUsersToStorage(defaultUsers);
+          return defaultUsers;
+        }
+
+        saveUsersToStorage(users) {
+          localStorage.setItem("biznesManagerUsers", JSON.stringify(users));
+        }
+
+        setupPasswordToggles() {
+          const toggles = document.querySelectorAll(".password-toggle");
+          toggles.forEach((toggle) => {
+            toggle.addEventListener("click", function () {
+              const input = this.parentElement.querySelector("input");
+              const icon = this.querySelector("i");
+
+              if (input.type === "password") {
+                input.type = "text";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+              } else {
+                input.type = "password";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+              }
+            });
+          });
+        }
+
+        initLanguageSelector() {
+          const languageSelect = document.getElementById("languageSelect");
+          const savedLanguage =
+            localStorage.getItem("preferredLanguage") || "sq";
+
+          languageSelect.value = savedLanguage;
+          this.updateLanguage(savedLanguage);
+
+          languageSelect.addEventListener("change", (e) => {
+            const language = e.target.value;
+            localStorage.setItem("preferredLanguage", language);
+            this.updateLanguage(language);
+            this.showNotification("Gjuha u ndryshua me sukses!", "success");
+          });
+        }
+
+        updateLanguage(language) {
+          // In a real app, you would load translation files
+          // For this example, we'll just update a few elements
+          const translations = {
+            sq: {
+              welcome: "Mirë se vini!",
+              loginTitle: "Hyni në Llogari",
+              username: "Emri i Përdoruesit",
+              password: "Fjalëkalimi",
+              rememberMe: "Më mbaj mend",
+              forgotPassword: "Keni harruar fjalëkalimin?",
+              loginButton: "Hyni në Llogari",
+              orLoginWith: "Ose hyni me",
+              googleLogin: "Vazhdoni me Google",
+              noAccount: "Nuk keni një llogari?",
+              signupLink: "Regjistrohuni tani",
+              resetPassword: "Rivendosni Fjalëkalimin",
+              resetEmailPlaceholder: "Shkruani email-in tuaj",
+              cancel: "Anulo",
+              sendLink: "Dërgo Lidhjen",
+              createAccount: "Krijo Llogari të Re",
+              fullName: "Emri i Plotë",
+              email: "Email Adresa",
+              companyName: "Emri i Kompanisë",
+              confirmPassword: "Konfirmo Fjalëkalimin",
+              terms:
+                "Unë pranoj kushtet e shërbimit dhe politikën e privatësisë",
+              createAccountButton: "Krijo Llogarinë",
+            },
+            en: {
+              welcome: "Welcome!",
+              loginTitle: "Login to Your Account",
+              username: "Username",
+              password: "Password",
+              rememberMe: "Remember me",
+              forgotPassword: "Forgot password?",
+              loginButton: "Login",
+              orLoginWith: "Or login with",
+              googleLogin: "Continue with Google",
+              noAccount: "Don't have an account?",
+              signupLink: "Sign up now",
+              resetPassword: "Reset Password",
+              resetEmailPlaceholder: "Enter your email",
+              cancel: "Cancel",
+              sendLink: "Send Link",
+              createAccount: "Create New Account",
+              fullName: "Full Name",
+              email: "Email Address",
+              companyName: "Company Name",
+              confirmPassword: "Confirm Password",
+              terms: "I agree to the terms of service and privacy policy",
+              createAccountButton: "Create Account",
+            },
+            it: {
+              welcome: "Benvenuto!",
+              loginTitle: "Accedi al tuo account",
+              username: "Nome utente",
+              password: "Password",
+              rememberMe: "Ricordami",
+              forgotPassword: "Password dimenticata?",
+              loginButton: "Accedi",
+              orLoginWith: "O accedi con",
+              googleLogin: "Continua con Google",
+              noAccount: "Non hai un account?",
+              signupLink: "Registrati ora",
+              resetPassword: "Reimposta Password",
+              resetEmailPlaceholder: "Inserisci la tua email",
+              cancel: "Annulla",
+              sendLink: "Invia Link",
+              createAccount: "Crea Nuovo Account",
+              fullName: "Nome Completo",
+              email: "Indirizzo Email",
+              companyName: "Nome Azienda",
+              confirmPassword: "Conferma Password",
+              terms:
+                "Accetto i termini di servizio e la politica sulla privacy",
+              createAccountButton: "Crea Account",
+            },
+          };
+
+          const t = translations[language] || translations.sq;
+
+          // Update text content
+          document.querySelector(".login-header h2").innerHTML =
+            `<i class="fas fa-sign-in-alt"></i> ${t.welcome}`;
+          document.querySelector(".login-header p").textContent = t.loginTitle;
+
+          // Update form labels and placeholders
+          document.querySelector(
+            'label[for="username"] i',
+          ).nextSibling.textContent = ` ${t.username}`;
+          document.getElementById("username").placeholder = t.username;
+
+          document.querySelector(
+            'label[for="password"] i',
+          ).nextSibling.textContent = ` ${t.password}`;
+          document.getElementById("password").placeholder = t.password;
+
+          document.querySelector('label[for="rememberMe"]').textContent =
+            t.rememberMe;
+          document.getElementById("forgotPassword").textContent =
+            t.forgotPassword;
+
+          document.querySelector(".btn-primary").innerHTML =
+            `<i class="fas fa-sign-in-alt"></i> ${t.loginButton}`;
+          document.querySelector(".divider span").textContent = t.orLoginWith;
+          document.getElementById("googleLogin").innerHTML =
+            `<i class="fab fa-google"></i> ${t.googleLogin}`;
+          document.querySelector(".signup-link").innerHTML =
+            `${t.noAccount} <a href="regjister.html" id="signupLink">${t.signupLink}</a>`;
+        }
+
+        showLoading() {
+          document.getElementById("loading").classList.add("active");
+        }
+
+        hideLoading() {
+          document.getElementById("loading").classList.remove("active");
+        }
+
+        showNotification(message, type = "info") {
+          const notification = document.createElement("div");
+          notification.className = `notification ${type}`;
+          notification.innerHTML = `
+                    <i class="fas fa-${type === "success" ? "check-circle" : "info-circle"}"></i>
+                    <span>${message}</span>
+                `;
+
+          document.body.appendChild(notification);
+
+          setTimeout(() => {
+            notification.classList.add("show");
+          }, 10);
+
+          setTimeout(() => {
+            notification.classList.remove("show");
+            setTimeout(() => {
+              if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+              }
+            }, 300);
+          }, 3000);
+        }
+
+        openModal(modalId) {
+          document.getElementById(modalId).classList.add("active");
+        }
+
+        closeModal(modalId) {
+          document.getElementById(modalId).classList.remove("active");
+        }
+
+        setupEventListeners() {
+          // Login form submission
+          document
+            .getElementById("loginForm")
+            .addEventListener("submit", (e) => {
+              e.preventDefault();
+              this.handleLogin();
+            });
+
+          // Google login
+          document
+            .getElementById("googleLogin")
+            .addEventListener("click", () => {
+              this.handleGoogleLogin();
+            });
+
+          // Forgot password
+          document
+            .getElementById("forgotPassword")
+            .addEventListener("click", (e) => {
+              e.preventDefault();
+              this.openModal("forgotPasswordModal");
+            });
+
+          // Signup link - redirect to register page
+          const signupLink = document.getElementById("signupLink");
+          if (signupLink) {
+            // Remove any existing event listeners by cloning
+            const newSignupLink = signupLink.cloneNode(true);
+            signupLink.parentNode.replaceChild(newSignupLink, signupLink);
+            
+            // Set href to regjister.html if not already set
+            if (!newSignupLink.getAttribute("href") || newSignupLink.getAttribute("href") === "#") {
+              newSignupLink.setAttribute("href", "regjister.html");
+            }
+            
+            // Allow normal navigation - no preventDefault
+            newSignupLink.addEventListener("click", (e) => {
+              // Only prevent if it's still a # link (shouldn't happen now)
+              if (newSignupLink.getAttribute("href") === "#") {
+                e.preventDefault();
+                this.openModal("signupModal");
+              }
+              // Otherwise, let it navigate normally
+            });
+          }
+
+          // Close modal buttons
+          document.querySelectorAll(".close-modal").forEach((btn) => {
+            btn.addEventListener("click", () => {
+              const modal = btn.closest(".modal");
+              if (modal) {
+                this.closeModal(modal.id);
+              }
+            });
+          });
+
+          // Close modals when clicking outside
+          document.querySelectorAll(".modal").forEach((modal) => {
+            modal.addEventListener("click", (e) => {
+              if (e.target === modal) {
+                this.closeModal(modal.id);
+              }
+            });
+          });
+
+          // Reset password form
+          document
+            .getElementById("resetPasswordForm")
+            .addEventListener("submit", (e) => {
+              e.preventDefault();
+              this.handleResetPassword();
+            });
+
+          // Signup form
+          document
+            .getElementById("signupForm")
+            .addEventListener("submit", (e) => {
+              e.preventDefault();
+              this.handleSignup();
+            });
+
+          // Add password toggles for signup form
+          const signupToggles = document.querySelectorAll(
+            "#signupForm .password-toggle",
+          );
+          signupToggles.forEach((toggle) => {
+            toggle.addEventListener("click", function () {
+              const input = this.parentElement.querySelector("input");
+              const icon = this.querySelector("i");
+
+              if (input.type === "password") {
+                input.type = "text";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+              } else {
+                input.type = "password";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+              }
+            });
+          });
+        }
+
+        handleLogin() {
+          const username = document.getElementById("username").value;
+          const password = document.getElementById("password").value;
+          const rememberMe = document.getElementById("rememberMe").checked;
+
+          // Validation
+          if (!username || !password) {
+            this.showNotification(
+              "Ju lutem plotësoni të gjitha fushat!",
+              "error",
+            );
+            return;
+          }
+
+          this.showLoading();
+
+          // Simulate API call
+          setTimeout(() => {
+            const user = this.users.find(
+              (u) =>
+                (u.username === username || u.email === username) &&
+                u.password === password,
+            );
+
+            if (user) {
+              // Update last login
+              user.lastLogin = new Date().toISOString();
+              this.saveUsersToStorage(this.users);
+
+              // Store user session
+              localStorage.setItem("biznesManagerCurrentUser", JSON.stringify(user));
+              if (rememberMe) {
+                localStorage.setItem("rememberUser", "true");
+              } else {
+                localStorage.removeItem("rememberUser");
+                // Set flag to allow access for this session
+                sessionStorage.setItem("justLoggedIn", "true");
+              }
+
+              this.showNotification(
+                "Mirë se vini " + user.fullName + "!",
+                "success",
+              );
+
+              // Redirect to dashboard after delay
+              setTimeout(() => {
+                window.location.href = "index.html";
+              }, 1000);
+            } else {
+              this.hideLoading();
+              this.showNotification(
+                "Emri i përdoruesit ose fjalëkalimi janë gabim!",
+                "error",
+              );
+            }
+          }, 1500);
+        }
+
+        handleGoogleLogin() {
+          this.showLoading();
+          this.showNotification("Duke lidhur me Google...", "info");
+
+          // Simulate Google login
+          setTimeout(() => {
+            this.hideLoading();
+            this.showNotification(
+              "Ky funksionalitet është në zhvillim!",
+              "info",
+            );
+          }, 2000);
+        }
+
+        handleResetPassword() {
+          const email = document.getElementById("resetEmail").value;
+
+          if (!email) {
+            this.showNotification("Ju lutem shkruani email-in tuaj!", "error");
+            return;
+          }
+
+          if (!this.validateEmail(email)) {
+            this.showNotification(
+              "Ju lutem shkruani një email të vlefshëm!",
+              "error",
+            );
+            return;
+          }
+
+          this.showLoading();
+
+          // Simulate sending reset email
+          setTimeout(() => {
+            this.hideLoading();
+            this.closeModal("forgotPasswordModal");
+            this.showNotification(
+              "U dërgua një email me udhëzime për rivendosjen e fjalëkalimit!",
+              "success",
+            );
+            document.getElementById("resetEmail").value = "";
+          }, 2000);
+        }
+
+        handleSignup() {
+          const fullName = document.getElementById("fullName").value;
+          const email = document.getElementById("signupEmail").value;
+          const username = document.getElementById("signupUsername").value;
+          const password = document.getElementById("signupPassword").value;
+          const confirmPassword =
+            document.getElementById("confirmPassword").value;
+          const companyName = document.getElementById("companyName").value;
+          const termsAgreed = document.getElementById("termsAgreement").checked;
+
+          // Validation
+          if (
+            !fullName ||
+            !email ||
+            !username ||
+            !password ||
+            !confirmPassword
+          ) {
+            this.showNotification(
+              "Ju lutem plotësoni të gjitha fushat e detyrueshme!",
+              "error",
+            );
+            return;
+          }
+
+          if (!this.validateEmail(email)) {
+            this.showNotification(
+              "Ju lutem shkruani një email të vlefshëm!",
+              "error",
+            );
+            return;
+          }
+
+          if (password.length < 6) {
+            this.showNotification(
+              "Fjalëkalimi duhet të jetë së paku 6 karaktere!",
+              "error",
+            );
+            return;
+          }
+
+          if (password !== confirmPassword) {
+            this.showNotification("Fjalëkalimet nuk përputhen!", "error");
+            return;
+          }
+
+          if (!termsAgreed) {
+            this.showNotification(
+              "Ju duhet të pranoni kushtet e shërbimit!",
+              "error",
+            );
+            return;
+          }
+
+          // Check if user exists
+          const userExists = this.users.some(
+            (u) => u.email === email || u.username === username,
+          );
+          if (userExists) {
+            this.showNotification(
+              "Ky email ose emër përdoruesi ekziston tashmë!",
+              "error",
+            );
+            return;
+          }
+
+          this.showLoading();
+
+          // Create new user
+          setTimeout(() => {
+            const newUser = {
+              id: this.users.length + 1,
+              fullName,
+              username,
+              email,
+              password,
+              company: companyName || null,
+              role: "user",
+              createdAt: new Date().toISOString(),
+              lastLogin: null,
+            };
+
+            this.users.push(newUser);
+            this.saveUsersToStorage(this.users);
+
+            this.hideLoading();
+            this.closeModal("signupModal");
+
+            // Clear form
+            document.getElementById("signupForm").reset();
+
+            this.showNotification(
+              "Llogaria u krijua me sukses! Po ju logojmë automatikisht...",
+              "success",
+            );
+
+            // Auto-login the new user
+            setTimeout(() => {
+              // Store user session
+              localStorage.setItem("biznesManagerCurrentUser", JSON.stringify(newUser));
+              localStorage.setItem("rememberUser", "true");
+              
+              // Redirect to dashboard
+              setTimeout(() => {
+                window.location.href = "index.html";
+              }, 1000);
+            }, 500);
+          }, 2000);
+        }
+
+        validateEmail(email) {
+          const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          return re.test(email);
+        }
+      }
+
+      // Initialize login system when page loads
+      document.addEventListener("DOMContentLoaded", () => {
+        window.loginSystem = new LoginSystem();
+
+        // Check if user is already logged in
+        const savedUser = localStorage.getItem("biznesManagerCurrentUser");
+        if (savedUser) {
+          try {
+            const user = JSON.parse(savedUser);
+            window.loginSystem.showNotification(
+              "Mirë se vini përsëri " + user.fullName + "!",
+              "info",
+            );
+
+            // Auto-redirect to dashboard after 1 second
+            setTimeout(() => {
+              window.location.href = "index.html";
+            }, 1000);
+          } catch (e) {
+            // If there's an error parsing, clear it
+            localStorage.removeItem("biznesManagerCurrentUser");
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

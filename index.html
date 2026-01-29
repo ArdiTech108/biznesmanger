@@ -1,0 +1,1036 @@
+<!doctype html>
+<html lang="sq">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Biznes Manager Pro</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="auth.js"></script>
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Sidebar Backdrop -->
+      <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+      <!-- Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <a href="index.html" class="logo">
+            <div class="logo-icon">
+              <i class="fas fa-briefcase"></i>
+            </div>
+            <div class="logo-text">
+              <span>Biznes Manager</span>
+              <span>Sistemi i Plotë i Menaxhimit</span>
+            </div>
+          </a>
+        </div>
+
+        <nav class="sidebar-nav">
+          <div class="nav-section">
+            <div class="nav-section-title">MENU KRYESORE</div>
+            <a href="index.html" class="nav-item">
+              <i class="nav-icon fas fa-home"></i>
+              <span class="nav-text">Dashboard</span>
+            </a>
+            <a href="klientet.html" class="nav-item">
+              <i class="nav-icon fas fa-users"></i>
+              <span class="nav-text">Klientët</span>
+            </a>
+          </div>
+
+          <div class="nav-section">
+            <div class="nav-section-title">BIZNESI</div>
+            <a href="planet-biznesore.html" class="nav-item">
+              <i class="nav-icon fas fa-chart-line"></i>
+              <span class="nav-text">Planet Biznesore</span>
+            </a>
+            <a href="regjistrimi-biznesit.html" class="nav-item">
+              <i class="nav-icon fas fa-file-signature"></i>
+              <span class="nav-text">Regjistrimi i Bizneseve</span>
+            </a>
+            <a href="mbyllja-biznesit.html" class="nav-item">
+              <i class="nav-icon fas fa-door-closed"></i>
+              <span class="nav-text">Mbyllja e Bizneseve</span>
+            </a>
+          </div>
+
+          <div class="nav-section">
+            <div class="nav-section-title">TENDERA & DOKUMENTA</div>
+            <a href="tenderat.html" class="nav-item">
+              <i class="nav-icon fas fa-file-contract"></i>
+              <span class="nav-text">Tenderat</span>
+            </a>
+            <a href="konsultimet.html" class="nav-item active">
+              <i class="nav-icon fas fa-comments"></i>
+              <span class="nav-text">Konsultimet</span>
+              <span class="nav-badge">8</span>
+            </a>
+            <a href="kontabiliteti.html" class="nav-item">
+              <i class="nav-icon fas fa-file-invoice-dollar"></i>
+              <span class="nav-text">Faturat & Pagesat</span>
+            </a>
+            <a href="dokumentet.html" class="nav-item">
+              <i class="nav-icon fas fa-archive"></i>
+              <span class="nav-text">Arkivi i Dokumenteve</span>
+            </a>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content" id="mainContent">
+        <!-- Header -->
+        <header class="header">
+          <div class="header-left">
+            <button class="menu-toggle" id="menuToggle">
+              <i class="fas fa-bars"></i>
+            </button>
+            <div class="header-title">
+              <h1>Dashboard</h1>
+              <div class="header-subtitle">
+                Mire se vini ne sistemin e menaxhimit te biznesit
+              </div>
+            </div>
+          </div>
+
+          <div class="header-right">
+            <div class="header-stats">
+              <div class="stat-mini">
+                <div class="stat-mini-value">12</div>
+                <div class="stat-mini-label">Klientë</div>
+              </div>
+              <div class="stat-mini">
+                <div class="stat-mini-value">5</div>
+                <div class="stat-mini-label">Tendera</div>
+              </div>
+              <div class="stat-mini">
+                <div class="stat-mini-value">€45.2K</div>
+                <div class="stat-mini-label">Fitim</div>
+              </div>
+            </div>
+
+            <div class="search-container">
+              <i class="fas fa-search search-icon"></i>
+              <input type="text" class="search-input" placeholder="Kërko..." />
+            </div>
+
+            <div class="user-menu">
+              <div class="user-avatar">AM</div>
+              <div class="user-info">
+                <div class="user-name">Admin Manager</div>
+                <div class="user-role">Administrator</div>
+              </div>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+          </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="page-content">
+          <!-- Breadcrumb -->
+          <nav class="breadcrumb">
+            <div class="breadcrumb-item">
+              <a href="#"><i class="fas fa-home"></i> Dashboard</a>
+            </div>
+            <div class="breadcrumb-separator">/</div>
+            <div class="breadcrumb-item active">Përmbledhje</div>
+          </nav>
+
+          <!-- Page Header -->
+          <div class="page-header">
+            <div class="page-title-section">
+              <h1 class="page-title">
+                <i class="fas fa-chart-line"></i> Përmbledhje e Biznesit
+              </h1>
+              <p class="page-subtitle">
+                Monitoroni performancën tuaj dhe aktivitetet e fundit të
+                biznesit
+              </p>
+            </div>
+            <div class="page-actions">
+              <button class="btn btn-primary">
+                <i class="fas fa-plus"></i> Shto të Re
+              </button>
+              <button class="btn btn-outline">
+                <i class="fas fa-download"></i> Eksporto Raport
+              </button>
+            </div>
+          </div>
+
+          <!-- Stats Grid -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon clients">
+                <i class="fas fa-users"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">124</div>
+                <div class="stat-label">Klientë Total</div>
+                <div class="stat-change positive">
+                  <i class="fas fa-arrow-up"></i> 12% nga muaji i kaluar
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon projects">
+                <i class="fas fa-project-diagram"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">€89,450</div>
+                <div class="stat-label">Vlerë Kontratash</div>
+                <div class="stat-change positive">
+                  <i class="fas fa-arrow-up"></i> 18% nga muaji i kaluar
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon pending">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">23</div>
+                <div class="stat-label">Tendera në Pritje</div>
+                <div class="stat-change negative">
+                  <i class="fas fa-arrow-down"></i> 5% nga muaji i kaluar
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon revenue">
+                <i class="fas fa-euro-sign"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">€245,830</div>
+                <div class="stat-label">Fitim Vjetor</div>
+                <div class="stat-change positive">
+                  <i class="fas fa-arrow-up"></i> 22% nga viti i kaluar
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts & Content Grid -->
+          <div class="charts-container">
+            <!-- Chart 1 -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <i class="fas fa-chart-bar"></i> Performanca Vjetore
+                </div>
+                <div class="card-actions">
+                  <button class="btn btn-sm btn-outline">2024</button>
+                  <button class="btn btn-sm btn-primary">2023</button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="chart-placeholder">
+                  <div class="chart-placeholder-content">
+                    <i class="fas fa-chart-bar chart-placeholder-icon"></i>
+                    <p class="chart-placeholder-text">
+                      Chart do të shfaqet këtu
+                    </p>
+                    <p class="chart-placeholder-subtext">
+                      Të dhënat do të paraqiten me grafikë të ndërveprueshëm
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <div class="card-footer-info">
+                  <i class="fas fa-info-circle"></i> Të dhënat përditësohen
+                  automatikisht çdo 24 orë
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <i class="fas fa-history"></i> Aktiviteti i Fundit
+                </div>
+                <div class="card-actions">
+                  <button class="btn btn-sm btn-outline">
+                    Shiko të Gjitha
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="timeline">
+                  <div class="timeline-item completed">
+                    <div class="timeline-date">Sot, 10:30</div>
+                    <div class="timeline-content completed">
+                      <strong>Kontrata e re u nënshkrua</strong>
+                      <p>
+                        Kontrata me "Shpresa Construction" u nënshkrua me vlerë
+                        €45,000
+                      </p>
+                    </div>
+                  </div>
+                  <div class="timeline-item pending">
+                    <div class="timeline-date">Sot, 09:15</div>
+                    <div class="timeline-content pending">
+                      <strong>Tender i ri u dorëzua</strong>
+                      <p>
+                        U dorëzua aplikimi për tenderin e "Municipalitetit të
+                        Tiranës"
+                      </p>
+                    </div>
+                  </div>
+                  <div class="timeline-item">
+                    <div class="timeline-date">Dje, 16:45</div>
+                    <div class="timeline-content">
+                      <strong>Konsultim i ri i planifikuar</strong>
+                      <p>
+                        U planifikua konsultim me "Global Tech Solutions" për të
+                        hënën
+                      </p>
+                    </div>
+                  </div>
+                  <div class="timeline-item">
+                    <div class="timeline-date">Dje, 14:20</div>
+                    <div class="timeline-content">
+                      <strong>Raporti financiar u përgatit</strong>
+                      <p>
+                        U përfundua raporti mujor financiar për Qershor 2024
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Additional Cards Grid -->
+          <div class="charts-container">
+            <!-- Urgent Tasks -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <i class="fas fa-exclamation-triangle"></i> Detyra Urgjente
+                </div>
+                <div class="card-actions">
+                  <span class="status-badge urgent">3 Urgjente</span>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="task-checklist">
+                  <div class="task-item current">
+                    <div class="task-checkbox">
+                      <div class="checkbox"></div>
+                    </div>
+                    <div class="task-content">
+                      <div class="task-title">
+                        Dorëzimi i Tenderit për Infrastrukturë
+                      </div>
+                      <div class="task-description">
+                        Afati: 48 orë të mbetura
+                      </div>
+                    </div>
+                    <div class="task-date">Sot</div>
+                  </div>
+                  <div class="task-item current">
+                    <div class="task-checkbox">
+                      <div class="checkbox"></div>
+                    </div>
+                    <div class="task-content">
+                      <div class="task-title">Paguaji TVSH-në tremujore</div>
+                      <div class="task-description">
+                        Afati: 5 ditë të mbetura
+                      </div>
+                    </div>
+                    <div class="task-date">10 Qer</div>
+                  </div>
+                  <div class="task-item completed">
+                    <div class="task-checkbox">
+                      <i class="fas fa-check"></i>
+                    </div>
+                    <div class="task-content">
+                      <div class="task-title">Përditësimi i Licencave</div>
+                      <div class="task-description">U përfundua me sukses</div>
+                    </div>
+                    <div class="task-date">5 Qer</div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-sm btn-primary">
+                  <i class="fas fa-plus"></i> Shto Detyrë të Re
+                </button>
+              </div>
+            </div>
+
+            <!-- Upcoming Consultations -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <i class="fas fa-calendar-check"></i> Konsultimet e Ardhshme
+                </div>
+                <div class="card-actions">
+                  <button class="btn btn-sm btn-outline">Shto Takim</button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="consultations-today">
+                  <div class="consultation-item">
+                    <div class="consultation-time">
+                      <div class="time-slot">10:30</div>
+                      <div class="time-remaining">Në 2 orë</div>
+                    </div>
+                    <div class="consultation-details">
+                      <div class="consultation-client">
+                        <div class="client-avatar">JS</div>
+                        <div class="client-info">
+                          <div class="client-name">John Smith</div>
+                          <div class="client-company">Tech Solutions Inc.</div>
+                        </div>
+                      </div>
+                      <div class="consultation-topic">
+                        <h4>Strategjia e Zbërthimit të Biznesit</h4>
+                        <p>
+                          Diskutim për strategjitë e zgjerimit në tregun rajonal
+                        </p>
+                      </div>
+                      <div class="consultation-meta">
+                        <span class="meta-item">
+                          <i class="fas fa-video"></i> Video Call
+                        </span>
+                        <span class="meta-item">
+                          <i class="fas fa-clock"></i> 60 min
+                        </span>
+                      </div>
+                    </div>
+                    <div class="consultation-actions">
+                      <button class="btn btn-sm btn-success">
+                        <i class="fas fa-check"></i> Konfirmo
+                      </button>
+                      <button class="btn btn-sm btn-outline">
+                        <i class="fas fa-times"></i> Anulo
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="consultation-item urgent">
+                    <div class="consultation-time">
+                      <div class="time-slot">14:00</div>
+                      <div class="time-remaining">URGJENT</div>
+                    </div>
+                    <div class="consultation-details">
+                      <div class="consultation-client">
+                        <div class="client-avatar">ME</div>
+                        <div class="client-info">
+                          <div class="client-name">Maria Erebara</div>
+                          <div class="client-company">Erebara Construction</div>
+                        </div>
+                      </div>
+                      <div class="consultation-topic">
+                        <h4>Rishikim Kontrate</h4>
+                        <p>Rishikimi i emergjent i kontratës së ndërtimit</p>
+                      </div>
+                      <div class="consultation-meta">
+                        <span class="meta-item">
+                          <i class="fas fa-building"></i> Në Zyrë
+                        </span>
+                        <span class="meta-item">
+                          <i class="fas fa-clock"></i> 90 min
+                        </span>
+                      </div>
+                    </div>
+                    <div class="consultation-actions">
+                      <button class="btn btn-sm btn-warning">
+                        <i class="fas fa-exclamation"></i> Prioritet
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tender Section -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">
+                <i class="fas fa-file-contract"></i> Tendera të Fundit
+              </div>
+              <div class="card-actions">
+                <button class="btn btn-sm btn-primary">Shiko të Gjitha</button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="tender-grid">
+                <!-- Tender Card 1 -->
+                <div class="tender-card hot">
+                  <div class="tender-header">
+                    <div>
+                      <div class="tender-title">
+                        Rindërtimi i Rrugës Kryesore
+                      </div>
+                      <div class="tender-institution">
+                        <i class="fas fa-university"></i> Ministria e
+                        Infrastrukturës
+                      </div>
+                    </div>
+                    <div class="tender-id">#TND-2024-045</div>
+                  </div>
+                  <div class="tender-details">
+                    <div class="tender-detail">
+                      <div class="detail-label">Vlera</div>
+                      <div class="detail-value">€2,500,000</div>
+                    </div>
+                    <div class="tender-detail">
+                      <div class="detail-label">Afati</div>
+                      <div class="detail-value">10 Qershor 2024</div>
+                    </div>
+                    <div class="tender-detail">
+                      <div class="detail-label">Statusi</div>
+                      <span class="status-badge pending">Në Pritje</span>
+                    </div>
+                    <div class="tender-detail">
+                      <div class="detail-label">Prioriteti</div>
+                      <span class="priority-badge high">Lartë</span>
+                    </div>
+                  </div>
+                  <div class="tender-actions">
+                    <button class="btn btn-sm btn-primary">
+                      <i class="fas fa-eye"></i> Shiko Detaje
+                    </button>
+                    <button class="btn btn-sm btn-outline">
+                      <i class="fas fa-download"></i> Dokumentet
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Tender Card 2 -->
+                <div class="tender-card">
+                  <div class="tender-header">
+                    <div>
+                      <div class="tender-title">
+                        Furnizimi i Pajisjeve Zyrtare
+                      </div>
+                      <div class="tender-institution">
+                        <i class="fas fa-landmark"></i> Qeveria e Shqipërisë
+                      </div>
+                    </div>
+                    <div class="tender-id">#TND-2024-044</div>
+                  </div>
+                  <div class="tender-details">
+                    <div class="tender-detail">
+                      <div class="detail-label">Vlera</div>
+                      <div class="detail-value">€850,000</div>
+                    </div>
+                    <div class="tender-detail">
+                      <div class="detail-label">Afati</div>
+                      <div class="detail-value">15 Qershor 2024</div>
+                    </div>
+                    <div class="tender-detail">
+                      <div class="detail-label">Statusi</div>
+                      <span class="status-badge active">Aktiv</span>
+                    </div>
+                    <div class="tender-detail">
+                      <div class="detail-label">Prioriteti</div>
+                      <span class="priority-badge medium">Mesëm</span>
+                    </div>
+                  </div>
+                  <div class="tender-actions">
+                    <button class="btn btn-sm btn-primary">
+                      <i class="fas fa-eye"></i> Shiko Detaje
+                    </button>
+                    <button class="btn btn-sm btn-outline">
+                      <i class="fas fa-download"></i> Dokumentet
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Tender Card 3 -->
+                <div class="tender-card">
+                  <div class="tender-header">
+                    <div>
+                      <div class="tender-title">
+                        Sistemi i Menaxhimit të Ujërave
+                      </div>
+                      <div class="tender-institution">
+                        <i class="fas fa-water"></i> Autoriteti i Ujërave
+                      </div>
+                    </div>
+                    <div class="tender-id">#TND-2024-043</div>
+                  </div>
+                  <div class="tender-details">
+                    <div class="tender-detail">
+                      <div class="detail-label">Vlera</div>
+                      <div class="detail-value">€1,200,000</div>
+                    </div>
+                    <div class="tender-detail">
+                      <div class="detail-label">Afati</div>
+                      <div class="detail-value">5 Korrik 2024</div>
+                    </div>
+                    <div class="tender-detail">
+                      <div class="detail-label">Statusi</div>
+                      <span class="status-badge draft">Draft</span>
+                    </div>
+                    <div class="tender-detail">
+                      <div class="detail-label">Prioriteti</div>
+                      <span class="priority-badge low">I ulët</span>
+                    </div>
+                  </div>
+                  <div class="tender-actions">
+                    <button class="btn btn-sm btn-primary">
+                      <i class="fas fa-eye"></i> Shiko Detaje
+                    </button>
+                    <button class="btn btn-sm btn-outline">
+                      <i class="fas fa-download"></i> Dokumentet
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Business Plans Preview -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">
+                <i class="fas fa-business-time"></i> Planet Biznesore
+              </div>
+              <div class="card-actions">
+                <button class="btn btn-sm btn-primary">Krijo Plan të Ri</button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="business-plans-grid">
+                <!-- Plan Card 1 -->
+                <div class="plan-card featured">
+                  <div class="plan-header">
+                    <span class="plan-category">Zgjerim</span>
+                    <span class="plan-priority">
+                      <span class="priority-badge high">Prioritet</span>
+                    </span>
+                  </div>
+                  <div class="plan-body">
+                    <h3 class="plan-title">Zgjerimi në Tregun Rajonal</h3>
+                    <p class="plan-description">
+                      Strategjia për hyrjen në tregun e Kosovës dhe Maqedonisë
+                      së Veriut për 2024-2025.
+                    </p>
+                    <div class="plan-details">
+                      <div class="detail-item">
+                        <i class="fas fa-calendar"></i>
+                        <span>18 Muaj</span>
+                      </div>
+                      <div class="detail-item">
+                        <i class="fas fa-euro-sign"></i>
+                        <span>€500,000</span>
+                      </div>
+                      <div class="detail-item">
+                        <i class="fas fa-chart-line"></i>
+                        <span>25% ROI</span>
+                      </div>
+                    </div>
+                    <div class="plan-progress">
+                      <div class="progress-label">
+                        <span>Progresi</span>
+                        <span>65%</span>
+                      </div>
+                      <div class="progress-bar">
+                        <div
+                          class="progress-fill primary"
+                          style="width: 65%"
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="plan-footer">
+                    <span class="plan-status-badge approved">Aprovuar</span>
+                    <div class="plan-actions">
+                      <button class="btn btn-sm btn-outline">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                      <button class="btn btn-sm btn-primary">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Plan Card 2 -->
+                <div class="plan-card">
+                  <div class="plan-header">
+                    <span class="plan-category">Inovacion</span>
+                    <span class="plan-priority">
+                      <span class="priority-badge medium">Mesëm</span>
+                    </span>
+                  </div>
+                  <div class="plan-body">
+                    <h3 class="plan-title">Digitalizimi i Proceseve</h3>
+                    <p class="plan-description">
+                      Implementimi i sistemeve të reja ERP për optimizimin e
+                      operacioneve të brendshme.
+                    </p>
+                    <div class="plan-details">
+                      <div class="detail-item">
+                        <i class="fas fa-calendar"></i>
+                        <span>9 Muaj</span>
+                      </div>
+                      <div class="detail-item">
+                        <i class="fas fa-euro-sign"></i>
+                        <span>€150,000</span>
+                      </div>
+                      <div class="detail-item">
+                        <i class="fas fa-chart-line"></i>
+                        <span>40% ROI</span>
+                      </div>
+                    </div>
+                    <div class="plan-progress">
+                      <div class="progress-label">
+                        <span>Progresi</span>
+                        <span>30%</span>
+                      </div>
+                      <div class="progress-bar">
+                        <div
+                          class="progress-fill warning"
+                          style="width: 30%"
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="plan-footer">
+                    <span class="plan-status-badge review">Në Rishikim</span>
+                    <div class="plan-actions">
+                      <button class="btn btn-sm btn-outline">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                      <button class="btn btn-sm btn-primary">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Plan Card 3 -->
+                <div class="plan-card">
+                  <div class="plan-header">
+                    <span class="plan-category">Qëndrueshmëri</span>
+                    <span class="plan-priority">
+                      <span class="priority-badge low">I ulët</span>
+                    </span>
+                  </div>
+                  <div class="plan-body">
+                    <h3 class="plan-title">Iniciativa të Gjelbra</h3>
+                    <p class="plan-description">
+                      Implementimi i praktikave të qëndrueshme dhe reduktimi i
+                      gjurmës karbonike.
+                    </p>
+                    <div class="plan-details">
+                      <div class="detail-item">
+                        <i class="fas fa-calendar"></i>
+                        <span>24 Muaj</span>
+                      </div>
+                      <div class="detail-item">
+                        <i class="fas fa-euro-sign"></i>
+                        <span>€75,000</span>
+                      </div>
+                      <div class="detail-item">
+                        <i class="fas fa-chart-line"></i>
+                        <span>15% ROI</span>
+                      </div>
+                    </div>
+                    <div class="plan-progress">
+                      <div class="progress-label">
+                        <span>Progresi</span>
+                        <span>10%</span>
+                      </div>
+                      <div class="progress-bar">
+                        <div
+                          class="progress-fill success"
+                          style="width: 10%"
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="plan-footer">
+                    <span class="plan-status-badge draft">Draft</span>
+                    <div class="plan-actions">
+                      <button class="btn btn-sm btn-outline">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                      <button class="btn btn-sm btn-primary">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer">
+      <!-- Toasts will be added here dynamically -->
+    </div>
+
+    <!-- Modal Example -->
+    <div class="modal-overlay hidden" id="modalOverlay">
+      <div class="modal">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fas fa-plus"></i> Shto Element të Ri
+            </div>
+            <div class="card-actions">
+              <button class="action-btn" id="closeModal">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <div class="card-body">
+            <p>Këtu do të shfaqet forma për shtimin e elementeve të reja.</p>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-primary">Ruaj</button>
+            <button class="btn btn-outline">Anulo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+      // Mobile Menu Toggle
+      const menuToggle = document.getElementById("menuToggle");
+      const sidebar = document.getElementById("sidebar");
+      const mainContent = document.getElementById("mainContent");
+      const sidebarBackdrop = document.getElementById("sidebarBackdrop");
+
+      function toggleSidebar() {
+        sidebar.classList.toggle("active");
+        mainContent.classList.toggle("expanded");
+        if (window.innerWidth <= 1024) {
+          sidebarBackdrop.classList.toggle("active");
+        }
+      }
+
+      function closeSidebar() {
+        sidebar.classList.remove("active");
+        mainContent.classList.remove("expanded");
+        sidebarBackdrop.classList.remove("active");
+      }
+
+      menuToggle.addEventListener("click", toggleSidebar);
+
+      // Close sidebar when clicking backdrop
+      sidebarBackdrop.addEventListener("click", closeSidebar);
+
+      // Close sidebar when clicking outside on mobile
+      document.addEventListener("click", (e) => {
+        if (window.innerWidth <= 1024) {
+          if (
+            !sidebar.contains(e.target) &&
+            !menuToggle.contains(e.target) &&
+            sidebar.classList.contains("active")
+          ) {
+            closeSidebar();
+          }
+        }
+      });
+
+      // Modal functionality
+      const modalOverlay = document.getElementById("modalOverlay");
+      const closeModal = document.getElementById("closeModal");
+
+      // Close modal when clicking overlay or close button
+      modalOverlay.addEventListener("click", (e) => {
+        if (e.target === modalOverlay) {
+          modalOverlay.classList.add("hidden");
+        }
+      });
+
+      closeModal.addEventListener("click", () => {
+        modalOverlay.classList.add("hidden");
+      });
+
+      // Show toast notification
+      function showToast(message, type = "info") {
+        const toastContainer = document.getElementById("toastContainer");
+        const toast = document.createElement("div");
+        toast.className = `toast ${type}`;
+        toast.innerHTML = `
+                <i class="fas fa-${type === "success" ? "check-circle" : type === "error" ? "exclamation-circle" : type === "warning" ? "exclamation-triangle" : "info-circle"}"></i>
+                <span>${message}</span>
+                <button class="action-btn" onclick="this.parentElement.remove()">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+
+        toastContainer.appendChild(toast);
+
+        // Show toast with animation
+        setTimeout(() => {
+          toast.classList.add("show");
+        }, 10);
+
+        // Auto remove after 5 seconds
+        setTimeout(() => {
+          if (toast.parentElement) {
+            toast.remove();
+          }
+        }, 5000);
+      }
+
+      // Example: Show welcome toast
+      setTimeout(() => {
+        showToast("Mire se vini ne Biznes Manager Pro!", "success");
+      }, 1000);
+
+      // Responsive table handling
+      function handleResponsiveTables() {
+        const tables = document.querySelectorAll(".table");
+        tables.forEach((table) => {
+          const headers = Array.from(table.querySelectorAll("th"));
+          const rows = table.querySelectorAll("tbody tr");
+
+          rows.forEach((row) => {
+            const cells = Array.from(row.querySelectorAll("td"));
+            cells.forEach((cell, index) => {
+              if (window.innerWidth <= 768) {
+                cell.setAttribute("data-label", headers[index].textContent);
+              } else {
+                cell.removeAttribute("data-label");
+              }
+            });
+          });
+        });
+      }
+
+      // Initialize responsive tables
+      handleResponsiveTables();
+      window.addEventListener("resize", handleResponsiveTables);
+
+      // Add active class to clicked nav items
+      document.querySelectorAll(".nav-item").forEach((item) => {
+        item.addEventListener("click", function (e) {
+          if (!this.classList.contains("active")) {
+            document
+              .querySelectorAll(".nav-item.active")
+              .forEach((activeItem) => {
+                activeItem.classList.remove("active");
+              });
+            this.classList.add("active");
+
+            // Update page title based on clicked item
+            const pageTitle = document.querySelector(".page-title");
+            const navText = this.querySelector(".nav-text").textContent;
+            pageTitle.innerHTML = `<i class="fas ${this.querySelector(".nav-icon").className.split(" ")[1]}"></i> ${navText}`;
+
+            // Show toast notification
+            showToast(`U hap faqja "${navText}"`, "info");
+          }
+        });
+      });
+
+      // Handle button clicks
+      document.querySelectorAll(".btn-primary").forEach((btn) => {
+        btn.addEventListener("click", function (e) {
+          if (this.textContent.includes("Shto të Re")) {
+            modalOverlay.classList.remove("hidden");
+            showToast("Forma e shtimit u hap", "info");
+          }
+        });
+      });
+
+      // Handle form submissions
+      document.querySelectorAll("form").forEach((form) => {
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          showToast("Forma u dërgua me sukses!", "success");
+        });
+      });
+
+      // Add loading spinner for async operations
+      function showLoading() {
+        const spinner = document.createElement("div");
+        spinner.className = "spinner";
+        spinner.id = "loadingSpinner";
+        document.body.appendChild(spinner);
+      }
+
+      function hideLoading() {
+        const spinner = document.getElementById("loadingSpinner");
+        if (spinner) {
+          spinner.remove();
+        }
+      }
+
+      // Example async operation
+      document
+        .querySelector(".btn-outline")
+        .addEventListener("click", function () {
+          if (this.textContent.includes("Eksporto")) {
+            showLoading();
+            setTimeout(() => {
+              hideLoading();
+              showToast("Raporti u eksportua me sukses!", "success");
+            }, 1500);
+          }
+        });
+
+      // Touch device optimizations
+      if ("ontouchstart" in window) {
+        document.body.classList.add("touch-device");
+
+        // Increase touch targets
+        document
+          .querySelectorAll(".btn, .action-btn, .nav-item")
+          .forEach((el) => {
+            el.style.minHeight = "44px";
+            el.style.minWidth = "44px";
+          });
+      }
+
+      // Handle orientation changes
+      window.addEventListener("orientationchange", () => {
+        setTimeout(() => {
+          handleResponsiveTables();
+          if (window.innerWidth <= 768) {
+            sidebar.classList.remove("active");
+            mainContent.classList.remove("expanded");
+          }
+        }, 300);
+      });
+
+      // Initialize on load
+      document.addEventListener("DOMContentLoaded", () => {
+        console.log("Biznes Manager Pro u ngarkua me sukses!");
+
+        // Set current date in footer if exists
+        const today = new Date();
+        const dateOptions = {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        };
+        const currentDate = today.toLocaleDateString("sq-AL", dateOptions);
+
+        // You can use this date anywhere needed
+        console.log(`Data e sotme: ${currentDate}`);
+      });
+    </script>
+  </body>
+</html>

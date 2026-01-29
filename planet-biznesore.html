@@ -1,0 +1,1123 @@
+<!doctype html>
+<html lang="sq">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light only" />
+    <title>Planet Biznesore - Biznes Manager</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="auth.js"></script>
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <a href="index.html" class="logo">
+            <div class="logo-icon">
+              <i class="fas fa-briefcase"></i>
+            </div>
+            <div class="logo-text">
+              <span>Biznes Manager</span>
+              <span>Sistemi i Plotë i Menaxhimit</span>
+            </div>
+          </a>
+        </div>
+
+        <nav class="sidebar-nav">
+          <div class="nav-section">
+            <div class="nav-section-title">MENU KRYESORE</div>
+            <a href="index.html" class="nav-item">
+              <i class="nav-icon fas fa-home"></i>
+              <span class="nav-text">Dashboard</span>
+            </a>
+            <a href="klientet.html" class="nav-item">
+              <i class="nav-icon fas fa-users"></i>
+              <span class="nav-text">Klientët</span>
+            </a>
+          </div>
+
+          <div class="nav-section">
+            <div class="nav-section-title">BIZNESI</div>
+            <a href="planet-biznesore.html" class="nav-item active">
+              <i class="nav-icon fas fa-chart-line"></i>
+              <span class="nav-text">Planet Biznesore</span>
+              <span class="nav-badge">8</span>
+            </a>
+            <a href="regjistrimi-biznesit.html" class="nav-item">
+              <i class="nav-icon fas fa-file-signature"></i>
+              <span class="nav-text">Regjistrimi i Bizneseve</span>
+            </a>
+            <a href="mbyllja-biznesit.html" class="nav-item">
+              <i class="nav-icon fas fa-door-closed"></i>
+              <span class="nav-text">Mbyllja e Bizneseve</span>
+            </a>
+          </div>
+
+          <div class="nav-section">
+            <div class="nav-section-title">TENDERA & DOKUMENTA</div>
+            <a href="tenderat.html" class="nav-item">
+              <i class="nav-icon fas fa-file-contract"></i>
+              <span class="nav-text">Tenderat</span>
+            </a>
+            <a href="konsultimet.html" class="nav-item">
+              <i class="nav-icon fas fa-comments"></i>
+              <span class="nav-text">Konsultimet</span>
+            </a>
+            <a href="kontabiliteti.html" class="nav-item">
+              <i class="nav-icon fas fa-file-invoice-dollar"></i>
+              <span class="nav-text">Faturat & Pagesat</span>
+            </a>
+            <a href="dokumentet.html" class="nav-item">
+              <i class="nav-icon fas fa-archive"></i>
+              <span class="nav-text">Arkivi i Dokumenteve</span>
+            </a>
+          </div>
+        </nav>
+
+        <div
+          class="sidebar-footer"
+          style="
+            padding: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+          "
+        >
+          <div class="user-info" style="color: var(--gray-400)">
+            <div style="font-size: 0.75rem; margin-bottom: 0.25rem">
+              Strategji & Planifikim
+            </div>
+            <div
+              style="
+                font-size: 0.875rem;
+                font-weight: 500;
+                color: var(--light-color);
+              "
+            >
+              <i class="fas fa-bullseye" style="margin-right: 0.5rem"></i>
+              8 Plane Aktive
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Header -->
+        <header class="header">
+          <div class="header-left">
+            <button class="menu-toggle" id="menuToggle">
+              <i class="fas fa-bars"></i>
+            </button>
+            <div class="header-title">
+              <h1>Planet Biznesore</h1>
+              <div class="header-subtitle">
+                Planifikimi Strategjik dhe Zhvillimi i Bizneseve
+              </div>
+            </div>
+          </div>
+
+          <div class="header-right">
+            <div class="header-stats">
+              <div class="stat-mini">
+                <div class="stat-mini-value">8</div>
+                <div class="stat-mini-label">Plane Aktive</div>
+              </div>
+              <div class="stat-mini">
+                <div
+                  class="stat-mini-value"
+                  style="color: var(--success-color)"
+                >
+                  €2.1M
+                </div>
+                <div class="stat-mini-label">Vlerë e Planifikuar</div>
+              </div>
+              <div class="stat-mini">
+                <div
+                  class="stat-mini-value"
+                  style="color: var(--warning-color)"
+                >
+                  3
+                </div>
+                <div class="stat-mini-label">Në Analizë</div>
+              </div>
+            </div>
+
+            <div class="search-container">
+              <i class="fas fa-search search-icon"></i>
+              <input
+                type="text"
+                class="search-input"
+                placeholder="Kërko plan..."
+              />
+            </div>
+
+            <div class="user-menu">
+              <div class="user-avatar">BM</div>
+              <div class="user-info">
+                <div class="user-name">Administrator</div>
+                <div class="user-role">Strateg i Biznesit</div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="page-content">
+          <!-- Breadcrumb -->
+          <div class="breadcrumb">
+            <div class="breadcrumb-item">
+              <a href="index.html"><i class="fas fa-home"></i> Dashboard</a>
+            </div>
+            <div class="breadcrumb-separator">/</div>
+            <div class="breadcrumb-item active">
+              <i class="fas fa-chart-line"></i> Planet Biznesore
+            </div>
+          </div>
+
+          <!-- Page Header -->
+          <div class="page-header">
+            <div class="page-title-section">
+              <div class="page-title">
+                <i
+                  class="fas fa-chart-line"
+                  style="color: var(--success-color)"
+                ></i>
+                Strategjia dhe Planifikimi i Biznesit
+              </div>
+              <div class="page-subtitle">
+                Krijo, menaxho dhe ndiq zhvillimin e planeve tuaja strategjike
+                të biznesit.
+              </div>
+            </div>
+            <div class="page-actions">
+              <button class="btn btn-outline">
+                <i class="fas fa-filter"></i> Filtro
+              </button>
+              <button class="btn btn-success" id="newPlanBtn">
+                <i class="fas fa-plus"></i> Plan i Ri
+              </button>
+              <button class="btn btn-primary">
+                <i class="fas fa-chart-bar"></i> Analiza
+              </button>
+            </div>
+          </div>
+
+          <!-- Stats Overview -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon clients">
+                <i class="fas fa-bullseye"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">8</div>
+                <div class="stat-label">Plane Aktive</div>
+                <div class="stat-change positive">
+                  <i class="fas fa-arrow-up"></i> 2 të rinj këtë muaj
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon projects">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">€2.1M</div>
+                <div class="stat-label">Vlerë Totale e Planeve</div>
+                <div class="stat-change positive">
+                  <i class="fas fa-arrow-up"></i> 15% rritje
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon pending">
+                <i class="fas fa-tasks"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">72%</div>
+                <div class="stat-label">Progres Mesatar</div>
+                <div class="stat-change positive">
+                  <i class="fas fa-check-circle"></i> Në orar
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon revenue">
+                <i class="fas fa-handshake"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">6</div>
+                <div class="stat-label">Plane të Implementuar</div>
+                <div class="stat-change positive">
+                  <i class="fas fa-arrow-up"></i> 75% sukses
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Business Plans Grid -->
+          <div class="business-plans-grid">
+            <div class="plan-card featured">
+              <div class="plan-header">
+                <div class="plan-category">STRATEGJIK</div>
+                <div class="plan-priority">
+                  <span class="priority-badge high">Prioritet i Lartë</span>
+                </div>
+              </div>
+              <div class="plan-body">
+                <h3 class="plan-title">Zgjerimi në Tregun Rajonal</h3>
+                <p class="plan-description">
+                  Strategji për depërtim në tregjet e Kosovës dhe Maqedonisë së
+                  Veriut me fokus në teknologji të reja.
+                </p>
+                <div class="plan-details">
+                  <div class="detail-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>18 Muaj</span>
+                  </div>
+                  <div class="detail-item">
+                    <i class="fas fa-euro-sign"></i>
+                    <span>€850,000</span>
+                  </div>
+                  <div class="detail-item">
+                    <i class="fas fa-user-tie"></i>
+                    <span>Agro-Shpresa</span>
+                  </div>
+                </div>
+                <div class="plan-progress">
+                  <div class="progress-label">
+                    <span>Progresi</span>
+                    <span>65%</span>
+                  </div>
+                  <div class="progress-bar">
+                    <div class="progress-fill success" style="width: 65%"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="plan-footer">
+                <div class="plan-status">
+                  <span class="status-badge active">Në Implementim</span>
+                </div>
+                <div class="plan-actions">
+                  <button class="action-btn view">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                  <button class="action-btn edit">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="plan-card">
+              <div class="plan-header">
+                <div class="plan-category">OPERACIONAL</div>
+                <div class="plan-priority">
+                  <span class="priority-badge medium">Prioritet Mesatar</span>
+                </div>
+              </div>
+              <div class="plan-body">
+                <h3 class="plan-title">Automatizim i Proceseve</h3>
+                <p class="plan-description">
+                  Implementimi i sistemeve të automatizuara për optimizimin e
+                  proceseve të prodhimit.
+                </p>
+                <div class="plan-details">
+                  <div class="detail-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>12 Muaj</span>
+                  </div>
+                  <div class="detail-item">
+                    <i class="fas fa-euro-sign"></i>
+                    <span>€320,000</span>
+                  </div>
+                  <div class="detail-item">
+                    <i class="fas fa-user-tie"></i>
+                    <span>TeKno AL</span>
+                  </div>
+                </div>
+                <div class="plan-progress">
+                  <div class="progress-label">
+                    <span>Progresi</span>
+                    <span>85%</span>
+                  </div>
+                  <div class="progress-bar">
+                    <div class="progress-fill success" style="width: 85%"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="plan-footer">
+                <div class="plan-status">
+                  <span class="status-badge completed">Pothuajse Gati</span>
+                </div>
+                <div class="plan-actions">
+                  <button class="action-btn view">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                  <button class="action-btn edit">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="plan-card">
+              <div class="plan-header">
+                <div class="plan-category">FINANCIAR</div>
+                <div class="plan-priority">
+                  <span class="priority-badge high">Prioritet i Lartë</span>
+                </div>
+              </div>
+              <div class="plan-body">
+                <h3 class="plan-title">Ristrukturim Financiar</h3>
+                <p class="plan-description">
+                  Optimizim i strukturës së kapitalit dhe menaxhimi i
+                  likuiditetit për rritje të qëndrueshme.
+                </p>
+                <div class="plan-details">
+                  <div class="detail-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>24 Muaj</span>
+                  </div>
+                  <div class="detail-item">
+                    <i class="fas fa-euro-sign"></i>
+                    <span>€450,000</span>
+                  </div>
+                  <div class="detail-item">
+                    <i class="fas fa-user-tie"></i>
+                    <span>Ndërtim Plus</span>
+                  </div>
+                </div>
+                <div class="plan-progress">
+                  <div class="progress-label">
+                    <span>Progresi</span>
+                    <span>40%</span>
+                  </div>
+                  <div class="progress-bar">
+                    <div class="progress-fill warning" style="width: 40%"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="plan-footer">
+                <div class="plan-status">
+                  <span class="status-badge pending">Në Analizë</span>
+                </div>
+                <div class="plan-actions">
+                  <button class="action-btn view">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                  <button class="action-btn edit">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="plan-card">
+              <div class="plan-header">
+                <div class="plan-category">MARKETING</div>
+                <div class="plan-priority">
+                  <span class="priority-badge medium">Prioritet Mesatar</span>
+                </div>
+              </div>
+              <div class="plan-body">
+                <h3 class="plan-title">Strategji Digjitale</h3>
+                <p class="plan-description">
+                  Zhvillimi i pranisë digjitale dhe strategjive të marketingut
+                  në internet.
+                </p>
+                <div class="plan-details">
+                  <div class="detail-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>6 Muaj</span>
+                  </div>
+                  <div class="detail-item">
+                    <i class="fas fa-euro-sign"></i>
+                    <span>€85,000</span>
+                  </div>
+                  <div class="detail-item">
+                    <i class="fas fa-user-tie"></i>
+                    <span>Emal Travel</span>
+                  </div>
+                </div>
+                <div class="plan-progress">
+                  <div class="progress-label">
+                    <span>Progresi</span>
+                    <span>90%</span>
+                  </div>
+                  <div class="progress-bar">
+                    <div class="progress-fill success" style="width: 90%"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="plan-footer">
+                <div class="plan-status">
+                  <span class="status-badge completed">Në Zbatim</span>
+                </div>
+                <div class="plan-actions">
+                  <button class="action-btn view">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                  <button class="action-btn edit">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Detailed Analysis Section -->
+          <div class="charts-container" style="margin-top: 2rem">
+            <!-- Plan Performance Metrics -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <i
+                    class="fas fa-chart-bar"
+                    style="color: var(--secondary-color)"
+                  ></i>
+                  Metrikat e Performancës
+                </div>
+                <div class="card-actions">
+                  <div class="btn-group">
+                    <button class="btn btn-sm btn-outline active">Muaj</button>
+                    <button class="btn btn-sm btn-outline">Kvartal</button>
+                    <button class="btn btn-sm btn-outline">Vit</button>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="performance-metrics">
+                  <div class="metric-grid">
+                    <div class="metric-card">
+                      <div class="metric-value">85%</div>
+                      <div class="metric-label">Pajtueshmëria me Buxhetin</div>
+                      <div class="metric-change positive">
+                        <i class="fas fa-arrow-up"></i> 5% ndaj muajit të kaluar
+                      </div>
+                    </div>
+                    <div class="metric-card">
+                      <div class="metric-value">72%</div>
+                      <div class="metric-label">Realizimi i Synimeve</div>
+                      <div class="metric-change positive">
+                        <i class="fas fa-arrow-up"></i> 8% ndaj kuartalit të
+                        kaluar
+                      </div>
+                    </div>
+                    <div class="metric-card">
+                      <div class="metric-value">€1.5M</div>
+                      <div class="metric-label">ROI i Planifikuar</div>
+                      <div class="metric-change positive">
+                        <i class="fas fa-arrow-up"></i> 12% mbi pritshmëritë
+                      </div>
+                    </div>
+                    <div class="metric-card">
+                      <div class="metric-value">94%</div>
+                      <div class="metric-label">Kënaqësia e Klientëve</div>
+                      <div class="metric-change positive">
+                        <i class="fas fa-arrow-up"></i> 3% ndaj vitit të kaluar
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="plan-timeline">
+                    <h4 style="margin: 1.5rem 0 1rem; color: var(--gray-800)">
+                      <i
+                        class="fas fa-road"
+                        style="color: var(--info-color)"
+                      ></i>
+                      Rruga Kritike e Planit
+                    </h4>
+                    <div class="timeline">
+                      <div class="timeline-item completed">
+                        <div class="timeline-date">Janar - Mars 2024</div>
+                        <div class="timeline-content completed">
+                          <strong>Analiza e Tregut</strong>
+                          <p>
+                            Hulumtimi i tregut dhe analiza konkurruese
+                            përfunduan me sukses
+                          </p>
+                        </div>
+                      </div>
+                      <div class="timeline-item completed">
+                        <div class="timeline-date">Prill - Qershor 2024</div>
+                        <div class="timeline-content completed">
+                          <strong>Zhvillimi i Strategjisë</strong>
+                          <p>
+                            Formulimi i strategjisë dhe plani operativ janë
+                            përfunduar
+                          </p>
+                        </div>
+                      </div>
+                      <div class="timeline-item current">
+                        <div class="timeline-date">Korrik - Shtator 2024</div>
+                        <div class="timeline-content pending">
+                          <strong>Implementimi Fillestar</strong>
+                          <p>Faza aktuale e zbatimit të planeve operacionale</p>
+                        </div>
+                      </div>
+                      <div class="timeline-item">
+                        <div class="timeline-date">Tetor - Dhjetor 2024</div>
+                        <div class="timeline-content">
+                          <strong>Monitorimi dhe Rishikimi</strong>
+                          <p>
+                            Vlerësimi i rezultateve dhe rregullimet e nevojshme
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Financial Projections -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">
+                  <i
+                    class="fas fa-chart-pie"
+                    style="color: var(--success-color)"
+                  ></i>
+                  Projektimet Financiare
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="financial-projections">
+                  <div
+                    style="
+                      display: grid;
+                      grid-template-columns: 1fr 1fr;
+                      gap: 2rem;
+                    "
+                  >
+                    <!-- Budget Allocation -->
+                    <div>
+                      <h4 style="margin-bottom: 1rem; color: var(--gray-800)">
+                        <i class="fas fa-money-bill-wave"></i>
+                        Alokimi i Buxhetit
+                      </h4>
+                      <div class="budget-allocation">
+                        <div class="allocation-item">
+                          <div
+                            style="
+                              display: flex;
+                              justify-content: space-between;
+                              margin-bottom: 0.5rem;
+                            "
+                          >
+                            <span style="font-size: 0.875rem"
+                              >Kapital Njerëzor</span
+                            >
+                            <span style="font-weight: 600">40%</span>
+                          </div>
+                          <div class="progress-bar">
+                            <div
+                              class="progress-fill primary"
+                              style="width: 40%"
+                            ></div>
+                          </div>
+                        </div>
+                        <div class="allocation-item">
+                          <div
+                            style="
+                              display: flex;
+                              justify-content: space-between;
+                              margin-bottom: 0.5rem;
+                            "
+                          >
+                            <span style="font-size: 0.875rem"
+                              >Teknologji & Infrastrukturë</span
+                            >
+                            <span style="font-weight: 600">25%</span>
+                          </div>
+                          <div class="progress-bar">
+                            <div
+                              class="progress-fill success"
+                              style="width: 25%"
+                            ></div>
+                          </div>
+                        </div>
+                        <div class="allocation-item">
+                          <div
+                            style="
+                              display: flex;
+                              justify-content: space-between;
+                              margin-bottom: 0.5rem;
+                            "
+                          >
+                            <span style="font-size: 0.875rem"
+                              >Marketing & Reklamim</span
+                            >
+                            <span style="font-weight: 600">20%</span>
+                          </div>
+                          <div class="progress-bar">
+                            <div
+                              class="progress-fill warning"
+                              style="width: 20%"
+                            ></div>
+                          </div>
+                        </div>
+                        <div class="allocation-item">
+                          <div
+                            style="
+                              display: flex;
+                              justify-content: space-between;
+                              margin-bottom: 0.5rem;
+                            "
+                          >
+                            <span style="font-size: 0.875rem"
+                              >Fondi i Emergjencës</span
+                            >
+                            <span style="font-weight: 600">15%</span>
+                          </div>
+                          <div class="progress-bar">
+                            <div
+                              class="progress-fill info"
+                              style="width: 15%"
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- ROI Projections -->
+                    <div>
+                      <h4 style="margin-bottom: 1rem; color: var(--gray-800)">
+                        <i class="fas fa-chart-line"></i>
+                        Projektimet e Kthimit (ROI)
+                      </h4>
+                      <div class="roi-projections">
+                        <div class="roi-item">
+                          <span>Viti 1</span>
+                          <span class="roi-value">15%</span>
+                          <div class="roi-bar">
+                            <div class="roi-fill" style="width: 15%"></div>
+                          </div>
+                        </div>
+                        <div class="roi-item">
+                          <span>Viti 2</span>
+                          <span class="roi-value">28%</span>
+                          <div class="roi-bar">
+                            <div class="roi-fill" style="width: 28%"></div>
+                          </div>
+                        </div>
+                        <div class="roi-item">
+                          <span>Viti 3</span>
+                          <span class="roi-value">42%</span>
+                          <div class="roi-bar">
+                            <div class="roi-fill" style="width: 42%"></div>
+                          </div>
+                        </div>
+                        <div class="roi-item">
+                          <span>Viti 4</span>
+                          <span class="roi-value">58%</span>
+                          <div class="roi-bar">
+                            <div class="roi-fill" style="width: 58%"></div>
+                          </div>
+                        </div>
+                        <div class="roi-item">
+                          <span>Viti 5</span>
+                          <span class="roi-value">75%</span>
+                          <div class="roi-bar">
+                            <div class="roi-fill" style="width: 75%"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Financial Summary -->
+                  <div
+                    class="financial-summary"
+                    style="
+                      margin-top: 2rem;
+                      padding-top: 1.5rem;
+                      border-top: 1px solid var(--gray-200);
+                    "
+                  >
+                    <h4 style="margin-bottom: 1rem; color: var(--gray-800)">
+                      <i class="fas fa-calculator"></i>
+                      Përmbledhje Financiare
+                    </h4>
+                    <div class="summary-grid">
+                      <div class="summary-card">
+                        <div class="summary-value">€2.1M</div>
+                        <div class="summary-label">Investimi Total</div>
+                      </div>
+                      <div class="summary-card">
+                        <div class="summary-value">€3.5M</div>
+                        <div class="summary-label">
+                          Të Ardhura të Projektuara
+                        </div>
+                      </div>
+                      <div class="summary-card">
+                        <div class="summary-value">€1.4M</div>
+                        <div class="summary-label">Fitimi Neto</div>
+                      </div>
+                      <div class="summary-card">
+                        <div class="summary-value">4.2 vjet</div>
+                        <div class="summary-label">Periudha e Shlyerjes</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-outline btn-sm">
+                  <i class="fas fa-download"></i> Shkarko Raportin
+                </button>
+                <button class="btn btn-primary btn-sm">
+                  <i class="fas fa-sync-alt"></i> Përditëso Projektimet
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- SWOT Analysis -->
+          <div class="card" style="margin-top: 2rem">
+            <div class="card-header">
+              <div class="card-title">
+                <i
+                  class="fas fa-chess-board"
+                  style="color: var(--info-color)"
+                ></i>
+                Analiza SWOT - Zgjerimi në Tregun Rajonal
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="swot-grid">
+                <div class="swot-section strengths">
+                  <div class="swot-header">
+                    <h4><i class="fas fa-thumbs-up"></i> Forcat (Strengths)</h4>
+                  </div>
+                  <ul class="swot-list">
+                    <li>Eksperiencë 10-vjeçare në tregun lokal</li>
+                    <li>Teknologji e përparuar e prodhimit</li>
+                    <li>Staf i kualifikuar dhe i përvojshëm</li>
+                    <li>Rrjet i gjerë i furnitorëve</li>
+                  </ul>
+                </div>
+                <div class="swot-section weaknesses">
+                  <div class="swot-header">
+                    <h4>
+                      <i class="fas fa-thumbs-down"></i> Dobësitë (Weaknesses)
+                    </h4>
+                  </div>
+                  <ul class="swot-list">
+                    <li>Kufizime në kapacitetin financiar</li>
+                    <li>Njohje e kufizuar e tregut rajonal</li>
+                    <li>Varësi nga furnitorët kryesorë</li>
+                    <li>Infrastrukturë e vjetër teknologjike</li>
+                  </ul>
+                </div>
+                <div class="swot-section opportunities">
+                  <div class="swot-header">
+                    <h4>
+                      <i class="fas fa-bullseye"></i> Mundësitë (Opportunities)
+                    </h4>
+                  </div>
+                  <ul class="swot-list">
+                    <li>Rritje e kërkesës në tregun rajonal</li>
+                    <li>Marrëveshje të reja tregtare</li>
+                    <li>Fonde ndihmëse për ekspansion</li>
+                    <li>Partneritete strategjike</li>
+                  </ul>
+                </div>
+                <div class="swot-section threats">
+                  <div class="swot-header">
+                    <h4>
+                      <i class="fas fa-exclamation-triangle"></i> Kërcënimet
+                      (Threats)
+                    </h4>
+                  </div>
+                  <ul class="swot-list">
+                    <li>Konkurrencë e ashpër nga kompanitë lokale</li>
+                    <li>Ndryshime në politikat tregtare</li>
+                    <li>Luhatje të çmimeve të lëndëve të para</li>
+                    <li>Rreziqe politike dhe ekonomike</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Modal for New Business Plan -->
+    <div class="modal-overlay" id="newPlanModal" style="display: none">
+      <div class="modal" style="max-width: 900px">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fas fa-plus-circle"></i> Krijo Plan të Ri Biznesor
+            </div>
+            <button class="action-btn delete" id="closePlanModal">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="card-body">
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label required">Emri i Planit</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Shkruani emrin e planit"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label required">Klienti/Biznesi</label>
+                <div class="select-with-icon">
+                  <i class="fas fa-building select-icon"></i>
+                  <select class="form-control">
+                    <option value="">Zgjidhni klientin</option>
+                    <option value="agro-shpresa">Agro-Shpresa ShPK</option>
+                    <option value="teknologi">TeKno AL ShPK</option>
+                    <option value="ndertim">Ndërtim Plus ShPK</option>
+                    <option value="travel">Emal Travel ShPK</option>
+                    <option value="farma">Farma Health ShPK</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label required">Kategoria</label>
+                <div class="select-with-icon">
+                  <i class="fas fa-folder select-icon"></i>
+                  <select class="form-control">
+                    <option value="">Zgjidhni kategorinë</option>
+                    <option value="strategjik">Strategjik</option>
+                    <option value="operacional">Operacional</option>
+                    <option value="financiar">Financiar</option>
+                    <option value="marketing">Marketing</option>
+                    <option value="teknologjik">Teknologjik</option>
+                    <option value="zhvillim">Zhvillim Produkti</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label required">Prioriteti</label>
+                <div class="select-with-icon">
+                  <i class="fas fa-flag select-icon"></i>
+                  <select class="form-control">
+                    <option value="">Zgjidhni prioritetin</option>
+                    <option value="high">Prioritet i Lartë</option>
+                    <option value="medium">Prioritet Mesatar</option>
+                    <option value="low">Prioritet i Ulët</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label required">Data e Fillimit</label>
+                <input type="date" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label class="form-label required">Data e Përfundimit</label>
+                <input type="date" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label class="form-label required"
+                  >Buxheti i Planifikuar (€)</label
+                >
+                <input type="number" class="form-control" placeholder="0.00" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">ROI i Projektuar (%)</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  placeholder="0"
+                  min="0"
+                  max="100"
+                />
+              </div>
+              <div class="form-group" style="grid-column: 1 / -1">
+                <label class="form-label required">Përshkrimi i Planit</label>
+                <textarea
+                  class="form-control"
+                  rows="4"
+                  placeholder="Përshkrim i detajuar të planit biznesor..."
+                ></textarea>
+              </div>
+              <div class="form-group" style="grid-column: 1 / -1">
+                <label class="form-label required">Qëllimet Kryesore</label>
+                <div class="objectives-list">
+                  <div class="objective-item">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Shtoni qëllim..."
+                    />
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-outline"
+                      style="margin-left: 0.5rem"
+                    >
+                      <i class="fas fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group" style="grid-column: 1 / -1">
+                <label class="form-label">Dokumentet e Bashkangjitura</label>
+                <div class="file-upload">
+                  <label class="file-upload-label">
+                    <i class="fas fa-cloud-upload-alt file-upload-icon"></i>
+                    <span class="file-upload-text"
+                      >Klikoni për të ngarkuar dokumentet e planit</span
+                    >
+                    <span class="file-upload-hint"
+                      >PDF, DOC, XLS deri në 10MB</span
+                    >
+                    <input type="file" multiple />
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-outline" id="cancelPlanBtn">Anulo</button>
+            <button class="btn btn-success">Ruaj Planin</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+      // Specific scripts for planet-biznesore.html
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.getElementById("menuToggle");
+        const sidebar = document.querySelector(".sidebar");
+        const newPlanBtn = document.getElementById("newPlanBtn");
+        const newPlanModal = document.getElementById("newPlanModal");
+        const closePlanModal = document.getElementById("closePlanModal");
+        const cancelPlanBtn = document.getElementById("cancelPlanBtn");
+
+        // Toggle sidebar on mobile
+        menuToggle.addEventListener("click", () => {
+          sidebar.classList.toggle("active");
+        });
+
+        // Show new plan modal
+        newPlanBtn.addEventListener("click", () => {
+          newPlanModal.style.display = "flex";
+        });
+
+        // Close modal
+        function closeModalFunc() {
+          newPlanModal.style.display = "none";
+        }
+
+        closePlanModal.addEventListener("click", closeModalFunc);
+        cancelPlanBtn.addEventListener("click", closeModalFunc);
+
+        // Close modal when clicking outside
+        newPlanModal.addEventListener("click", (e) => {
+          if (e.target === newPlanModal) {
+            closeModalFunc();
+          }
+        });
+
+        // Search functionality
+        const searchInput = document.querySelector(".search-input");
+        searchInput.addEventListener("input", function (e) {
+          const searchTerm = e.target.value.toLowerCase();
+          console.log("Kërkim për plan:", searchTerm);
+          // Implement search logic here
+        });
+
+        // Plan card interactions
+        document.querySelectorAll(".plan-card").forEach((card) => {
+          card.addEventListener("click", function (e) {
+            if (!e.target.closest(".plan-actions")) {
+              const planTitle = this.querySelector(".plan-title").textContent;
+              console.log(`Duke shfaqur detajet e planit: ${planTitle}`);
+              alert(`Detajet e planit: ${planTitle}`);
+            }
+          });
+        });
+
+        // Action buttons for plans
+        document
+          .querySelectorAll(".plan-actions .action-btn")
+          .forEach((btn) => {
+            btn.addEventListener("click", function (e) {
+              e.stopPropagation();
+              const card = this.closest(".plan-card");
+              const planTitle = card.querySelector(".plan-title").textContent;
+
+              if (this.classList.contains("view")) {
+                console.log(`Duke shikuar planin: ${planTitle}`);
+                alert(`Duke hapur planin: ${planTitle}`);
+              } else if (this.classList.contains("edit")) {
+                console.log(`Duke edituar planin: ${planTitle}`);
+                alert(`Hapja e editimit për planin: ${planTitle}`);
+              }
+            });
+          });
+
+        // Filter buttons
+        document.querySelectorAll(".btn-group .btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            document.querySelectorAll(".btn-group .btn").forEach((b) => {
+              b.classList.remove("active");
+            });
+            this.classList.add("active");
+
+            const period = this.textContent;
+            console.log("Filtro sipas periudhës:", period);
+            // Implement filter logic here
+          });
+        });
+
+        // Add objective button
+        const addObjectiveBtn = document.querySelector(".objective-item .btn");
+        if (addObjectiveBtn) {
+          addObjectiveBtn.addEventListener("click", function () {
+            const input = this.previousElementSibling;
+            const objective = input.value.trim();
+
+            if (objective) {
+              console.log("Shtuar qëllim:", objective);
+              input.value = "";
+
+              // Add new objective item
+              const newItem = document.createElement("div");
+              newItem.className = "objective-item";
+              newItem.innerHTML = `
+                            <span>${objective}</span>
+                            <button type="button" class="btn btn-sm btn-outline" style="margin-left: auto;">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        `;
+
+              const objectivesList = document.querySelector(".objectives-list");
+              objectivesList.appendChild(newItem);
+
+              // Add remove functionality
+              newItem
+                .querySelector("button")
+                .addEventListener("click", function () {
+                  newItem.remove();
+                });
+            }
+          });
+        }
+      });
+    </script>
+    <script src="database.js"></script>
+    <script src="dashboard.js"></script>
+  </body>
+</html>
